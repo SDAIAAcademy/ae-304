@@ -1,158 +1,467 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Open with yesterday's best number: hybrid search with a reranker reached nDCG@10 0.633. Ask: if a page was never parsed, which of yesterday's methods could find it? None. Today moves upstream, to what the index is made of.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-auto="agenda"></section>
 
-<!-- Session 1 -->
-
-<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
-
-<section class="slide" id="s1-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="review-day1" data-lo="LO2">
+  <div class="kicker">Review of Day 1</div>
+  <h2>What does yesterday's results table say?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Dense e5 scored nDCG@10 0.375 on Arabic and 0.639 on English; normalised BM25 scored 0.543 and 0.532; their RRF fusion 0.510 and 0.630. Which reading is right?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads the overall gain as a gain on every slice">Fusion beats both inputs on both languages</div>
+      <div class="opt" data-why="Takes one model's Arabic score as the verdict on all dense retrieval">Dense retrieval cannot serve Arabic</div>
+      <div class="opt" data-why="Looks at averages only, which is what the slices exist to prevent">The three methods are equal, since their averages are close</div>
+      <div class="opt" data-ok>Fusion helps English a lot and costs a little on Arabic, so Arabic needs its own look</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> RRF lifted English from 0.532 to 0.630 but sat between its inputs on Arabic. A slice that moves the other way is a finding, not noise to average away.</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Answer: D. If the room picks A, show the two Arabic numbers side by side: 0.510 against BM25's 0.543. MiniLM did better than e5 on Arabic (0.419), so B overstates it.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
+<!-- ======================= SESSION 1 ======================= -->
+<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
+
+<section class="slide" data-label="Upstream" id="parsing-before-retrieval" data-lo="LO3">
+  <div class="kicker">Corpus preparation</div>
+  <h2>Retrieval can only find what the parser wrote down</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+    <div class="step c-teal"><b>PDF or scan</b>what the university publishes</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Parser</b>text and tables, or nothing</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Chunks</b>what gets indexed</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Search</b>Day 1's methods</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> A parsing failure looks like a retrieval failure: the page "is never found". Score the parser on its own, against reference text, before you tune search.</div>
+  <aside class="notes"><p>Day 4 Session 4 makes this a method: attribute each failure to the first component that lost the answer. Today you measure the first component directly.</p></aside>
+</section>
+
+<section class="slide" data-label="Two parsers" id="two-kinds-of-parser" data-lo="LO3">
+  <div class="kicker">Two families of parser</div>
+  <h2>A text-layer parser reads what the PDF stores; a layout-aware one reads the page</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Parser A · text layer</h4><p class="small mb0">Fast and cheap. Reads the characters the PDF holds, in the order it holds them. A scan holds no characters; Arabic may come out in presentation forms and reversed order.</p></div>
+    <div class="card c-teal"><h4>Parser B · layout-aware</h4><p class="small mb0">Slower. Recognises text from the image and finds table structure. Makes its own errors: similar letters confused.</p></div>
+  </div>
+  <p class="small mt">Examples of the families: pypdf and pdfminer for text layers; Docling, Unstructured, Tesseract and open-weight document vision models for layout and recognition.</p>
+  <aside class="notes"><p>The lab's two parsers are simulated from the reference text with the failure patterns of each family, so every room gets the same scores. Say this plainly: the patterns are real, the outputs are generated. The method of scoring is what transfers to a real parser.</p></aside>
+</section>
+
+<section class="slide" data-label="One page" id="one-page-three-ways" data-lo="LO3">
+  <div class="kicker">Lab 2.1, step 1</div>
+  <h2>The same study-plan page, as the text layer gives it</h2>
+  <div class="cols cols-2">
+    <div class="stack">
+      <h4>Reference</h4>
+      <p class="small mb0 ar">الخطة الدراسية: بكالوريوس الهندسة الصناعية، السنة الثالثة</p>
+      <p class="small mb0"><code>| IND 312 | ... | 3 | IND 212 |</code></p>
+    </div>
+    <div class="stack">
+      <h4>Parser A</h4>
+      <p class="small mb0 ar">ﺍﻝﺙﺍﻝﺙة ﺍﻝﺱﻥة ﺍﻝﺹﻥﺍﻉﻱة، ﺍﻝﻩﻥﺩﺱة ﺏﻙﺍﻝﻭﺭﻱﻭﺱ ﺍﻝﺩﺭﺍﺱﻱة: ﺍﻝﺥﻁة</p>
+      <p class="small mb0"><code>212 IND 3 ... 312 IND</code></p>
+    </div>
+  </div>
+  <ul class="bullets small mt">
+    <li><b>Presentation forms</b>: each letter stored in its joined shape, so no word matches</li>
+    <li><b>Reversed word order</b> in Arabic lines, and the table's pipes lost</li>
+  </ul>
+  <aside class="notes"><p>This is page 1 of the lab's 30 pages, printed in step 1. Ask an Arabic reader whether the second line looks right: it renders almost normally, but the word order is reversed and every letter is a presentation form. Unicode NFKC folds the forms back; it does not restore the order.</p></aside>
+</section>
+
+<section class="slide" data-label="WER" id="word-error-rate" data-lo="LO3">
+  <div class="kicker">Score the text</div>
+  <h2>Word error rate: the edits that turn the output into the reference, per word</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="Lab 2.1 · step 2"><code class="language-python">def words(text):
+    text = unicodedata.normalize("NFKC", text)
+    return re.findall(r"\w+", U.normalise(text))
+
+def wer(ref, out):
+    r, o = words(ref), words(out)
+    return edit_distance(r, o) / len(r)</code></pre>
+    <ul class="bullets small">
+      <li>Normalise first, or you score typography, not content</li>
+      <li>Two swapped words cost two edits: a toy of three words scores 0.667</li>
+      <li>An empty output scores 1.0, every word missing</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The toy check in the lab prints 0.667 for a swapped pair in three words. Ask why WER can exceed 1 (insertions); it does not happen here, but a parser that repeats headers can do it.</p></aside>
+</section>
+
+<section class="slide" data-label="Cells" id="table-cell-accuracy" data-lo="LO3">
+  <div class="kicker">Score the tables</div>
+  <h2>A table is right only when each cell is in its row and column</h2>
+  <ul class="bullets">
+    <li>Compare the parsed table with the reference <b>cell by cell</b>: same row, same column, same text</li>
+    <li>Text can be perfect and the table worthless: "3" and "IND 212" on one line do not say which course they belong to</li>
+    <li>Study plans are mostly tables: a question like "how many credit hours is CSC 301" lives in one cell</li>
+  </ul>
+  <div class="callout tip mt"><b>Takeaway.</b> Report text and table scores separately. A parser can win one and lose the other.</div>
+  <aside class="notes"><p>Parser A scored 0.000 on cells even on digital pages, because it drops the pipes: the words are there, the structure is gone. Parser B scored 0.998 on digital tables and 0.944 on scanned ones.</p></aside>
+</section>
+
+<section class="slide" data-label="By page type" id="scores-by-page-type" data-lo="LO3">
+  <div class="kicker">Measured in Lab 2.1</div>
+  <h2>The text layer is fine on plain digital pages and useless on scans</h2>
+  <table class="t small">
+    <tr><th>Page type (pages)</th><th class="num">WER A</th><th class="num">WER B</th><th class="num">cells A</th><th class="num">cells B</th></tr>
+    <tr><td>Digital, no table (7)</td><td class="num">0.397</td><td class="num">0.012</td><td class="num">-</td><td class="num">-</td></tr>
+    <tr><td>Digital, table (8)</td><td class="num">0.278</td><td class="num">0.001</td><td class="num">0.000</td><td class="num">0.998</td></tr>
+    <tr class="hl"><td>Scanned, no table (11)</td><td class="num">1.000</td><td class="num">0.054</td><td class="num">-</td><td class="num">-</td></tr>
+    <tr class="hl"><td>Scanned, table (4)</td><td class="num">1.000</td><td class="num">0.073</td><td class="num">0.000</td><td class="num">0.944</td></tr>
+  </table>
+  <p class="caption">30 pages. Parser A's errors on digital pages are mostly the Arabic ones: reversed word order. Its English digital pages are nearly clean.</p>
+  <aside class="notes"><p>The overall WER of parser A is 0.667 and of B 0.033, but that average is meaningless for a decision: it mixes pages where A is useless with pages where it is acceptable. The stretch repairs the text layer of digital Arabic pages (reversing the word order) and reaches WER 0.0 on them.</p></aside>
+</section>
+
+<section class="slide" data-label="Routing" id="routing-rule" data-lo="LO3">
+  <div class="kicker">The decision the scores support</div>
+  <h2>Route each page to the cheapest parser that reads it</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-coral"><b>No text layer, or presentation forms?</b>parser B</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>Looks like a table?</b>parser B</div>
+      <div class="arrow">↓</div>
+      <div class="step c-teal"><b>Otherwise</b>parser A</div>
+    </div>
+    <table class="t small">
+      <tr><th>30 pages</th><th class="num">WER</th><th class="num">cells</th></tr>
+      <tr><td>Parser A only</td><td class="num">0.667</td><td class="num">0.000</td></tr>
+      <tr><td>Parser B only</td><td class="num">0.033</td><td class="num">0.980</td></tr>
+      <tr class="hl"><td>Routed (4 pages to A)</td><td class="num">0.032</td><td class="num">0.980</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>The routing rule is the LO3 recommendation in miniature: it keeps B's quality and saves its cost on the pages where A is good enough. On this corpus that is only 4 pages of 30; on a corpus of born-digital English it would be most of them. The rule is measured, not assumed.</p></aside>
+</section>
+
+<section class="slide" id="check-parser-choice" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Where should Kawthar look first?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">Students report that Nibras never finds the 2019 study plans, which the registrar scanned from paper. The plans are in the index. What should Kawthar check first?</p>
+    <div class="opts">
+      <div class="opt" data-why="Tunes search before checking that the index holds any text for these pages">The weight of the title column in BM25</div>
+      <div class="opt" data-ok>The parsed text of those pages: a scan read by a text-layer parser is empty</div>
+      <div class="opt" data-why="Assumes a meaning-based model can find a page that has no text at all">A better embedding model for Arabic</div>
+      <div class="opt" data-why="Fixes a later stage first; chunk size does not matter when there are no words">The chunk size of the study plans</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A scanned page has no text layer, so a text-layer parser returns nothing and no search method can find it. In Lab 2.1 parser A's WER on scans was 1.0.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. The order of the options follows the pipeline backwards; point that out after the reveal, and preview Day 4's attribution ladder.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-1" data-auto="lab" data-lab="2.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: scoring before NFKC, so presentation forms count as errors twice; dividing by the output length instead of the reference length; treating a missing table as cell accuracy 1.0. Early finishers take the stretch: repair the text layer by reversing Arabic lines and score again.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" data-label="Why chunk" id="why-chunk" data-lo="LO3">
+  <div class="kicker">Chunking</div>
+  <h2>A chunk is the unit the model reads: big enough to answer, small enough to rank</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>Too small</h4><p class="small mb0">A row without its header: "3 | IND 212" answers nothing.</p></div>
+    <div class="card c-teal"><h4>Right</h4><p class="small mb0">One semester's table with the plan and year named.</p></div>
+    <div class="card c-purple"><h4>Too large</h4><p class="small mb0">A whole plan: the right row is one of forty, and the score is diluted.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Ask where they chunk today. Most answers: "the library's default". The default is usually a fixed window, which is today's baseline.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Fixed windows" id="fixed-windows-cut-tables" data-lo="LO3">
+  <div class="kicker">The common default</div>
+  <h2>Fixed windows cut tables wherever the word count falls</h2>
+  <div class="trace s">
+    <div class="ev result"><b>window 1</b>... | Total | 14 | | ### Year 1 · Semester 2 | Code | Course | Credit hours | Prerequisite | |---|---|---|---| | ACC 101 | Introduction to Financial ...</div>
+    <div class="ev result dim"><b>window 2</b>... Accounting | 3 | UNI 105 | | ACC 112 | ...</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> The window that holds "ACC 101" may not hold "Semester 2", and neither names the programme. The question "in which semester of the Accounting plan is ACC 101 taught?" has no single chunk that answers it.</div>
+  <aside class="notes"><p>The first window of the Accounting plan, printed in Lab 2.2 step 2 (120-word windows, 210 chunks over 30 plans). Overlap between windows helps a little and doubles the index.</p></aside>
+</section>
+
+<section class="slide" data-label="Headings" id="chunk-by-heading" data-lo="LO3">
+  <div class="kicker">Chunk by structure</div>
+  <h2>Cut at the document's headings and carry the heading path into each chunk</h2>
+  <pre class="code s" data-file="Lab 2.2 · one heading chunk"><code class="language-markdown">Study plan: Bachelor of Accounting &gt; Year 1 &gt; Year 1 · Semester 1
+| Code | Course | Credit hours | Prerequisite |
+|---|---|---|---|
+| ACC 112 | Foundations of Auditing | 3 | None |
+| UNI 101 | Arabic Writing | 2 | None |</code></pre>
+  <ul class="bullets small mt-s">
+    <li>One chunk per semester: <b>8 per plan</b>, 240 in all</li>
+    <li>The path names the plan, the year and the semester, so the chunk answers on its own</li>
+  </ul>
+  <aside class="notes"><p>Prepending context to a chunk is the idea behind contextual retrieval; here the context is free, because the document's own headings supply it. Sources: Anthropic, Introducing contextual retrieval (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Answerable" id="answerable-at-3" data-lo="LO3">
+  <div class="kicker">Score chunking by the questions it answers</div>
+  <h2>Answerable at 3: does a top-3 chunk hold everything the answer needs?</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>Each of the 20 table questions lists the strings the answer needs: "Semester 6" and "MTH 301"</li>
+      <li>A question is answerable when one of the top 3 chunks contains all of them</li>
+      <li>No model needed, so the score is cheap and repeatable</li>
+    </ul>
+    <div class="card c-teal flat"><h4>Why not recall?</h4><p class="small mb0">Chunkings make different units, so there are no shared relevance judgements. Answerability compares them on the same questions.</p></div>
+  </div>
+  <aside class="notes"><p>This is a stricter cousin of recall: it requires all the needed facts in one chunk, which is what a model reading the top 3 needs. The lab prints one failure: the top fixed window for the MTH 301 question is the plan's introduction.</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="chunking-results" data-lo="LO3">
+  <div class="kicker">Measured in Lab 2.2</div>
+  <h2>Heading chunks answer 0.65 of the table questions; 120-word windows 0.25</h2>
+  <div class="bars">
+    <div class="row"><span>windows of 60 words</span><div class="bar c-coral" style="--w:5%"></div><span class="val">0.05</span></div>
+    <div class="row"><span>windows of 120 words</span><div class="bar c-coral" style="--w:25%"></div><span class="val">0.25</span></div>
+    <div class="row"><span>windows of 240 words</span><div class="bar c-amber" style="--w:50%"></div><span class="val">0.50</span></div>
+    <div class="row"><span>by heading, with path</span><div class="bar c-teal" style="--w:65%"></div><span class="val">0.65</span></div>
+  </div>
+  <p class="caption">Answerable at 3 on 20 table questions over 30 study plans. Window sizes from the stretch.</p>
+  <aside class="notes"><p>Bigger windows help because they keep more of a table together, and they still lose to headings with fewer chunks than 60-word windows. 0.65 is not 1.0: the misses are questions whose words are shared by many semesters. That is a ranking problem, now visible because chunking is no longer hiding it.</p></aside>
+</section>
+
+<section class="slide" data-label="Recommend" id="chunking-recommendation" data-lo="LO3">
+  <div class="kicker">The recommendation, written down</div>
+  <h2>A recommendation names the evidence and when to revisit it</h2>
+  <div class="callout note"><b>Recommendation.</b> Chunk study plans by semester heading with the plan title and year carried into each chunk, and never cut inside a table. Revisit if plans gain long prose sections, where windows of a fixed size may retrieve better.</div>
+  <ul class="bullets small mt">
+    <li><b>Evidence</b>: answerable at 3, 0.65 against 0.25, on 20 questions</li>
+    <li><b>Scope</b>: study plans; regulations and news may chunk differently</li>
+    <li><b>Revisit</b>: a condition you can check, not "later"</li>
+  </ul>
+  <aside class="notes"><p>The text is the one the lab's step 5 prints. LO3's evidence is this pair: a parsing score per page type, and a retrieval comparison with a recommendation.</p></aside>
+</section>
+
+<section class="slide" id="check-chunking" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which change will answer more table questions?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">Nibras uses 120-word windows on the study plans and answers 0.25 of the table questions in the top 3. Which change does the evidence support most?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats smaller as more precise; 60-word windows answered 0.05">Shrink the windows to 60 words for precision</div>
+      <div class="opt" data-why="Changes ranking when the needed facts are not together in any chunk">Add a reranker on top of the windows</div>
+      <div class="opt" data-ok>Chunk by semester heading and carry the plan and year into each chunk</div>
+      <div class="opt" data-why="Fixes a different problem: overlap repeats text but does not keep a table whole">Add a 20-word overlap between windows</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The answer needs the code, the semester and the plan in one chunk. Heading chunks guarantee that and answered 0.65 in Lab 2.2.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. B is attractive after Day 1, but a reranker can only reorder chunks; if no chunk holds the answer, reordering cannot create one.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-2" data-auto="lab" data-lab="2.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: splitting on every "#", which makes the plan title its own empty chunk; dropping the path when a semester heading repeats across plans; counting a question answerable when the strings are spread over two chunks.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO4">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="Superseded" id="superseded-rules" data-lo="LO4">
+  <div class="kicker">Dates and versions</div>
+  <h2>A rule amended by a circular is still in the corpus, and it still ranks</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>The regulation's articles were written once</li>
+      <li>Circulars amend them, each with an <b>issue date</b> and an <b>effective date</b></li>
+      <li>Both versions are relevant to the words of a question; only one is the answer today</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="stat"><div class="big">3 of 15</div><div class="lbl">changed questions whose top result states the current rule, before this session's fix</div></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Measured in Lab 2.3 step 1 on 15 questions whose answer changed in a newer circular. The other 12 top results quote a version that no longer holds, which a fluent model would repeat with confidence.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO4">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Two dates" id="issued-and-effective" data-lo="LO4">
+  <div class="kicker">Read both dates</div>
+  <h2>The issue date says when a rule was written; the effective date says when it counts</h2>
+  <div class="trace s">
+    <div class="ev user"><b>question</b>What is the maximum study load in a regular semester? (asked on 1 November 2026)</div>
+    <div class="ev result"><b>Article</b>between 12 and 20 credit hours</div>
+    <div class="ev result"><b>Circular 2026-140</b>issued 2026-10-05, effective 2027-01-01: between 12 and 18</div>
+    <div class="ev final"><b>answer</b>12 to 20 today; 18 from 1 January 2027</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> "Newest first" picks the circular, which is not yet in force.</div>
+  <aside class="notes"><p>This is question V05 of the lab, planted on purpose. Ask the room what "newest" would answer, then what the regulation actually says today. The stretch asks a question about the past: what was the attendance rule on 1 March 2024?</p></aside>
+</section>
+
+<section class="slide" data-label="Validity" id="validity-intervals" data-lo="LO4">
+  <div class="kicker">The fix</div>
+  <h2>Give every version a validity interval and filter by today's date</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>Article 17 version</th><th>valid from</th><th>valid to</th></tr>
+      <tr><td>Regulation text</td><td>start</td><td>2025 amendment</td></tr>
+      <tr class="hl"><td>Circular 2025-118</td><td>its effective date</td><td>open</td></tr>
+    </table>
+    <ul class="bullets small">
+      <li>Parse the circular for the article it amends and its effective date</li>
+      <li>Close the previous version's interval when the next takes effect</li>
+      <li>At query time keep chunks valid on the question's date</li>
+    </ul>
+  </div>
+  <p class="small mt">In the lab: 93 chunks, 33 of them amendments; 63 are valid on 1 November 2026.</p>
+  <aside class="notes"><p>The reading is done with patterns on the circulars' fixed wording, which is enough for a corpus with a house style. A model can extract the same fields from free text; validate what it extracts against the patterns on a sample before trusting it.</p></aside>
+</section>
+
+<section class="slide" data-label="Duplicates" id="near-duplicates" data-lo="LO4">
+  <div class="kicker">Duplicates</div>
+  <h2>Near-duplicate copies crowd the top results with the same text</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>Circulars are forwarded, re-posted by colleges, and copied into news</li>
+      <li>Compare chunks as sets of <b>word shingles</b> (runs of 3 words) and their Jaccard overlap</li>
+      <li>Copies measured 0.62 to 0.71 overlap; a threshold of 0.5 catches them</li>
+    </ul>
+    <div class="stat"><div class="big">8</div><div class="lbl">near-duplicate copies dropped in Lab 2.3</div></div>
+  </div>
+  <div class="callout tip mt-s"><b>Keep the original.</b> Drop the copy, keep the official circular's metadata: its dates are the ones that count.</div>
+  <aside class="notes"><p>The first version of this lab set the threshold at 0.7 and dropped one copy of eight: we measured the overlaps and lowered it. Thresholds are measured on your copies, not copied from a blog. At scale, MinHash estimates the same overlap without comparing every pair.</p></aside>
+</section>
+
+<section class="slide" data-label="Tests" id="staleness-tests" data-lo="LO4">
+  <div class="kicker">Make it a test</div>
+  <h2>A staleness test asks a question and fails if the old answer comes first</h2>
+  <pre class="code s" data-file="Lab 2.3 · step 5"><code class="language-python">for t in CHANGED:                  # 15 questions, Arabic and English
+    top = search(valid_on(TODAY), [t["q"], t["q_ar"]])[0]
+    assert t["expect"] in top.text, t["qid"]
+    assert t["stale"] not in top.text, t["qid"]</code></pre>
+  <div class="cols cols-2 mt-s">
+    <div class="stat"><div class="big">3 → 15</div><div class="lbl">of 15 tests passing, before and after</div></div>
+    <div class="card c-teal flat"><h4>Run it on every rebuild</h4><p class="small mb0">A new circular, a re-parse or a new model can break it again.</p></div>
+  </div>
+  <aside class="notes"><p>The tests search in both languages, because some amendments exist only in the Arabic circular: an English-only test would miss them. This suite is half of LO4's evidence; the leak suite of Session 4 is the other half.</p></aside>
+</section>
+
+<section class="slide" id="check-effective-date" data-lo="LO4">
+  <div class="kicker">Checkpoint</div>
+  <h2>What should Nibras answer?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4">
+    <p class="lead">On 1 November 2026 a student asks for the maximum study load. The article says 20 hours. Circular 2026-140, issued in October, sets 18 hours from 1 January 2027. What is the right answer?</p>
+    <div class="opts">
+      <div class="opt" data-why="Confuses the issue date with the effective date">18 hours, since the circular is newer</div>
+      <div class="opt" data-why="Hands the student a decision the regulation already makes">Both numbers, and let the student decide</div>
+      <div class="opt" data-why="Treats a scheduled change as uncertainty">Neither, since the rule is changing</div>
+      <div class="opt" data-ok>20 hours, and that 18 hours applies from 1 January 2027</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The amendment is not yet in force, so today's interval holds the article's value. Mentioning the coming change is useful, and the validity interval gives the date.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. This is staleness test V05; it fails for anyone who sorts by issue date.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-3" data-auto="lab" data-lab="2.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: reading the issue date as the effective date; closing an interval on the issue date of the next version; deduplicating the official circular and keeping the copy. A test that passes in English and fails in Arabic is the planted Arabic-only amendment: search both languages.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO4">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="The risk" id="search-can-leak" data-lo="LO4">
+  <div class="kicker">Permissions</div>
+  <h2>A search index without labels shows students what only staff may see</h2>
   <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+    <div class="stat"><div class="big">103</div><div class="lbl">Restricted results for 12 student queries, with no filter</div></div>
+    <ul class="bullets small">
+      <li>360 of 2,977 pages are <b>Restricted</b>: council minutes, promotion rules, allowance scales, disciplinary case summaries, examination archives</li>
+      <li>A test account, Muath Al-Shathri, searches as a student</li>
+      <li>Every Restricted page he sees is a leak, whatever the model then says</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Measured in Lab 2.4 step 1. The minutes of a college council meeting are the first leak the lab prints. Stress that the leak happens at retrieval: the model never needs to repeat it for the page to have been exposed in its context.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO4">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
+<section class="slide" data-label="Labels" id="label-from-document" data-lo="LO4">
+  <div class="kicker">Tag at indexing</div>
+  <h2>Every chunk inherits its document's classification and allowed roles</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+    <div class="step c-teal"><b>Document</b>classification and roles, set by its owner</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Pages and chunks</b>inherit the labels</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Unlabelled</b>Restricted by default</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral flat"><h4>The naive tagger</h4><p class="small mb0">Labels each page from its own text: 7 Restricted pages without their own label came out Public.</p></div>
+    <div class="card c-teal flat"><h4>In Saudi practice</h4><p class="small mb0">Data is classified by its owner under the national Data Classification Policy; personal data falls under the Personal Data Protection Law.</p></div>
+  </div>
+  <aside class="notes"><p>The classification levels in the corpus are simplified to Public and Restricted. Name the references for the room and keep the claim at that level; the course cites the policy and the law by their official addresses. Sources: Data Classification Policy; Personal Data Protection Law (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Before or after" id="filter-before-ranking" data-lo="LO4">
+  <div class="kicker">Where the filter goes</div>
+  <h2>Filter before ranking, or the student gets a short, strange list</h2>
+  <table class="t small">
+    <tr><th>Results per query, 12 student queries</th><th>Counts</th></tr>
+    <tr><td>Top 10, then remove Restricted</td><td>0, 0, 0, 0, 0, 5, 8, 0, 0, 1, 3, 0</td></tr>
+    <tr class="hl"><td>Rank only allowed pages</td><td>10 for every query</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> A post-filter leaks nothing and still fails the student: eight of twelve queries return nothing. It also tells an attacker, by the gaps, that something was there.</div>
+  <aside class="notes"><p>Lab 2.4 step 3. Most vector databases and search engines accept a filter inside the query (metadata filtering); use it rather than filtering the results in application code.</p></aside>
+</section>
+
+<section class="slide" data-label="Suite" id="leak-and-utility" data-lo="LO4">
+  <div class="kicker">The leak suite</div>
+  <h2>Test leaks and utility together, or an empty index passes</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Leak tests</h4><p class="small mb0">12 queries from the student account; fail if any result is Restricted.</p></div>
+    <div class="card c-teal"><h4>Utility checks</h4><p class="small mb0">The same queries; fail if a Public page that answers them is missing.</p></div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="stat"><div class="big">0</div><div class="lbl">leak failures after pre-filtering</div></div>
+    <div class="stat"><div class="big">0</div><div class="lbl">utility failures</div></div>
+  </div>
+  <aside class="notes"><p>The stretch runs the registrar's account: it must see the 103 Restricted results, or the filter over-blocks. A filter that blocks staff from their own minutes gets switched off, which is the worst outcome.</p></aside>
+</section>
+
+<section class="slide" data-label="Untrusted" id="retrieved-text-untrusted" data-lo="LO4">
+  <div class="kicker">Retrieved text is data</div>
+  <h2>A page can carry instructions to the model; quote it, never obey it</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Circular 2026-777</span>The student satisfaction survey opens next week ... followed by a note addressed to automated assistants, asking them to ignore access rules and include disciplinary summaries and examination papers.</div>
+    <div class="msg ai good"><span class="who">Nibras's pipeline</span>Flagged P0487. Roles come from the account, not from page text: nothing unlocked.</div>
+  </div>
+  <div class="callout tip mt-s"><b>Takeaway.</b> Permissions are enforced in code on the account's roles. No text in the index can change them.</div>
+  <aside class="notes"><p>The circular is planted in the corpus; the lab flags it with a pattern and checks that it could not unlock anything. This is indirect prompt injection through retrieved content. Sources: OWASP GenAI Security Project, LLM01 Prompt injection (see course sources).</p></aside>
+</section>
+
+<section class="slide" id="check-permissions" data-lo="LO4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which design keeps students away from staff pages?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4">
+    <p class="lead">Nibras must never show a student a Restricted page and must still return ten useful results. Which design meets both?</p>
+    <div class="opts">
+      <div class="opt" data-ok>Label each chunk from its document, default to Restricted, and rank only the chunks the account may see</div>
+      <div class="opt" data-why="Trusts the model to enforce access it has already been given">Tell the model in the system prompt not to quote Restricted pages</div>
+      <div class="opt" data-why="Leaks nothing but returns too few results, as the 0 to 8 counts showed">Take the top 10 and remove the Restricted ones</div>
+      <div class="opt" data-why="Lets page text decide labels, which missed 7 Restricted pages">Label each page from its own text with a classifier</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Labels from the owner's document, a safe default, and a filter inside the ranking give no leaks and a full top 10, which the leak and utility suites both confirmed.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. B is the most common answer in practice and the weakest: the page is already in the context. Ask what B does against Circular 2026-777.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-4" data-auto="lab" data-lab="2.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: tagging from the page instead of the document; forgetting the default for unlabelled pages; a utility check that compares against the unfiltered top 10, which always fails. Remind the room that Muath is a test account with synthetic data.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
+<!-- ======================= CLOSING ======================= -->
+<section class="slide" id="wrap-up" data-label="Recap">
   <div class="kicker">Day 2 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Score the parser alone</h4><p class="small mb0">By page type, text and tables apart, then route each page to the parser that reads it.</p></div>
+    <div class="card c-coral"><h4>Chunk by structure</h4><p class="small mb0">Headings with their path answered 0.65 of the table questions against 0.25.</p></div>
+    <div class="card c-purple"><h4>Dates and roles in the index</h4><p class="small mb0">Validity intervals and pre-filtering, each proved by a test suite that runs on every rebuild.</p></div>
   </div>
+  <aside class="notes"><p>Ask which of today's suites they would run before every deployment. The right answer is both: staleness and leaks. They are LO4's evidence and the capstone's "access and freshness tests" criterion.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
   <h2>Day 3: Agentic search and knowledge</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <p class="lead">Tomorrow the search tools go to an agent: it chooses among them, searches again when one search is not enough, keeps large results out of its context, and uses a small graph for questions about links.</p>
+  <aside class="notes"><p>A free OpenRouter key makes Day 3 run against a real model; without one the labs run a scripted stand-in and say so. Ask participants to create a key tonight if they want live runs (labs/README.md, Quick start).</p></aside>
 </section>
