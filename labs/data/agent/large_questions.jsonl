@@ -1,0 +1,8 @@
+{"qid": "B01", "q": "How many courses of the Statistics programme have no prerequisite?", "expect": ["0"], "scope": ["programme", "STA"]}
+{"qid": "B02", "q": "How many courses of the Physical Therapy programme have no prerequisite?", "expect": ["0"], "scope": ["programme", "PHT"]}
+{"qid": "B03", "q": "How many courses of the Electrical Engineering programme have no prerequisite?", "expect": ["0"], "scope": ["programme", "EE"]}
+{"qid": "B04", "q": "How many courses of the English Language and Translation programme have no prerequisite?", "expect": ["2"], "scope": ["programme", "ENL"]}
+{"qid": "B05", "q": "How many courses of the College of Engineering carry 4 credit hours?", "expect": ["10"], "scope": ["college", "ENG"]}
+{"qid": "B06", "q": "How many courses of the College of Health Sciences carry 4 credit hours?", "expect": ["10"], "scope": ["college", "HSC"]}
+{"qid": "B07", "q": "How many laboratory courses of 1 credit hour does the College of Computing and Information offer?", "expect": ["5"], "scope": ["college", "CCI"]}
+{"qid": "B08", "q": "How many laboratory courses of 1 credit hour does the College of Business offer?", "expect": ["5"], "scope": ["college", "BUS"]}

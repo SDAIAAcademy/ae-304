@@ -1,0 +1,92 @@
+[
+ {
+  "qid": "M01",
+  "single correct": false,
+  "single tokens": 1047,
+  "iter correct": true,
+  "iter searches": 3,
+  "iter tokens": 3704,
+  "queries": "What minimum GPA does a student need to transfer into the college that teaches CLS 334? | CLS 334 course description | College of Health Sciences handbook admission by transfer"
+ },
+ {
+  "qid": "M02",
+  "single correct": false,
+  "single tokens": 1063,
+  "iter correct": true,
+  "iter searches": 3,
+  "iter tokens": 4030,
+  "queries": "What minimum GPA does a student need to transfer into the college that teaches ENL 334? | ENL 334 course description | College of Arts and Humanities handbook admission by transfer"
+ },
+ {
+  "qid": "M03",
+  "single correct": true,
+  "single tokens": 1014,
+  "iter correct": true,
+  "iter searches": 2,
+  "iter tokens": 2001,
+  "queries": "What minimum GPA does a student need to transfer into the college that teaches MKT 401? | MKT 401 course description"
+ },
+ {
+  "qid": "M04",
+  "single correct": true,
+  "single tokens": 1021,
+  "iter correct": true,
+  "iter searches": 3,
+  "iter tokens": 3909,
+  "queries": "What minimum GPA does a student need to transfer into the college that teaches CSC 412? | CSC 412 course description | College of Computing and Information handbook admission by transfer"
+ },
+ {
+  "qid": "M05",
+  "single correct": true,
+  "single tokens": 1051,
+  "iter correct": true,
+  "iter searches": 1,
+  "iter tokens": 703,
+  "queries": "How many credit hours is the first prerequisite of CLS 412?"
+ },
+ {
+  "qid": "M06",
+  "single correct": true,
+  "single tokens": 1097,
+  "iter correct": true,
+  "iter searches": 2,
+  "iter tokens": 1869,
+  "queries": "How many credit hours is the first prerequisite of CHM 423? | CHM 301 course description credit hours"
+ },
+ {
+  "qid": "M07",
+  "single correct": false,
+  "single tokens": 1214,
+  "iter correct": false,
+  "iter searches": 2,
+  "iter tokens": 1916,
+  "queries": "How many credit hours is the first prerequisite of DSC 323? | DSC 223 course description credit hours"
+ },
+ {
+  "qid": "M08",
+  "single correct": true,
+  "single tokens": 1265,
+  "iter correct": true,
+  "iter searches": 2,
+  "iter tokens": 2533,
+  "queries": "In which semester of its own programme's plan is the first prerequisite of INS 301 taught? | study plan INS 223"
+ },
+ {
+  "qid": "M09",
+  "single correct": true,
+  "single tokens": 1223,
+  "iter correct": true,
+  "iter searches": 2,
+  "iter tokens": 2134,
+  "queries": "In which semester of its own programme's plan is the first prerequisite of GEO 401 taught? | study plan GEO 334"
+ },
+ {
+  "qid": "M10",
+  "single correct": true,
+  "single tokens": 1149,
+  "iter correct": true,
+  "iter searches": 1,
+  "iter tokens": 832,
+  "queries": "In which semester of its own programme's plan is the first prerequisite of CHE 423 taught?"
+ }
+]

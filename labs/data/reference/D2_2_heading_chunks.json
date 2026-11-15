@@ -1,0 +1,1202 @@
+[
+ {
+  "chunk_id": "ACC-h00",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 112 | Foundations of Auditing | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ACC-h01",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 101 | Introduction to Financial Accounting | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ACC-h02",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 212 | Zakat and Tax | 3 | ACC 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| ECO 223 | Applied Development | 3 | ECO 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ACC-h03",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 201 | Cost Accounting | 3 | ACC 112 |\n| ACC 223 | Applied Accounting Systems | 3 | ACC 101, MKT 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MGT 201 | Strategy | 3 | MGT 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ACC-h04",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 312 | Advanced Financial Accounting | 3 | ACC 201, ACC 112 |\n| ACC 334 | Topics in Cost Accounting | 3 | ACC 212, ACC 101, FIN 101 |\n| ECO 112 | Foundations of Macroeconomics | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ACC-h05",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 301 | Reporting Standards | 3 | ACC 223, ECO 112 |\n| ACC 323 | Auditing Laboratory | 1 | ACC 201, ACC 223, MGT 212 |\n| MGT 101 | Introduction to Organisational Behaviour | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "ACC-h06",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 412 | Seminar in Accounting Systems | 3 | ACC 334, ACC 312, FIN 212 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ACC-h07",
+  "plan": "ACC",
+  "text": "Study plan: Bachelor of Accounting > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 401 | Zakat and Tax Project | 4 | ACC 301 |\n| ACC 423 | Capstone in Reporting Standards | 4 | ACC 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "AI-h00",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 112 | Foundations of Knowledge Representation | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "AI-h01",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 101 | Introduction to Search | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "AI-h02",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 212 | Natural Language Processing | 3 | AIN 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CSC 101 | Introduction to Algorithms | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "AI-h03",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 201 | Neural Networks | 3 | AIN 101, DSC 112 |\n| AIN 223 | Applied Computer Vision | 3 | AIN 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| INS 212 | Systems Analysis | 3 | INS 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "AI-h04",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 312 | Advanced Search | 3 | AIN 201, AIN 212, CSC 101 |\n| AIN 334 | Topics in Neural Networks | 3 | AIN 223 |\n| CSC 112 | Foundations of Programming | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "AI-h05",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 301 | Robotics | 3 | AIN 201, AIN 212 |\n| AIN 323 | Knowledge Representation Laboratory | 1 | AIN 223, INS 101 |\n| INS 112 | Foundations of Business Processes | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "AI-h06",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 412 | Seminar in Computer Vision | 3 | AIN 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "AI-h07",
+  "plan": "AI",
+  "text": "Study plan: Bachelor of Artificial Intelligence > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| AIN 401 | Natural Language Processing Project | 4 | AIN 301, AIN 201 |\n| AIN 423 | Capstone in Robotics | 4 | AIN 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "ARB-h00",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 112 | Foundations of Morphology | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ARB-h01",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 101 | Introduction to Grammar | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ARB-h02",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 212 | Classical Poetry | 3 | ARB 101, ARB 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| HIS 212 | Modern History | 3 | HIS 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ARB-h03",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 201 | Rhetoric | 3 | ARB 101 |\n| ARB 223 | Applied Modern Prose | 3 | ARB 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| GEO 223 | Applied Population | 3 | GEO 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ARB-h04",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 312 | Advanced Grammar | 3 | ARB 201, ARB 212 |\n| ARB 334 | Topics in Rhetoric | 3 | ARB 223 |\n| ENL 212 | Academic Writing | 3 | ENL 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ARB-h05",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 301 | Linguistics | 3 | ARB 212 |\n| ARB 323 | Morphology Laboratory | 1 | ARB 223 |\n| ENL 201 | Literature | 3 | ENL 101, GEO 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "ARB-h06",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 412 | Seminar in Modern Prose | 3 | ARB 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ARB-h07",
+  "plan": "ARB",
+  "text": "Study plan: Bachelor of Arabic Language > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ARB 401 | Classical Poetry Project | 4 | ARB 334, ARB 323 |\n| ARB 423 | Capstone in Linguistics | 4 | ARB 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "BIO-h00",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 112 | Foundations of Cell Biology | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "BIO-h01",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 101 | Introduction to Genetics | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "BIO-h02",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 212 | Botany | 3 | BIO 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CHM 101 | Introduction to Organic Chemistry | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "BIO-h03",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 201 | Ecology | 3 | BIO 112 |\n| BIO 223 | Applied Zoology | 3 | BIO 112, BIO 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| PHY 101 | Introduction to Mechanics | 3 | None |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "BIO-h04",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 312 | Advanced Genetics | 3 | BIO 223 |\n| BIO 334 | Topics in Ecology | 3 | BIO 223, BIO 112 |\n| STA 223 | Applied Statistical Computing | 3 | STA 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "BIO-h05",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 301 | Molecular Biology | 3 | BIO 201 |\n| BIO 323 | Cell Biology Laboratory | 1 | BIO 201 |\n| MTH 212 | Probability | 3 | MTH 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "BIO-h06",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 412 | Seminar in Zoology | 3 | BIO 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "BIO-h07",
+  "plan": "BIO",
+  "text": "Study plan: Bachelor of Biology > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| BIO 401 | Botany Project | 4 | BIO 301 |\n| BIO 423 | Capstone in Molecular Biology | 4 | BIO 301, BIO 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "CE-h00",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 112 | Foundations of Concrete | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CE-h01",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 101 | Introduction to Structures | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CE-h02",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 212 | Soil Mechanics | 3 | CVE 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| IND 212 | Ergonomics | 3 | IND 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CE-h03",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 201 | Surveying | 3 | CVE 112 |\n| CVE 223 | Applied Transportation | 3 | CVE 112, IND 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MEC 223 | Applied Heat Transfer | 3 | MEC 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CE-h04",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 312 | Advanced Structures | 3 | CVE 223 |\n| CVE 334 | Topics in Surveying | 3 | CVE 201 |\n| MEC 112 | Foundations of Fluid Mechanics | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CE-h05",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 301 | Water Resources | 3 | CVE 201 |\n| CVE 323 | Concrete Laboratory | 1 | CVE 201 |\n| ELE 223 | Applied Electronics | 3 | ELE 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "CE-h06",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 412 | Seminar in Transportation | 3 | CVE 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CE-h07",
+  "plan": "CE",
+  "text": "Study plan: Bachelor of Civil Engineering > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CVE 401 | Soil Mechanics Project | 4 | CVE 301 |\n| CVE 423 | Capstone in Water Resources | 4 | CVE 323, CVE 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "CHE-h00",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 112 | Foundations of Separation | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHE-h01",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 101 | Introduction to Reaction Engineering | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHE-h02",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 212 | Petrochemicals | 3 | CHE 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| MEC 212 | Manufacturing | 3 | MEC 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHE-h03",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 201 | Process Control | 3 | CHE 112, MEC 101 |\n| CHE 223 | Applied Mass Transfer | 3 | CHE 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| ELE 101 | Introduction to Circuits | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHE-h04",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 312 | Advanced Reaction Engineering | 3 | CHE 201 |\n| CHE 334 | Topics in Process Control | 3 | CHE 201 |\n| IND 223 | Applied Simulation | 3 | IND 112, ELE 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CHE-h05",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 301 | Plant Design | 3 | CHE 223 |\n| CHE 323 | Separation Laboratory | 1 | CHE 223 |\n| CVE 223 | Applied Transportation | 3 | CVE 112, IND 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "CHE-h06",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 412 | Seminar in Mass Transfer | 3 | CHE 301, MEC 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CHE-h07",
+  "plan": "CHE",
+  "text": "Study plan: Bachelor of Chemical Engineering > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHE 401 | Petrochemicals Project | 4 | CHE 323 |\n| CHE 423 | Capstone in Plant Design | 4 | CHE 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "CHM-h00",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 112 | Foundations of Analytical Chemistry | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHM-h01",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 101 | Introduction to Organic Chemistry | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHM-h02",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 212 | Inorganic Chemistry | 3 | CHM 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| MTH 212 | Probability | 3 | MTH 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHM-h03",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 201 | Physical Chemistry | 3 | CHM 112 |\n| CHM 223 | Applied Biochemistry | 3 | CHM 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MTH 112 | Foundations of Linear Algebra | 3 | None |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CHM-h04",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 312 | Advanced Organic Chemistry | 3 | CHM 201 |\n| CHM 334 | Topics in Physical Chemistry | 3 | CHM 212, CHM 201 |\n| STA 112 | Foundations of Regression | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CHM-h05",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 301 | Spectroscopy | 3 | CHM 223, CHM 101 |\n| CHM 323 | Analytical Chemistry Laboratory | 1 | CHM 212, CHM 223 |\n| BIO 101 | Introduction to Genetics | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "CHM-h06",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 412 | Seminar in Biochemistry | 3 | CHM 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CHM-h07",
+  "plan": "CHM",
+  "text": "Study plan: Bachelor of Chemistry > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CHM 401 | Inorganic Chemistry Project | 4 | CHM 334, STA 334 |\n| CHM 423 | Capstone in Spectroscopy | 4 | CHM 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "CLS-h00",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 112 | Foundations of Microbiology | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CLS-h01",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 101 | Introduction to Haematology | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CLS-h02",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 212 | Immunology | 3 | CLS 112, PHT 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| NUR 112 | Foundations of Pharmacology | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CLS-h03",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 201 | Clinical Chemistry | 3 | CLS 112 |\n| CLS 223 | Applied Blood Banking | 3 | CLS 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| NUR 101 | Introduction to Patient Care | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CLS-h04",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 312 | Advanced Haematology | 3 | CLS 223 |\n| CLS 334 | Topics in Clinical Chemistry | 3 | CLS 223 |\n| PUH 212 | Environmental Health | 3 | PUH 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CLS-h05",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 301 | Laboratory Quality | 1 | CLS 223, CLS 112 |\n| CLS 323 | Microbiology Laboratory | 1 | CLS 212 |\n| PUH 112 | Foundations of Biostatistics | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 11 | |"
+ },
+ {
+  "chunk_id": "CLS-h06",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 412 | Seminar in Blood Banking | 3 | CLS 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CLS-h07",
+  "plan": "CLS",
+  "text": "Study plan: Bachelor of Clinical Laboratory Sciences > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CLS 401 | Immunology Project | 4 | CLS 334, CLS 212 |\n| CLS 423 | Capstone in Laboratory Quality | 4 | CLS 312, CLS 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "CS-h00",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 112 | Foundations of Programming | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CS-h01",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 101 | Introduction to Algorithms | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CS-h02",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 212 | Compilers | 3 | CSC 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| SWE 212 | Software Architecture | 3 | SWE 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CS-h03",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 201 | Operating Systems | 3 | CSC 112 |\n| CSC 223 | Applied Computer Networks | 3 | CSC 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| DSC 223 | Applied Data Ethics | 3 | DSC 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "CS-h04",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 312 | Advanced Algorithms | 3 | CSC 212 |\n| CSC 334 | Topics in Operating Systems | 3 | CSC 212, CSC 201 |\n| AIN 212 | Natural Language Processing | 3 | AIN 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CS-h05",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 301 | Theory of Computation | 3 | CSC 201, CSC 212 |\n| CSC 323 | Programming Laboratory | 1 | CSC 212 |\n| DSC 212 | Databases | 3 | DSC 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "CS-h06",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 412 | Seminar in Computer Networks | 3 | CSC 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "CS-h07",
+  "plan": "CS",
+  "text": "Study plan: Bachelor of Computer Science > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| CSC 401 | Compilers Project | 4 | CSC 334 |\n| CSC 423 | Capstone in Theory of Computation | 4 | CSC 312, SWE 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "DS-h00",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 112 | Foundations of Machine Learning | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "DS-h01",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 101 | Introduction to Statistics | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "DS-h02",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 212 | Databases | 3 | DSC 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| AIN 101 | Introduction to Search | 3 | None |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "DS-h03",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 201 | Data Visualisation | 3 | DSC 112, DSC 101 |\n| DSC 223 | Applied Data Ethics | 3 | DSC 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| AIN 223 | Applied Computer Vision | 3 | AIN 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "DS-h04",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 312 | Advanced Statistics | 3 | DSC 223, DSC 201 |\n| DSC 334 | Topics in Data Visualisation | 3 | DSC 201, DSC 223 |\n| INS 212 | Systems Analysis | 3 | INS 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "DS-h05",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 301 | Big Data | 3 | DSC 223 |\n| DSC 323 | Machine Learning Laboratory | 1 | DSC 223 |\n| CSC 212 | Compilers | 3 | CSC 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "DS-h06",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 412 | Seminar in Data Ethics | 3 | DSC 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "DS-h07",
+  "plan": "DS",
+  "text": "Study plan: Bachelor of Data Science > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| DSC 401 | Databases Project | 4 | DSC 301 |\n| DSC 423 | Capstone in Big Data | 4 | DSC 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "ECO-h00",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 112 | Foundations of Macroeconomics | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ECO-h01",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 101 | Introduction to Microeconomics | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ECO-h02",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 212 | Public Finance | 3 | ECO 101, FIN 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| MGT 201 | Strategy | 3 | MGT 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ECO-h03",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 201 | Econometrics | 3 | ECO 101 |\n| ECO 223 | Applied Development | 3 | ECO 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| ACC 201 | Cost Accounting | 3 | ACC 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ECO-h04",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 312 | Advanced Microeconomics | 3 | ECO 212 |\n| ECO 334 | Topics in Econometrics | 3 | ECO 223 |\n| MGT 112 | Foundations of Human Resources | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ECO-h05",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 301 | Labour Economics | 3 | ECO 201 |\n| ECO 323 | Macroeconomics Laboratory | 1 | ECO 223 |\n| MGT 101 | Introduction to Organisational Behaviour | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "ECO-h06",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 412 | Seminar in Development | 3 | ECO 334, FIN 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ECO-h07",
+  "plan": "ECO",
+  "text": "Study plan: Bachelor of Economics > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ECO 401 | Public Finance Project | 4 | ECO 334, ECO 223 |\n| ECO 423 | Capstone in Labour Economics | 4 | ECO 334, FIN 212 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "EE-h00",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 112 | Foundations of Power Systems | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "EE-h01",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 101 | Introduction to Circuits | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "EE-h02",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 212 | Control | 3 | ELE 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CHE 101 | Introduction to Reaction Engineering | 3 | None |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "EE-h03",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 201 | Signals | 3 | ELE 112, MEC 112 |\n| ELE 223 | Applied Electronics | 3 | ELE 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MEC 101 | Introduction to Thermodynamics | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "EE-h04",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 312 | Advanced Circuits | 3 | ELE 201, ELE 112 |\n| ELE 334 | Topics in Signals | 3 | ELE 223, ELE 201 |\n| MEC 212 | Manufacturing | 3 | MEC 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "EE-h05",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 301 | Renewable Energy | 3 | ELE 223 |\n| ELE 323 | Power Systems Laboratory | 1 | ELE 223 |\n| MEC 223 | Applied Heat Transfer | 3 | MEC 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "EE-h06",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 412 | Seminar in Electronics | 3 | ELE 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "EE-h07",
+  "plan": "EE",
+  "text": "Study plan: Bachelor of Electrical Engineering > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ELE 401 | Control Project | 4 | ELE 334, ELE 112, MEC 201 |\n| ELE 423 | Capstone in Renewable Energy | 4 | ELE 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "ENL-h00",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 112 | Foundations of Phonetics | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ENL-h01",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 101 | Introduction to Translation | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ENL-h02",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 212 | Academic Writing | 3 | ENL 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| GEO 201 | Climatology | 3 | GEO 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ENL-h03",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 201 | Literature | 3 | ENL 101, GEO 101 |\n| ENL 223 | Applied Interpreting | 3 | ENL 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MDC 223 | Applied Broadcasting | 3 | MDC 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ENL-h04",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 312 | Advanced Translation | 3 | ENL 212 |\n| ENL 334 | Topics in Literature | 3 | ENL 212, ENL 112 |\n| ARB 201 | Rhetoric | 3 | ARB 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ENL-h05",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 301 | Discourse Analysis | 3 | ENL 223, ENL 212 |\n| ENL 323 | Phonetics Laboratory | 1 | ENL 223 |\n| ARB 112 | Foundations of Morphology | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "ENL-h06",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 412 | Seminar in Interpreting | 3 | ENL 334, ENL 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ENL-h07",
+  "plan": "ENL",
+  "text": "Study plan: Bachelor of English Language and Translation > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ENL 401 | Academic Writing Project | 4 | ENL 301, ENL 323 |\n| ENL 423 | Capstone in Discourse Analysis | 4 | ENL 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "FIN-h00",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 112 | Foundations of Investments | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "FIN-h01",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 101 | Introduction to Corporate Finance | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "FIN-h02",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 212 | Risk Management | 3 | FIN 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| MKT 201 | Branding | 3 | MKT 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "FIN-h03",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 201 | Banking | 3 | FIN 101 |\n| FIN 223 | Applied Financial Markets | 3 | FIN 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| ECO 201 | Econometrics | 3 | ECO 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "FIN-h04",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 312 | Advanced Corporate Finance | 3 | FIN 201, FIN 212 |\n| FIN 334 | Topics in Banking | 3 | FIN 223 |\n| ECO 101 | Introduction to Microeconomics | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "FIN-h05",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 301 | Islamic Finance | 3 | FIN 223 |\n| FIN 323 | Investments Laboratory | 1 | FIN 223 |\n| ACC 101 | Introduction to Financial Accounting | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "FIN-h06",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 412 | Seminar in Financial Markets | 3 | FIN 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "FIN-h07",
+  "plan": "FIN",
+  "text": "Study plan: Bachelor of Finance > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| FIN 401 | Risk Management Project | 4 | FIN 323 |\n| FIN 423 | Capstone in Islamic Finance | 4 | FIN 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "GEO-h00",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 112 | Foundations of Geographic Information Systems | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "GEO-h01",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 101 | Introduction to Cartography | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "GEO-h02",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 212 | Urban Geography | 3 | GEO 112, GEO 101, HIS 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| HIS 201 | Historiography | 3 | HIS 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "GEO-h03",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 201 | Climatology | 3 | GEO 101 |\n| GEO 223 | Applied Population | 3 | GEO 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| ENL 212 | Academic Writing | 3 | ENL 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "GEO-h04",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 312 | Advanced Cartography | 3 | GEO 201 |\n| GEO 334 | Topics in Climatology | 3 | GEO 201 |\n| ARB 101 | Introduction to Grammar | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "GEO-h05",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 301 | Remote Sensing | 3 | GEO 212 |\n| GEO 323 | Geographic Information Systems Laboratory | 1 | GEO 223, HIS 101 |\n| HIS 112 | Foundations of Archaeology | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "GEO-h06",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 412 | Seminar in Population | 3 | GEO 323, GEO 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "GEO-h07",
+  "plan": "GEO",
+  "text": "Study plan: Bachelor of Geography > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| GEO 401 | Urban Geography Project | 4 | GEO 334, GEO 112 |\n| GEO 423 | Capstone in Remote Sensing | 4 | GEO 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "HIM-h00",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 112 | Foundations of Clinical Coding | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIM-h01",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 101 | Introduction to Health Records | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIM-h02",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 212 | Telehealth | 3 | HIM 112, PUH 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CLS 212 | Immunology | 3 | CLS 112, PHT 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIM-h03",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 201 | Health Data Standards | 3 | HIM 101, HIM 112 |\n| HIM 223 | Applied Health Analytics | 3 | HIM 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| PHT 223 | Applied Neurology | 3 | PHT 101, PUH 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIM-h04",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 312 | Advanced Health Records | 3 | HIM 223 |\n| HIM 334 | Topics in Health Data Standards | 3 | HIM 201 |\n| PUH 212 | Environmental Health | 3 | PUH 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "HIM-h05",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 301 | Privacy | 3 | HIM 201, HIM 223 |\n| HIM 323 | Clinical Coding Laboratory | 1 | HIM 212, NUR 201 |\n| PUH 201 | Health Policy | 3 | PUH 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "HIM-h06",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 412 | Seminar in Health Analytics | 3 | HIM 312, HIM 212 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "HIM-h07",
+  "plan": "HIM",
+  "text": "Study plan: Bachelor of Health Informatics > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIM 401 | Telehealth Project | 4 | HIM 301, NUR 212 |\n| HIM 423 | Capstone in Privacy | 4 | HIM 301, HIM 212 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "HIS-h00",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 112 | Foundations of Archaeology | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIS-h01",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 101 | Introduction to History of the Arabian Peninsula | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIS-h02",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 212 | Modern History | 3 | HIS 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| ENL 112 | Foundations of Phonetics | 3 | None |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIS-h03",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 201 | Historiography | 3 | HIS 112 |\n| HIS 223 | Applied Manuscripts | 3 | HIS 101, MDC 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| ARB 201 | Rhetoric | 3 | ARB 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "HIS-h04",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 312 | Advanced History of the Arabian Peninsula | 3 | HIS 223 |\n| HIS 334 | Topics in Historiography | 3 | HIS 212, HIS 112, MDC 101 |\n| ARB 112 | Foundations of Morphology | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "HIS-h05",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 301 | Heritage | 3 | HIS 212, ARB 212 |\n| HIS 323 | Archaeology Laboratory | 1 | HIS 201 |\n| GEO 201 | Climatology | 3 | GEO 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "HIS-h06",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 412 | Seminar in Manuscripts | 3 | HIS 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "HIS-h07",
+  "plan": "HIS",
+  "text": "Study plan: Bachelor of History > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| HIS 401 | Modern History Project | 4 | HIS 334 |\n| HIS 423 | Capstone in Heritage | 4 | HIS 334, GEO 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "IE-h00",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 112 | Foundations of Quality | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IE-h01",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 101 | Introduction to Operations Research | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IE-h02",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 212 | Ergonomics | 3 | IND 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| ELE 201 | Signals | 3 | ELE 112, MEC 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IE-h03",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 201 | Supply Chains | 3 | IND 101 |\n| IND 223 | Applied Simulation | 3 | IND 112, ELE 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| CHE 112 | Foundations of Separation | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IE-h04",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 312 | Advanced Operations Research | 3 | IND 212 |\n| IND 334 | Topics in Supply Chains | 3 | IND 201, CVE 101 |\n| CVE 223 | Applied Transportation | 3 | CVE 112, IND 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "IE-h05",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 301 | Production Planning | 3 | IND 223 |\n| IND 323 | Quality Laboratory | 1 | IND 201, IND 112 |\n| CHE 212 | Petrochemicals | 3 | CHE 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "IE-h06",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 412 | Seminar in Simulation | 3 | IND 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "IE-h07",
+  "plan": "IE",
+  "text": "Study plan: Bachelor of Industrial Engineering > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| IND 401 | Ergonomics Project | 4 | IND 301 |\n| IND 423 | Capstone in Production Planning | 4 | IND 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "IS-h00",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 112 | Foundations of Business Processes | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IS-h01",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 101 | Introduction to Enterprise Systems | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IS-h02",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 212 | Systems Analysis | 3 | INS 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| AIN 212 | Natural Language Processing | 3 | AIN 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IS-h03",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 201 | Information Security | 3 | INS 112 |\n| INS 223 | Applied E-government | 3 | INS 112, INS 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| DSC 212 | Databases | 3 | DSC 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "IS-h04",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 312 | Advanced Enterprise Systems | 3 | INS 223, INS 101 |\n| INS 334 | Topics in Information Security | 3 | INS 223 |\n| AIN 201 | Neural Networks | 3 | AIN 101, DSC 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "IS-h05",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 301 | Databases | 3 | INS 223, INS 201 |\n| INS 323 | Business Processes Laboratory | 1 | INS 212, SWE 112 |\n| CSC 201 | Operating Systems | 3 | CSC 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "IS-h06",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 412 | Seminar in E-government | 3 | INS 334, SWE 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "IS-h07",
+  "plan": "IS",
+  "text": "Study plan: Bachelor of Information Systems > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| INS 401 | Systems Analysis Project | 4 | INS 301 |\n| INS 423 | Capstone in Databases | 4 | INS 312, SWE 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "ME-h00",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 112 | Foundations of Fluid Mechanics | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ME-h01",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 101 | Introduction to Thermodynamics | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ME-h02",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 212 | Manufacturing | 3 | MEC 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CHE 201 | Process Control | 3 | CHE 112, MEC 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ME-h03",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 201 | Machine Design | 3 | MEC 101, MEC 112 |\n| MEC 223 | Applied Heat Transfer | 3 | MEC 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| IND 101 | Introduction to Operations Research | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "ME-h04",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 312 | Advanced Thermodynamics | 3 | MEC 212 |\n| MEC 334 | Topics in Machine Design | 3 | MEC 212, CVE 223 |\n| IND 223 | Applied Simulation | 3 | IND 112, ELE 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ME-h05",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 301 | Dynamics | 3 | MEC 212 |\n| MEC 323 | Fluid Mechanics Laboratory | 1 | MEC 223 |\n| ELE 223 | Applied Electronics | 3 | ELE 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "ME-h06",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 412 | Seminar in Heat Transfer | 3 | MEC 312, MEC 212, IND 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "ME-h07",
+  "plan": "ME",
+  "text": "Study plan: Bachelor of Mechanical Engineering > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MEC 401 | Manufacturing Project | 4 | MEC 323 |\n| MEC 423 | Capstone in Dynamics | 4 | MEC 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "MED-h00",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 112 | Foundations of Public Relations | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MED-h01",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 101 | Introduction to Journalism | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MED-h02",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 212 | Media Law | 3 | MDC 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| HIS 223 | Applied Manuscripts | 3 | HIS 101, MDC 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MED-h03",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 201 | Digital Media | 3 | MDC 101 |\n| MDC 223 | Applied Broadcasting | 3 | MDC 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| GEO 112 | Foundations of Geographic Information Systems | 3 | None |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MED-h04",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 312 | Advanced Journalism | 3 | MDC 201 |\n| MDC 334 | Topics in Digital Media | 3 | MDC 212, MDC 112 |\n| ARB 201 | Rhetoric | 3 | ARB 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MED-h05",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 301 | Communication Theory | 3 | MDC 212, MDC 201 |\n| MDC 323 | Public Relations Laboratory | 1 | MDC 212 |\n| HIS 201 | Historiography | 3 | HIS 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "MED-h06",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 412 | Seminar in Broadcasting | 3 | MDC 301, ARB 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MED-h07",
+  "plan": "MED",
+  "text": "Study plan: Bachelor of Media and Communication > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MDC 401 | Media Law Project | 4 | MDC 312 |\n| MDC 423 | Capstone in Communication Theory | 4 | MDC 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "MGT-h00",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 112 | Foundations of Human Resources | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MGT-h01",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 101 | Introduction to Organisational Behaviour | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MGT-h02",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 212 | Entrepreneurship | 3 | MGT 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| ACC 112 | Foundations of Auditing | 3 | None |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MGT-h03",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 201 | Strategy | 3 | MGT 101 |\n| MGT 223 | Applied Leadership | 3 | MGT 101, FIN 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MKT 223 | Applied Sales | 3 | MKT 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MGT-h04",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 312 | Advanced Organisational Behaviour | 3 | MGT 212 |\n| MGT 334 | Topics in Strategy | 3 | MGT 212 |\n| MKT 201 | Branding | 3 | MKT 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MGT-h05",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 301 | Operations | 3 | MGT 201 |\n| MGT 323 | Human Resources Laboratory | 1 | MGT 212, MKT 101 |\n| MKT 112 | Foundations of Digital Marketing | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "MGT-h06",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 412 | Seminar in Leadership | 3 | MGT 301, MGT 312, ACC 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MGT-h07",
+  "plan": "MGT",
+  "text": "Study plan: Bachelor of Management > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MGT 401 | Entrepreneurship Project | 4 | MGT 334, MGT 201 |\n| MGT 423 | Capstone in Operations | 4 | MGT 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "MKT-h00",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 112 | Foundations of Digital Marketing | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MKT-h01",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 101 | Introduction to Consumer Behaviour | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MKT-h02",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 212 | Market Research | 3 | MKT 101, MKT 112, ACC 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| ACC 212 | Zakat and Tax | 3 | ACC 101 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MKT-h03",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 201 | Branding | 3 | MKT 101 |\n| MKT 223 | Applied Sales | 3 | MKT 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| FIN 201 | Banking | 3 | FIN 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MKT-h04",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 312 | Advanced Consumer Behaviour | 3 | MKT 212 |\n| MKT 334 | Topics in Branding | 3 | MKT 201 |\n| ACC 201 | Cost Accounting | 3 | ACC 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MKT-h05",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 301 | Services Marketing | 3 | MKT 201 |\n| MKT 323 | Digital Marketing Laboratory | 1 | MKT 212 |\n| ECO 101 | Introduction to Microeconomics | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "MKT-h06",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 412 | Seminar in Sales | 3 | MKT 312 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MKT-h07",
+  "plan": "MKT",
+  "text": "Study plan: Bachelor of Marketing > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MKT 401 | Market Research Project | 4 | MKT 312 |\n| MKT 423 | Capstone in Services Marketing | 4 | MKT 323, MKT 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "MTH-h00",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 112 | Foundations of Linear Algebra | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MTH-h01",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 101 | Introduction to Calculus | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MTH-h02",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 212 | Probability | 3 | MTH 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CHM 112 | Foundations of Analytical Chemistry | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MTH-h03",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 201 | Differential Equations | 3 | MTH 112 |\n| MTH 223 | Applied Numerical Analysis | 3 | MTH 101, MTH 112, STA 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| PHY 212 | Optics | 3 | PHY 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "MTH-h04",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 312 | Advanced Calculus | 3 | MTH 223 |\n| MTH 334 | Topics in Differential Equations | 3 | MTH 223 |\n| STA 212 | Time Series | 3 | STA 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MTH-h05",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 301 | Abstract Algebra | 3 | MTH 212 |\n| MTH 323 | Linear Algebra Laboratory | 1 | MTH 212, BIO 212 |\n| CHM 212 | Inorganic Chemistry | 3 | CHM 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "MTH-h06",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 412 | Seminar in Numerical Analysis | 3 | MTH 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "MTH-h07",
+  "plan": "MTH",
+  "text": "Study plan: Bachelor of Mathematics > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| MTH 401 | Probability Project | 4 | MTH 323, MTH 312 |\n| MTH 423 | Capstone in Abstract Algebra | 4 | MTH 312, BIO 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "NUR-h00",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 112 | Foundations of Pharmacology | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "NUR-h01",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 101 | Introduction to Patient Care | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "NUR-h02",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 212 | Critical Care | 3 | NUR 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| PHT 101 | Introduction to Anatomy | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "NUR-h03",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 201 | Community Health | 3 | NUR 101 |\n| NUR 223 | Applied Maternal Health | 3 | NUR 101, NUR 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| HIM 223 | Applied Health Analytics | 3 | HIM 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "NUR-h04",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 312 | Advanced Patient Care | 3 | NUR 201 |\n| NUR 334 | Topics in Community Health | 3 | NUR 201, NUR 112 |\n| CLS 101 | Introduction to Haematology | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "NUR-h05",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 301 | Nursing Ethics | 3 | NUR 201, PHT 212 |\n| NUR 323 | Pharmacology Laboratory | 1 | NUR 201 |\n| PUH 112 | Foundations of Biostatistics | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "NUR-h06",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 412 | Seminar in Maternal Health | 3 | NUR 323, NUR 312, PUH 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "NUR-h07",
+  "plan": "NUR",
+  "text": "Study plan: Bachelor of Nursing > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| NUR 401 | Critical Care Project | 4 | NUR 334 |\n| NUR 423 | Capstone in Nursing Ethics | 4 | NUR 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "PH-h00",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 112 | Foundations of Biostatistics | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PH-h01",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 101 | Introduction to Epidemiology | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PH-h02",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 212 | Environmental Health | 3 | PUH 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| NUR 112 | Foundations of Pharmacology | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PH-h03",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 201 | Health Policy | 3 | PUH 112 |\n| PUH 223 | Applied Nutrition | 3 | PUH 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| PHT 212 | Sports Injuries | 3 | PHT 112, PHT 101 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PH-h04",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 312 | Advanced Epidemiology | 3 | PUH 201 |\n| PUH 334 | Topics in Health Policy | 3 | PUH 201 |\n| CLS 212 | Immunology | 3 | CLS 112, PHT 101 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "PH-h05",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 301 | Health Promotion | 3 | PUH 223 |\n| PUH 323 | Biostatistics Laboratory | 1 | PUH 223 |\n| HIM 212 | Telehealth | 3 | HIM 112, PUH 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "PH-h06",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 412 | Seminar in Nutrition | 3 | PUH 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "PH-h07",
+  "plan": "PH",
+  "text": "Study plan: Bachelor of Public Health > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PUH 401 | Environmental Health Project | 4 | PUH 334 |\n| PUH 423 | Capstone in Health Promotion | 4 | PUH 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "PHT-h00",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 112 | Foundations of Kinesiology | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHT-h01",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 101 | Introduction to Anatomy | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHT-h02",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 212 | Sports Injuries | 3 | PHT 112, PHT 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| CLS 223 | Applied Blood Banking | 3 | CLS 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHT-h03",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 201 | Rehabilitation | 3 | PHT 112, NUR 112 |\n| PHT 223 | Applied Neurology | 3 | PHT 101, PUH 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| NUR 223 | Applied Maternal Health | 3 | NUR 101, NUR 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHT-h04",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 312 | Advanced Anatomy | 3 | PHT 201 |\n| PHT 334 | Topics in Rehabilitation | 3 | PHT 212, PUH 112 |\n| HIM 112 | Foundations of Clinical Coding | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "PHT-h05",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 301 | Clinical Practice | 3 | PHT 201 |\n| PHT 323 | Kinesiology Laboratory | 1 | PHT 212, NUR 212 |\n| CLS 101 | Introduction to Haematology | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "PHT-h06",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 412 | Seminar in Neurology | 3 | PHT 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "PHT-h07",
+  "plan": "PHT",
+  "text": "Study plan: Bachelor of Physical Therapy > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHT 401 | Sports Injuries Project | 4 | PHT 334, PHT 101 |\n| PHT 423 | Capstone in Clinical Practice | 4 | PHT 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "PHY-h00",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 112 | Foundations of Electromagnetism | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHY-h01",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 101 | Introduction to Mechanics | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHY-h02",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 212 | Optics | 3 | PHY 112 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| STA 101 | Introduction to Sampling | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHY-h03",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 201 | Quantum Physics | 3 | PHY 112 |\n| PHY 223 | Applied Thermal Physics | 3 | PHY 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| MTH 201 | Differential Equations | 3 | MTH 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "PHY-h04",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 312 | Advanced Mechanics | 3 | PHY 201 |\n| PHY 334 | Topics in Quantum Physics | 3 | PHY 212, CHM 201 |\n| CHM 101 | Introduction to Organic Chemistry | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "PHY-h05",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 301 | Solid State | 3 | PHY 223 |\n| PHY 323 | Electromagnetism Laboratory | 1 | PHY 223, PHY 212 |\n| CHM 112 | Foundations of Analytical Chemistry | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "PHY-h06",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 412 | Seminar in Thermal Physics | 3 | PHY 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "PHY-h07",
+  "plan": "PHY",
+  "text": "Study plan: Bachelor of Physics > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| PHY 401 | Optics Project | 4 | PHY 323, MTH 112 |\n| PHY 423 | Capstone in Solid State | 4 | PHY 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "STA-h00",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 112 | Foundations of Regression | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "STA-h01",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 101 | Introduction to Sampling | 3 | UNI 105 |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "STA-h02",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 212 | Time Series | 3 | STA 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| PHY 112 | Foundations of Electromagnetism | 3 | UNI 105 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "STA-h03",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 201 | Experimental Design | 3 | STA 101, STA 112 |\n| STA 223 | Applied Statistical Computing | 3 | STA 112 |\n| UNI 108 | Digital Literacy | 2 | None |\n| PHY 212 | Optics | 3 | PHY 112 |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "STA-h04",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 312 | Advanced Sampling | 3 | STA 201 |\n| STA 334 | Topics in Experimental Design | 3 | STA 212 |\n| MTH 112 | Foundations of Linear Algebra | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "STA-h05",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 301 | Inference | 3 | STA 212 |\n| STA 323 | Regression Laboratory | 1 | STA 201 |\n| MTH 223 | Applied Numerical Analysis | 3 | MTH 101, MTH 112, STA 112 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "STA-h06",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 412 | Seminar in Statistical Computing | 3 | STA 301, STA 323 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "STA-h07",
+  "plan": "STA",
+  "text": "Study plan: Bachelor of Statistics > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| STA 401 | Time Series Project | 4 | STA 301, STA 334 |\n| STA 423 | Capstone in Inference | 4 | STA 301 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ },
+ {
+  "chunk_id": "SWE-h00",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 112 | Foundations of Software Design | 3 | UNI 105 |\n| UNI 101 | Arabic Writing | 2 | None |\n| UNI 102 | English Language I | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "SWE-h01",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 1 > Year 1 · Semester 2\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 101 | Introduction to Requirements | 3 | None |\n| UNI 103 | English Language II | 3 | UNI 102 |\n| UNI 104 | Islamic Culture | 2 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "SWE-h02",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 2 > Year 2 · Semester 3\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 212 | Software Architecture | 3 | SWE 101 |\n| UNI 105 | Calculus I | 3 | None |\n| UNI 106 | Calculus II | 3 | UNI 105 |\n| UNI 107 | Communication Skills | 2 | None |\n| DSC 212 | Databases | 3 | DSC 112 |\n| | Total | 14 | |"
+ },
+ {
+  "chunk_id": "SWE-h03",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 2 > Year 2 · Semester 4\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 201 | Testing | 3 | SWE 101 |\n| SWE 223 | Applied Project Management | 4 | SWE 101 |\n| UNI 108 | Digital Literacy | 2 | None |\n| CSC 101 | Introduction to Algorithms | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "SWE-h04",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 3 > Year 3 · Semester 5\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 312 | Advanced Requirements | 3 | SWE 223, SWE 101 |\n| SWE 334 | Topics in Testing | 3 | SWE 223 |\n| CSC 112 | Foundations of Programming | 3 | UNI 105 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 15 | |"
+ },
+ {
+  "chunk_id": "SWE-h05",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 3 > Year 3 · Semester 6\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 301 | Maintenance | 3 | SWE 201, SWE 112, DSC 212 |\n| SWE 323 | Software Design Laboratory | 1 | SWE 212, SWE 101 |\n| AIN 112 | Foundations of Knowledge Representation | 3 | None |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 13 | |"
+ },
+ {
+  "chunk_id": "SWE-h06",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 4 > Year 4 · Semester 7\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 412 | Seminar in Project Management | 4 | SWE 334 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 16 | |"
+ },
+ {
+  "chunk_id": "SWE-h07",
+  "plan": "SWE",
+  "text": "Study plan: Bachelor of Software Engineering > Year 4 > Year 4 · Semester 8\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| SWE 401 | Software Architecture Project | 4 | SWE 312, SWE 112 |\n| SWE 423 | Capstone in Maintenance | 4 | SWE 301, SWE 201 |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n|  | Free elective | 3 |  |\n| | Total | 17 | |"
+ }
+]

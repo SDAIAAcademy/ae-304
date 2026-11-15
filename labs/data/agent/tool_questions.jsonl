@@ -1,0 +1,15 @@
+{"qid": "A01", "q": "How many circulars did the university publish in 2024?", "best": "list_files", "expect": ["59"]}
+{"qid": "A02", "q": "How many circulars did the university publish in 2025?", "best": "list_files", "expect": ["45"]}
+{"qid": "A03", "q": "How many circulars did the university publish in 2026?", "best": "list_files", "expect": ["52"]}
+{"qid": "A04", "q": "How many study plans does the College of Engineering publish?", "best": "list_files", "expect": ["5"]}
+{"qid": "A05", "q": "Which student guide pages exist in Arabic?", "best": "list_files", "expect": ["housing", "transcript", "library"]}
+{"qid": "A06", "q": "What does circular 2025-118 change?", "best": "keyword_search", "expect": ["20"]}
+{"qid": "A07", "q": "What does circular 2026-031 change?", "best": "keyword_search", "expect": ["12"]}
+{"qid": "A08", "q": "What is the prerequisite of STA 312?", "best": "keyword_search", "expect": ["STA 201"]}
+{"qid": "A09", "q": "What is the prerequisite of SWE 423?", "best": "keyword_search", "expect": ["SWE 301"]}
+{"qid": "A10", "q": "What is the prerequisite of PHT 112?", "best": "keyword_search", "expect": ["UNI 105"]}
+{"qid": "A11", "q": "Can I use a chatbot to help with my homework?", "best": "vector_search", "expect": ["disclose"]}
+{"qid": "A12", "q": "What if I am sick on the day of a final?", "best": "vector_search", "expect": ["make-up"]}
+{"qid": "A13", "q": "Is there extra time in exams for students who need it?", "best": "vector_search", "expect": ["additional examination time"]}
+{"qid": "A14", "q": "Can I improve a low passing grade by taking the course again?", "best": "vector_search", "expect": ["higher grade"]}
+{"qid": "A15", "q": "What do I need to finish my degree?", "best": "vector_search", "expect": ["2.00"]}

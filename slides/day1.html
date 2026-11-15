@@ -1,158 +1,514 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Welcome the room and introduce yourself. Ask one calibrating question: who has shipped a search feature, and how did they know it was good? Most answers will be "people stopped complaining". Today replaces that with numbers. Rhythm: four sessions, each a short talk, a checkpoint and a 25-minute lab.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-auto="agenda"></section>
 
-<!-- Session 1 -->
-
+<!-- ======================= SESSION 1 ======================= -->
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea" data-lo="LO1">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="The case" id="nibras-at-al-nuha" data-lo="LO1">
+  <div class="kicker">The case study for four days</div>
+  <h2>Nibras answers Al-Nuha University's students from 2,977 pages</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li><b>Regulations</b> in Arabic and English, amended by circulars over five years</li>
+      <li><b>Course pages and study plans</b> with tables, some of them scanned</li>
+      <li><b>Service guides</b> and news, written for students</li>
+      <li><b>A warehouse</b> of enrolments for statistical questions</li>
+      <li>Some pages are <b>Restricted</b>: staff only</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="stack">
+      <div class="card c-teal flat"><h4>Your role</h4><p class="small mb0">Kawthar Al-Beladi, the retrieval engineer. The model is not your job; what it reads is.</p></div>
+      <div class="card c-coral flat"><h4>The decision owner</h4><p class="small mb0">Dr. Lubna Al-Harithi, vice-rector for digital transformation, wants numbers before the pilot widens.</p></div>
+    </div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>The university and everyone in it are fictional; the corpus is synthetic and generated with a fixed seed (labs/prepare_data.py), so every room sees the same numbers. Stress the split of responsibility: when Nibras answers wrongly, this course teaches you to say which component lost the answer.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO1">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
+<section class="slide" data-label="Two layers" id="retrieval-apart-from-answers" data-lo="LO1">
+  <div class="kicker">Why measure retrieval on its own</div>
+  <h2>A good answer can hide bad retrieval, and the reverse</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+    <div class="step c-teal"><b>Question</b>"How many absences before I am denied the final exam?"</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Retrieval</b>the top 5 pages the model will read</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Generation</b>the answer written from those pages</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral flat"><h4>Judging only answers</h4><p class="small mb0">A model can answer from memory with the page missing, or paraphrase a superseded rule fluently.</p></div>
+    <div class="card c-teal flat"><h4>Judging retrieval</h4><p class="small mb0">Was the page that answers it in the top 10, and how high? Cheap, repeatable, no model needed.</p></div>
+  </div>
+  <aside class="notes"><p>Ask the room which layer they would fix first if the answers were wrong. The honest answer is "I don't know yet", and that is the point of a retrieval test set. Day 4 closes the loop by attributing failures to parsing, retrieval, ranking or generation.</p></aside>
+</section>
+
+<section class="slide" data-label="Grades" id="graded-relevance" data-lo="LO1">
+  <div class="kicker">Relevance in grades</div>
+  <h2>Relevance has degrees: grade it 0 to 3</h2>
+  <table class="t small">
+    <tr><th class="num">Grade</th><th>Meaning</th><th>Judged for "deadline to withdraw from a course"</th></tr>
+    <tr class="hl"><td class="num">3</td><td>The page that answers it</td><td>Article 25: Withdrawal from a course</td></tr>
+    <tr><td class="num">2</td><td>Answers part of it, or needs another page</td><td>Circular 2026-031, which amends Article 25</td></tr>
+    <tr><td class="num">1</td><td>On topic, does not answer</td><td>Article 26: Postponement of study</td></tr>
+    <tr><td class="num">0</td><td>Not relevant, or never judged</td><td>Article 58: Transfer from another university</td></tr>
+  </table>
+  <div class="callout tip mt-s"><b>Write the guideline first.</b> Two judges who read the same guideline disagree less, and the test set outlives the people who made it.</div>
+  <aside class="notes"><p>The grades 1 to 3 are real rows of test set v1 for query Q02 (data/testset/v1/qrels.jsonl); Article 58 was ranked second by the baseline and is not judged, so it counts as 0. Point out the grade-2 circular: it changes the deadline, so the full answer needs both pages. Which one is current comes back in Day 2 Session 3 as effective dates.</p></aside>
+</section>
+
+<section class="slide" data-label="Pooling" id="pooling" data-lo="LO1">
+  <div class="kicker">Which pages get judged</div>
+  <h2>Judge a pool, not the whole corpus</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-teal"><b>1 · Run several systems</b>BM25, dense, anything you have</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>2 · Take each one's top results</b>merge, remove duplicates</div>
+      <div class="arrow">↓</div>
+      <div class="step c-purple"><b>3 · Judge the pool</b>unjudged pages count as not relevant</div>
+    </div>
+    <div class="stack">
+      <div class="stat"><div class="big">396</div><div class="lbl">judged pairs for 60 queries in test set v1</div></div>
+      <div class="callout warn small"><b>The bias.</b> A new system that finds pages no pooled system found is scored as wrong on them. Add its top results to the pool before you compare.</div>
+    </div>
+  </div>
+  <aside class="notes"><p>Pooling is how TREC-style evaluations stay affordable. In the lab each pair judges 20 queries from supplied pools, then compares with the reference grades. The stretch asks for five new queries as test set v1.1: version the test set like code.</p></aside>
+</section>
+
+<section class="slide" data-label="Metrics" id="three-metrics" data-lo="LO1">
+  <div class="kicker">Three numbers, three questions</div>
+  <h2>Recall, reciprocal rank and nDCG measure different failures</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Recall at 10</h4><p class="small mb0">Of the relevant pages, how many are in the top 10? The model cannot read what is not there.</p></div>
+    <div class="card c-cyan"><h4>Reciprocal rank</h4><p class="small mb0">1 over the rank of the first relevant page. Does the answer come first?</p></div>
+    <div class="card c-purple"><h4>nDCG at 10</h4><p class="small mb0">Rewards grade 3 above grade 1 and high ranks above low ones, scaled 0 to 1.</p></div>
+  </div>
+  <pre class="code s mt" data-file="Lab 1.1 · the gain of one ranking"><code class="language-python">dcg = sum((2**grade[p] - 1) / log2(rank + 1) for rank, p in enumerate(top10, 1))
+ndcg = dcg / ideal_dcg   # the same sum over the best possible order</code></pre>
+  <aside class="notes"><p>Write a toy ranking on the board: relevant pages at ranks 2 and 5 out of two relevant pages. Recall at 10 is 1, RR is 0.5. The lab checks your three functions on a toy ranking before it scores the baseline (the check prints 0.5, 0.5 and 0.574).</p></aside>
+</section>
+
+<section class="slide" data-label="Baseline" id="baseline-by-language" data-lo="LO1">
+  <div class="kicker">Measured in Lab 1.1</div>
+  <h2>The baseline serves English better than Arabic, and dialect hardly at all</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>Raw BM25, top 20</th><th class="num">recall@10</th><th class="num">RR</th><th class="num">nDCG@10</th></tr>
+      <tr><td>Arabic queries</td><td class="num">0.340</td><td class="num">0.550</td><td class="num">0.415</td></tr>
+      <tr><td>English queries</td><td class="num">0.432</td><td class="num">0.722</td><td class="num">0.532</td></tr>
+      <tr class="hl"><td>Dialect queries</td><td class="num">0.050</td><td class="num">0.100</td><td class="num">0.065</td></tr>
+      <tr><td>All 60</td><td class="num">0.386</td><td class="num">0.636</td><td class="num">0.473</td></tr>
+    </table>
+    <div class="bars">
+      <div class="row"><span>course</span><div class="bar c-teal" style="--w:67%"></div><span class="val">0.674</span></div>
+      <div class="row"><span>regulation</span><div class="bar c-cyan" style="--w:57%"></div><span class="val">0.574</span></div>
+      <div class="row"><span>table</span><div class="bar c-purple" style="--w:48%"></div><span class="val">0.483</span></div>
+      <div class="row"><span>service</span><div class="bar c-amber" style="--w:45%"></div><span class="val">0.451</span></div>
+      <div class="row"><span>dialect</span><div class="bar c-coral" style="--w:7%"></div><span class="val">0.065</span></div>
+    </div>
+  </div>
+  <p class="caption">nDCG@10 by query type on the right. Test set v1: 60 queries, 30 English and 30 Arabic, 10 of them in Gulf dialect.</p>
+  <aside class="notes"><p>One average would have said 0.473 and hidden everything that matters. Ask: if you could fix one row today, which? Dialect is the worst, but it is also 10 of 60 queries; Arabic as a whole is half the traffic. Session 2 fixes part of both.</p></aside>
+</section>
+
+<section class="slide" data-label="Report" id="report-by-slice" data-lo="LO1">
+  <div class="kicker">What the outcome asks for</div>
+  <h2>Report every metric by language and by query type</h2>
+  <ul class="bullets">
+    <li><b>Version the test set</b>: v1 is frozen; new queries make v1.1, so old numbers stay comparable</li>
+    <li><b>One file per run</b>: the ranking, the test-set version, the date, the settings</li>
+    <li><b>Slices before averages</b>: an overall gain can be a loss on Arabic</li>
+    <li><b>Small test sets are noisy</b>: a difference of 0.01 on 60 queries is not a finding</li>
+  </ul>
+  <div class="callout note mt"><b>For a Saudi university.</b> An assistant for Arabic speakers that is only measured in English has not been measured. Half of test set v1 is Arabic, and a third of that is Gulf dialect.</div>
+  <aside class="notes"><p>The lab saves artifacts/D1_1/baseline_report.json: this is the format the capstone README reports. Multilingual benchmarks such as MIRACL report results per language for the same reason. Sources: MIRACL (see course sources).</p></aside>
+</section>
+
+<section class="slide" id="check-graded-judgements" data-lo="LO1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which change to the evaluation would you make first?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1">
+    <p class="lead">Nibras's search scores nDCG@10 0.47 overall. A colleague proposes a new embedding model that scores 0.49 on the same 60 queries, judged only on pages the old system found. What do you do first?</p>
+    <div class="opts">
+      <div class="opt" data-why="Trusts an overall gain of 0.02 on 60 queries as a finding, without slices or a fair pool">Adopt it: 0.49 is higher than 0.47</div>
+      <div class="opt" data-ok>Add the new model's top results to the pool, judge them, then compare by language</div>
+      <div class="opt" data-why="Thinks answer quality can replace a retrieval measurement">Judge the model's answers instead of its rankings</div>
+      <div class="opt" data-why="Treats more queries as the cure for a biased pool">Double the test set to 120 queries and rerun</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Unjudged pages count as not relevant, so a system that finds new pages is scored low on them. Pool first, then read the gain by language and type.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. D is a good idea later, but more queries judged on a biased pool are still biased. If many pick A, return to the slices table: 0.02 overall can be a loss on Arabic.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-1" data-auto="lab" data-lab="1.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: grading the page by its title without reading it; giving the Arabic and English copies of one page different grades; computing nDCG with the rank starting at 0 (log2(1) is 0, a division by zero). Pairs that disagree by more than one grade should talk it through against the guideline: that is the exercise.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="Inverted index" id="inverted-index" data-lo="LO2">
+  <div class="kicker">Lexical search</div>
+  <h2>An inverted index maps each word to the pages that contain it</h2>
   <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+    <table class="t small">
+      <tr><th>Term</th><th>Pages</th></tr>
+      <tr><td><code>withdraw</code></td><td>Article 25, Circular 2026-031, guide/withdrawal</td></tr>
+      <tr><td><code>postpone</code></td><td>Article 26, guide/postponement</td></tr>
+      <tr><td><code>semester</code></td><td>924 of the 2,617 Public pages</td></tr>
+    </table>
+    <ul class="bullets small">
+      <li>A query looks up its words, not every page: fast at any size</li>
+      <li>Exact words only: "withdrawal" and "withdraw" are different keys unless you stem</li>
+      <li>Every database has one: SQLite FTS5, PostgreSQL full-text search, OpenSearch</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Ask for the weakness before showing the bullets: what happens to a student who writes "drop a course"? The index has no idea that "drop" means "withdraw". Hold that thought for Session 3, dense retrieval.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="BM25" id="bm25-intuition" data-lo="LO2">
+  <div class="kicker">How BM25 weighs words</div>
+  <h2>BM25 rewards rare words and saturates repeated ones</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Rarity</h4><p class="small mb0">"postpone" in 9 pages weighs far more than "semester" in 924.</p></div>
+    <div class="card c-cyan"><h4>Saturation</h4><p class="small mb0">The tenth "postpone" in a page adds little over the third.</p></div>
+    <div class="card c-purple"><h4>Length</h4><p class="small mb0">A match in a short page counts more than in a long one.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <pre class="code s mt" data-file="Lab 1.2 · SQLite FTS5"><code class="language-sql">CREATE VIRTUAL TABLE idx USING fts5(id UNINDEXED, text);
+SELECT id, bm25(idx) FROM idx
+ WHERE idx MATCH '"withdraw" OR "course" OR "deadline"'
+ ORDER BY bm25(idx) LIMIT 10;   -- lower is better in FTS5</code></pre>
+  <aside class="notes"><p>No formula on the slide on purpose; the two parameters (k1 for saturation, b for length) are worth a sentence each if the room asks. Note the FTS5 quirk: bm25() returns more negative numbers for better matches. The lab's helper flips the sign.</p></aside>
+</section>
+
+<section class="slide" data-label="Arabic spelling" id="arabic-spelling-variants" data-lo="LO2">
+  <div class="kicker">What Arabic does to word matching</div>
+  <h2>One Arabic word has several spellings, and BM25 sees each as a stranger</h2>
+  <table class="t small">
+    <tr><th>Variation</th><th>Written</th><th>Also written</th></tr>
+    <tr><td>Hamza on alif</td><td class="ar">الأولى</td><td class="ar">الاولى</td></tr>
+    <tr><td>Final ya and alif maqsura</td><td class="ar">النهائي</td><td class="ar">النهايي</td></tr>
+    <tr><td>Ta marbuta and ha</td><td class="ar">الجامعة</td><td class="ar">الجامعه</td></tr>
+    <tr><td>Diacritics and tatweel</td><td class="ar">الدِّراسة</td><td class="ar">الدراسة</td></tr>
+    <tr><td>Clitics</td><td class="ar">والطلاب</td><td class="ar">الطلاب</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> Students type fast on phones and skip the hamza; the regulation is typeset carefully. Raw matching punishes exactly the users you serve.</div>
+  <aside class="notes"><p>Ask an Arabic speaker in the room how they type "الأولى" on a phone. Then show the normaliser's output in the lab: it prints a normalised phrase so participants can see each rule work.</p></aside>
+</section>
+
+<section class="slide" data-label="Normalise" id="normalise-both-sides" data-lo="LO2">
+  <div class="kicker">The fix</div>
+  <h2>Normalise and lightly stem both the pages and the query</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Normalise</b>remove diacritics and tatweel; unify alif, ya, ta marbuta</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Light stem</b>strip <span class="ar">ال</span>, <span class="ar">و</span>, <span class="ar">ب</span> and common suffixes</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Index</b>the analysed words, not the raw text</div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral flat"><h4>The classic bug</h4><p class="small mb0">Normalising the pages but not the query, or the reverse: every match fails silently.</p></div>
+    <div class="card c-teal flat"><h4>Light, not deep</h4><p class="small mb0">A root-based stemmer merges words with different meanings. Light stemming removes affixes only.</p></div>
+  </div>
+  <aside class="notes"><p>Tools for production: CAMeL Tools and PyArabic both ship normalisers and morphological analysers. In the lab you write a dozen lines yourself so you know what each rule does; the stretch gives the title its own column and weight.</p></aside>
+</section>
+
+<section class="slide" data-label="The gain" id="normalisation-gain" data-lo="LO2">
+  <div class="kicker">Measured in Lab 1.2</div>
+  <h2>Normalisation lifts Arabic recall from 0.34 to 0.44 and dialect from 0.05 to 0.25</h2>
+  <div class="bars">
+    <div class="row"><span>Arabic, raw</span><div class="bar c-coral" style="--w:34%"></div><span class="val">0.340</span></div>
+    <div class="row"><span>Arabic, normalised</span><div class="bar c-teal" style="--w:43.5%"></div><span class="val">0.435</span></div>
+    <div class="row"><span>English, either</span><div class="bar c-cyan" style="--w:43.2%"></div><span class="val">0.432</span></div>
+    <div class="row"><span>Dialect, raw</span><div class="bar c-coral" style="--w:5%"></div><span class="val">0.05</span></div>
+    <div class="row"><span>Dialect, normalised</span><div class="bar c-teal" style="--w:25%"></div><span class="val">0.25</span></div>
+  </div>
+  <p class="caption">Recall at 10 on test set v1. nDCG@10 overall: 0.473 raw, 0.538 normalised. Query p95 latency 6.7 ms on a laptop.</p>
+  <aside class="notes"><p>The English row does not move, which is the control: the analyser only touches Arabic. The latency is measured in the lab on the participant's machine; ours printed p50 3.0 ms and p95 6.7 ms. Ask: is 0.25 on dialect good enough? No; it is what spelling fixes can do. The rest is vocabulary.</p></aside>
+</section>
+
+<section class="slide" data-label="Dialect" id="dialect-failures" data-lo="LO2">
+  <div class="kicker">Read the failures, not only the score</div>
+  <h2>Dialect fails on vocabulary, which no spelling rule repairs</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Student</span><span class="ar">ابي انسحب من ماده متى اخر يوم</span></div>
+    <div class="msg ai bad"><span class="who">Top result</span>Circular 2026-012, on another subject</div>
+    <div class="msg user"><span class="who">Student</span><span class="ar">ابي اوقف دراستي ترم كم مره يسمحون</span></div>
+    <div class="msg ai bad"><span class="who">Top result</span>Article 36, lateness to an exam</div>
+  </div>
+  <div class="callout tip mt-s"><b>Takeaway.</b> <span class="ar">اوقف دراستي</span> means "postpone my study", but the regulation says <span class="ar">تأجيل الدراسة</span>. Matching words cannot bridge that; matching meaning might.</div>
+  <aside class="notes"><p>These are real top results from Lab 1.2 step 5 (queries Q52 and Q57). Translate both for non-Arabic speakers: "I want to withdraw from a course, when is the last day" and "I want to stop my studies for a term, how many times is it allowed". Bridge to Session 3.</p></aside>
+</section>
+
+<section class="slide" id="check-normalisation" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Why did Arabic recall not move?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Kawthar adds a normaliser to the indexing pipeline and rebuilds the index. Arabic recall at 10 stays at 0.34. English is unchanged too. What is the most likely cause?</p>
+    <div class="opts">
+      <div class="opt" data-why="Blames the ranking function for what is a mismatch between query and index text">BM25 cannot rank Arabic text</div>
+      <div class="opt" data-why="Assumes dialect explains all of Arabic, when dialect is only 10 of the 30 Arabic queries">The Arabic queries are all in dialect</div>
+      <div class="opt" data-why="Confuses normalising with stemming; the spelling variants alone move recall">Normalisation needs a deep root stemmer to work</div>
+      <div class="opt" data-ok>The queries are not passed through the same normaliser</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> An analysed index holds <span class="ar">الاولي</span>; a raw query asks for <span class="ar">الأولى</span>. The same analyser must run on both sides, or nothing matches.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. This is the most common bug of the lab; ask anyone who hit it to say how they found it (printing the analysed query next to the analysed page).</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-2" data-auto="lab" data-lab="1.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: removing all alifs instead of unifying them; a stemmer that strips <span class="ar">ال</span> from words that begin with those letters (keep a minimum stem length); comparing runs on different query subsets. Early finishers: the stretch, a weighted title column, reached nDCG@10 0.578 in our run.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="Meaning" id="embeddings-as-meaning" data-lo="LO2">
+  <div class="kicker">Dense retrieval</div>
+  <h2>An embedding places texts with similar meaning close together</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>A model turns each page into <b>384 numbers</b>; the query too</li>
+      <li>Search is a <b>dot product</b> of the query with every page</li>
+      <li><b>Multilingual</b> models put an Arabic question near an English answer</li>
+      <li>No word has to match: "drop a course" can find "withdrawal"</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-teal"><h4>The two models of Lab 1.3</h4><p class="small mb0"><b>multilingual-e5-small</b> and <b>paraphrase-multilingual-MiniLM-L12-v2</b>: open weights, 384 dimensions, small enough for a laptop processor or a free Colab runtime.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Keep the maths light: cosine similarity on normalised vectors is the dot product. The labs read supplied vectors on a laptop (data/vectors/), made with these two models; in Colab the models load and embed the 300-page sample live. Nothing downloads a model on a participant's laptop unless they set AE304_MODELS=load.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Prefixes" id="model-card-prefixes" data-lo="LO2">
+  <div class="kicker">Read the model card</div>
+  <h2>e5 expects "query:" and "passage:" in front of its inputs</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="Lab 1.3 · step 2"><code class="language-python">model.encode("query: " + question)
+model.encode("passage: " + page_text)</code></pre>
+    <table class="t small">
+      <tr><th>nDCG@10, dense e5</th><th class="num">with prefixes</th><th class="num">without</th></tr>
+      <tr><td>Arabic</td><td class="num">0.375</td><td class="num">0.354</td></tr>
+      <tr><td>English</td><td class="num">0.639</td><td class="num">0.615</td></tr>
+      <tr class="hl"><td>All</td><td class="num">0.507</td><td class="num">0.484</td></tr>
+    </table>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> Nothing fails loudly. Skip one line of the model card and you lose a few points everywhere, without an error message.</div>
+  <aside class="notes"><p>Numbers from Lab 1.3 step 2, which compares the supplied vectors made with and without the prefixes. Other model families have other conventions (instructions in the query, a maximum length): check the card of any model you adopt.</p></aside>
+</section>
+
+<section class="slide" data-label="Two models" id="two-models-compared" data-lo="LO2">
+  <div class="kicker">Measured in Lab 1.3</div>
+  <h2>The two models disagree, and neither wins every row</h2>
+  <table class="t small">
+    <tr><th>Dense search, test set v1</th><th class="num">nDCG@10 ar</th><th class="num">nDCG@10 en</th><th class="num">recall@10</th><th class="num">dialect recall</th></tr>
+    <tr><td>multilingual-e5-small</td><td class="num">0.375</td><td class="num">0.639</td><td class="num">0.401</td><td class="num">0.07</td></tr>
+    <tr><td>multilingual MiniLM</td><td class="num">0.419</td><td class="num">0.582</td><td class="num">0.579</td><td class="num">0.325</td></tr>
+    <tr class="hl"><td>BM25 normalised (Lab 1.2)</td><td class="num">0.543</td><td class="num">0.532</td><td class="num">0.433</td><td class="num">0.25</td></tr>
+  </table>
+  <div class="cols cols-2 mt-s">
+    <div class="card c-coral flat"><h4>Unflattering and true</h4><p class="small mb0">On Arabic in standard spelling, normalised BM25 beats both models.</p></div>
+    <div class="card c-teal flat"><h4>Where dense helps</h4><p class="small mb0">e5 on English; MiniLM on dialect, the row BM25 could not fix.</p></div>
+  </div>
+  <aside class="notes"><p>Keep this finding honest: a leaderboard rank does not predict your corpus. MiniLM's recall is higher but its ranks are lower (nDCG similar to e5 overall: 0.501 against 0.507). Ask which model they would ship for Nibras and what would change their mind. There is no single right answer; there is a right way to argue it, from the slices.</p></aside>
+</section>
+
+<section class="slide" data-label="Cost" id="embedding-cost" data-lo="LO2">
+  <div class="kicker">What embedding costs</div>
+  <h2>Embedding the corpus takes minutes; each query adds tens of milliseconds</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">7.3 min</div><div class="lbl">to embed all 2,977 pages with e5, laptop processor</div></div>
+    <div class="stat"><div class="big">82 ms</div><div class="lbl">e5 query embedding, 95th percentile</div></div>
+    <div class="stat"><div class="big">252 ms</div><div class="lbl">MiniLM query embedding, 95th percentile</div></div>
+  </div>
+  <p class="small mt">Measured once when the supplied vectors were made: 300 pages in 44.1 s (e5) and 27.4 s (MiniLM), on a shared laptop. Your Colab numbers will differ; the ratio between indexing and querying will not.</p>
+  <aside class="notes"><p>Sources: the timings are in data/reference/timings.json, written by labs/_tools/make_vectors.py. MiniLM was faster to index here but slower per query on this machine; timings on a shared laptop are noisy, which is why the lab reports the 95th percentile and not one run.</p></aside>
+</section>
+
+<section class="slide" data-label="Exact or HNSW" id="exact-or-approximate" data-lo="LO2">
+  <div class="kicker">Indexes for vectors</div>
+  <h2>Exact search compares with every page; HNSW walks a graph of neighbours</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-teal"><b>Exact (flat)</b>every page, every query: perfect recall, linear time</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>HNSW</b>a layered graph, coarse to fine: a few hundred comparisons</div>
+    </div>
+    <table class="t small">
+      <tr><th>2,617 Public pages</th><th class="num">e5</th><th class="num">MiniLM</th></tr>
+      <tr><td>Overlap with exact top 10</td><td class="num">0.922</td><td class="num">0.995</td></tr>
+      <tr><td>HNSW index size</td><td class="num">4.73 MB</td><td class="num">4.73 MB</td></tr>
+      <tr><td>Flat index size</td><td class="num">4.02 MB</td><td class="num">4.02 MB</td></tr>
+      <tr><td>HNSW p95</td><td class="num">0.53 ms</td><td class="num">0.52 ms</td></tr>
+      <tr><td>Exact p95</td><td class="num">1.15 ms</td><td class="num">1.29 ms</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>At 3,000 pages exact search is already fast; the point is what you give up at a million. With efSearch 32 e5's overlap was 0.897; at 64 it is 0.922. That knob trades recall for time. Tools: FAISS in the lab; pgvector, Qdrant and LanceDB offer the same index types.</p></aside>
+</section>
+
+<section class="slide" data-label="Eight bits" id="quantised-vectors" data-lo="LO2">
+  <div class="kicker">Stretch result</div>
+  <h2>Eight-bit vectors take a quarter of the space and keep 99% of the top 10</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">4.02 → 1.01 MB</div><div class="lbl">e5 index, 32-bit floats to 8-bit codes</div></div>
+    <div class="stat"><div class="big">0.987</div><div class="lbl">overlap with the exact top 10</div></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> Memory is usually the first limit of a vector index on modest hardware; scalar quantisation is the first lever, and its cost is measurable.</div>
+  <aside class="notes"><p>From the Lab 1.3 stretch (faiss.IndexScalarQuantizer, QT_8bit). Most vector databases offer the same option under names like scalar or binary quantisation.</p></aside>
+</section>
+
+<section class="slide" id="check-embedding-choice" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which conclusion does the evidence support?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">On test set v1, normalised BM25 scores nDCG@10 0.543 on Arabic and dense e5 scores 0.375. On English, e5 scores 0.639 and BM25 0.532. What should Kawthar conclude?</p>
+    <div class="opts">
+      <div class="opt" data-ok>Each method wins on one language, so a combination is worth measuring</div>
+      <div class="opt" data-why="Reads one language's result as the whole verdict">Dense retrieval does not work for Arabic and should be dropped</div>
+      <div class="opt" data-why="Assumes a bigger model fixes a difference that could come from the corpus or the queries">A larger embedding model will beat BM25 on both languages</div>
+      <div class="opt" data-why="Averages away the slices the decision depends on">The two are equal, since their averages are close</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The two rankings fail on different queries. When errors differ, fusing the rankings often beats either one, which is the next session.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. B is tempting after the table, but MiniLM did better than e5 on Arabic and on dialect: "dense" is not one thing.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-3" data-auto="lab" data-lab="1.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: forgetting the Public mask, so Restricted pages appear in results (Day 2 Session 4 explains why that matters); mixing e5 and MiniLM vectors; timing the first query, which includes loading. In Colab, the first cell downloads both models once; if the runtime is slow, set the sample to 100 pages.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="Different errors" id="errors-differ" data-lo="LO2">
+  <div class="kicker">Hybrid search</div>
+  <h2>Lexical and dense search fail on different queries</h2>
   <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-teal"><h4>BM25 finds</h4><p class="small mb0">Course codes, circular numbers, article numbers, exact names: "CSC 301", "2025-118".</p></div>
+    <div class="card c-cyan"><h4>Dense finds</h4><p class="small mb0">Paraphrases, everyday words, the other language: "drop a course", a question in English about an Arabic page.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout note mt"><b>The idea.</b> Run both, then merge the two rankings into one. The question is how to merge two lists whose scores are on different scales.</div>
+  <aside class="notes"><p>Ask the room for a query each method would fail on. A code like "CLS 334" has no meaning for an embedding model; "how do I stop my studies for a term" has no word in common with the article.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Scales" id="score-scales" data-lo="LO2">
+  <div class="kicker">Why you cannot add the scores</div>
+  <h2>BM25 scores run from 0.3 to 28; cosine scores from 0.78 to 0.93</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>BM25 range</span><div class="bar c-teal" style="--w:100%"></div><span class="val">0.3 to 28.4</span></div>
+      <div class="row"><span>Cosine range</span><div class="bar c-cyan" style="--w:6%"></div><span class="val">0.78 to 0.93</span></div>
+    </div>
+    <table class="t small">
+      <tr><th>Weighted score fusion</th><th class="num">nDCG@10</th></tr>
+      <tr><td>alpha 0.3</td><td class="num">0.570</td></tr>
+      <tr><td>alpha 0.5</td><td class="num">0.564</td></tr>
+      <tr><td>alpha 0.7</td><td class="num">0.556</td></tr>
+    </table>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> Add raw scores and BM25 decides everything. Normalise them and you add a weight to tune, and it moves with every corpus change.</div>
+  <aside class="notes"><p>From Lab 1.4 step 2, min-max normalised scores mixed with weight alpha. The weight that wins here is not a constant: it is a parameter you would have to re-tune whenever the corpus or the model changes.</p></aside>
+</section>
+
+<section class="slide" data-label="RRF" id="reciprocal-rank-fusion" data-lo="LO2">
+  <div class="kicker">Use ranks, not scores</div>
+  <h2>Reciprocal rank fusion adds 1 / (60 + rank) from each list</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="Lab 1.4 · step 1"><code class="language-python">def rrf(rankings, k=60):
+    score = defaultdict(float)
+    for ranking in rankings:
+        for rank, page in enumerate(ranking, 1):
+            score[page] += 1 / (k + rank)
+    return sorted(score, key=score.get, reverse=True)</code></pre>
+    <table class="t small">
+      <tr><th>Test set v1</th><th class="num">recall@10</th><th class="num">MRR</th><th class="num">nDCG@10</th></tr>
+      <tr><td>BM25 normalised</td><td class="num">0.433</td><td class="num">0.729</td><td class="num">0.538</td></tr>
+      <tr><td>dense e5</td><td class="num">0.401</td><td class="num">0.691</td><td class="num">0.507</td></tr>
+      <tr class="hl"><td>RRF of the two</td><td class="num">0.455</td><td class="num">0.776</td><td class="num">0.570</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>RRF has no weight to tune and no scales to match. k=60 is the constant of the original paper (Cormack, Clarke and Buettcher, 2009). Sources: the RRF paper (see course sources). Note that RRF did not win on Arabic alone (0.510 against BM25's 0.543): the next slide's table shows it.</p></aside>
+</section>
+
+<section class="slide" data-label="Reranker" id="cross-encoder-reranker" data-lo="LO2">
+  <div class="kicker">The second stage</div>
+  <h2>A cross-encoder reads the query and each candidate together</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · First stage</b>BM25 and dense, fused: top 30 in milliseconds</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Rerank</b>a model scores each (query, page) pair: 30 model calls</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Top 5</b>what the generator reads</div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-teal flat"><h4>Why it is better</h4><p class="small mb0">It sees both texts at once, so it can judge whether the page answers this question.</p></div>
+    <div class="card c-coral flat"><h4>Why it is slow</h4><p class="small mb0">One forward pass per candidate, every query. Nothing can be computed ahead.</p></div>
+  </div>
+  <aside class="notes"><p>The lab uses mmarco-mMiniLMv2-L12-H384-v1, a multilingual cross-encoder with open weights. Its scores for the fused candidates are supplied (data/reference/rerank_scores.json), computed once on a laptop, so no participant downloads it; they cover 92% of the fused top 30.</p></aside>
+</section>
+
+<section class="slide" data-label="Results" id="day1-results-table" data-lo="LO2">
+  <div class="kicker">The Day 1 results table, measured</div>
+  <h2>Reranking gains the most and costs a hundred times the latency</h2>
+  <table class="t small">
+    <tr><th>Method</th><th class="num">nDCG@10 ar</th><th class="num">nDCG@10 en</th><th class="num">recall@10</th><th class="num">MRR</th><th class="num">p95 ms</th></tr>
+    <tr><td>BM25 normalised</td><td class="num">0.543</td><td class="num">0.532</td><td class="num">0.433</td><td class="num">0.729</td><td class="num">6.9</td></tr>
+    <tr><td>dense e5</td><td class="num">0.375</td><td class="num">0.639</td><td class="num">0.401</td><td class="num">0.691</td><td class="num">84.1</td></tr>
+    <tr><td>hybrid RRF</td><td class="num">0.510</td><td class="num">0.630</td><td class="num">0.455</td><td class="num">0.776</td><td class="num">91.1</td></tr>
+    <tr class="hl"><td>hybrid RRF + rerank 30</td><td class="num">0.566</td><td class="num">0.700</td><td class="num">0.499</td><td class="num">0.872</td><td class="num">10,971</td></tr>
+  </table>
+  <p class="caption">Latency includes the query embedding (measured once) and, for the last row, reranking 30 pairs on a shared laptop processor without a GPU.</p>
+  <aside class="notes"><p>This table is LO2's evidence. Be honest about the last column: 11 seconds is a laptop processor under load; on a GPU the same reranker runs in tens of milliseconds. The lesson is not the number but the method: put the gain and its latency in the same row.</p></aside>
+</section>
+
+<section class="slide" data-label="Depth" id="rerank-depth" data-lo="LO2">
+  <div class="kicker">Lab 1.4 stretch</div>
+  <h2>Rerank fewer candidates: most of the gain comes from the top 10</h2>
+  <div class="bars">
+    <div class="row"><span>depth 5 · 1.9 s</span><div class="bar c-teal" style="--w:60.8%"></div><span class="val">0.608</span></div>
+    <div class="row"><span>depth 10 · 3.7 s</span><div class="bar c-teal" style="--w:61.7%"></div><span class="val">0.617</span></div>
+    <div class="row"><span>depth 20 · 7.3 s</span><div class="bar c-cyan" style="--w:63.3%"></div><span class="val">0.633</span></div>
+    <div class="row"><span>depth 30 · 11.0 s</span><div class="bar c-cyan" style="--w:63.3%"></div><span class="val">0.633</span></div>
+  </div>
+  <p class="caption">nDCG@10 overall by rerank depth, with the p95 latency of reranking on the laptop. Without a reranker: 0.570.</p>
+  <div class="callout tip mt-s"><b>Takeaway.</b> Set the latency budget first, then pick the deepest rerank that fits it.</div>
+  <aside class="notes"><p>Day 4 Session 3 returns to this with a 400 ms retrieval budget for Nibras: on this hardware no rerank depth fits, so the decision becomes "rerank on a GPU or not at all", and the table says what "not at all" costs (0.570 against 0.633).</p></aside>
+</section>
+
+<section class="slide" id="check-reranker-decision" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Should Nibras ship the reranker?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Retrieval for Nibras must answer within 400 ms at the 95th percentile. Reranking the top 30 raises nDCG@10 from 0.570 to 0.633 and takes 11 s at p95 on the current servers, which have no GPU. What do you recommend?</p>
+    <div class="opts">
+      <div class="opt" data-why="Lets the quality gain override a stated latency budget">Ship it: quality matters more than speed</div>
+      <div class="opt" data-why="Assumes depth is the only lever, when even depth 5 takes 1.9 s on this hardware">Ship it with a rerank depth of 5</div>
+      <div class="opt" data-ok>Ship hybrid RRF now and measure the reranker on a GPU before deciding</div>
+      <div class="opt" data-why="Drops fusion's measured gain over BM25 alone along with the reranker">Ship BM25 alone, since reranking is too slow</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> No rerank depth fits 400 ms on this hardware, and RRF already beats each input. The reranker's gain is real, so it deserves a measurement on the hardware that could serve it.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. B is the trap for people who read only the stretch chart: the depth table also says depth 5 costs 1.9 s here. D throws away fusion's gain.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-4" data-auto="lab" data-lab="1.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: ranks starting at 0 in RRF (the first page gets 1/60 instead of 1/61, harmless but different from the reference); reranking the top 30 of one method instead of the fused list; reporting the mean latency instead of the 95th percentile. Anyone who missed Lab 1.2 or 1.3 starts from the supplied rankings in the first cell.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
+<!-- ======================= CLOSING ======================= -->
+<section class="slide" id="wrap-up" data-label="Recap">
   <div class="kicker">Day 1 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Measure retrieval alone</h4><p class="small mb0">A versioned test set with graded judgements, reported by language and query type.</p></div>
+    <div class="card c-coral"><h4>Arabic needs analysis</h4><p class="small mb0">Normalise both sides. It lifted Arabic recall from 0.34 to 0.44; dialect needs meaning, not spelling.</p></div>
+    <div class="card c-purple"><h4>Gain and latency in one row</h4><p class="small mb0">Fusion is nearly free; reranking gains most and may not fit the budget.</p></div>
   </div>
+  <aside class="notes"><p>Ask each table for the one number from today they would put on Nibras's dashboard. Good answers: nDCG@10 on Arabic queries, dialect recall, p95 latency of the first stage.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
   <h2>Day 2: Prepare the corpus</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <p class="lead">Tomorrow the problems move upstream: scanned pages that parse to nothing, tables cut in half, rules amended by circulars, and pages a student must never see. Unfinished labs can be finished at home; each one starts from a supplied state.</p>
+  <aside class="notes"><p>Nothing to install. Ask participants to keep their artifacts/D1_4/results.json: the capstone README reports a table of the same shape. Day 2 labs do not depend on Day 1 results.</p></aside>
 </section>

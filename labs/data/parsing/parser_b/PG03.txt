@@ -1,0 +1,19 @@
+Study plan: Bachelor of Chemistry, Year 2
+Year 2 · Semester 3
+| Code | Course | Credit hours | Prerequisite |
+|---|---|---|---|
+| CHM 212 | Inorganic Chemistry | 3 | CHM 101 |
+| UNI 105 | Calculus I | 3 | None |
+| UNI 106 | Calculus II | 3 | UNI 105 |
+| UNI 107 | Communication Skills | 2 | None |
+| MTH 212 | Probability | 3 | MTH 112 |
+| | Total | 14 | |
+Year 2 · Semester 4
+| Code | Course | Credit hours | Prerequisite |
+|---|---|---|---|
+| CHM 201 | Physical Chemistry | 3 | CHM 112 |
+| CHM 223 | Applied Biochemistry | 3 | CHM 101 |
+| UNI 108 | Digital Literacy | 2 | None |
+| MTH 112 | Foundations of Linear Algebra | 3 | None |
+|  | Free elective | 3 |  |
+| | Total | 14 | |

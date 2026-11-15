@@ -1,0 +1,26 @@
+[
+ {
+  "pipeline": "regulations, top 5 pages",
+  "input mean": 832,
+  "input p95": 1329,
+  "output": 150,
+  "cost per question": 0.0,
+  "cost per 10,000": 0.0
+ },
+ {
+  "pipeline": "free text-to-SQL",
+  "input mean": 185,
+  "input p95": 192,
+  "output": 80,
+  "cost per question": 0.0,
+  "cost per 10,000": 0.0
+ },
+ {
+  "pipeline": "semantic layer",
+  "input mean": 1080,
+  "input p95": 1087,
+  "output": 60,
+  "cost per question": 0.0,
+  "cost per 10,000": 0.0
+ }
+]

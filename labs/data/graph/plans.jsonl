@@ -1,0 +1,240 @@
+{"programme": "CS", "semester": 1, "courses": ["CSC 112", "UNI 101", "UNI 102"]}
+{"programme": "CS", "semester": 2, "courses": ["CSC 101", "UNI 103", "UNI 104"]}
+{"programme": "CS", "semester": 3, "courses": ["CSC 212", "UNI 105", "UNI 106", "UNI 107", "SWE 212"]}
+{"programme": "CS", "semester": 4, "courses": ["CSC 201", "CSC 223", "UNI 108", "DSC 223"]}
+{"programme": "CS", "semester": 5, "courses": ["CSC 312", "CSC 334", "AIN 212"]}
+{"programme": "CS", "semester": 6, "courses": ["CSC 301", "CSC 323", "DSC 212"]}
+{"programme": "CS", "semester": 7, "courses": ["CSC 412"]}
+{"programme": "CS", "semester": 8, "courses": ["CSC 401", "CSC 423"]}
+{"programme": "SWE", "semester": 1, "courses": ["SWE 112", "UNI 101", "UNI 102"]}
+{"programme": "SWE", "semester": 2, "courses": ["SWE 101", "UNI 103", "UNI 104"]}
+{"programme": "SWE", "semester": 3, "courses": ["SWE 212", "UNI 105", "UNI 106", "UNI 107", "DSC 212"]}
+{"programme": "SWE", "semester": 4, "courses": ["SWE 201", "SWE 223", "UNI 108", "CSC 101"]}
+{"programme": "SWE", "semester": 5, "courses": ["SWE 312", "SWE 334", "CSC 112"]}
+{"programme": "SWE", "semester": 6, "courses": ["SWE 301", "SWE 323", "AIN 112"]}
+{"programme": "SWE", "semester": 7, "courses": ["SWE 412"]}
+{"programme": "SWE", "semester": 8, "courses": ["SWE 401", "SWE 423"]}
+{"programme": "DS", "semester": 1, "courses": ["DSC 112", "UNI 101", "UNI 102"]}
+{"programme": "DS", "semester": 2, "courses": ["DSC 101", "UNI 103", "UNI 104"]}
+{"programme": "DS", "semester": 3, "courses": ["DSC 212", "UNI 105", "UNI 106", "UNI 107", "AIN 101"]}
+{"programme": "DS", "semester": 4, "courses": ["DSC 201", "DSC 223", "UNI 108", "AIN 223"]}
+{"programme": "DS", "semester": 5, "courses": ["DSC 312", "DSC 334", "INS 212"]}
+{"programme": "DS", "semester": 6, "courses": ["DSC 301", "DSC 323", "CSC 212"]}
+{"programme": "DS", "semester": 7, "courses": ["DSC 412"]}
+{"programme": "DS", "semester": 8, "courses": ["DSC 401", "DSC 423"]}
+{"programme": "AI", "semester": 1, "courses": ["AIN 112", "UNI 101", "UNI 102"]}
+{"programme": "AI", "semester": 2, "courses": ["AIN 101", "UNI 103", "UNI 104"]}
+{"programme": "AI", "semester": 3, "courses": ["AIN 212", "UNI 105", "UNI 106", "UNI 107", "CSC 101"]}
+{"programme": "AI", "semester": 4, "courses": ["AIN 201", "AIN 223", "UNI 108", "INS 212"]}
+{"programme": "AI", "semester": 5, "courses": ["AIN 312", "AIN 334", "CSC 112"]}
+{"programme": "AI", "semester": 6, "courses": ["AIN 301", "AIN 323", "INS 112"]}
+{"programme": "AI", "semester": 7, "courses": ["AIN 412"]}
+{"programme": "AI", "semester": 8, "courses": ["AIN 401", "AIN 423"]}
+{"programme": "IS", "semester": 1, "courses": ["INS 112", "UNI 101", "UNI 102"]}
+{"programme": "IS", "semester": 2, "courses": ["INS 101", "UNI 103", "UNI 104"]}
+{"programme": "IS", "semester": 3, "courses": ["INS 212", "UNI 105", "UNI 106", "UNI 107", "AIN 212"]}
+{"programme": "IS", "semester": 4, "courses": ["INS 201", "INS 223", "UNI 108", "DSC 212"]}
+{"programme": "IS", "semester": 5, "courses": ["INS 312", "INS 334", "AIN 201"]}
+{"programme": "IS", "semester": 6, "courses": ["INS 301", "INS 323", "CSC 201"]}
+{"programme": "IS", "semester": 7, "courses": ["INS 412"]}
+{"programme": "IS", "semester": 8, "courses": ["INS 401", "INS 423"]}
+{"programme": "CE", "semester": 1, "courses": ["CVE 112", "UNI 101", "UNI 102"]}
+{"programme": "CE", "semester": 2, "courses": ["CVE 101", "UNI 103", "UNI 104"]}
+{"programme": "CE", "semester": 3, "courses": ["CVE 212", "UNI 105", "UNI 106", "UNI 107", "IND 212"]}
+{"programme": "CE", "semester": 4, "courses": ["CVE 201", "CVE 223", "UNI 108", "MEC 223"]}
+{"programme": "CE", "semester": 5, "courses": ["CVE 312", "CVE 334", "MEC 112"]}
+{"programme": "CE", "semester": 6, "courses": ["CVE 301", "CVE 323", "ELE 223"]}
+{"programme": "CE", "semester": 7, "courses": ["CVE 412"]}
+{"programme": "CE", "semester": 8, "courses": ["CVE 401", "CVE 423"]}
+{"programme": "EE", "semester": 1, "courses": ["ELE 112", "UNI 101", "UNI 102"]}
+{"programme": "EE", "semester": 2, "courses": ["ELE 101", "UNI 103", "UNI 104"]}
+{"programme": "EE", "semester": 3, "courses": ["ELE 212", "UNI 105", "UNI 106", "UNI 107", "CHE 101"]}
+{"programme": "EE", "semester": 4, "courses": ["ELE 201", "ELE 223", "UNI 108", "MEC 101"]}
+{"programme": "EE", "semester": 5, "courses": ["ELE 312", "ELE 334", "MEC 212"]}
+{"programme": "EE", "semester": 6, "courses": ["ELE 301", "ELE 323", "MEC 223"]}
+{"programme": "EE", "semester": 7, "courses": ["ELE 412"]}
+{"programme": "EE", "semester": 8, "courses": ["ELE 401", "ELE 423"]}
+{"programme": "ME", "semester": 1, "courses": ["MEC 112", "UNI 101", "UNI 102"]}
+{"programme": "ME", "semester": 2, "courses": ["MEC 101", "UNI 103", "UNI 104"]}
+{"programme": "ME", "semester": 3, "courses": ["MEC 212", "UNI 105", "UNI 106", "UNI 107", "CHE 201"]}
+{"programme": "ME", "semester": 4, "courses": ["MEC 201", "MEC 223", "UNI 108", "IND 101"]}
+{"programme": "ME", "semester": 5, "courses": ["MEC 312", "MEC 334", "IND 223"]}
+{"programme": "ME", "semester": 6, "courses": ["MEC 301", "MEC 323", "ELE 223"]}
+{"programme": "ME", "semester": 7, "courses": ["MEC 412"]}
+{"programme": "ME", "semester": 8, "courses": ["MEC 401", "MEC 423"]}
+{"programme": "IE", "semester": 1, "courses": ["IND 112", "UNI 101", "UNI 102"]}
+{"programme": "IE", "semester": 2, "courses": ["IND 101", "UNI 103", "UNI 104"]}
+{"programme": "IE", "semester": 3, "courses": ["IND 212", "UNI 105", "UNI 106", "UNI 107", "ELE 201"]}
+{"programme": "IE", "semester": 4, "courses": ["IND 201", "IND 223", "UNI 108", "CHE 112"]}
+{"programme": "IE", "semester": 5, "courses": ["IND 312", "IND 334", "CVE 223"]}
+{"programme": "IE", "semester": 6, "courses": ["IND 301", "IND 323", "CHE 212"]}
+{"programme": "IE", "semester": 7, "courses": ["IND 412"]}
+{"programme": "IE", "semester": 8, "courses": ["IND 401", "IND 423"]}
+{"programme": "CHE", "semester": 1, "courses": ["CHE 112", "UNI 101", "UNI 102"]}
+{"programme": "CHE", "semester": 2, "courses": ["CHE 101", "UNI 103", "UNI 104"]}
+{"programme": "CHE", "semester": 3, "courses": ["CHE 212", "UNI 105", "UNI 106", "UNI 107", "MEC 212"]}
+{"programme": "CHE", "semester": 4, "courses": ["CHE 201", "CHE 223", "UNI 108", "ELE 101"]}
+{"programme": "CHE", "semester": 5, "courses": ["CHE 312", "CHE 334", "IND 223"]}
+{"programme": "CHE", "semester": 6, "courses": ["CHE 301", "CHE 323", "CVE 223"]}
+{"programme": "CHE", "semester": 7, "courses": ["CHE 412"]}
+{"programme": "CHE", "semester": 8, "courses": ["CHE 401", "CHE 423"]}
+{"programme": "ACC", "semester": 1, "courses": ["ACC 112", "UNI 101", "UNI 102"]}
+{"programme": "ACC", "semester": 2, "courses": ["ACC 101", "UNI 103", "UNI 104"]}
+{"programme": "ACC", "semester": 3, "courses": ["ACC 212", "UNI 105", "UNI 106", "UNI 107", "ECO 223"]}
+{"programme": "ACC", "semester": 4, "courses": ["ACC 201", "ACC 223", "UNI 108", "MGT 201"]}
+{"programme": "ACC", "semester": 5, "courses": ["ACC 312", "ACC 334", "ECO 112"]}
+{"programme": "ACC", "semester": 6, "courses": ["ACC 301", "ACC 323", "MGT 101"]}
+{"programme": "ACC", "semester": 7, "courses": ["ACC 412"]}
+{"programme": "ACC", "semester": 8, "courses": ["ACC 401", "ACC 423"]}
+{"programme": "FIN", "semester": 1, "courses": ["FIN 112", "UNI 101", "UNI 102"]}
+{"programme": "FIN", "semester": 2, "courses": ["FIN 101", "UNI 103", "UNI 104"]}
+{"programme": "FIN", "semester": 3, "courses": ["FIN 212", "UNI 105", "UNI 106", "UNI 107", "MKT 201"]}
+{"programme": "FIN", "semester": 4, "courses": ["FIN 201", "FIN 223", "UNI 108", "ECO 201"]}
+{"programme": "FIN", "semester": 5, "courses": ["FIN 312", "FIN 334", "ECO 101"]}
+{"programme": "FIN", "semester": 6, "courses": ["FIN 301", "FIN 323", "ACC 101"]}
+{"programme": "FIN", "semester": 7, "courses": ["FIN 412"]}
+{"programme": "FIN", "semester": 8, "courses": ["FIN 401", "FIN 423"]}
+{"programme": "MKT", "semester": 1, "courses": ["MKT 112", "UNI 101", "UNI 102"]}
+{"programme": "MKT", "semester": 2, "courses": ["MKT 101", "UNI 103", "UNI 104"]}
+{"programme": "MKT", "semester": 3, "courses": ["MKT 212", "UNI 105", "UNI 106", "UNI 107", "ACC 212"]}
+{"programme": "MKT", "semester": 4, "courses": ["MKT 201", "MKT 223", "UNI 108", "FIN 201"]}
+{"programme": "MKT", "semester": 5, "courses": ["MKT 312", "MKT 334", "ACC 201"]}
+{"programme": "MKT", "semester": 6, "courses": ["MKT 301", "MKT 323", "ECO 101"]}
+{"programme": "MKT", "semester": 7, "courses": ["MKT 412"]}
+{"programme": "MKT", "semester": 8, "courses": ["MKT 401", "MKT 423"]}
+{"programme": "MGT", "semester": 1, "courses": ["MGT 112", "UNI 101", "UNI 102"]}
+{"programme": "MGT", "semester": 2, "courses": ["MGT 101", "UNI 103", "UNI 104"]}
+{"programme": "MGT", "semester": 3, "courses": ["MGT 212", "UNI 105", "UNI 106", "UNI 107", "ACC 112"]}
+{"programme": "MGT", "semester": 4, "courses": ["MGT 201", "MGT 223", "UNI 108", "MKT 223"]}
+{"programme": "MGT", "semester": 5, "courses": ["MGT 312", "MGT 334", "MKT 201"]}
+{"programme": "MGT", "semester": 6, "courses": ["MGT 301", "MGT 323", "MKT 112"]}
+{"programme": "MGT", "semester": 7, "courses": ["MGT 412"]}
+{"programme": "MGT", "semester": 8, "courses": ["MGT 401", "MGT 423"]}
+{"programme": "ECO", "semester": 1, "courses": ["ECO 112", "UNI 101", "UNI 102"]}
+{"programme": "ECO", "semester": 2, "courses": ["ECO 101", "UNI 103", "UNI 104"]}
+{"programme": "ECO", "semester": 3, "courses": ["ECO 212", "UNI 105", "UNI 106", "UNI 107", "MGT 201"]}
+{"programme": "ECO", "semester": 4, "courses": ["ECO 201", "ECO 223", "UNI 108", "ACC 201"]}
+{"programme": "ECO", "semester": 5, "courses": ["ECO 312", "ECO 334", "MGT 112"]}
+{"programme": "ECO", "semester": 6, "courses": ["ECO 301", "ECO 323", "MGT 101"]}
+{"programme": "ECO", "semester": 7, "courses": ["ECO 412"]}
+{"programme": "ECO", "semester": 8, "courses": ["ECO 401", "ECO 423"]}
+{"programme": "NUR", "semester": 1, "courses": ["NUR 112", "UNI 101", "UNI 102"]}
+{"programme": "NUR", "semester": 2, "courses": ["NUR 101", "UNI 103", "UNI 104"]}
+{"programme": "NUR", "semester": 3, "courses": ["NUR 212", "UNI 105", "UNI 106", "UNI 107", "PHT 101"]}
+{"programme": "NUR", "semester": 4, "courses": ["NUR 201", "NUR 223", "UNI 108", "HIM 223"]}
+{"programme": "NUR", "semester": 5, "courses": ["NUR 312", "NUR 334", "CLS 101"]}
+{"programme": "NUR", "semester": 6, "courses": ["NUR 301", "NUR 323", "PUH 112"]}
+{"programme": "NUR", "semester": 7, "courses": ["NUR 412"]}
+{"programme": "NUR", "semester": 8, "courses": ["NUR 401", "NUR 423"]}
+{"programme": "PHT", "semester": 1, "courses": ["PHT 112", "UNI 101", "UNI 102"]}
+{"programme": "PHT", "semester": 2, "courses": ["PHT 101", "UNI 103", "UNI 104"]}
+{"programme": "PHT", "semester": 3, "courses": ["PHT 212", "UNI 105", "UNI 106", "UNI 107", "CLS 223"]}
+{"programme": "PHT", "semester": 4, "courses": ["PHT 201", "PHT 223", "UNI 108", "NUR 223"]}
+{"programme": "PHT", "semester": 5, "courses": ["PHT 312", "PHT 334", "HIM 112"]}
+{"programme": "PHT", "semester": 6, "courses": ["PHT 301", "PHT 323", "CLS 101"]}
+{"programme": "PHT", "semester": 7, "courses": ["PHT 412"]}
+{"programme": "PHT", "semester": 8, "courses": ["PHT 401", "PHT 423"]}
+{"programme": "CLS", "semester": 1, "courses": ["CLS 112", "UNI 101", "UNI 102"]}
+{"programme": "CLS", "semester": 2, "courses": ["CLS 101", "UNI 103", "UNI 104"]}
+{"programme": "CLS", "semester": 3, "courses": ["CLS 212", "UNI 105", "UNI 106", "UNI 107", "NUR 112"]}
+{"programme": "CLS", "semester": 4, "courses": ["CLS 201", "CLS 223", "UNI 108", "NUR 101"]}
+{"programme": "CLS", "semester": 5, "courses": ["CLS 312", "CLS 334", "PUH 212"]}
+{"programme": "CLS", "semester": 6, "courses": ["CLS 301", "CLS 323", "PUH 112"]}
+{"programme": "CLS", "semester": 7, "courses": ["CLS 412"]}
+{"programme": "CLS", "semester": 8, "courses": ["CLS 401", "CLS 423"]}
+{"programme": "PH", "semester": 1, "courses": ["PUH 112", "UNI 101", "UNI 102"]}
+{"programme": "PH", "semester": 2, "courses": ["PUH 101", "UNI 103", "UNI 104"]}
+{"programme": "PH", "semester": 3, "courses": ["PUH 212", "UNI 105", "UNI 106", "UNI 107", "NUR 112"]}
+{"programme": "PH", "semester": 4, "courses": ["PUH 201", "PUH 223", "UNI 108", "PHT 212"]}
+{"programme": "PH", "semester": 5, "courses": ["PUH 312", "PUH 334", "CLS 212"]}
+{"programme": "PH", "semester": 6, "courses": ["PUH 301", "PUH 323", "HIM 212"]}
+{"programme": "PH", "semester": 7, "courses": ["PUH 412"]}
+{"programme": "PH", "semester": 8, "courses": ["PUH 401", "PUH 423"]}
+{"programme": "HIM", "semester": 1, "courses": ["HIM 112", "UNI 101", "UNI 102"]}
+{"programme": "HIM", "semester": 2, "courses": ["HIM 101", "UNI 103", "UNI 104"]}
+{"programme": "HIM", "semester": 3, "courses": ["HIM 212", "UNI 105", "UNI 106", "UNI 107", "CLS 212"]}
+{"programme": "HIM", "semester": 4, "courses": ["HIM 201", "HIM 223", "UNI 108", "PHT 223"]}
+{"programme": "HIM", "semester": 5, "courses": ["HIM 312", "HIM 334", "PUH 212"]}
+{"programme": "HIM", "semester": 6, "courses": ["HIM 301", "HIM 323", "PUH 201"]}
+{"programme": "HIM", "semester": 7, "courses": ["HIM 412"]}
+{"programme": "HIM", "semester": 8, "courses": ["HIM 401", "HIM 423"]}
+{"programme": "MTH", "semester": 1, "courses": ["MTH 112", "UNI 101", "UNI 102"]}
+{"programme": "MTH", "semester": 2, "courses": ["MTH 101", "UNI 103", "UNI 104"]}
+{"programme": "MTH", "semester": 3, "courses": ["MTH 212", "UNI 105", "UNI 106", "UNI 107", "CHM 112"]}
+{"programme": "MTH", "semester": 4, "courses": ["MTH 201", "MTH 223", "UNI 108", "PHY 212"]}
+{"programme": "MTH", "semester": 5, "courses": ["MTH 312", "MTH 334", "STA 212"]}
+{"programme": "MTH", "semester": 6, "courses": ["MTH 301", "MTH 323", "CHM 212"]}
+{"programme": "MTH", "semester": 7, "courses": ["MTH 412"]}
+{"programme": "MTH", "semester": 8, "courses": ["MTH 401", "MTH 423"]}
+{"programme": "PHY", "semester": 1, "courses": ["PHY 112", "UNI 101", "UNI 102"]}
+{"programme": "PHY", "semester": 2, "courses": ["PHY 101", "UNI 103", "UNI 104"]}
+{"programme": "PHY", "semester": 3, "courses": ["PHY 212", "UNI 105", "UNI 106", "UNI 107", "STA 101"]}
+{"programme": "PHY", "semester": 4, "courses": ["PHY 201", "PHY 223", "UNI 108", "MTH 201"]}
+{"programme": "PHY", "semester": 5, "courses": ["PHY 312", "PHY 334", "CHM 101"]}
+{"programme": "PHY", "semester": 6, "courses": ["PHY 301", "PHY 323", "CHM 112"]}
+{"programme": "PHY", "semester": 7, "courses": ["PHY 412"]}
+{"programme": "PHY", "semester": 8, "courses": ["PHY 401", "PHY 423"]}
+{"programme": "CHM", "semester": 1, "courses": ["CHM 112", "UNI 101", "UNI 102"]}
+{"programme": "CHM", "semester": 2, "courses": ["CHM 101", "UNI 103", "UNI 104"]}
+{"programme": "CHM", "semester": 3, "courses": ["CHM 212", "UNI 105", "UNI 106", "UNI 107", "MTH 212"]}
+{"programme": "CHM", "semester": 4, "courses": ["CHM 201", "CHM 223", "UNI 108", "MTH 112"]}
+{"programme": "CHM", "semester": 5, "courses": ["CHM 312", "CHM 334", "STA 112"]}
+{"programme": "CHM", "semester": 6, "courses": ["CHM 301", "CHM 323", "BIO 101"]}
+{"programme": "CHM", "semester": 7, "courses": ["CHM 412"]}
+{"programme": "CHM", "semester": 8, "courses": ["CHM 401", "CHM 423"]}
+{"programme": "BIO", "semester": 1, "courses": ["BIO 112", "UNI 101", "UNI 102"]}
+{"programme": "BIO", "semester": 2, "courses": ["BIO 101", "UNI 103", "UNI 104"]}
+{"programme": "BIO", "semester": 3, "courses": ["BIO 212", "UNI 105", "UNI 106", "UNI 107", "CHM 101"]}
+{"programme": "BIO", "semester": 4, "courses": ["BIO 201", "BIO 223", "UNI 108", "PHY 101"]}
+{"programme": "BIO", "semester": 5, "courses": ["BIO 312", "BIO 334", "STA 223"]}
+{"programme": "BIO", "semester": 6, "courses": ["BIO 301", "BIO 323", "MTH 212"]}
+{"programme": "BIO", "semester": 7, "courses": ["BIO 412"]}
+{"programme": "BIO", "semester": 8, "courses": ["BIO 401", "BIO 423"]}
+{"programme": "STA", "semester": 1, "courses": ["STA 112", "UNI 101", "UNI 102"]}
+{"programme": "STA", "semester": 2, "courses": ["STA 101", "UNI 103", "UNI 104"]}
+{"programme": "STA", "semester": 3, "courses": ["STA 212", "UNI 105", "UNI 106", "UNI 107", "PHY 112"]}
+{"programme": "STA", "semester": 4, "courses": ["STA 201", "STA 223", "UNI 108", "PHY 212"]}
+{"programme": "STA", "semester": 5, "courses": ["STA 312", "STA 334", "MTH 112"]}
+{"programme": "STA", "semester": 6, "courses": ["STA 301", "STA 323", "MTH 223"]}
+{"programme": "STA", "semester": 7, "courses": ["STA 412"]}
+{"programme": "STA", "semester": 8, "courses": ["STA 401", "STA 423"]}
+{"programme": "ARB", "semester": 1, "courses": ["ARB 112", "UNI 101", "UNI 102"]}
+{"programme": "ARB", "semester": 2, "courses": ["ARB 101", "UNI 103", "UNI 104"]}
+{"programme": "ARB", "semester": 3, "courses": ["ARB 212", "UNI 105", "UNI 106", "UNI 107", "HIS 212"]}
+{"programme": "ARB", "semester": 4, "courses": ["ARB 201", "ARB 223", "UNI 108", "GEO 223"]}
+{"programme": "ARB", "semester": 5, "courses": ["ARB 312", "ARB 334", "ENL 212"]}
+{"programme": "ARB", "semester": 6, "courses": ["ARB 301", "ARB 323", "ENL 201"]}
+{"programme": "ARB", "semester": 7, "courses": ["ARB 412"]}
+{"programme": "ARB", "semester": 8, "courses": ["ARB 401", "ARB 423"]}
+{"programme": "ENL", "semester": 1, "courses": ["ENL 112", "UNI 101", "UNI 102"]}
+{"programme": "ENL", "semester": 2, "courses": ["ENL 101", "UNI 103", "UNI 104"]}
+{"programme": "ENL", "semester": 3, "courses": ["ENL 212", "UNI 105", "UNI 106", "UNI 107", "GEO 201"]}
+{"programme": "ENL", "semester": 4, "courses": ["ENL 201", "ENL 223", "UNI 108", "MDC 223"]}
+{"programme": "ENL", "semester": 5, "courses": ["ENL 312", "ENL 334", "ARB 201"]}
+{"programme": "ENL", "semester": 6, "courses": ["ENL 301", "ENL 323", "ARB 112"]}
+{"programme": "ENL", "semester": 7, "courses": ["ENL 412"]}
+{"programme": "ENL", "semester": 8, "courses": ["ENL 401", "ENL 423"]}
+{"programme": "HIS", "semester": 1, "courses": ["HIS 112", "UNI 101", "UNI 102"]}
+{"programme": "HIS", "semester": 2, "courses": ["HIS 101", "UNI 103", "UNI 104"]}
+{"programme": "HIS", "semester": 3, "courses": ["HIS 212", "UNI 105", "UNI 106", "UNI 107", "ENL 112"]}
+{"programme": "HIS", "semester": 4, "courses": ["HIS 201", "HIS 223", "UNI 108", "ARB 201"]}
+{"programme": "HIS", "semester": 5, "courses": ["HIS 312", "HIS 334", "ARB 112"]}
+{"programme": "HIS", "semester": 6, "courses": ["HIS 301", "HIS 323", "GEO 201"]}
+{"programme": "HIS", "semester": 7, "courses": ["HIS 412"]}
+{"programme": "HIS", "semester": 8, "courses": ["HIS 401", "HIS 423"]}
+{"programme": "GEO", "semester": 1, "courses": ["GEO 112", "UNI 101", "UNI 102"]}
+{"programme": "GEO", "semester": 2, "courses": ["GEO 101", "UNI 103", "UNI 104"]}
+{"programme": "GEO", "semester": 3, "courses": ["GEO 212", "UNI 105", "UNI 106", "UNI 107", "HIS 201"]}
+{"programme": "GEO", "semester": 4, "courses": ["GEO 201", "GEO 223", "UNI 108", "ENL 212"]}
+{"programme": "GEO", "semester": 5, "courses": ["GEO 312", "GEO 334", "ARB 101"]}
+{"programme": "GEO", "semester": 6, "courses": ["GEO 301", "GEO 323", "HIS 112"]}
+{"programme": "GEO", "semester": 7, "courses": ["GEO 412"]}
+{"programme": "GEO", "semester": 8, "courses": ["GEO 401", "GEO 423"]}
+{"programme": "MED", "semester": 1, "courses": ["MDC 112", "UNI 101", "UNI 102"]}
+{"programme": "MED", "semester": 2, "courses": ["MDC 101", "UNI 103", "UNI 104"]}
+{"programme": "MED", "semester": 3, "courses": ["MDC 212", "UNI 105", "UNI 106", "UNI 107", "HIS 223"]}
+{"programme": "MED", "semester": 4, "courses": ["MDC 201", "MDC 223", "UNI 108", "GEO 112"]}
+{"programme": "MED", "semester": 5, "courses": ["MDC 312", "MDC 334", "ARB 201"]}
+{"programme": "MED", "semester": 6, "courses": ["MDC 301", "MDC 323", "HIS 201"]}
+{"programme": "MED", "semester": 7, "courses": ["MDC 412"]}
+{"programme": "MED", "semester": 8, "courses": ["MDC 401", "MDC 423"]}

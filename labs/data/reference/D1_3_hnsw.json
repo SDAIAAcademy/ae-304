@@ -1,0 +1,18 @@
+[
+ {
+  "model": "e5",
+  "overlap@10": 0.922,
+  "hnsw MB": 4.73,
+  "flat MB": 4.02,
+  "hnsw p95 ms": 0.526,
+  "exact p95 ms": 1.151
+ },
+ {
+  "model": "minilm",
+  "overlap@10": 0.995,
+  "hnsw MB": 4.73,
+  "flat MB": 4.02,
+  "hnsw p95 ms": 0.517,
+  "exact p95 ms": 1.291
+ }
+]

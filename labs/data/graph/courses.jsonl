@@ -1,0 +1,368 @@
+{"code": "UNI 101", "title": "Arabic Writing", "credits": 2, "prereqs": [], "programme": null, "college": null}
+{"code": "UNI 102", "title": "English Language I", "credits": 3, "prereqs": [], "programme": null, "college": null}
+{"code": "UNI 103", "title": "English Language II", "credits": 3, "prereqs": ["UNI 102"], "programme": null, "college": null}
+{"code": "UNI 104", "title": "Islamic Culture", "credits": 2, "prereqs": [], "programme": null, "college": null}
+{"code": "UNI 105", "title": "Calculus I", "credits": 3, "prereqs": [], "programme": null, "college": null}
+{"code": "UNI 106", "title": "Calculus II", "credits": 3, "prereqs": ["UNI 105"], "programme": null, "college": null}
+{"code": "UNI 107", "title": "Communication Skills", "credits": 2, "prereqs": [], "programme": null, "college": null}
+{"code": "UNI 108", "title": "Digital Literacy", "credits": 2, "prereqs": [], "programme": null, "college": null}
+{"code": "CSC 101", "title": "Introduction to Algorithms", "credits": 3, "prereqs": ["UNI 105"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 112", "title": "Foundations of Programming", "credits": 3, "prereqs": ["UNI 105"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 201", "title": "Operating Systems", "credits": 3, "prereqs": ["CSC 112"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 212", "title": "Compilers", "credits": 3, "prereqs": ["CSC 101"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 223", "title": "Applied Computer Networks", "credits": 3, "prereqs": ["CSC 101"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 301", "title": "Theory of Computation", "credits": 3, "prereqs": ["CSC 201", "CSC 212"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 312", "title": "Advanced Algorithms", "credits": 3, "prereqs": ["CSC 212"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 323", "title": "Programming Laboratory", "credits": 1, "prereqs": ["CSC 212"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 334", "title": "Topics in Operating Systems", "credits": 3, "prereqs": ["CSC 212", "CSC 201"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 401", "title": "Compilers Project", "credits": 4, "prereqs": ["CSC 334"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 412", "title": "Seminar in Computer Networks", "credits": 3, "prereqs": ["CSC 301"], "programme": "CS", "college": "CCI"}
+{"code": "CSC 423", "title": "Capstone in Theory of Computation", "credits": 4, "prereqs": ["CSC 312", "SWE 101"], "programme": "CS", "college": "CCI"}
+{"code": "SWE 101", "title": "Introduction to Requirements", "credits": 3, "prereqs": [], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 112", "title": "Foundations of Software Design", "credits": 3, "prereqs": ["UNI 105"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 201", "title": "Testing", "credits": 3, "prereqs": ["SWE 101"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 212", "title": "Software Architecture", "credits": 3, "prereqs": ["SWE 101"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 223", "title": "Applied Project Management", "credits": 4, "prereqs": ["SWE 101"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 301", "title": "Maintenance", "credits": 3, "prereqs": ["SWE 201", "SWE 112", "DSC 212"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 312", "title": "Advanced Requirements", "credits": 3, "prereqs": ["SWE 223", "SWE 101"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 323", "title": "Software Design Laboratory", "credits": 1, "prereqs": ["SWE 212", "SWE 101"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 334", "title": "Topics in Testing", "credits": 3, "prereqs": ["SWE 223"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 401", "title": "Software Architecture Project", "credits": 4, "prereqs": ["SWE 312", "SWE 112"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 412", "title": "Seminar in Project Management", "credits": 4, "prereqs": ["SWE 334"], "programme": "SWE", "college": "CCI"}
+{"code": "SWE 423", "title": "Capstone in Maintenance", "credits": 4, "prereqs": ["SWE 301", "SWE 201"], "programme": "SWE", "college": "CCI"}
+{"code": "DSC 101", "title": "Introduction to Statistics", "credits": 3, "prereqs": ["UNI 105"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 112", "title": "Foundations of Machine Learning", "credits": 3, "prereqs": ["UNI 105"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 201", "title": "Data Visualisation", "credits": 3, "prereqs": ["DSC 112", "DSC 101"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 212", "title": "Databases", "credits": 3, "prereqs": ["DSC 112"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 223", "title": "Applied Data Ethics", "credits": 3, "prereqs": ["DSC 101"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 301", "title": "Big Data", "credits": 3, "prereqs": ["DSC 223"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 312", "title": "Advanced Statistics", "credits": 3, "prereqs": ["DSC 223", "DSC 201"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 323", "title": "Machine Learning Laboratory", "credits": 1, "prereqs": ["DSC 223"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 334", "title": "Topics in Data Visualisation", "credits": 3, "prereqs": ["DSC 201", "DSC 223"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 401", "title": "Databases Project", "credits": 4, "prereqs": ["DSC 301"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 412", "title": "Seminar in Data Ethics", "credits": 3, "prereqs": ["DSC 334"], "programme": "DS", "college": "CCI"}
+{"code": "DSC 423", "title": "Capstone in Big Data", "credits": 4, "prereqs": ["DSC 334"], "programme": "DS", "college": "CCI"}
+{"code": "AIN 101", "title": "Introduction to Search", "credits": 3, "prereqs": [], "programme": "AI", "college": "CCI"}
+{"code": "AIN 112", "title": "Foundations of Knowledge Representation", "credits": 3, "prereqs": [], "programme": "AI", "college": "CCI"}
+{"code": "AIN 201", "title": "Neural Networks", "credits": 3, "prereqs": ["AIN 101", "DSC 112"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 212", "title": "Natural Language Processing", "credits": 3, "prereqs": ["AIN 112"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 223", "title": "Applied Computer Vision", "credits": 3, "prereqs": ["AIN 101"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 301", "title": "Robotics", "credits": 3, "prereqs": ["AIN 201", "AIN 212"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 312", "title": "Advanced Search", "credits": 3, "prereqs": ["AIN 201", "AIN 212", "CSC 101"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 323", "title": "Knowledge Representation Laboratory", "credits": 1, "prereqs": ["AIN 223", "INS 101"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 334", "title": "Topics in Neural Networks", "credits": 3, "prereqs": ["AIN 223"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 401", "title": "Natural Language Processing Project", "credits": 4, "prereqs": ["AIN 301", "AIN 201"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 412", "title": "Seminar in Computer Vision", "credits": 3, "prereqs": ["AIN 323"], "programme": "AI", "college": "CCI"}
+{"code": "AIN 423", "title": "Capstone in Robotics", "credits": 4, "prereqs": ["AIN 334"], "programme": "AI", "college": "CCI"}
+{"code": "INS 101", "title": "Introduction to Enterprise Systems", "credits": 3, "prereqs": [], "programme": "IS", "college": "CCI"}
+{"code": "INS 112", "title": "Foundations of Business Processes", "credits": 3, "prereqs": [], "programme": "IS", "college": "CCI"}
+{"code": "INS 201", "title": "Information Security", "credits": 3, "prereqs": ["INS 112"], "programme": "IS", "college": "CCI"}
+{"code": "INS 212", "title": "Systems Analysis", "credits": 3, "prereqs": ["INS 112"], "programme": "IS", "college": "CCI"}
+{"code": "INS 223", "title": "Applied E-government", "credits": 3, "prereqs": ["INS 112", "INS 101"], "programme": "IS", "college": "CCI"}
+{"code": "INS 301", "title": "Databases", "credits": 3, "prereqs": ["INS 223", "INS 201"], "programme": "IS", "college": "CCI"}
+{"code": "INS 312", "title": "Advanced Enterprise Systems", "credits": 3, "prereqs": ["INS 223", "INS 101"], "programme": "IS", "college": "CCI"}
+{"code": "INS 323", "title": "Business Processes Laboratory", "credits": 1, "prereqs": ["INS 212", "SWE 112"], "programme": "IS", "college": "CCI"}
+{"code": "INS 334", "title": "Topics in Information Security", "credits": 3, "prereqs": ["INS 223"], "programme": "IS", "college": "CCI"}
+{"code": "INS 401", "title": "Systems Analysis Project", "credits": 4, "prereqs": ["INS 301"], "programme": "IS", "college": "CCI"}
+{"code": "INS 412", "title": "Seminar in E-government", "credits": 3, "prereqs": ["INS 334", "SWE 323"], "programme": "IS", "college": "CCI"}
+{"code": "INS 423", "title": "Capstone in Databases", "credits": 4, "prereqs": ["INS 312", "SWE 334"], "programme": "IS", "college": "CCI"}
+{"code": "CVE 101", "title": "Introduction to Structures", "credits": 3, "prereqs": ["UNI 105"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 112", "title": "Foundations of Concrete", "credits": 3, "prereqs": ["UNI 105"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 201", "title": "Surveying", "credits": 3, "prereqs": ["CVE 112"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 212", "title": "Soil Mechanics", "credits": 3, "prereqs": ["CVE 112"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 223", "title": "Applied Transportation", "credits": 3, "prereqs": ["CVE 112", "IND 112"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 301", "title": "Water Resources", "credits": 3, "prereqs": ["CVE 201"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 312", "title": "Advanced Structures", "credits": 3, "prereqs": ["CVE 223"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 323", "title": "Concrete Laboratory", "credits": 1, "prereqs": ["CVE 201"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 334", "title": "Topics in Surveying", "credits": 3, "prereqs": ["CVE 201"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 401", "title": "Soil Mechanics Project", "credits": 4, "prereqs": ["CVE 301"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 412", "title": "Seminar in Transportation", "credits": 3, "prereqs": ["CVE 323"], "programme": "CE", "college": "ENG"}
+{"code": "CVE 423", "title": "Capstone in Water Resources", "credits": 4, "prereqs": ["CVE 323", "CVE 112"], "programme": "CE", "college": "ENG"}
+{"code": "ELE 101", "title": "Introduction to Circuits", "credits": 3, "prereqs": ["UNI 105"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 112", "title": "Foundations of Power Systems", "credits": 3, "prereqs": ["UNI 105"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 201", "title": "Signals", "credits": 3, "prereqs": ["ELE 112", "MEC 112"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 212", "title": "Control", "credits": 3, "prereqs": ["ELE 101"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 223", "title": "Applied Electronics", "credits": 3, "prereqs": ["ELE 101"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 301", "title": "Renewable Energy", "credits": 3, "prereqs": ["ELE 223"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 312", "title": "Advanced Circuits", "credits": 3, "prereqs": ["ELE 201", "ELE 112"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 323", "title": "Power Systems Laboratory", "credits": 1, "prereqs": ["ELE 223"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 334", "title": "Topics in Signals", "credits": 3, "prereqs": ["ELE 223", "ELE 201"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 401", "title": "Control Project", "credits": 4, "prereqs": ["ELE 334", "ELE 112", "MEC 201"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 412", "title": "Seminar in Electronics", "credits": 3, "prereqs": ["ELE 301"], "programme": "EE", "college": "ENG"}
+{"code": "ELE 423", "title": "Capstone in Renewable Energy", "credits": 4, "prereqs": ["ELE 312"], "programme": "EE", "college": "ENG"}
+{"code": "MEC 101", "title": "Introduction to Thermodynamics", "credits": 3, "prereqs": ["UNI 105"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 112", "title": "Foundations of Fluid Mechanics", "credits": 3, "prereqs": ["UNI 105"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 201", "title": "Machine Design", "credits": 3, "prereqs": ["MEC 101", "MEC 112"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 212", "title": "Manufacturing", "credits": 3, "prereqs": ["MEC 101"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 223", "title": "Applied Heat Transfer", "credits": 3, "prereqs": ["MEC 112"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 301", "title": "Dynamics", "credits": 3, "prereqs": ["MEC 212"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 312", "title": "Advanced Thermodynamics", "credits": 3, "prereqs": ["MEC 212"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 323", "title": "Fluid Mechanics Laboratory", "credits": 1, "prereqs": ["MEC 223"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 334", "title": "Topics in Machine Design", "credits": 3, "prereqs": ["MEC 212", "CVE 223"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 401", "title": "Manufacturing Project", "credits": 4, "prereqs": ["MEC 323"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 412", "title": "Seminar in Heat Transfer", "credits": 3, "prereqs": ["MEC 312", "MEC 212", "IND 334"], "programme": "ME", "college": "ENG"}
+{"code": "MEC 423", "title": "Capstone in Dynamics", "credits": 4, "prereqs": ["MEC 301"], "programme": "ME", "college": "ENG"}
+{"code": "IND 101", "title": "Introduction to Operations Research", "credits": 3, "prereqs": ["UNI 105"], "programme": "IE", "college": "ENG"}
+{"code": "IND 112", "title": "Foundations of Quality", "credits": 3, "prereqs": [], "programme": "IE", "college": "ENG"}
+{"code": "IND 201", "title": "Supply Chains", "credits": 3, "prereqs": ["IND 101"], "programme": "IE", "college": "ENG"}
+{"code": "IND 212", "title": "Ergonomics", "credits": 3, "prereqs": ["IND 112"], "programme": "IE", "college": "ENG"}
+{"code": "IND 223", "title": "Applied Simulation", "credits": 3, "prereqs": ["IND 112", "ELE 101"], "programme": "IE", "college": "ENG"}
+{"code": "IND 301", "title": "Production Planning", "credits": 3, "prereqs": ["IND 223"], "programme": "IE", "college": "ENG"}
+{"code": "IND 312", "title": "Advanced Operations Research", "credits": 3, "prereqs": ["IND 212"], "programme": "IE", "college": "ENG"}
+{"code": "IND 323", "title": "Quality Laboratory", "credits": 1, "prereqs": ["IND 201", "IND 112"], "programme": "IE", "college": "ENG"}
+{"code": "IND 334", "title": "Topics in Supply Chains", "credits": 3, "prereqs": ["IND 201", "CVE 101"], "programme": "IE", "college": "ENG"}
+{"code": "IND 401", "title": "Ergonomics Project", "credits": 4, "prereqs": ["IND 301"], "programme": "IE", "college": "ENG"}
+{"code": "IND 412", "title": "Seminar in Simulation", "credits": 3, "prereqs": ["IND 323"], "programme": "IE", "college": "ENG"}
+{"code": "IND 423", "title": "Capstone in Production Planning", "credits": 4, "prereqs": ["IND 301"], "programme": "IE", "college": "ENG"}
+{"code": "CHE 101", "title": "Introduction to Reaction Engineering", "credits": 3, "prereqs": [], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 112", "title": "Foundations of Separation", "credits": 3, "prereqs": ["UNI 105"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 201", "title": "Process Control", "credits": 3, "prereqs": ["CHE 112", "MEC 101"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 212", "title": "Petrochemicals", "credits": 3, "prereqs": ["CHE 112"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 223", "title": "Applied Mass Transfer", "credits": 3, "prereqs": ["CHE 112"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 301", "title": "Plant Design", "credits": 3, "prereqs": ["CHE 223"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 312", "title": "Advanced Reaction Engineering", "credits": 3, "prereqs": ["CHE 201"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 323", "title": "Separation Laboratory", "credits": 1, "prereqs": ["CHE 223"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 334", "title": "Topics in Process Control", "credits": 3, "prereqs": ["CHE 201"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 401", "title": "Petrochemicals Project", "credits": 4, "prereqs": ["CHE 323"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 412", "title": "Seminar in Mass Transfer", "credits": 3, "prereqs": ["CHE 301", "MEC 334"], "programme": "CHE", "college": "ENG"}
+{"code": "CHE 423", "title": "Capstone in Plant Design", "credits": 4, "prereqs": ["CHE 301"], "programme": "CHE", "college": "ENG"}
+{"code": "ACC 101", "title": "Introduction to Financial Accounting", "credits": 3, "prereqs": [], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 112", "title": "Foundations of Auditing", "credits": 3, "prereqs": [], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 201", "title": "Cost Accounting", "credits": 3, "prereqs": ["ACC 112"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 212", "title": "Zakat and Tax", "credits": 3, "prereqs": ["ACC 101"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 223", "title": "Applied Accounting Systems", "credits": 3, "prereqs": ["ACC 101", "MKT 101"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 301", "title": "Reporting Standards", "credits": 3, "prereqs": ["ACC 223", "ECO 112"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 312", "title": "Advanced Financial Accounting", "credits": 3, "prereqs": ["ACC 201", "ACC 112"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 323", "title": "Auditing Laboratory", "credits": 1, "prereqs": ["ACC 201", "ACC 223", "MGT 212"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 334", "title": "Topics in Cost Accounting", "credits": 3, "prereqs": ["ACC 212", "ACC 101", "FIN 101"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 401", "title": "Zakat and Tax Project", "credits": 4, "prereqs": ["ACC 301"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 412", "title": "Seminar in Accounting Systems", "credits": 3, "prereqs": ["ACC 334", "ACC 312", "FIN 212"], "programme": "ACC", "college": "BUS"}
+{"code": "ACC 423", "title": "Capstone in Reporting Standards", "credits": 4, "prereqs": ["ACC 323"], "programme": "ACC", "college": "BUS"}
+{"code": "FIN 101", "title": "Introduction to Corporate Finance", "credits": 3, "prereqs": [], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 112", "title": "Foundations of Investments", "credits": 3, "prereqs": [], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 201", "title": "Banking", "credits": 3, "prereqs": ["FIN 101"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 212", "title": "Risk Management", "credits": 3, "prereqs": ["FIN 101"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 223", "title": "Applied Financial Markets", "credits": 3, "prereqs": ["FIN 112"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 301", "title": "Islamic Finance", "credits": 3, "prereqs": ["FIN 223"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 312", "title": "Advanced Corporate Finance", "credits": 3, "prereqs": ["FIN 201", "FIN 212"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 323", "title": "Investments Laboratory", "credits": 1, "prereqs": ["FIN 223"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 334", "title": "Topics in Banking", "credits": 3, "prereqs": ["FIN 223"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 401", "title": "Risk Management Project", "credits": 4, "prereqs": ["FIN 323"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 412", "title": "Seminar in Financial Markets", "credits": 3, "prereqs": ["FIN 301"], "programme": "FIN", "college": "BUS"}
+{"code": "FIN 423", "title": "Capstone in Islamic Finance", "credits": 4, "prereqs": ["FIN 323"], "programme": "FIN", "college": "BUS"}
+{"code": "MKT 101", "title": "Introduction to Consumer Behaviour", "credits": 3, "prereqs": [], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 112", "title": "Foundations of Digital Marketing", "credits": 3, "prereqs": [], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 201", "title": "Branding", "credits": 3, "prereqs": ["MKT 101"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 212", "title": "Market Research", "credits": 3, "prereqs": ["MKT 101", "MKT 112", "ACC 101"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 223", "title": "Applied Sales", "credits": 3, "prereqs": ["MKT 101"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 301", "title": "Services Marketing", "credits": 3, "prereqs": ["MKT 201"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 312", "title": "Advanced Consumer Behaviour", "credits": 3, "prereqs": ["MKT 212"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 323", "title": "Digital Marketing Laboratory", "credits": 1, "prereqs": ["MKT 212"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 334", "title": "Topics in Branding", "credits": 3, "prereqs": ["MKT 201"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 401", "title": "Market Research Project", "credits": 4, "prereqs": ["MKT 312"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 412", "title": "Seminar in Sales", "credits": 3, "prereqs": ["MKT 312"], "programme": "MKT", "college": "BUS"}
+{"code": "MKT 423", "title": "Capstone in Services Marketing", "credits": 4, "prereqs": ["MKT 323", "MKT 301"], "programme": "MKT", "college": "BUS"}
+{"code": "MGT 101", "title": "Introduction to Organisational Behaviour", "credits": 3, "prereqs": [], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 112", "title": "Foundations of Human Resources", "credits": 3, "prereqs": [], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 201", "title": "Strategy", "credits": 3, "prereqs": ["MGT 101"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 212", "title": "Entrepreneurship", "credits": 3, "prereqs": ["MGT 112"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 223", "title": "Applied Leadership", "credits": 3, "prereqs": ["MGT 101", "FIN 112"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 301", "title": "Operations", "credits": 3, "prereqs": ["MGT 201"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 312", "title": "Advanced Organisational Behaviour", "credits": 3, "prereqs": ["MGT 212"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 323", "title": "Human Resources Laboratory", "credits": 1, "prereqs": ["MGT 212", "MKT 101"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 334", "title": "Topics in Strategy", "credits": 3, "prereqs": ["MGT 212"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 401", "title": "Entrepreneurship Project", "credits": 4, "prereqs": ["MGT 334", "MGT 201"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 412", "title": "Seminar in Leadership", "credits": 3, "prereqs": ["MGT 301", "MGT 312", "ACC 112"], "programme": "MGT", "college": "BUS"}
+{"code": "MGT 423", "title": "Capstone in Operations", "credits": 4, "prereqs": ["MGT 312"], "programme": "MGT", "college": "BUS"}
+{"code": "ECO 101", "title": "Introduction to Microeconomics", "credits": 3, "prereqs": [], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 112", "title": "Foundations of Macroeconomics", "credits": 3, "prereqs": [], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 201", "title": "Econometrics", "credits": 3, "prereqs": ["ECO 101"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 212", "title": "Public Finance", "credits": 3, "prereqs": ["ECO 101", "FIN 112"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 223", "title": "Applied Development", "credits": 3, "prereqs": ["ECO 112"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 301", "title": "Labour Economics", "credits": 3, "prereqs": ["ECO 201"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 312", "title": "Advanced Microeconomics", "credits": 3, "prereqs": ["ECO 212"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 323", "title": "Macroeconomics Laboratory", "credits": 1, "prereqs": ["ECO 223"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 334", "title": "Topics in Econometrics", "credits": 3, "prereqs": ["ECO 223"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 401", "title": "Public Finance Project", "credits": 4, "prereqs": ["ECO 334", "ECO 223"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 412", "title": "Seminar in Development", "credits": 3, "prereqs": ["ECO 334", "FIN 312"], "programme": "ECO", "college": "BUS"}
+{"code": "ECO 423", "title": "Capstone in Labour Economics", "credits": 4, "prereqs": ["ECO 334", "FIN 212"], "programme": "ECO", "college": "BUS"}
+{"code": "NUR 101", "title": "Introduction to Patient Care", "credits": 3, "prereqs": ["UNI 105"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 112", "title": "Foundations of Pharmacology", "credits": 3, "prereqs": ["UNI 105"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 201", "title": "Community Health", "credits": 3, "prereqs": ["NUR 101"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 212", "title": "Critical Care", "credits": 3, "prereqs": ["NUR 112"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 223", "title": "Applied Maternal Health", "credits": 3, "prereqs": ["NUR 101", "NUR 112"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 301", "title": "Nursing Ethics", "credits": 3, "prereqs": ["NUR 201", "PHT 212"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 312", "title": "Advanced Patient Care", "credits": 3, "prereqs": ["NUR 201"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 323", "title": "Pharmacology Laboratory", "credits": 1, "prereqs": ["NUR 201"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 334", "title": "Topics in Community Health", "credits": 3, "prereqs": ["NUR 201", "NUR 112"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 401", "title": "Critical Care Project", "credits": 4, "prereqs": ["NUR 334"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 412", "title": "Seminar in Maternal Health", "credits": 3, "prereqs": ["NUR 323", "NUR 312", "PUH 301"], "programme": "NUR", "college": "HSC"}
+{"code": "NUR 423", "title": "Capstone in Nursing Ethics", "credits": 4, "prereqs": ["NUR 323"], "programme": "NUR", "college": "HSC"}
+{"code": "PHT 101", "title": "Introduction to Anatomy", "credits": 3, "prereqs": ["UNI 105"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 112", "title": "Foundations of Kinesiology", "credits": 3, "prereqs": ["UNI 105"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 201", "title": "Rehabilitation", "credits": 3, "prereqs": ["PHT 112", "NUR 112"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 212", "title": "Sports Injuries", "credits": 3, "prereqs": ["PHT 112", "PHT 101"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 223", "title": "Applied Neurology", "credits": 3, "prereqs": ["PHT 101", "PUH 112"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 301", "title": "Clinical Practice", "credits": 3, "prereqs": ["PHT 201"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 312", "title": "Advanced Anatomy", "credits": 3, "prereqs": ["PHT 201"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 323", "title": "Kinesiology Laboratory", "credits": 1, "prereqs": ["PHT 212", "NUR 212"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 334", "title": "Topics in Rehabilitation", "credits": 3, "prereqs": ["PHT 212", "PUH 112"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 401", "title": "Sports Injuries Project", "credits": 4, "prereqs": ["PHT 334", "PHT 101"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 412", "title": "Seminar in Neurology", "credits": 3, "prereqs": ["PHT 323"], "programme": "PHT", "college": "HSC"}
+{"code": "PHT 423", "title": "Capstone in Clinical Practice", "credits": 4, "prereqs": ["PHT 334"], "programme": "PHT", "college": "HSC"}
+{"code": "CLS 101", "title": "Introduction to Haematology", "credits": 3, "prereqs": [], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 112", "title": "Foundations of Microbiology", "credits": 3, "prereqs": [], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 201", "title": "Clinical Chemistry", "credits": 3, "prereqs": ["CLS 112"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 212", "title": "Immunology", "credits": 3, "prereqs": ["CLS 112", "PHT 101"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 223", "title": "Applied Blood Banking", "credits": 3, "prereqs": ["CLS 112"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 301", "title": "Laboratory Quality", "credits": 1, "prereqs": ["CLS 223", "CLS 112"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 312", "title": "Advanced Haematology", "credits": 3, "prereqs": ["CLS 223"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 323", "title": "Microbiology Laboratory", "credits": 1, "prereqs": ["CLS 212"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 334", "title": "Topics in Clinical Chemistry", "credits": 3, "prereqs": ["CLS 223"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 401", "title": "Immunology Project", "credits": 4, "prereqs": ["CLS 334", "CLS 212"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 412", "title": "Seminar in Blood Banking", "credits": 3, "prereqs": ["CLS 301"], "programme": "CLS", "college": "HSC"}
+{"code": "CLS 423", "title": "Capstone in Laboratory Quality", "credits": 4, "prereqs": ["CLS 312", "CLS 101"], "programme": "CLS", "college": "HSC"}
+{"code": "PUH 101", "title": "Introduction to Epidemiology", "credits": 3, "prereqs": [], "programme": "PH", "college": "HSC"}
+{"code": "PUH 112", "title": "Foundations of Biostatistics", "credits": 3, "prereqs": [], "programme": "PH", "college": "HSC"}
+{"code": "PUH 201", "title": "Health Policy", "credits": 3, "prereqs": ["PUH 112"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 212", "title": "Environmental Health", "credits": 3, "prereqs": ["PUH 112"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 223", "title": "Applied Nutrition", "credits": 3, "prereqs": ["PUH 112"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 301", "title": "Health Promotion", "credits": 3, "prereqs": ["PUH 223"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 312", "title": "Advanced Epidemiology", "credits": 3, "prereqs": ["PUH 201"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 323", "title": "Biostatistics Laboratory", "credits": 1, "prereqs": ["PUH 223"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 334", "title": "Topics in Health Policy", "credits": 3, "prereqs": ["PUH 201"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 401", "title": "Environmental Health Project", "credits": 4, "prereqs": ["PUH 334"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 412", "title": "Seminar in Nutrition", "credits": 3, "prereqs": ["PUH 301"], "programme": "PH", "college": "HSC"}
+{"code": "PUH 423", "title": "Capstone in Health Promotion", "credits": 4, "prereqs": ["PUH 301"], "programme": "PH", "college": "HSC"}
+{"code": "HIM 101", "title": "Introduction to Health Records", "credits": 3, "prereqs": [], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 112", "title": "Foundations of Clinical Coding", "credits": 3, "prereqs": ["UNI 105"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 201", "title": "Health Data Standards", "credits": 3, "prereqs": ["HIM 101", "HIM 112"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 212", "title": "Telehealth", "credits": 3, "prereqs": ["HIM 112", "PUH 112"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 223", "title": "Applied Health Analytics", "credits": 3, "prereqs": ["HIM 101"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 301", "title": "Privacy", "credits": 3, "prereqs": ["HIM 201", "HIM 223"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 312", "title": "Advanced Health Records", "credits": 3, "prereqs": ["HIM 223"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 323", "title": "Clinical Coding Laboratory", "credits": 1, "prereqs": ["HIM 212", "NUR 201"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 334", "title": "Topics in Health Data Standards", "credits": 3, "prereqs": ["HIM 201"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 401", "title": "Telehealth Project", "credits": 4, "prereqs": ["HIM 301", "NUR 212"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 412", "title": "Seminar in Health Analytics", "credits": 3, "prereqs": ["HIM 312", "HIM 212"], "programme": "HIM", "college": "HSC"}
+{"code": "HIM 423", "title": "Capstone in Privacy", "credits": 4, "prereqs": ["HIM 301", "HIM 212"], "programme": "HIM", "college": "HSC"}
+{"code": "MTH 101", "title": "Introduction to Calculus", "credits": 3, "prereqs": ["UNI 105"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 112", "title": "Foundations of Linear Algebra", "credits": 3, "prereqs": [], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 201", "title": "Differential Equations", "credits": 3, "prereqs": ["MTH 112"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 212", "title": "Probability", "credits": 3, "prereqs": ["MTH 112"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 223", "title": "Applied Numerical Analysis", "credits": 3, "prereqs": ["MTH 101", "MTH 112", "STA 112"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 301", "title": "Abstract Algebra", "credits": 3, "prereqs": ["MTH 212"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 312", "title": "Advanced Calculus", "credits": 3, "prereqs": ["MTH 223"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 323", "title": "Linear Algebra Laboratory", "credits": 1, "prereqs": ["MTH 212", "BIO 212"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 334", "title": "Topics in Differential Equations", "credits": 3, "prereqs": ["MTH 223"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 401", "title": "Probability Project", "credits": 4, "prereqs": ["MTH 323", "MTH 312"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 412", "title": "Seminar in Numerical Analysis", "credits": 3, "prereqs": ["MTH 323"], "programme": "MTH", "college": "SCI"}
+{"code": "MTH 423", "title": "Capstone in Abstract Algebra", "credits": 4, "prereqs": ["MTH 312", "BIO 334"], "programme": "MTH", "college": "SCI"}
+{"code": "PHY 101", "title": "Introduction to Mechanics", "credits": 3, "prereqs": [], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 112", "title": "Foundations of Electromagnetism", "credits": 3, "prereqs": ["UNI 105"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 201", "title": "Quantum Physics", "credits": 3, "prereqs": ["PHY 112"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 212", "title": "Optics", "credits": 3, "prereqs": ["PHY 112"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 223", "title": "Applied Thermal Physics", "credits": 3, "prereqs": ["PHY 112"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 301", "title": "Solid State", "credits": 3, "prereqs": ["PHY 223"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 312", "title": "Advanced Mechanics", "credits": 3, "prereqs": ["PHY 201"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 323", "title": "Electromagnetism Laboratory", "credits": 1, "prereqs": ["PHY 223", "PHY 212"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 334", "title": "Topics in Quantum Physics", "credits": 3, "prereqs": ["PHY 212", "CHM 201"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 401", "title": "Optics Project", "credits": 4, "prereqs": ["PHY 323", "MTH 112"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 412", "title": "Seminar in Thermal Physics", "credits": 3, "prereqs": ["PHY 334"], "programme": "PHY", "college": "SCI"}
+{"code": "PHY 423", "title": "Capstone in Solid State", "credits": 4, "prereqs": ["PHY 323"], "programme": "PHY", "college": "SCI"}
+{"code": "CHM 101", "title": "Introduction to Organic Chemistry", "credits": 3, "prereqs": ["UNI 105"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 112", "title": "Foundations of Analytical Chemistry", "credits": 3, "prereqs": ["UNI 105"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 201", "title": "Physical Chemistry", "credits": 3, "prereqs": ["CHM 112"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 212", "title": "Inorganic Chemistry", "credits": 3, "prereqs": ["CHM 101"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 223", "title": "Applied Biochemistry", "credits": 3, "prereqs": ["CHM 101"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 301", "title": "Spectroscopy", "credits": 3, "prereqs": ["CHM 223", "CHM 101"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 312", "title": "Advanced Organic Chemistry", "credits": 3, "prereqs": ["CHM 201"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 323", "title": "Analytical Chemistry Laboratory", "credits": 1, "prereqs": ["CHM 212", "CHM 223"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 334", "title": "Topics in Physical Chemistry", "credits": 3, "prereqs": ["CHM 212", "CHM 201"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 401", "title": "Inorganic Chemistry Project", "credits": 4, "prereqs": ["CHM 334", "STA 334"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 412", "title": "Seminar in Biochemistry", "credits": 3, "prereqs": ["CHM 334"], "programme": "CHM", "college": "SCI"}
+{"code": "CHM 423", "title": "Capstone in Spectroscopy", "credits": 4, "prereqs": ["CHM 301"], "programme": "CHM", "college": "SCI"}
+{"code": "BIO 101", "title": "Introduction to Genetics", "credits": 3, "prereqs": ["UNI 105"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 112", "title": "Foundations of Cell Biology", "credits": 3, "prereqs": ["UNI 105"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 201", "title": "Ecology", "credits": 3, "prereqs": ["BIO 112"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 212", "title": "Botany", "credits": 3, "prereqs": ["BIO 112"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 223", "title": "Applied Zoology", "credits": 3, "prereqs": ["BIO 112", "BIO 101"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 301", "title": "Molecular Biology", "credits": 3, "prereqs": ["BIO 201"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 312", "title": "Advanced Genetics", "credits": 3, "prereqs": ["BIO 223"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 323", "title": "Cell Biology Laboratory", "credits": 1, "prereqs": ["BIO 201"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 334", "title": "Topics in Ecology", "credits": 3, "prereqs": ["BIO 223", "BIO 112"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 401", "title": "Botany Project", "credits": 4, "prereqs": ["BIO 301"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 412", "title": "Seminar in Zoology", "credits": 3, "prereqs": ["BIO 301"], "programme": "BIO", "college": "SCI"}
+{"code": "BIO 423", "title": "Capstone in Molecular Biology", "credits": 4, "prereqs": ["BIO 301", "BIO 101"], "programme": "BIO", "college": "SCI"}
+{"code": "STA 101", "title": "Introduction to Sampling", "credits": 3, "prereqs": ["UNI 105"], "programme": "STA", "college": "SCI"}
+{"code": "STA 112", "title": "Foundations of Regression", "credits": 3, "prereqs": ["UNI 105"], "programme": "STA", "college": "SCI"}
+{"code": "STA 201", "title": "Experimental Design", "credits": 3, "prereqs": ["STA 101", "STA 112"], "programme": "STA", "college": "SCI"}
+{"code": "STA 212", "title": "Time Series", "credits": 3, "prereqs": ["STA 101"], "programme": "STA", "college": "SCI"}
+{"code": "STA 223", "title": "Applied Statistical Computing", "credits": 3, "prereqs": ["STA 112"], "programme": "STA", "college": "SCI"}
+{"code": "STA 301", "title": "Inference", "credits": 3, "prereqs": ["STA 212"], "programme": "STA", "college": "SCI"}
+{"code": "STA 312", "title": "Advanced Sampling", "credits": 3, "prereqs": ["STA 201"], "programme": "STA", "college": "SCI"}
+{"code": "STA 323", "title": "Regression Laboratory", "credits": 1, "prereqs": ["STA 201"], "programme": "STA", "college": "SCI"}
+{"code": "STA 334", "title": "Topics in Experimental Design", "credits": 3, "prereqs": ["STA 212"], "programme": "STA", "college": "SCI"}
+{"code": "STA 401", "title": "Time Series Project", "credits": 4, "prereqs": ["STA 301", "STA 334"], "programme": "STA", "college": "SCI"}
+{"code": "STA 412", "title": "Seminar in Statistical Computing", "credits": 3, "prereqs": ["STA 301", "STA 323"], "programme": "STA", "college": "SCI"}
+{"code": "STA 423", "title": "Capstone in Inference", "credits": 4, "prereqs": ["STA 301"], "programme": "STA", "college": "SCI"}
+{"code": "ARB 101", "title": "Introduction to Grammar", "credits": 3, "prereqs": [], "programme": "ARB", "college": "ART"}
+{"code": "ARB 112", "title": "Foundations of Morphology", "credits": 3, "prereqs": [], "programme": "ARB", "college": "ART"}
+{"code": "ARB 201", "title": "Rhetoric", "credits": 3, "prereqs": ["ARB 101"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 212", "title": "Classical Poetry", "credits": 3, "prereqs": ["ARB 101", "ARB 112"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 223", "title": "Applied Modern Prose", "credits": 3, "prereqs": ["ARB 112"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 301", "title": "Linguistics", "credits": 3, "prereqs": ["ARB 212"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 312", "title": "Advanced Grammar", "credits": 3, "prereqs": ["ARB 201", "ARB 212"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 323", "title": "Morphology Laboratory", "credits": 1, "prereqs": ["ARB 223"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 334", "title": "Topics in Rhetoric", "credits": 3, "prereqs": ["ARB 223"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 401", "title": "Classical Poetry Project", "credits": 4, "prereqs": ["ARB 334", "ARB 323"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 412", "title": "Seminar in Modern Prose", "credits": 3, "prereqs": ["ARB 312"], "programme": "ARB", "college": "ART"}
+{"code": "ARB 423", "title": "Capstone in Linguistics", "credits": 4, "prereqs": ["ARB 334"], "programme": "ARB", "college": "ART"}
+{"code": "ENL 101", "title": "Introduction to Translation", "credits": 3, "prereqs": [], "programme": "ENL", "college": "ART"}
+{"code": "ENL 112", "title": "Foundations of Phonetics", "credits": 3, "prereqs": [], "programme": "ENL", "college": "ART"}
+{"code": "ENL 201", "title": "Literature", "credits": 3, "prereqs": ["ENL 101", "GEO 101"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 212", "title": "Academic Writing", "credits": 3, "prereqs": ["ENL 112"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 223", "title": "Applied Interpreting", "credits": 3, "prereqs": ["ENL 112"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 301", "title": "Discourse Analysis", "credits": 3, "prereqs": ["ENL 223", "ENL 212"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 312", "title": "Advanced Translation", "credits": 3, "prereqs": ["ENL 212"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 323", "title": "Phonetics Laboratory", "credits": 1, "prereqs": ["ENL 223"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 334", "title": "Topics in Literature", "credits": 3, "prereqs": ["ENL 212", "ENL 112"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 401", "title": "Academic Writing Project", "credits": 4, "prereqs": ["ENL 301", "ENL 323"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 412", "title": "Seminar in Interpreting", "credits": 3, "prereqs": ["ENL 334", "ENL 323"], "programme": "ENL", "college": "ART"}
+{"code": "ENL 423", "title": "Capstone in Discourse Analysis", "credits": 4, "prereqs": ["ENL 312"], "programme": "ENL", "college": "ART"}
+{"code": "HIS 101", "title": "Introduction to History of the Arabian Peninsula", "credits": 3, "prereqs": [], "programme": "HIS", "college": "ART"}
+{"code": "HIS 112", "title": "Foundations of Archaeology", "credits": 3, "prereqs": [], "programme": "HIS", "college": "ART"}
+{"code": "HIS 201", "title": "Historiography", "credits": 3, "prereqs": ["HIS 112"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 212", "title": "Modern History", "credits": 3, "prereqs": ["HIS 101"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 223", "title": "Applied Manuscripts", "credits": 3, "prereqs": ["HIS 101", "MDC 112"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 301", "title": "Heritage", "credits": 3, "prereqs": ["HIS 212", "ARB 212"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 312", "title": "Advanced History of the Arabian Peninsula", "credits": 3, "prereqs": ["HIS 223"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 323", "title": "Archaeology Laboratory", "credits": 1, "prereqs": ["HIS 201"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 334", "title": "Topics in Historiography", "credits": 3, "prereqs": ["HIS 212", "HIS 112", "MDC 101"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 401", "title": "Modern History Project", "credits": 4, "prereqs": ["HIS 334"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 412", "title": "Seminar in Manuscripts", "credits": 3, "prereqs": ["HIS 312"], "programme": "HIS", "college": "ART"}
+{"code": "HIS 423", "title": "Capstone in Heritage", "credits": 4, "prereqs": ["HIS 334", "GEO 101"], "programme": "HIS", "college": "ART"}
+{"code": "GEO 101", "title": "Introduction to Cartography", "credits": 3, "prereqs": [], "programme": "GEO", "college": "ART"}
+{"code": "GEO 112", "title": "Foundations of Geographic Information Systems", "credits": 3, "prereqs": [], "programme": "GEO", "college": "ART"}
+{"code": "GEO 201", "title": "Climatology", "credits": 3, "prereqs": ["GEO 101"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 212", "title": "Urban Geography", "credits": 3, "prereqs": ["GEO 112", "GEO 101", "HIS 112"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 223", "title": "Applied Population", "credits": 3, "prereqs": ["GEO 112"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 301", "title": "Remote Sensing", "credits": 3, "prereqs": ["GEO 212"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 312", "title": "Advanced Cartography", "credits": 3, "prereqs": ["GEO 201"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 323", "title": "Geographic Information Systems Laboratory", "credits": 1, "prereqs": ["GEO 223", "HIS 101"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 334", "title": "Topics in Climatology", "credits": 3, "prereqs": ["GEO 201"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 401", "title": "Urban Geography Project", "credits": 4, "prereqs": ["GEO 334", "GEO 112"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 412", "title": "Seminar in Population", "credits": 3, "prereqs": ["GEO 323", "GEO 334"], "programme": "GEO", "college": "ART"}
+{"code": "GEO 423", "title": "Capstone in Remote Sensing", "credits": 4, "prereqs": ["GEO 334"], "programme": "GEO", "college": "ART"}
+{"code": "MDC 101", "title": "Introduction to Journalism", "credits": 3, "prereqs": [], "programme": "MED", "college": "ART"}
+{"code": "MDC 112", "title": "Foundations of Public Relations", "credits": 3, "prereqs": [], "programme": "MED", "college": "ART"}
+{"code": "MDC 201", "title": "Digital Media", "credits": 3, "prereqs": ["MDC 101"], "programme": "MED", "college": "ART"}
+{"code": "MDC 212", "title": "Media Law", "credits": 3, "prereqs": ["MDC 101"], "programme": "MED", "college": "ART"}
+{"code": "MDC 223", "title": "Applied Broadcasting", "credits": 3, "prereqs": ["MDC 101"], "programme": "MED", "college": "ART"}
+{"code": "MDC 301", "title": "Communication Theory", "credits": 3, "prereqs": ["MDC 212", "MDC 201"], "programme": "MED", "college": "ART"}
+{"code": "MDC 312", "title": "Advanced Journalism", "credits": 3, "prereqs": ["MDC 201"], "programme": "MED", "college": "ART"}
+{"code": "MDC 323", "title": "Public Relations Laboratory", "credits": 1, "prereqs": ["MDC 212"], "programme": "MED", "college": "ART"}
+{"code": "MDC 334", "title": "Topics in Digital Media", "credits": 3, "prereqs": ["MDC 212", "MDC 112"], "programme": "MED", "college": "ART"}
+{"code": "MDC 401", "title": "Media Law Project", "credits": 4, "prereqs": ["MDC 312"], "programme": "MED", "college": "ART"}
+{"code": "MDC 412", "title": "Seminar in Broadcasting", "credits": 3, "prereqs": ["MDC 301", "ARB 334"], "programme": "MED", "college": "ART"}
+{"code": "MDC 423", "title": "Capstone in Communication Theory", "credits": 4, "prereqs": ["MDC 334"], "programme": "MED", "college": "ART"}

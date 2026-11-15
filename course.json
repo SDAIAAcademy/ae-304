@@ -90,66 +90,166 @@
       "sessions": [
         {
           "title": "Retrieval is measured on its own",
+          "summary": "Judge relevance in grades, pool candidates, and score the retrieval layer apart from the answers, by language",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Judge graded relevance against a written guideline",
+            "Compute recall at 10, reciprocal rank and nDCG at 10",
+            "Report retrieval quality by language and query type"
           ],
           "lo": [
             "LO1"
           ],
           "lab": {
             "id": "1.1",
-            "title": "Judge graded relevance for 40 bilingual queries and score a provided baseline",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Graded judgements and a baseline score",
             "minutes": 25,
-            "href": "D1_1_judge_graded_relevance.ipynb"
+            "summary": "Judge graded relevance for 40 bilingual queries in pairs, measure agreement with the reference judgements of test set v1, and score the supplied baseline by language and query type.",
+            "href": "D1_1_judge_graded_relevance.ipynb",
+            "steps": [
+              {
+                "text": "The guideline and the pools",
+                "minutes": 3
+              },
+              {
+                "text": "Judge your 20 queries, in pairs",
+                "minutes": 9
+              },
+              {
+                "text": "Agreement with the reference judgements",
+                "minutes": 4
+              },
+              {
+                "text": "Recall at 10, reciprocal rank, nDCG at 10",
+                "minutes": 6
+              },
+              {
+                "text": "By language and by query type",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Five queries of your own as test set v1.1"
           }
         },
         {
           "title": "Lexical search and Arabic text",
+          "summary": "Inverted indexes and BM25 in SQLite, and what Arabic spelling and dialect do to word matching",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Explain how BM25 weighs rare and repeated words",
+            "Normalise Arabic text and apply light stemming on both sides",
+            "Measure the gain on Arabic and dialect queries"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "1.2",
-            "title": "Run BM25 with and without Arabic normalisation and compare recall on Arabic and dialect queries",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "BM25 with and without Arabic normalisation",
             "minutes": 25,
-            "href": "D1_2_run_bm25_without.ipynb"
+            "summary": "Run BM25 in SQLite full-text search on raw text and after your own Arabic normalisation and light stemming, and compare recall on Arabic and dialect queries.",
+            "href": "D1_2_run_bm25_without.ipynb",
+            "steps": [
+              {
+                "text": "FTS5 on raw text: the baseline again",
+                "minutes": 4
+              },
+              {
+                "text": "Write the normaliser",
+                "minutes": 7
+              },
+              {
+                "text": "Light stemming and a second index",
+                "minutes": 6
+              },
+              {
+                "text": "Compare by language and on dialect queries",
+                "minutes": 5
+              },
+              {
+                "text": "Read three dialect failures",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Give the title its own column and weight"
           }
         },
         {
           "title": "Dense retrieval and embedding choice",
+          "summary": "Multilingual embeddings, their conventions, exact and approximate indexes, and what each costs",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Embed pages and queries with an open multilingual model",
+            "Follow a model card's input conventions and show why they matter",
+            "Compare exact and approximate indexes on quality, size and latency"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "1.3",
-            "title": "Embed a 300-page sample with two open multilingual models, load the supplied full indexes and compare quality, index size and latency",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Two embedding models: quality, size and latency",
             "minutes": 25,
-            "href": "D1_3_embed_300_page.ipynb"
+            "summary": "Embed a 300-page sample with two open multilingual models, load the supplied full indexes and compare quality, index size and latency, exact and with HNSW.",
+            "href": "D1_3_embed_300_page.ipynb",
+            "steps": [
+              {
+                "text": "Embed the 300-page sample",
+                "minutes": 6
+              },
+              {
+                "text": "What e5's prefixes are for",
+                "minutes": 4
+              },
+              {
+                "text": "Load the full indexes and search exactly",
+                "minutes": 6
+              },
+              {
+                "text": "An HNSW index: recall against exact, size, latency",
+                "minutes": 6
+              },
+              {
+                "text": "One row per model in the results table",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Store the vectors in eight bits"
           }
         },
         {
           "title": "Hybrid search and reranking",
+          "summary": "Fuse lexical and dense rankings, rerank the top with a cross-encoder, and weigh the gain against the latency",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Fuse two rankings with reciprocal rank fusion",
+            "Rerank candidates with a cross-encoder",
+            "Decide on a reranker from its gain and its 95th-percentile latency"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "1.4",
-            "title": "Fuse lexical and dense rankings, add a reranker and report the gain against the added latency",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Fusion, a reranker and its latency",
             "minutes": 25,
-            "href": "D1_4_fuse_lexical_dense.ipynb"
+            "summary": "Fuse lexical and dense rankings, add a reranker on the fused top 30 and report the gain by language against the added latency in the Day 1 results table.",
+            "href": "D1_4_fuse_lexical_dense.ipynb",
+            "steps": [
+              {
+                "text": "Reciprocal rank fusion",
+                "minutes": 7
+              },
+              {
+                "text": "Score fusion and the problem of scales",
+                "minutes": 5
+              },
+              {
+                "text": "Rerank the fused top 30",
+                "minutes": 6
+              },
+              {
+                "text": "The gain against the added latency",
+                "minutes": 7
+              }
+            ],
+            "stretch": "The rerank depth that fits a latency budget"
           }
         }
       ]
@@ -162,66 +262,170 @@
       "sessions": [
         {
           "title": "Parsing is a separate problem",
+          "summary": "Score parsers apart from retrieval: word error rate and table cells by page type, and a rule that routes each page to the parser that reads it",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Score parsed text against reference text with a word error rate",
+            "Score tables cell by cell",
+            "Route pages to a parser by page type"
           ],
           "lo": [
             "LO3"
           ],
           "lab": {
             "id": "2.1",
-            "title": "Score two parsers on 30 pages against reference text and tables",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Two parsers scored on 30 pages",
             "minutes": 25,
-            "href": "D2_1_score_two_parsers.ipynb"
+            "summary": "Score a text-layer parser and a layout-aware parser on 30 scanned and digital pages with tables against reference text, by page type, and write the routing rule that picks one per page.",
+            "href": "D2_1_score_two_parsers.ipynb",
+            "steps": [
+              {
+                "text": "One page, three ways",
+                "minutes": 3
+              },
+              {
+                "text": "Word error rate after normalisation",
+                "minutes": 7
+              },
+              {
+                "text": "Table-cell accuracy",
+                "minutes": 6
+              },
+              {
+                "text": "Scores by page type",
+                "minutes": 5
+              },
+              {
+                "text": "A routing rule, and its score",
+                "minutes": 4
+              }
+            ],
+            "stretch": "Repair the text layer and score it again"
           }
         },
         {
           "title": "Chunking by structure",
+          "summary": "Chunk by the document's own structure, carry the heading path into each chunk, and test chunking by the questions it can answer",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Chunk documents by headings and keep the heading path",
+            "Compare chunkings by retrieval on table questions",
+            "Recommend a chunking from the evidence"
           ],
           "lo": [
             "LO3"
           ],
           "lab": {
             "id": "2.2",
-            "title": "Chunk study plans by headings and by fixed windows and compare retrieval on table questions",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Two chunkings of the study plans",
             "minutes": 25,
-            "href": "D2_2_chunk_study_plans.ipynb"
+            "summary": "Chunk the study plans in fixed windows and by headings with their heading path, and compare how many of 20 table questions each chunking answers in the top 3.",
+            "href": "D2_2_chunk_study_plans.ipynb",
+            "steps": [
+              {
+                "text": "One plan, as the parser gave it",
+                "minutes": 3
+              },
+              {
+                "text": "Fixed windows of 120 words",
+                "minutes": 5
+              },
+              {
+                "text": "Chunks by heading, with the heading path",
+                "minutes": 8
+              },
+              {
+                "text": "Retrieve and score on 20 table questions",
+                "minutes": 6
+              },
+              {
+                "text": "The recommendation",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Window size against answerability"
           }
         },
         {
           "title": "Dates, versions and duplicates",
+          "summary": "Give every version a validity interval, drop near-duplicates, and test that the current rule comes first",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Read effective dates and amended articles from circulars",
+            "Keep a validity interval for every version",
+            "Remove near-duplicates and write staleness tests"
           ],
           "lo": [
             "LO4"
           ],
           "lab": {
             "id": "2.3",
-            "title": "Add effective dates and deduplication and test 15 questions whose answer changed in a newer circular",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Effective dates, versions and duplicates",
             "minutes": 25,
-            "href": "D2_3_add_effective_dates.ipynb"
+            "summary": "Read effective dates from the circulars, give every version a validity interval, drop near-duplicate copies, and pass 15 staleness tests whose answer changed in a newer circular.",
+            "href": "D2_3_add_effective_dates.ipynb",
+            "steps": [
+              {
+                "text": "Fifteen questions, answered from stale text",
+                "minutes": 3
+              },
+              {
+                "text": "Read effective dates and amended articles",
+                "minutes": 7
+              },
+              {
+                "text": "A validity interval for every version",
+                "minutes": 5
+              },
+              {
+                "text": "Near-duplicates by shingles",
+                "minutes": 5
+              },
+              {
+                "text": "Staleness tests",
+                "minutes": 5
+              }
+            ],
+            "stretch": "A question about the past"
           }
         },
         {
           "title": "Permissions in the index",
+          "summary": "Carry role and classification on every chunk, filter before ranking, and test leaks from a student account as a suite",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Tag every chunk with its document's classification and roles",
+            "Filter before ranking rather than after",
+            "Run leak and utility tests from a student account"
           ],
           "lo": [
             "LO4"
           ],
           "lab": {
             "id": "2.4",
-            "title": "Tag chunks with role and classification and run leak tests from a student account",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Role labels and leak tests",
             "minutes": 25,
-            "href": "D2_4_tag_chunks_role.ipynb"
+            "summary": "Tag every page with role and classification from its document, filter before ranking, and run 12 leak tests from a student account with a utility check that nothing allowed is lost.",
+            "href": "D2_4_tag_chunks_role.ipynb",
+            "steps": [
+              {
+                "text": "Search as Muath with no filter",
+                "minutes": 4
+              },
+              {
+                "text": "Tag every page from its document",
+                "minutes": 6
+              },
+              {
+                "text": "Filter before ranking, not after",
+                "minutes": 6
+              },
+              {
+                "text": "The leak suite and the utility check",
+                "minutes": 6
+              },
+              {
+                "text": "Retrieved text is untrusted",
+                "minutes": 3
+              }
+            ],
+            "stretch": "The registrar's view: no over-blocking"
           }
         }
       ]
@@ -234,66 +438,162 @@
       "sessions": [
         {
           "title": "Search as tools for an agent",
+          "summary": "Listing, keyword and vector search as tools, described by when to use each, and the agent's choices read in its traces",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Write search tools whose descriptions say when to use them",
+            "Trace an agent's tool choices",
+            "Judge a choice by its cost and its answer"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.1",
-            "title": "Expose file listing, keyword and vector search as tools and trace the agent's choices on 15 questions",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Three search tools and a traced agent",
             "minutes": 25,
-            "href": "D3_1_expose_file_listing.ipynb"
+            "summary": "Expose file listing, keyword search and vector search as tools, run 15 questions through a tool-calling loop and read the traces: which tool, how many calls, how many tokens, and whether the answer was right.",
+            "href": "D3_1_expose_file_listing.ipynb",
+            "steps": [
+              {
+                "text": "The file tree, and listing it",
+                "minutes": 5
+              },
+              {
+                "text": "Keyword and vector search as tools",
+                "minutes": 7
+              },
+              {
+                "text": "Fifteen questions through the loop",
+                "minutes": 6
+              },
+              {
+                "text": "Read the traces: choice, calls, answer",
+                "minutes": 7
+              }
+            ],
+            "stretch": "A misleading description"
           }
         },
         {
           "title": "Multi-step questions",
+          "summary": "Search again from what you read, stop on an answer, a budget or a repeated query, and compare with one search",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Write an iterative search loop with stop rules",
+            "Compare single-shot and iterative search on accuracy, searches and tokens",
+            "Set a search budget from the evidence"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.2",
-            "title": "Compare single-shot and iterative search on ten multi-hop questions",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Single-shot against iterative search",
             "minutes": 25,
-            "href": "D3_2_compare_single_shot.ipynb"
+            "summary": "Answer ten two-hop questions with one search and with an iterative loop that searches again from what it read, and compare accuracy, searches and tokens.",
+            "href": "D3_2_compare_single_shot.ipynb",
+            "steps": [
+              {
+                "text": "Single-shot: one search, then answer",
+                "minutes": 5
+              },
+              {
+                "text": "The iterative loop and its stop rules",
+                "minutes": 9
+              },
+              {
+                "text": "Ten questions both ways",
+                "minutes": 6
+              },
+              {
+                "text": "Accuracy, searches and tokens",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Three hops"
           }
         },
         {
           "title": "Paging and offloading",
+          "summary": "Keep large results out of the context: a file, a stub and a tool to search it",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Measure what a large result costs in tokens",
+            "Offload results to a file behind a stub",
+            "Compare accuracy and tokens with and without offloading"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.3",
-            "title": "Offload large search results to files and measure tokens and accuracy",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Offloading large results to files",
             "minutes": 25,
-            "href": "D3_3_offload_large_search.ipynb"
+            "summary": "Answer eight counting questions whose search results exceed the context budget, first in context and then with the results offloaded to a file and a tool to search it, and compare accuracy and tokens.",
+            "href": "D3_3_offload_large_search.ipynb",
+            "steps": [
+              {
+                "text": "How large is a large result?",
+                "minutes": 4
+              },
+              {
+                "text": "Eight questions inside the budget, no offloading",
+                "minutes": 5
+              },
+              {
+                "text": "Offload: a file and a stub",
+                "minutes": 7
+              },
+              {
+                "text": "A tool to search the file",
+                "minutes": 5
+              },
+              {
+                "text": "Tokens and accuracy, both ways",
+                "minutes": 4
+              }
+            ],
+            "stretch": "Paging instead of searching"
           }
         },
         {
           "title": "Knowledge graphs for linked facts",
+          "summary": "A small graph for facts that are links, queried with tools, measured against search",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Build a graph of courses, programmes and prerequisites from extracted facts",
+            "Expose graph queries as tools",
+            "Compare relationship answers with and without the graph"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.4",
-            "title": "Build a small graph of courses, prerequisites and rules and answer ten relationship questions with and without it",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "A graph of courses, prerequisites and rules",
             "minutes": 25,
-            "href": "D3_4_build_small_graph.ipynb"
+            "summary": "Build a small graph of courses, programmes and prerequisites, expose three graph queries as tools, and answer ten relationship questions with search only and with the graph.",
+            "href": "D3_4_build_small_graph.ipynb",
+            "steps": [
+              {
+                "text": "Nodes and edges from the extraction",
+                "minutes": 7
+              },
+              {
+                "text": "Three graph queries as tools",
+                "minutes": 7
+              },
+              {
+                "text": "Ten questions without the graph",
+                "minutes": 4
+              },
+              {
+                "text": "The same ten with the graph",
+                "minutes": 4
+              },
+              {
+                "text": "Accuracy, calls and tokens",
+                "minutes": 3
+              }
+            ],
+            "stretch": "A rule edge: transfer requirements"
           }
         }
       ]
@@ -306,66 +606,173 @@
       "sessions": [
         {
           "title": "Questions over a warehouse",
+          "summary": "Let a model write SQL over the warehouse, score it by execution against reference answers, and read the failures by kind",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Give a model a schema and ask it for SQL",
+            "Measure execution accuracy against reference answers",
+            "Classify text-to-SQL failures and what the model could read"
           ],
           "lo": [
             "LO6"
           ],
           "lab": {
             "id": "4.1",
-            "title": "Run free text-to-SQL on 20 statistical questions and measure execution accuracy",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Free text-to-SQL on 20 statistical questions",
             "minutes": 25,
-            "href": "D4_1_run_free_text.ipynb"
+            "summary": "Ask a model for SQL on 20 statistical questions over the student warehouse, measure execution accuracy against the reference answers, classify each failure, and list which tables the queries read.",
+            "href": "D4_1_run_free_text.ipynb",
+            "steps": [
+              {
+                "text": "The schema the model sees",
+                "minutes": 4
+              },
+              {
+                "text": "Ask for SQL on 20 questions",
+                "minutes": 6
+              },
+              {
+                "text": "Execution accuracy against the reference answers",
+                "minutes": 7
+              },
+              {
+                "text": "Read the failures by kind",
+                "minutes": 5
+              },
+              {
+                "text": "What the model was allowed to read",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Business rules in the prompt"
           }
         },
         {
           "title": "Semantic layers and validated SQL",
+          "summary": "Answer through governed metrics: the model picks a metric and filters, code compiles and validates the SQL, and small cells are suppressed",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Define metrics as version-controlled views and a catalog",
+            "Compile and validate metric requests before running them",
+            "Write the decision memo from the comparison"
           ],
           "lo": [
             "LO6"
           ],
           "lab": {
             "id": "4.2",
-            "title": "Answer the same questions through governed metrics with SQL validation and compare",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Governed metrics and validated SQL",
             "minutes": 25,
-            "href": "D4_2_answer_same_questions.ipynb"
+            "summary": "Answer the same 20 questions through a catalog of governed metrics with compiled and validated SQL, compare execution accuracy and confident wrong answers with Lab 4.1, and write the one-page decision memo.",
+            "href": "D4_2_answer_same_questions.ipynb",
+            "steps": [
+              {
+                "text": "The views and the metric catalog",
+                "minutes": 4
+              },
+              {
+                "text": "Compile a metric request to SQL",
+                "minutes": 7
+              },
+              {
+                "text": "Validate before running",
+                "minutes": 6
+              },
+              {
+                "text": "Twenty questions through the layer",
+                "minutes": 5
+              },
+              {
+                "text": "The decision memo",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Small cells"
           }
         },
         {
           "title": "Cost, latency and freshness",
+          "summary": "Cost per question, the 95th-percentile latency of each stage, and how fast a changed circular becomes searchable",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Compute tokens and cost per question for a pipeline",
+            "Measure latency by stage and report its tail",
+            "Re-index a changed document incrementally and mark its stale vector"
           ],
           "lo": [
-            "LO2"
+            "LO2",
+            "LO4",
+            "LO6"
           ],
           "lab": {
             "id": "4.3",
-            "title": "Measure cost per question, tail latency and re-index time after one circular changes",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Cost per question, tail latency and re-index time",
             "minutes": 25,
-            "href": "D4_3_measure_cost_per.ipynb"
+            "summary": "Measure tokens and cost per question for three pipelines, the 95th-percentile latency of each retrieval stage, and the time to make a changed circular searchable, in full and incrementally.",
+            "href": "D4_3_measure_cost_per.ipynb",
+            "steps": [
+              {
+                "text": "Tokens and cost per question, three pipelines",
+                "minutes": 6
+              },
+              {
+                "text": "Latency by stage, and its tail",
+                "minutes": 7
+              },
+              {
+                "text": "One circular changes: re-index everything",
+                "minutes": 5
+              },
+              {
+                "text": "Re-index only what changed",
+                "minutes": 5
+              },
+              {
+                "text": "One table for the operations review",
+                "minutes": 2
+              }
+            ],
+            "stretch": "A latency budget per stage"
           }
         },
         {
           "title": "Diagnosing failures by component",
+          "summary": "Attribute each wrong answer to the first component that lost it, fix the weakest component, and attribute again",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Attribute a failure to parsing, retrieval, ranking or generation",
+            "Fix the weakest component and measure again",
+            "Explain why failures move down the ladder"
           ],
           "lo": [
+            "LO2",
             "LO3"
           ],
           "lab": {
             "id": "4.4",
-            "title": "Attribute 20 failures to parsing, retrieval, ranking or generation and fix the weakest component",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Twenty failures, attributed by component",
             "minutes": 25,
-            "href": "D4_4_attribute_20_failures.ipynb"
+            "summary": "Attribute 20 reported failures to parsing, retrieval, ranking or generation from their traces, re-parse the parsing failures, search again, and compare the counts before and after.",
+            "href": "D4_4_attribute_20_failures.ipynb",
+            "steps": [
+              {
+                "text": "The attribution ladder",
+                "minutes": 4
+              },
+              {
+                "text": "Attribute each failure",
+                "minutes": 8
+              },
+              {
+                "text": "Count by component",
+                "minutes": 3
+              },
+              {
+                "text": "Fix the weakest component and run again",
+                "minutes": 6
+              },
+              {
+                "text": "Before and after",
+                "minutes": 4
+              }
+            ],
+            "stretch": "The second-weakest component"
           }
         }
       ]
@@ -379,7 +786,7 @@
   ],
   "capstone": {
     "summary": "A measured retrieval layer for the university's assistant, or for a synthetic or public corpus the participant brings, submitted as a public repository whose README reports metrics by language, leak and staleness tests, latency and cost per question, then an eight-minute defence and four minutes of questions",
-    "submission": "REPLACE: what participants submit and how: a public repository link, or a shared folder for a course without code",
+    "submission": "A public repository whose README reports, for the participant's retrieval layer, the ranking metrics by language and query type on a versioned test set, the leak and staleness test results, the 95th-percentile latency by stage and the cost per question, with the code, the test set and the run files committed. Then an eight-minute defence that runs one query live and explains one failure by component, and four minutes of questions.",
     "talk_minutes": 8,
     "qa_minutes": 4,
     "rubric": [
@@ -471,6 +878,117 @@
       "examples": [
         "ranx",
         "pytrec_eval"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "group": "Measuring retrieval",
+      "items": [
+        {
+          "title": "Voorhees and Harman: Overview of the Eighth Text REtrieval Conference (TREC-8), pooling",
+          "url": "https://trec.nist.gov/pubs/trec8/papers/overview_8.pdf"
+        },
+        {
+          "title": "MIRACL: a multilingual retrieval benchmark, reported per language",
+          "url": "https://project-miracl.github.io/"
+        }
+      ]
+    },
+    {
+      "group": "Lexical, dense and hybrid search",
+      "items": [
+        {
+          "title": "SQLite FTS5 extension",
+          "url": "https://www.sqlite.org/fts5.html"
+        },
+        {
+          "title": "Robertson and Zaragoza: The Probabilistic Relevance Framework: BM25 and Beyond",
+          "url": "https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf"
+        },
+        {
+          "title": "Model card: intfloat/multilingual-e5-small",
+          "url": "https://huggingface.co/intfloat/multilingual-e5-small"
+        },
+        {
+          "title": "Model card: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+        },
+        {
+          "title": "Model card: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+          "url": "https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
+        },
+        {
+          "title": "Malkov and Yashunin: Efficient and robust approximate nearest neighbor search using HNSW graphs",
+          "url": "https://arxiv.org/abs/1603.09320"
+        },
+        {
+          "title": "Cormack, Clarke and Buettcher: Reciprocal rank fusion outperforms Condorcet and individual rank learning methods",
+          "url": "https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf"
+        }
+      ]
+    },
+    {
+      "group": "Corpus preparation, agents and context",
+      "items": [
+        {
+          "title": "Anthropic: Introducing contextual retrieval",
+          "url": "https://www.anthropic.com/news/contextual-retrieval"
+        },
+        {
+          "title": "Anthropic: Effective context engineering for AI agents",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+        },
+        {
+          "title": "OWASP GenAI Security Project: LLM01 Prompt injection",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+        }
+      ]
+    },
+    {
+      "group": "Structured data",
+      "items": [
+        {
+          "title": "BIRD: a big bench for large-scale database grounded text-to-SQL evaluation",
+          "url": "https://bird-bench.github.io/"
+        },
+        {
+          "title": "Cube documentation: data modeling overview",
+          "url": "https://cube.dev/docs/product/data-modeling/overview"
+        },
+        {
+          "title": "sqlglot: SQL parser, transpiler and optimizer",
+          "url": "https://github.com/tobymao/sqlglot"
+        }
+      ]
+    },
+    {
+      "group": "National references",
+      "items": [
+        {
+          "title": "Personal Data Protection Law",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf"
+        },
+        {
+          "title": "Implementing Regulation of the Personal Data Protection Law",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf"
+        },
+        {
+          "title": "Data Classification Policy (National Data Management Office)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf"
+        },
+        {
+          "title": "Data Management and Personal Data Protection Standards (National Data Management Office)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/DataManagementPersonalDataProtectionStandards.pdf"
+        },
+        {
+          "title": "Generative AI Guideline for Government",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf"
+        },
+        {
+          "title": "Generative AI Guideline for Public",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf"
+        }
       ]
     }
   ]

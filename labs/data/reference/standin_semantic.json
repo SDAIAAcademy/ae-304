@@ -1,0 +1,140 @@
+{
+ "S01": {
+  "metric": "enrolled_students",
+  "filters": {
+   "hijri_term": "1447-1"
+  }
+ },
+ "S02": {
+  "metric": "admitted_students",
+  "filters": {
+   "term": "2024-1"
+  }
+ },
+ "S03": {
+  "metric": "admitted_students",
+  "filters": {
+   "term": "2023-1",
+   "programme": "IS"
+  }
+ },
+ "S04": {
+  "metric": "withdrawal_rate",
+  "filters": {
+   "term": "2025-2"
+  }
+ },
+ "S05": {
+  "metric": "pass_rate",
+  "filters": {
+   "term": "2025-1",
+   "course": "UNI 105"
+  }
+ },
+ "S06": {
+  "metric": "weighted_gpa",
+  "filters": {
+   "term": "2024-1",
+   "course_prefix": "CSC"
+  }
+ },
+ "S07": {
+  "metric": "enrolled_students",
+  "filters": {
+   "hijri_term": "1446-2",
+   "gender": "F"
+  }
+ },
+ "S08": {
+  "metric": "enrolled_students",
+  "filters": {
+   "term": "2026-1",
+   "nationality": "Non-Saudi"
+  }
+ },
+ "S09": {
+  "metric": "credit_hours",
+  "filters": {
+   "term": "2025-1",
+   "college": "ENG"
+  }
+ },
+ "S10": {
+  "metric": "graduates",
+  "filters": {
+   "term": "2026-1"
+  }
+ },
+ "S11": {
+  "metric": "enrolled_students",
+  "filters": {
+   "term": "2025-1"
+  },
+  "group_by": [
+   "programme"
+  ],
+  "order": "desc",
+  "limit": 1
+ },
+ "S12": {
+  "metric": "withdrawal_rate",
+  "filters": {
+   "term": "2024-2",
+   "college": "BUS"
+  }
+ },
+ "S13": {
+  "metric": "denied_enrolments",
+  "filters": {
+   "term": "2025-1"
+  }
+ },
+ "S14": {
+  "metric": "courses_per_student",
+  "filters": {
+   "term": "2025-1"
+  }
+ },
+ "S15": {
+  "metric": "enrolled_students",
+  "filters": {
+   "term": "2025-2",
+   "programme": "IS"
+  }
+ },
+ "S16": {
+  "metric": "pass_rate",
+  "filters": {
+   "term": "2025-2"
+  }
+ },
+ "S17": {
+  "metric": "incomplete_grades",
+  "filters": {
+   "term": "1447-2"
+  }
+ },
+ "S18": {
+  "metric": "admitted_students",
+  "filters": {
+   "college": "HSC",
+   "academic_year": [
+    "2022/2023",
+    "2023/2024"
+   ]
+  }
+ },
+ "S19": {
+  "metric": "weighted_gpa",
+  "filters": {
+   "term": "2025-1",
+   "college": "SCI"
+  }
+ },
+ "S20": {
+  "metric": "active_students",
+  "filters": {
+   "admit_term": "2022-1"
+  }
+ }
+}

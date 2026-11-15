@@ -1,0 +1,34 @@
+[
+ {
+  "method": "BM25 normalised",
+  "nDCG@10 ar": 0.543,
+  "nDCG@10 en": 0.532,
+  "recall@10": 0.433,
+  "MRR": 0.729,
+  "p95 ms": 13.2
+ },
+ {
+  "method": "dense e5",
+  "nDCG@10 ar": 0.375,
+  "nDCG@10 en": 0.639,
+  "recall@10": 0.401,
+  "MRR": 0.691,
+  "p95 ms": 88.3
+ },
+ {
+  "method": "hybrid RRF",
+  "nDCG@10 ar": 0.51,
+  "nDCG@10 en": 0.63,
+  "recall@10": 0.455,
+  "MRR": 0.776,
+  "p95 ms": 101.4
+ },
+ {
+  "method": "hybrid RRF + rerank 30",
+  "nDCG@10 ar": 0.566,
+  "nDCG@10 en": 0.7,
+  "recall@10": 0.499,
+  "MRR": 0.872,
+  "p95 ms": 10981.5
+ }
+]

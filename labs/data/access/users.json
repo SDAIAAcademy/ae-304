@@ -1,0 +1,29 @@
+{
+ "muath": {
+  "name": "Muath Al-Shathri",
+  "role": "student",
+  "roles": [
+   "public"
+  ],
+  "college": "CCI"
+ },
+ "faculty": {
+  "name": "A faculty member of the College of Computing and Information",
+  "role": "staff",
+  "roles": [
+   "public",
+   "staff"
+  ],
+  "college": "CCI"
+ },
+ "registrar": {
+  "name": "Mohannad Al-Sakran",
+  "role": "registrar",
+  "roles": [
+   "public",
+   "staff",
+   "registrar"
+  ],
+  "college": null
+ }
+}

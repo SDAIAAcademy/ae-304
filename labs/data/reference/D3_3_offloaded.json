@@ -1,0 +1,74 @@
+[
+ {
+  "qid": "B01",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 874,
+  "answer": "0 courses.",
+  "expect": "0"
+ },
+ {
+  "qid": "B02",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 882,
+  "answer": "0 courses.",
+  "expect": "0"
+ },
+ {
+  "qid": "B03",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 883,
+  "answer": "0 courses.",
+  "expect": "0"
+ },
+ {
+  "qid": "B04",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 911,
+  "answer": "2 courses.",
+  "expect": "2"
+ },
+ {
+  "qid": "B05",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 979,
+  "answer": "10 courses.",
+  "expect": "10"
+ },
+ {
+  "qid": "B06",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 984,
+  "answer": "10 courses.",
+  "expect": "10"
+ },
+ {
+  "qid": "B07",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 947,
+  "answer": "5 courses.",
+  "expect": "5"
+ },
+ {
+  "qid": "B08",
+  "mode": "offloaded",
+  "correct": true,
+  "calls": 2,
+  "tokens": 931,
+  "answer": "5 courses.",
+  "expect": "5"
+ }
+]

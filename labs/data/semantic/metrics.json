@@ -1,0 +1,21 @@
+{
+ "views": {
+  "enrolment_facts": ["term", "hijri_term", "academic_year", "course", "course_prefix", "programme", "college", "gender", "nationality"],
+  "student_facts": ["term", "admit_term", "hijri_term", "academic_year", "programme", "college", "gender", "nationality"]
+ },
+ "metrics": {
+  "enrolled_students": {"view": "enrolment_facts", "kind": "count", "sql": "COUNT(DISTINCT student_id) FILTER (WHERE status <> 'withdrawn')", "description": "Students with at least one enrolment that was not withdrawn in the term"},
+  "enrolments": {"view": "enrolment_facts", "kind": "count", "sql": "COUNT(*)", "description": "Course enrolments, of any status"},
+  "withdrawal_rate": {"view": "enrolment_facts", "kind": "rate", "sql": "AVG(CASE WHEN status = 'withdrawn' THEN 1.0 ELSE 0 END)", "description": "Share of enrolments withdrawn (grade W)"},
+  "pass_rate": {"view": "enrolment_facts", "kind": "rate", "sql": "SUM(CASE WHEN status = 'completed' AND letter <> 'F' THEN 1.0 ELSE 0 END) / NULLIF(SUM(CASE WHEN status IN ('completed', 'denied') THEN 1 ELSE 0 END), 0)", "description": "Passed among graded enrolments; a denial (DN) counts as graded and failed"},
+  "credit_hours": {"view": "enrolment_facts", "kind": "sum", "sql": "SUM(credit_hours) FILTER (WHERE status <> 'withdrawn')", "description": "Credit hours registered, withdrawn courses excluded"},
+  "weighted_gpa": {"view": "enrolment_facts", "kind": "rate", "sql": "SUM(grade_points * credit_hours) FILTER (WHERE status = 'completed') / SUM(credit_hours) FILTER (WHERE status = 'completed')", "description": "Grade point average weighted by credit hours, completed courses only"},
+  "denied_enrolments": {"view": "enrolment_facts", "kind": "count", "sql": "COUNT(*) FILTER (WHERE status = 'denied')", "description": "Enrolments denied the final examination (DN)"},
+  "incomplete_grades": {"view": "enrolment_facts", "kind": "count", "sql": "COUNT(*) FILTER (WHERE status = 'incomplete')", "description": "Incomplete grades (IC) recorded"},
+  "courses_per_student": {"view": "enrolment_facts", "kind": "rate", "sql": "COUNT(*) FILTER (WHERE status <> 'withdrawn') * 1.0 / COUNT(DISTINCT student_id) FILTER (WHERE status <> 'withdrawn')", "description": "Courses kept per enrolled student"},
+  "admitted_students": {"view": "student_facts", "kind": "count", "sql": "COUNT(*)", "description": "New students admitted; term is the admission term"},
+  "graduates": {"view": "student_facts", "kind": "count", "sql": "COUNT(*)", "term_column": "grad_term", "description": "Students who graduated; term is the graduation term"},
+  "active_students": {"view": "student_facts", "kind": "count", "sql": "COUNT(*) FILTER (WHERE status = 'active')", "description": "Students whose status is active today"}
+ },
+ "small_cell": 5
+}
