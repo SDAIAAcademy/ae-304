@@ -1,0 +1,17 @@
+Study plan: Bachelor of Electrical Engineering, Year 2
+Year 2 · Semester 3
+Code Course Credit hours Prerequisite
+ELE 212 Control 3 ELE 101
+UNI 105 Calculus I 3 None
+UNI 106 Calculus II 3 UNI 105
+UNI 107 Communication Skills 2 None
+CHE 101 Introduction to Reaction Engineering 3 None
+Total 14
+Year 2 · Semester 4
+Code Course Credit hours Prerequisite
+ELE 201 Signals 3 ELE 112, MEC 112
+ELE 223 Applied Electronics 3 ELE 101
+UNI 108 Digital Literacy 2 None
+MEC 101 Introduction to Thermodynamics 3 UNI 105
+Free elective 3
+Total 14

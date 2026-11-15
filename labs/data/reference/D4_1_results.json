@@ -1,0 +1,142 @@
+[
+ {
+  "qid": "S01",
+  "result": "0",
+  "answer": 5210,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S02",
+  "result": "1476",
+  "answer": 1476,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S03",
+  "result": "0",
+  "answer": 32,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S04",
+  "result": "0.06172887405912936",
+  "answer": 0.0617,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S05",
+  "result": "0.8814129520605551",
+  "answer": 0.8697,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S06",
+  "result": "3.5807522123893807",
+  "answer": 3.6641,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S07",
+  "result": "1959",
+  "answer": 1959,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S08",
+  "result": "776",
+  "answer": 776,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S09",
+  "result": "13092",
+  "answer": 12270,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S10",
+  "result": "198",
+  "answer": 198,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S11",
+  "result": "CLS",
+  "answer": "CLS",
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S12",
+  "result": "0.06548431105047749",
+  "answer": 0.0655,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S13",
+  "result": "369",
+  "answer": 369,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S14",
+  "result": "5.0122840690978885",
+  "answer": 4.7042,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S15",
+  "result": "70",
+  "answer": 145,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S16",
+  "result": "0.865584877253147",
+  "answer": 0.8656,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S17",
+  "result": "272",
+  "answer": 272,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S18",
+  "result": "470",
+  "answer": 470,
+  "correct": true,
+  "error": ""
+ },
+ {
+  "qid": "S19",
+  "result": "2.9152240886085234",
+  "answer": 3.1525,
+  "correct": false,
+  "error": ""
+ },
+ {
+  "qid": "S20",
+  "result": "992",
+  "answer": 992,
+  "correct": true,
+  "error": ""
+ }
+]

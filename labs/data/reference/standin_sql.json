@@ -1,0 +1,22 @@
+{
+ "S01": "SELECT COUNT(DISTINCT student_id) FROM enrolments WHERE term_id = '1447-1'",
+ "S02": "SELECT COUNT(*) FROM students WHERE admit_term = '2024-1'",
+ "S03": "SELECT COUNT(*) FROM students WHERE programme_id = 'IS' AND admit_term = '2023-1'",
+ "S04": "SELECT COUNT(*) FILTER (WHERE status = 'withdrawn') * 1.0 / COUNT(*) FROM enrolments WHERE term_id = '2025-2'",
+ "S05": "SELECT AVG(CASE WHEN letter <> 'F' THEN 1.0 ELSE 0 END) FROM enrolments WHERE term_id = '2025-1' AND course_code = 'UNI 105' AND status = 'completed'",
+ "S06": "SELECT AVG(grade_points) FROM enrolments WHERE term_id = '2024-1' AND course_code LIKE 'CSC%'",
+ "S07": "SELECT COUNT(DISTINCT e.student_id) FROM enrolments e JOIN students s ON e.student_id = s.student_id JOIN terms t ON t.term_id = e.term_id WHERE t.hijri = '1446-2' AND s.gender = 'F'",
+ "S08": "SELECT COUNT(DISTINCT e.student_id) FROM enrolments e JOIN students s ON e.student_id = s.student_id WHERE e.term_id = '2026-1' AND e.status <> 'withdrawn' AND s.nationality = 'Non-Saudi'",
+ "S09": "SELECT SUM(e.credit_hours) FROM enrolments e JOIN students s ON e.student_id = s.student_id JOIN programmes p ON s.programme_id = p.programme_id WHERE e.term_id = '2025-1' AND p.college_id = 'ENG'",
+ "S10": "SELECT COUNT(*) FROM students WHERE status = 'graduated' AND grad_term = '2026-1'",
+ "S11": "SELECT s.programme_id FROM enrolments e JOIN students s ON e.student_id = s.student_id WHERE e.term_id = '2025-1' GROUP BY 1 ORDER BY COUNT(*) DESC LIMIT 1",
+ "S12": "SELECT AVG(CASE WHEN e.status = 'withdrawn' THEN 1.0 ELSE 0 END) FROM enrolments e JOIN students s ON e.student_id = s.student_id JOIN programmes p ON s.programme_id = p.programme_id WHERE e.term_id = '2024-2' AND p.college_id = 'BUS'",
+ "S13": "SELECT COUNT(*) FROM enrolments WHERE term_id = '2025-1' AND letter = 'DN'",
+ "S14": "SELECT COUNT(*) * 1.0 / COUNT(DISTINCT student_id) FROM enrolments WHERE term_id = '2025-1'",
+ "S15": "SELECT COUNT(DISTINCT e.student_id) FROM enrolments e JOIN students s ON e.student_id = s.student_id WHERE e.term_id = '2025-2' AND e.status <> 'withdrawn' AND s.programme_id = 'IS'",
+ "S16": "SELECT SUM(CASE WHEN status = 'completed' AND letter <> 'F' THEN 1.0 ELSE 0 END) / SUM(CASE WHEN status IN ('completed', 'denied') THEN 1 ELSE 0 END) FROM enrolments WHERE term_id = '2025-2'",
+ "S17": "SELECT COUNT(*) FROM enrolments e JOIN terms t ON t.term_id = e.term_id WHERE t.hijri = '1447-2' AND e.letter = 'IC'",
+ "S18": "SELECT COUNT(*) FROM students s JOIN programmes p ON p.programme_id = s.programme_id WHERE p.college_id = 'HSC' AND s.admit_term BETWEEN '2022-1' AND '2023-1'",
+ "S19": "SELECT SUM(e.grade_points * e.credit_hours) / SUM(e.credit_hours) FROM enrolments e JOIN students s ON e.student_id = s.student_id JOIN programmes p ON s.programme_id = p.programme_id WHERE e.term_id = '2025-1' AND p.college_id = 'SCI'",
+ "S20": "SELECT COUNT(*) FROM students WHERE admit_term = '2022-1' AND status = 'active'"
+}

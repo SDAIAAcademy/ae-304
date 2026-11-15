@@ -1,0 +1,11 @@
+{
+ "e5_embed_300_pages_s": 44.1,
+ "e5_query_embed_ms_p50": 52.0,
+ "e5_query_embed_ms_p95": 82.2,
+ "minilm_embed_300_pages_s": 27.4,
+ "minilm_query_embed_ms_p50": 147.1,
+ "minilm_query_embed_ms_p95": 252.1,
+ "rerank_30_pairs_ms_p50": 6506.0,
+ "rerank_30_pairs_ms_p95": 10880.1,
+ "measured_on": "a laptop processor, Sentence Transformers, batch of 32 (pages) or one query at a time"
+}

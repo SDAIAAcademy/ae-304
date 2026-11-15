@@ -1,0 +1,40 @@
+{"query_id": "Q01", "lang": "en", "type": "regulation", "text": "What absence percentage gets a student denied from the final exam?", "candidates": ["P0159", "P0194", "P0033"]}
+{"query_id": "Q02", "lang": "en", "type": "regulation", "text": "deadline to withdraw from a course", "candidates": ["P0197", "P0115", "P0049"]}
+{"query_id": "Q03", "lang": "en", "type": "regulation", "text": "how many semesters can I postpone my studies in total", "candidates": ["P1515", "P1379", "P0051"]}
+{"query_id": "Q04", "lang": "en", "type": "regulation", "text": "when is a student dismissed after academic probation", "candidates": ["P0097", "P0183", "P1477"]}
+{"query_id": "Q05", "lang": "en", "type": "regulation", "text": "maximum credit hours in a regular semester", "candidates": ["P0051", "P0203", "P0035"]}
+{"query_id": "Q06", "lang": "en", "type": "regulation", "text": "minimum weight of the final examination in the course grade", "candidates": ["P0194", "P0205", "P0065"]}
+{"query_id": "Q07", "lang": "en", "type": "regulation", "text": "how long do I have to appeal a course grade", "candidates": ["P0208", "P1387", "P0177"]}
+{"query_id": "Q08", "lang": "en", "type": "regulation", "text": "three final exams on the same day what can I do", "candidates": ["P1357", "P0067", "P0210"]}
+{"query_id": "Q09", "lang": "en", "type": "regulation", "text": "GPA needed for first class honours", "candidates": ["P0149", "P0017", "P0179"]}
+{"query_id": "Q10", "lang": "en", "type": "regulation", "text": "is using ChatGPT allowed in my assignments", "candidates": ["P0163", "P0017", "P0073"]}
+{"query_id": "Q11", "lang": "en", "type": "regulation", "text": "what happens if I am caught copying someone's work twice", "candidates": ["P1381", "P0131", "P0161"]}
+{"query_id": "Q12", "lang": "en", "type": "regulation", "text": "incomplete grade deadline to finish the work", "candidates": ["P0085", "P0175", "P0083"]}
+{"query_id": "Q13", "lang": "en", "type": "regulation", "text": "can I bring my smart watch into the exam", "candidates": ["P0159", "P0073", "P0155"]}
+{"query_id": "Q14", "lang": "en", "type": "regulation", "text": "requirements to register a minor", "candidates": ["P0019", "P0511", "P0502"]}
+{"query_id": "Q15", "lang": "en", "type": "course", "text": "What is the prerequisite of BIO 412?", "candidates": ["P1200", "P1199", "P1197"]}
+{"query_id": "Q16", "lang": "en", "type": "course", "text": "What is the prerequisite of ECO 223?", "candidates": ["P1127", "P0744", "P1125"]}
+{"query_id": "Q17", "lang": "en", "type": "course", "text": "What is the prerequisite of BIO 212?", "candidates": ["P1197", "P0893", "P1195"]}
+{"query_id": "Q18", "lang": "en", "type": "course", "text": "How many credit hours is Seminar in Electronics?", "candidates": ["P0603", "P0595", "P1063"]}
+{"query_id": "Q19", "lang": "en", "type": "course", "text": "How many credit hours is Geographic Information Systems Laboratory?", "candidates": ["P0985", "P0975", "P1237"]}
+{"query_id": "Q20", "lang": "en", "type": "course", "text": "Which department offers Topics in Experimental Design?", "candidates": ["P0907", "P0916", "P1205"]}
+{"query_id": "Q31", "lang": "ar", "type": "regulation", "text": "ما هي نسبة الغياب المسموح بها قبل الحرمان", "candidates": ["P0066", "P0034", "P1114"]}
+{"query_id": "Q32", "lang": "ar", "type": "regulation", "text": "اخر موعد للانسحاب من مقرر", "candidates": ["P0050", "P0196", "P0068"]}
+{"query_id": "Q33", "lang": "ar", "type": "regulation", "text": "متطلبات التخرج والمعدل المطلوب", "candidates": ["P0086", "P1478", "P0148"]}
+{"query_id": "Q34", "lang": "ar", "type": "regulation", "text": "كيف يحسب المعدل عند اعادة دراسة مقرر", "candidates": ["P0050", "P0196", "P0084"]}
+{"query_id": "Q35", "lang": "ar", "type": "regulation", "text": "شروط معادلة المقررات من جامعه اخرى", "candidates": ["P0142", "P1012", "P0132"]}
+{"query_id": "Q36", "lang": "ar", "type": "regulation", "text": "التحويل من جامعة اخري", "candidates": ["P0211", "P0116", "P1268"]}
+{"query_id": "Q37", "lang": "ar", "type": "regulation", "text": "المدة القصوي للدراسة", "candidates": ["P0100", "P0199", "P0052"]}
+{"query_id": "Q38", "lang": "ar", "type": "regulation", "text": "متي يبدا التدريب التعاوني", "candidates": ["P1262", "P1280", "P0337"]}
+{"query_id": "Q39", "lang": "ar", "type": "regulation", "text": "شهادة التفوق للطلاب المتفوقين", "candidates": ["P1486", "P1398", "P0182"]}
+{"query_id": "Q40", "lang": "ar", "type": "regulation", "text": "الاختبار البديل لمن تغيب بعذر", "candidates": ["P0218", "P0070", "P0180"]}
+{"query_id": "Q41", "lang": "ar", "type": "course", "text": "ما المتطلب السابق لمقرر CHM 312", "candidates": ["P1190", "P1182", "P0881"]}
+{"query_id": "Q42", "lang": "ar", "type": "course", "text": "ما المتطلب السابق لمقرر MEC 401", "candidates": ["P0622", "P1070", "P1072"]}
+{"query_id": "Q43", "lang": "ar", "type": "course", "text": "عدد الساعات المعتمدة لمقرر مشروع في قواعد البيانات", "candidates": ["P0525", "P1032", "P0534"]}
+{"query_id": "Q44", "lang": "ar", "type": "table", "text": "مقررات المستوى الخامس في خطة اللغة العربية", "candidates": ["P1216", "P1222", "P1214"]}
+{"query_id": "Q45", "lang": "ar", "type": "table", "text": "مقررات المستوى الخامس في خطة هندسة البرمجيات", "candidates": ["P0514", "P0505", "P1022"]}
+{"query_id": "Q46", "lang": "ar", "type": "table", "text": "في أي مستوى يدرس مقرر BIO 212 في خطة الأحياء", "candidates": ["P1196", "P1198", "P0897"]}
+{"query_id": "Q47", "lang": "ar", "type": "service", "text": "طلب افادة قيد", "candidates": ["P1240", "P1364", "P1358"]}
+{"query_id": "Q48", "lang": "ar", "type": "service", "text": "مواعيد حافلات الجامعه", "candidates": ["P1390", "P1394", "P1510"]}
+{"query_id": "Q49", "lang": "ar", "type": "service", "text": "المكافاه الشهريه متى تتوقف", "candidates": ["P0411", "P0476", "P0416"]}
+{"query_id": "Q50", "lang": "ar", "type": "service", "text": "حجز موعد في مركز الارشاد", "candidates": ["P1460", "P1454", "P1406"]}

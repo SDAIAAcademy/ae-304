@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="ai-engineering">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2 · Prepare the corpus · Retrieval and Knowledge Engineering for Language Model Systems</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day2.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Retrieval and Knowledge Engineering for Language Model Systems" data-track="ai-engineering" data-day="Day 2">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Retrieval and Knowledge Engineering for Language Model Systems</div>
+  <h1>Prepare the corpus</h1>
+  <p class="lead mt">Day 2</p>
+  <div class="meta"><span class="track">AI Engineering Track</span><span>4 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>AE-304</span></div>
+  <aside class="notes"><p>Open with yesterday's best number: hybrid search with a reranker reached nDCG@10 0.633. Ask: if a page was never parsed, which of yesterday's methods could find it? None. Today moves upstream, to what the index is made of.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Prepare the corpus</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Parsing is a separate problem</b><small>Score parsers apart from retrieval: word error rate and table cells by page type, and a rule that routes each page to the parser that reads it</small></div></div><div class="item"><div><b>Session 2 · Chunking by structure</b><small>Chunk by the document's own structure, carry the heading path into each chunk, and test chunking by the questions it can answer</small></div></div><div class="item"><div><b>Session 3 · Dates, versions and duplicates</b><small>Give every version a validity interval, drop near-duplicates, and test that the current rule comes first</small></div></div><div class="item"><div><b>Session 4 · Permissions in the index</b><small>Carry role and classification on every chunk, filter before ranking, and test leaks from a student account as a suite</small></div></div></div>
+</section>
+
+<section class="slide" id="review-day1" data-lo="LO2" data-n="3">
+  <div class="kicker">Review of Day 1</div>
+  <h2>What does yesterday's results table say?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="review-day1-q1">
+    <p class="lead">Dense e5 scored nDCG@10 0.375 on Arabic and 0.639 on English; normalised BM25 scored 0.543 and 0.532; their RRF fusion 0.510 and 0.630. Which reading is right?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads the overall gain as a gain on every slice" data-k="A">Fusion beats both inputs on both languages</div>
+      <div class="opt" data-why="Takes one model's Arabic score as the verdict on all dense retrieval" data-k="B">Dense retrieval cannot serve Arabic</div>
+      <div class="opt" data-why="Looks at averages only, which is what the slices exist to prevent" data-k="C">The three methods are equal, since their averages are close</div>
+      <div class="opt" data-ok data-k="D">Fusion helps English a lot and costs a little on Arabic, so Arabic needs its own look</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> RRF lifted English from 0.532 to 0.630 but sat between its inputs on Arabic. A slice that moves the other way is a finding, not noise to average away.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. If the room picks A, show the two Arabic numbers side by side: 0.510 against BM25's 0.543. MiniLM did better than e5 on Arabic (0.419), so B overstates it.</p></aside>
+</section>
+
+<!-- ======================= SESSION 1 ======================= -->
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Parsing is a separate problem</h1>
+  <ul class="bullets outcomes"><li>Score parsed text against reference text with a word error rate</li><li>Score tables cell by cell</li><li>Route pages to a parser by page type</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" data-label="Upstream" id="parsing-before-retrieval" data-lo="LO3" data-n="5" data-session="1">
+  <div class="kicker">Corpus preparation</div>
+  <h2>Retrieval can only find what the parser wrote down</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>PDF or scan</b>what the university publishes</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Parser</b>text and tables, or nothing</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Chunks</b>what gets indexed</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Search</b>Day 1's methods</div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A parsing failure looks like a retrieval failure: the page "is never found". Score the parser on its own, against reference text, before you tune search.</div>
+  <aside class="notes"><p>Day 4 Session 4 makes this a method: attribute each failure to the first component that lost the answer. Today you measure the first component directly.</p></aside>
+</section>
+
+<section class="slide" data-label="Two parsers" id="two-kinds-of-parser" data-lo="LO3" data-n="6" data-session="1">
+  <div class="kicker">Two families of parser</div>
+  <h2>A text-layer parser reads what the PDF stores; a layout-aware one reads the page</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Parser A · text layer</h4><p class="small mb0">Fast and cheap. Reads the characters the PDF holds, in the order it holds them. A scan holds no characters; Arabic may come out in presentation forms and reversed order.</p></div>
+    <div class="card c-teal"><h4>Parser B · layout-aware</h4><p class="small mb0">Slower. Recognises text from the image and finds table structure. Makes its own errors: similar letters confused.</p></div>
+  </div>
+  <p class="small mt">Examples of the families: pypdf and pdfminer for text layers; Docling, Unstructured, Tesseract and open-weight document vision models for layout and recognition.</p>
+  <aside class="notes"><p>The lab's two parsers are simulated from the reference text with the failure patterns of each family, so every room gets the same scores. Say this plainly: the patterns are real, the outputs are generated. The method of scoring is what transfers to a real parser.</p></aside>
+</section>
+
+<section class="slide" data-label="Which reader" id="specialised-or-general-reader" data-lo="LO3" data-n="7" data-session="1">
+  <div class="kicker">Inside the layout-aware family</div>
+  <h2>A small parsing model or a general vision model: score both on your pages</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Small specialised parsing model</h4><p class="small mb0">Trained only to read documents: layout, reading order, table structure, characters. Runs on modest hardware and costs little per page. Weak on layouts it never saw.</p></div>
+    <div class="card c-purple"><h4>General vision model</h4><p class="small mb0">Reads the page image and follows an instruction, such as "return this table as Markdown". Flexible on odd layouts. Costs more per page and can write fluent text that is not on the page.</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A misread letter looks like a mistake. An invented word looks like text. Only a score against reference pages, by page type, shows which one you have.</div>
+  <aside class="notes"><p>No benchmark numbers on purpose: these models change every few months, and a leaderboard rarely includes scanned Arabic circulars. The method is the lab's: the same 30 pages, word error rate and table cells by page type, then a routing rule. A common result is a cascade: the specialised model for most pages, the general model only for the pages it scores badly on. For Arabic, check right-to-left reading order and digits in tables first.</p></aside>
+</section>
+
+<section class="slide" data-label="One page" id="one-page-three-ways" data-lo="LO3" data-n="8" data-session="1">
+  <div class="kicker">Lab 2.1, step 1</div>
+  <h2>The same study-plan page, as the text layer gives it</h2>
+  <div class="cols cols-2">
+    <div class="stack">
+      <h4>Reference</h4>
+      <p class="small mb0 ar">الخطة الدراسية: بكالوريوس الهندسة الصناعية، السنة الثالثة</p>
+      <p class="small mb0"><code>| IND 312 | ... | 3 | IND 212 |</code></p>
+    </div>
+    <div class="stack">
+      <h4>Parser A</h4>
+      <p class="small mb0 ar">ﺍﻝﺙﺍﻝﺙة ﺍﻝﺱﻥة ﺍﻝﺹﻥﺍﻉﻱة، ﺍﻝﻩﻥﺩﺱة ﺏﻙﺍﻝﻭﺭﻱﻭﺱ ﺍﻝﺩﺭﺍﺱﻱة: ﺍﻝﺥﻁة</p>
+      <p class="small mb0"><code>212 IND 3 ... 312 IND</code></p>
+    </div>
+  </div>
+  <ul class="bullets small mt">
+    <li><b>Presentation forms</b>: each letter stored in its joined shape, so no word matches</li>
+    <li><b>Reversed word order</b> in Arabic lines, and the table's pipes lost</li>
+  </ul>
+  <aside class="notes"><p>This is page 1 of the lab's 30 pages, printed in step 1. Ask an Arabic reader whether the second line looks right: it renders almost normally, but the word order is reversed and every letter is a presentation form. Unicode NFKC folds the forms back; it does not restore the order.</p></aside>
+</section>
+
+<section class="slide" data-label="WER" id="word-error-rate" data-lo="LO3" data-n="9" data-session="1">
+  <div class="kicker">Score the text</div>
+  <h2>Word error rate: the edits that turn the output into the reference, per word</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="Lab 2.1 · step 2"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">words</span>(<span class="hljs-params">text</span>):
+    text = unicodedata.normalize(<span class="hljs-string">&quot;NFKC&quot;</span>, text)
+    <span class="hljs-keyword">return</span> re.findall(<span class="hljs-string">r&quot;\w+&quot;</span>, U.normalise(text))
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">wer</span>(<span class="hljs-params">ref, out</span>):
+    r, o = words(ref), words(out)
+    <span class="hljs-keyword">return</span> edit_distance(r, o) / <span class="hljs-built_in">len</span>(r)</code></pre>
+    <ul class="bullets small">
+      <li>Normalise first, or you score typography, not content</li>
+      <li>Two swapped words cost two edits: a toy of three words scores 0.667</li>
+      <li>An empty output scores 1.0, every word missing</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The toy check in the lab prints 0.667 for a swapped pair in three words. Ask why WER can exceed 1 (insertions); it does not happen here, but a parser that repeats headers can do it.</p></aside>
+</section>
+
+<section class="slide" data-label="Cells" id="table-cell-accuracy" data-lo="LO3" data-n="10" data-session="1">
+  <div class="kicker">Score the tables</div>
+  <h2>A table is right only when each cell is in its row and column</h2>
+  <ul class="bullets">
+    <li>Compare the parsed table with the reference <b>cell by cell</b>: same row, same column, same text</li>
+    <li>Text can be perfect and the table worthless: "3" and "IND 212" on one line do not say which course they belong to</li>
+    <li>Study plans are mostly tables: a question like "how many credit hours is CSC 301" lives in one cell</li>
+  </ul>
+  <div class="callout tip mt"><b>Takeaway.</b> Report text and table scores separately. A parser can win one and lose the other.</div>
+  <aside class="notes"><p>Parser A scored 0.000 on cells even on digital pages, because it drops the pipes: the words are there, the structure is gone. Parser B scored 0.998 on digital tables and 0.944 on scanned ones.</p></aside>
+</section>
+
+<section class="slide" data-label="By page type" id="scores-by-page-type" data-lo="LO3" data-n="11" data-session="1">
+  <div class="kicker">Measured in Lab 2.1</div>
+  <h2>The text layer is fine on plain digital pages and useless on scans</h2>
+  <table class="t small">
+    <tr><th>Page type (pages)</th><th class="num">WER A</th><th class="num">WER B</th><th class="num">cells A</th><th class="num">cells B</th></tr>
+    <tr><td>Digital, no table (7)</td><td class="num">0.397</td><td class="num">0.012</td><td class="num">-</td><td class="num">-</td></tr>
+    <tr><td>Digital, table (8)</td><td class="num">0.278</td><td class="num">0.001</td><td class="num">0.000</td><td class="num">0.998</td></tr>
+    <tr class="hl"><td>Scanned, no table (11)</td><td class="num">1.000</td><td class="num">0.054</td><td class="num">-</td><td class="num">-</td></tr>
+    <tr class="hl"><td>Scanned, table (4)</td><td class="num">1.000</td><td class="num">0.073</td><td class="num">0.000</td><td class="num">0.944</td></tr>
+  </table>
+  <p class="caption">30 pages. Parser A's errors on digital pages are mostly the Arabic ones: reversed word order. Its English digital pages are nearly clean.</p>
+  <aside class="notes"><p>The overall WER of parser A is 0.667 and of B 0.033, but that average is meaningless for a decision: it mixes pages where A is useless with pages where it is acceptable. The stretch repairs the text layer of digital Arabic pages (reversing the word order) and reaches WER 0.0 on them.</p></aside>
+</section>
+
+<section class="slide" data-label="Routing" id="routing-rule" data-lo="LO3" data-n="12" data-session="1">
+  <div class="kicker">The decision the scores support</div>
+  <h2>Route each page to the cheapest parser that reads it</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-coral"><b>No text layer, or presentation forms?</b>parser B</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>Looks like a table?</b>parser B</div>
+      <div class="arrow">↓</div>
+      <div class="step c-teal"><b>Otherwise</b>parser A</div>
+    </div>
+    <table class="t small">
+      <tr><th>30 pages</th><th class="num">WER</th><th class="num">cells</th></tr>
+      <tr><td>Parser A only</td><td class="num">0.667</td><td class="num">0.000</td></tr>
+      <tr><td>Parser B only</td><td class="num">0.033</td><td class="num">0.980</td></tr>
+      <tr class="hl"><td>Routed (4 pages to A)</td><td class="num">0.032</td><td class="num">0.980</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>The routing rule is the LO3 recommendation in miniature: it keeps B's quality and saves its cost on the pages where A is good enough. On this corpus that is only 4 pages of 30; on a corpus of born-digital English it would be most of them. The rule is measured, not assumed.</p></aside>
+</section>
+
+<section class="slide" id="check-parser-choice" data-lo="LO3" data-n="13" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Where should Kawthar look first?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-parser-choice-q1">
+    <p class="lead">Students report that Nibras never finds the 2019 study plans, which the registrar scanned from paper. The plans are in the index. What should Kawthar check first?</p>
+    <div class="opts">
+      <div class="opt" data-why="Tunes search before checking that the index holds any text for these pages" data-k="A">The weight of the title column in BM25</div>
+      <div class="opt" data-ok data-k="B">The parsed text of those pages: a scan read by a text-layer parser is empty</div>
+      <div class="opt" data-why="Assumes a meaning-based model can find a page that has no text at all" data-k="C">A better embedding model for Arabic</div>
+      <div class="opt" data-why="Fixes a later stage first; chunk size does not matter when there are no words" data-k="D">The chunk size of the study plans</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A scanned page has no text layer, so a text-layer parser returns nothing and no search method can find it. In Lab 2.1 parser A's WER on scans was 1.0.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. The order of the options follows the pipeline backwards; point that out after the reveal, and preview Day 4's attribution ladder.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-1" data-auto="lab" data-lab="2.1" data-label="Lab 2.1" data-n="14" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.1 · 25 min</div><h2>Two parsers scored on 30 pages</h2><p class="lead small">Score a text-layer parser and a layout-aware parser on 30 scanned and digital pages with tables against reference text, by page type, and write the routing rule that picks one per page.</p><a class="nb" href="../labs/D2_1_score_two_parsers.ipynb">D2_1_score_two_parsers.ipynb</a></div><ul class="checklist"><li>One page, three ways <span class="min">3 min</span></li><li>Word error rate after normalisation <span class="min">7 min</span></li><li>Table-cell accuracy <span class="min">6 min</span></li><li>Scores by page type <span class="min">5 min</span></li><li>A routing rule, and its score <span class="min">4 min</span></li><li class="stretch">✱ Stretch: Repair the text layer and score it again</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: scoring before NFKC, so presentation forms count as errors twice; dividing by the output length instead of the reference length; treating a missing table as cell accuracy 1.0. Early finishers take the stretch: repair the text layer by reversing Arabic lines and score again.</p></aside>
+</section>
+
+<!-- ======================= SESSION 2 ======================= -->
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="15">
+  <div class="kicker">Session 2</div>
+  <h1>Chunking by structure</h1>
+  <ul class="bullets outcomes"><li>Chunk documents by headings and keep the heading path</li><li>Compare chunkings by retrieval on table questions</li><li>Recommend a chunking from the evidence</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" data-label="Why chunk" id="why-chunk" data-lo="LO3" data-n="16" data-session="2">
+  <div class="kicker">Chunking</div>
+  <h2>A chunk is the unit the model reads: big enough to answer, small enough to rank</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>Too small</h4><p class="small mb0">A row without its header: "3 | IND 212" answers nothing.</p></div>
+    <div class="card c-teal"><h4>Right</h4><p class="small mb0">One semester's table with the plan and year named.</p></div>
+    <div class="card c-purple"><h4>Too large</h4><p class="small mb0">A whole plan: the right row is one of forty, and the score is diluted.</p></div>
+  </div>
+  <aside class="notes"><p>Ask where they chunk today. Most answers: "the library's default". AE-203 compared two chunkings of a policy corpus once; here the documents are tables, and chunking is scored by the questions it can answer. The default is usually a fixed window, which is today's baseline.</p></aside>
+</section>
+
+<section class="slide" data-label="Fixed windows" id="fixed-windows-cut-tables" data-lo="LO3" data-n="17" data-session="2">
+  <div class="kicker">The common default</div>
+  <h2>Fixed windows cut tables wherever the word count falls</h2>
+  <div class="trace s">
+    <div class="ev result"><b>window 1</b>... | Total | 14 | | ### Year 1 · Semester 2 | Code | Course | Credit hours | Prerequisite | |---|---|---|---| | ACC 101 | Introduction to Financial ...</div>
+    <div class="ev result dim"><b>window 2</b>... Accounting | 3 | UNI 105 | | ACC 112 | ...</div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> The window that holds "ACC 101" may not hold "Semester 2", and neither names the programme. The question "in which semester of the Accounting plan is ACC 101 taught?" has no single chunk that answers it.</div>
+  <aside class="notes"><p>The first window of the Accounting plan, printed in Lab 2.2 step 2 (120-word windows, 210 chunks over 30 plans). Overlap between windows helps a little and doubles the index.</p></aside>
+</section>
+
+<section class="slide" data-label="Headings" id="chunk-by-heading" data-lo="LO3" data-n="18" data-session="2">
+  <div class="kicker">Chunk by structure</div>
+  <h2>Cut at the document's headings and carry the heading path into each chunk</h2>
+  <pre class="code s" data-file="Lab 2.2 · one heading chunk"><code class="language-markdown">Study plan: Bachelor of Accounting &gt; Year 1 &gt; Year 1 · Semester 1
+| Code | Course | Credit hours | Prerequisite |
+|---|---|---|---|
+| ACC 112 | Foundations of Auditing | 3 | None |
+| UNI 101 | Arabic Writing | 2 | None |</code></pre>
+  <ul class="bullets small mt-s">
+    <li>One chunk per semester: <b>8 per plan</b>, 240 in all</li>
+    <li>The path names the plan, the year and the semester, so the chunk answers on its own</li>
+  </ul>
+  <aside class="notes"><p>Prepending context to a chunk is the idea behind contextual retrieval; here the context is free, because the document's own headings supply it. Sources: Anthropic, Introducing contextual retrieval (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Answerable" id="answerable-at-3" data-lo="LO3" data-n="19" data-session="2">
+  <div class="kicker">Score chunking by the questions it answers</div>
+  <h2>Answerable at 3: does a top-3 chunk hold everything the answer needs?</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>Each of the 20 table questions lists the strings the answer needs: "Semester 6" and "MTH 301"</li>
+      <li>A question is answerable when one of the top 3 chunks contains all of them</li>
+      <li>No model needed, so the score is cheap and repeatable</li>
+    </ul>
+    <div class="card c-teal flat"><h4>Why not recall?</h4><p class="small mb0">Chunkings make different units, so there are no shared relevance judgements. Answerability compares them on the same questions.</p></div>
+  </div>
+  <aside class="notes"><p>This is a stricter cousin of recall: it requires all the needed facts in one chunk, which is what a model reading the top 3 needs. The lab prints one failure: the top fixed window for the MTH 301 question is the plan's introduction.</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="chunking-results" data-lo="LO3" data-n="20" data-session="2">
+  <div class="kicker">Measured in Lab 2.2</div>
+  <h2>Heading chunks answer 0.65 of the table questions; 120-word windows 0.25</h2>
+  <div class="bars">
+    <div class="row"><span>windows of 60 words</span><div class="bar c-coral" style="--w:5%"></div><span class="val">0.05</span></div>
+    <div class="row"><span>windows of 120 words</span><div class="bar c-coral" style="--w:25%"></div><span class="val">0.25</span></div>
+    <div class="row"><span>windows of 240 words</span><div class="bar c-amber" style="--w:50%"></div><span class="val">0.50</span></div>
+    <div class="row"><span>by heading, with path</span><div class="bar c-teal" style="--w:65%"></div><span class="val">0.65</span></div>
+  </div>
+  <p class="caption">Answerable at 3 on 20 table questions over 30 study plans. Window sizes from the stretch.</p>
+  <aside class="notes"><p>Bigger windows help because they keep more of a table together, and they still lose to headings with fewer chunks than 60-word windows. 0.65 is not 1.0: the misses are questions whose words are shared by many semesters. That is a ranking problem, now visible because chunking is no longer hiding it.</p></aside>
+</section>
+
+<section class="slide" data-label="Recommend" id="chunking-recommendation" data-lo="LO3" data-n="21" data-session="2">
+  <div class="kicker">The recommendation, written down</div>
+  <h2>A recommendation names the evidence and when to revisit it</h2>
+  <div class="callout note"><b>Recommendation.</b> Chunk study plans by semester heading with the plan title and year carried into each chunk, and never cut inside a table. Revisit if plans gain long prose sections, where windows of a fixed size may retrieve better.</div>
+  <ul class="bullets small mt">
+    <li><b>Evidence</b>: answerable at 3, 0.65 against 0.25, on 20 questions</li>
+    <li><b>Scope</b>: study plans; regulations and news may chunk differently</li>
+    <li><b>Revisit</b>: a condition you can check, not "later"</li>
+  </ul>
+  <aside class="notes"><p>The text is the one the lab's step 5 prints. LO3's evidence is this pair: a parsing score per page type, and a retrieval comparison with a recommendation.</p></aside>
+</section>
+
+<section class="slide" id="check-chunking" data-lo="LO3" data-n="22" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which change will answer more table questions?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-chunking-q1">
+    <p class="lead">Nibras uses 120-word windows on the study plans and answers 0.25 of the table questions in the top 3. Which change does the evidence support most?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats smaller as more precise; 60-word windows answered 0.05" data-k="A">Shrink the windows to 60 words for precision</div>
+      <div class="opt" data-why="Changes ranking when the needed facts are not together in any chunk" data-k="B">Add a reranker on top of the windows</div>
+      <div class="opt" data-ok data-k="C">Chunk by semester heading and carry the plan and year into each chunk</div>
+      <div class="opt" data-why="Fixes a different problem: overlap repeats text but does not keep a table whole" data-k="D">Add a 20-word overlap between windows</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The answer needs the code, the semester and the plan in one chunk. Heading chunks guarantee that and answered 0.65 in Lab 2.2.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. B is attractive after Day 1, but a reranker can only reorder chunks; if no chunk holds the answer, reordering cannot create one.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-2" data-auto="lab" data-lab="2.2" data-label="Lab 2.2" data-n="23" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.2 · 25 min</div><h2>Two chunkings of the study plans</h2><p class="lead small">Chunk the study plans in fixed windows and by headings with their heading path, and compare how many of 20 table questions each chunking answers in the top 3.</p><a class="nb" href="../labs/D2_2_chunk_study_plans.ipynb">D2_2_chunk_study_plans.ipynb</a></div><ul class="checklist"><li>One plan, as the parser gave it <span class="min">3 min</span></li><li>Fixed windows of 120 words <span class="min">5 min</span></li><li>Chunks by heading, with the heading path <span class="min">8 min</span></li><li>Retrieve and score on 20 table questions <span class="min">6 min</span></li><li>The recommendation <span class="min">3 min</span></li><li class="stretch">✱ Stretch: Window size against answerability</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: splitting on every "#", which makes the plan title its own empty chunk; dropping the path when a semester heading repeats across plans; counting a question answerable when the strings are spread over two chunks.</p></aside>
+</section>
+
+<!-- ======================= SESSION 3 ======================= -->
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="24">
+  <div class="kicker">Session 3</div>
+  <h1>Dates, versions and duplicates</h1>
+  <ul class="bullets outcomes"><li>Read effective dates and amended articles from circulars</li><li>Keep a validity interval for every version</li><li>Remove near-duplicates and write staleness tests</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" data-label="Superseded" id="superseded-rules" data-lo="LO4" data-n="25" data-session="3">
+  <div class="kicker">Dates and versions</div>
+  <h2>A rule amended by a circular is still in the corpus, and it still ranks</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The regulation's articles were written once</li>
+      <li>Circulars amend them, each with an <b>issue date</b> and an <b>effective date</b></li>
+      <li>Both versions are relevant to the words of a question; only one is the answer today</li>
+    </ul>
+    <div class="stat"><div class="big">3 of 15</div><div class="lbl">changed questions whose top result states the current rule, before this session's fix</div></div>
+  </div>
+  <aside class="notes"><p>Measured in Lab 2.3 step 1 on 15 questions whose answer changed in a newer circular. The other 12 top results quote a version that no longer holds, which a fluent model would repeat with confidence.</p></aside>
+</section>
+
+<section class="slide" data-label="Two dates" id="issued-and-effective" data-lo="LO4" data-n="26" data-session="3">
+  <div class="kicker">Read both dates</div>
+  <h2>The issue date says when a rule was written; the effective date says when it counts</h2>
+  <div class="trace s">
+    <div class="ev user"><b>question</b>What is the maximum study load in a regular semester? (asked on 1 November 2026)</div>
+    <div class="ev result"><b>Article</b>between 12 and 20 credit hours</div>
+    <div class="ev result"><b>Circular 2026-140</b>issued 2026-10-05, effective 2027-01-01: between 12 and 18</div>
+    <div class="ev final"><b>answer</b>12 to 20 today; 18 from 1 January 2027</div>
+  </div>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> "Newest first" picks the circular, which is not yet in force.</div>
+  <aside class="notes"><p>This is question V05 of the lab, planted on purpose. Ask the room what "newest" would answer, then what the regulation actually says today. The stretch asks a question about the past: what was the attendance rule on 1 March 2024?</p></aside>
+</section>
+
+<section class="slide" data-label="Validity" id="validity-intervals" data-lo="LO4" data-n="27" data-session="3">
+  <div class="kicker">The fix</div>
+  <h2>Give every version a validity interval and filter by today's date</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>Article 17 version</th><th>valid from</th><th>valid to</th></tr>
+      <tr><td>Regulation text</td><td>start</td><td>2025 amendment</td></tr>
+      <tr class="hl"><td>Circular 2025-118</td><td>its effective date</td><td>open</td></tr>
+    </table>
+    <ul class="bullets small">
+      <li>Parse the circular for the article it amends and its effective date</li>
+      <li>Close the previous version's interval when the next takes effect</li>
+      <li>At query time keep chunks valid on the question's date</li>
+    </ul>
+  </div>
+  <p class="small mt">In the lab: 93 chunks, 33 of them amendments; 63 are valid on 1 November 2026.</p>
+  <aside class="notes"><p>The reading is done with patterns on the circulars' fixed wording, which is enough for a corpus with a house style. A model can extract the same fields from free text; validate what it extracts against the patterns on a sample before trusting it.</p></aside>
+</section>
+
+<section class="slide" data-label="Duplicates" id="near-duplicates" data-lo="LO4" data-n="28" data-session="3">
+  <div class="kicker">Duplicates</div>
+  <h2>Near-duplicate copies crowd the top results with the same text</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>Circulars are forwarded, re-posted by colleges, and copied into news</li>
+      <li>Compare chunks as sets of <b>word shingles</b> (runs of 3 words) and their Jaccard overlap</li>
+      <li>Copies measured 0.62 to 0.71 overlap; a threshold of 0.5 catches them</li>
+    </ul>
+    <div class="stat"><div class="big">8</div><div class="lbl">near-duplicate copies dropped in Lab 2.3</div></div>
+  </div>
+  <div class="callout tip mt-s"><b>Keep the original.</b> Drop the copy, keep the official circular's metadata: its dates are the ones that count.</div>
+  <aside class="notes"><p>The first version of this lab set the threshold at 0.7 and dropped one copy of eight: we measured the overlaps and lowered it. Thresholds are measured on your copies, not copied from a blog. At scale, MinHash estimates the same overlap without comparing every pair.</p></aside>
+</section>
+
+<section class="slide" data-label="Tests" id="staleness-tests" data-lo="LO4" data-n="29" data-session="3">
+  <div class="kicker">Make it a test</div>
+  <h2>A staleness test asks a question and fails if the old answer comes first</h2>
+  <pre class="code s" data-file="Lab 2.3 · step 5"><code class="language-python"><span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> CHANGED:                  <span class="hljs-comment"># 15 questions, Arabic and English</span>
+    top = search(valid_on(TODAY), [t[<span class="hljs-string">&quot;q&quot;</span>], t[<span class="hljs-string">&quot;q_ar&quot;</span>]])[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">assert</span> t[<span class="hljs-string">&quot;expect&quot;</span>] <span class="hljs-keyword">in</span> top.text, t[<span class="hljs-string">&quot;qid&quot;</span>]
+    <span class="hljs-keyword">assert</span> t[<span class="hljs-string">&quot;stale&quot;</span>] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> top.text, t[<span class="hljs-string">&quot;qid&quot;</span>]</code></pre>
+  <div class="cols cols-2 mt-s">
+    <div class="stat"><div class="big">3 → 15</div><div class="lbl">of 15 tests passing, before and after</div></div>
+    <div class="card c-teal flat"><h4>Run it on every rebuild</h4><p class="small mb0">A new circular, a re-parse or a new model can break it again.</p></div>
+  </div>
+  <aside class="notes"><p>The tests search in both languages, because some amendments exist only in the Arabic circular: an English-only test would miss them. This suite is half of LO4's evidence; the leak suite of Session 4 is the other half.</p></aside>
+</section>
+
+<section class="slide" id="check-effective-date" data-lo="LO4" data-n="30" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What should Nibras answer?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-effective-date-q1">
+    <p class="lead">On 1 November 2026 a student asks for the maximum study load. The article says 20 hours. Circular 2026-140, issued in October, sets 18 hours from 1 January 2027. What is the right answer?</p>
+    <div class="opts">
+      <div class="opt" data-why="Confuses the issue date with the effective date" data-k="A">18 hours, since the circular is newer</div>
+      <div class="opt" data-why="Hands the student a decision the regulation already makes" data-k="B">Both numbers, and let the student decide</div>
+      <div class="opt" data-why="Treats a scheduled change as uncertainty" data-k="C">Neither, since the rule is changing</div>
+      <div class="opt" data-ok data-k="D">20 hours, and that 18 hours applies from 1 January 2027</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The amendment is not yet in force, so today's interval holds the article's value. Mentioning the coming change is useful, and the validity interval gives the date.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. This is staleness test V05; it fails for anyone who sorts by issue date.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-3" data-auto="lab" data-lab="2.3" data-label="Lab 2.3" data-n="31" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.3 · 25 min</div><h2>Effective dates, versions and duplicates</h2><p class="lead small">Read effective dates from the circulars, give every version a validity interval, drop near-duplicate copies, and pass 15 staleness tests whose answer changed in a newer circular.</p><a class="nb" href="../labs/D2_3_add_effective_dates.ipynb">D2_3_add_effective_dates.ipynb</a></div><ul class="checklist"><li>Fifteen questions, answered from stale text <span class="min">3 min</span></li><li>Read effective dates and amended articles <span class="min">7 min</span></li><li>A validity interval for every version <span class="min">5 min</span></li><li>Near-duplicates by shingles <span class="min">5 min</span></li><li>Staleness tests <span class="min">5 min</span></li><li class="stretch">✱ Stretch: A question about the past</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: reading the issue date as the effective date; closing an interval on the issue date of the next version; deduplicating the official circular and keeping the copy. A test that passes in English and fails in Arabic is the planted Arabic-only amendment: search both languages.</p></aside>
+</section>
+
+<!-- ======================= SESSION 4 ======================= -->
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="32">
+  <div class="kicker">Session 4</div>
+  <h1>Permissions in the index</h1>
+  <ul class="bullets outcomes"><li>Tag every chunk with its document's classification and roles</li><li>Filter before ranking rather than after</li><li>Run leak and utility tests from a student account</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" data-label="The risk" id="search-can-leak" data-lo="LO4" data-n="33" data-session="4">
+  <div class="kicker">Permissions</div>
+  <h2>A search index without labels shows students what only staff may see</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">103</div><div class="lbl">Restricted results for 12 student queries, with no filter</div></div>
+    <ul class="bullets small">
+      <li>360 of 2,977 pages are <b>Restricted</b>: council minutes, promotion rules, allowance scales, disciplinary case summaries, examination archives</li>
+      <li>A test account, Muath Al-Shathri, searches as a student</li>
+      <li>Every Restricted page he sees is a leak, whatever the model then says</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Measured in Lab 2.4 step 1. The minutes of a college council meeting are the first leak the lab prints. Stress that the leak happens at retrieval: the model never needs to repeat it for the page to have been exposed in its context.</p></aside>
+</section>
+
+<section class="slide" data-label="Labels" id="label-from-document" data-lo="LO4" data-n="34" data-session="4">
+  <div class="kicker">Tag at indexing</div>
+  <h2>Every chunk inherits its document's classification and allowed roles</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Document</b>classification and roles, set by its owner</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Pages and chunks</b>inherit the labels</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Unlabelled</b>Restricted by default</div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral flat"><h4>The naive tagger</h4><p class="small mb0">Labels each page from its own text: 7 Restricted pages without their own label came out Public.</p></div>
+    <div class="card c-teal flat"><h4>In Saudi practice</h4><p class="small mb0">Data is classified by its owner under the national Data Classification Policy; personal data falls under the Personal Data Protection Law.</p></div>
+  </div>
+  <aside class="notes"><p>The classification levels in the corpus are simplified to Public and Restricted. Name the references for the room and keep the claim at that level; the course cites the policy and the law by their official addresses. Sources: Data Classification Policy; Personal Data Protection Law (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Before or after" id="filter-before-ranking" data-lo="LO4" data-n="35" data-session="4">
+  <div class="kicker">Where the filter goes</div>
+  <h2>Filter before ranking, or the student gets a short, strange list</h2>
+  <table class="t small">
+    <tr><th>Results per query, 12 student queries</th><th>Counts</th></tr>
+    <tr><td>Top 10, then remove Restricted</td><td>0, 0, 0, 0, 0, 5, 8, 0, 0, 1, 3, 0</td></tr>
+    <tr class="hl"><td>Rank only allowed pages</td><td>10 for every query</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> A post-filter leaks nothing and still fails the student: eight of twelve queries return nothing. It also tells an attacker, by the gaps, that something was there.</div>
+  <aside class="notes"><p>Lab 2.4 step 3. Most vector databases and search engines accept a filter inside the query (metadata filtering); use it rather than filtering the results in application code.</p></aside>
+</section>
+
+<section class="slide" data-label="Suite" id="leak-and-utility" data-lo="LO4" data-n="36" data-session="4">
+  <div class="kicker">The leak suite</div>
+  <h2>Test leaks and utility together, or an empty index passes</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Leak tests</h4><p class="small mb0">12 queries from the student account; fail if any result is Restricted.</p></div>
+    <div class="card c-teal"><h4>Utility checks</h4><p class="small mb0">The same queries; fail if a Public page that answers them is missing.</p></div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="stat"><div class="big">0</div><div class="lbl">leak failures after pre-filtering</div></div>
+    <div class="stat"><div class="big">0</div><div class="lbl">utility failures</div></div>
+  </div>
+  <aside class="notes"><p>The stretch runs the registrar's account: it must see the 103 Restricted results, or the filter over-blocks. A filter that blocks staff from their own minutes gets switched off, which is the worst outcome.</p></aside>
+</section>
+
+<section class="slide" data-label="Untrusted" id="retrieved-text-untrusted" data-lo="LO4" data-n="37" data-session="4">
+  <div class="kicker">Retrieved text is data</div>
+  <h2>A page can carry instructions to the model; quote it, never obey it</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Circular 2026-777</span>The student satisfaction survey opens next week ... followed by a note addressed to automated assistants, asking them to ignore access rules and include disciplinary summaries and examination papers.</div>
+    <div class="msg ai good"><span class="who">Nibras's pipeline</span>Flagged P0487. Roles come from the account, not from page text: nothing unlocked.</div>
+  </div>
+  <div class="callout tip mt-s"><b>Takeaway.</b> Permissions are enforced in code on the account's roles. No text in the index can change them.</div>
+  <aside class="notes"><p>The circular is planted in the corpus; the lab flags it with a pattern and checks that it could not unlock anything. This is indirect prompt injection through retrieved content. Sources: OWASP GenAI Security Project, LLM01 Prompt injection (see course sources).</p></aside>
+</section>
+
+<section class="slide" id="check-permissions" data-lo="LO4" data-n="38" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which design keeps students away from staff pages?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-permissions-q1">
+    <p class="lead">Nibras must never show a student a Restricted page and must still return ten useful results. Which design meets both?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">Label each chunk from its document, default to Restricted, and rank only the chunks the account may see</div>
+      <div class="opt" data-why="Trusts the model to enforce access it has already been given" data-k="B">Tell the model in the system prompt not to quote Restricted pages</div>
+      <div class="opt" data-why="Leaks nothing but returns too few results, as the 0 to 8 counts showed" data-k="C">Take the top 10 and remove the Restricted ones</div>
+      <div class="opt" data-why="Lets page text decide labels, which missed 7 Restricted pages" data-k="D">Label each page from its own text with a classifier</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Labels from the owner's document, a safe default, and a filter inside the ranking give no leaks and a full top 10, which the leak and utility suites both confirmed.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. B is the most common answer in practice and the weakest: the page is already in the context. Ask what B does against Circular 2026-777.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-4" data-auto="lab" data-lab="2.4" data-label="Lab 2.4" data-n="39" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.4 · 25 min</div><h2>Role labels and leak tests</h2><p class="lead small">Tag every page with role and classification from its document, filter before ranking, and run 12 leak tests from a student account with a utility check that nothing allowed is lost.</p><a class="nb" href="../labs/D2_4_tag_chunks_role.ipynb">D2_4_tag_chunks_role.ipynb</a></div><ul class="checklist"><li>Search as Muath with no filter <span class="min">4 min</span></li><li>Tag every page from its document <span class="min">6 min</span></li><li>Filter before ranking, not after <span class="min">6 min</span></li><li>The leak suite and the utility check <span class="min">6 min</span></li><li>Retrieved text is untrusted <span class="min">3 min</span></li><li class="stretch">✱ Stretch: The registrar's view: no over-blocking</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: tagging from the page instead of the document; forgetting the default for unlabelled pages; a utility check that compares against the unfiltered top 10, which always fails. Remind the room that Muath is a test account with synthetic data.</p></aside>
+</section>
+
+<!-- ======================= CLOSING ======================= -->
+<section class="slide" id="wrap-up" data-label="Recap" data-n="40" data-session="4">
+  <div class="kicker">Day 2 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Score the parser alone</h4><p class="small mb0">By page type, text and tables apart, then route each page to the parser that reads it.</p></div>
+    <div class="card c-coral"><h4>Chunk by structure</h4><p class="small mb0">Headings with their path answered 0.65 of the table questions against 0.25.</p></div>
+    <div class="card c-purple"><h4>Dates and roles in the index</h4><p class="small mb0">Validity intervals and pre-filtering, each proved by a test suite that runs on every rebuild.</p></div>
+  </div>
+  <aside class="notes"><p>Ask which of today's suites they would run before every deployment. The right answer is both: staleness and leaks. They are LO4's evidence and the capstone's "access and freshness tests" criterion.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="41" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Day 3: Agentic search and knowledge</h2>
+  <p class="lead">Tomorrow the search tools go to an agent: it chooses among them, searches again when one search is not enough, keeps large results out of its context, and uses a small graph for questions about links.</p>
+  <aside class="notes"><p>A free OpenRouter key makes Day 3 run against a real model; without one the labs run a scripted stand-in and say so. Ask participants to create a key tonight if they want live runs (labs/README.md, Quick start).</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T11:59:31Z","version":"2027.1.0","commit":"79ea004"},"course":{"id":"ae-304","code":"AE-304","title":"Retrieval and Knowledge Engineering for Language Model Systems","track":"ai-engineering","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ae-304/","repo":"SDAIAAcademy/ae-304","home":"../index.html"},"deck":{"id":"day2","kind":"day","day":2,"label":"Day 2","title":"Prepare the corpus","prev":"day1.html","next":"day3.html","md":"day2.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Parsing is a separate problem","slide":"s1","outcomes":["Score parsed text against reference text with a word error rate","Score tables cell by cell","Route pages to a parser by page type"],"minutes":50,"lab":{"id":"2.1","title":"Two parsers scored on 30 pages","minutes":25,"href":"../labs/D2_1_score_two_parsers.ipynb"}},{"n":2,"label":"Session 2","title":"Chunking by structure","slide":"s2","outcomes":["Chunk documents by headings and keep the heading path","Compare chunkings by retrieval on table questions","Recommend a chunking from the evidence"],"minutes":50,"lab":{"id":"2.2","title":"Two chunkings of the study plans","minutes":25,"href":"../labs/D2_2_chunk_study_plans.ipynb"}},{"n":3,"label":"Session 3","title":"Dates, versions and duplicates","slide":"s3","outcomes":["Read effective dates and amended articles from circulars","Keep a validity interval for every version","Remove near-duplicates and write staleness tests"],"minutes":50,"lab":{"id":"2.3","title":"Effective dates, versions and duplicates","minutes":25,"href":"../labs/D2_3_add_effective_dates.ipynb"}},{"n":4,"label":"Session 4","title":"Permissions in the index","slide":"s4","outcomes":["Tag every chunk with its document's classification and roles","Filter before ranking rather than after","Run leak and utility tests from a student account"],"minutes":50,"lab":{"id":"2.4","title":"Role labels and leak tests","minutes":25,"href":"../labs/D2_4_tag_chunks_role.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Prepare the corpus","kind":"title","session":0,"hash":"c1a85600","md":"#### [day2#title] Prepare the corpus\n\n*SDAIA Academy · Retrieval and Knowledge Engineering for Language Model Systems*\n\nDay 2\n\nAI Engineering Track · 4 teaching days + capstone day · 4 sessions · 4 labs · AE-304","notes":"Open with yesterday's best number: hybrid search with a reranker reached nDCG@10 0.633. Ask: if a page was never parsed, which of yesterday's methods could find it? None. Today moves upstream, to what the index is made of.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Prepare the corpus","kind":"content","session":0,"hash":"8c561ab4","md":"#### [day2#agenda] Prepare the corpus\n\n*Today*\n\n- **Session 1 · Parsing is a separate problem**: Score parsers apart from retrieval: word error rate and table cells by page type, and a rule that routes each page to the parser that reads it\n- **Session 2 · Chunking by structure**: Chunk by the document's own structure, carry the heading path into each chunk, and test chunking by the questions it can answer\n- **Session 3 · Dates, versions and duplicates**: Give every version a validity interval, drop near-duplicates, and test that the current rule comes first\n- **Session 4 · Permissions in the index**: Carry role and classification on every chunk, filter before ranking, and test leaks from a student account as a suite","notes":"","minutes":null,"lo":[]},{"id":"review-day1","n":3,"title":"What does yesterday's results table say?","kind":"quiz","session":0,"hash":"6e2e9e16","md":"#### [day2#review-day1] What does yesterday's results table say?\n\n*Review of Day 1*\n\n**Question:** Dense e5 scored nDCG@10 0.375 on Arabic and 0.639 on English; normalised BM25 scored 0.543 and 0.532; their RRF fusion 0.510 and 0.630. Which reading is right?\n\n- A. Fusion beats both inputs on both languages\n- B. Dense retrieval cannot serve Arabic\n- C. The three methods are equal, since their averages are close\n- D. Fusion helps English a lot and costs a little on Arabic, so Arabic needs its own look","notes":"Answer: D. If the room picks A, show the two Arabic numbers side by side: 0.510 against BM25's 0.543. MiniLM did better than e5 on Arabic (0.419), so B overstates it.","minutes":null,"lo":["LO2"]},{"id":"s1","n":4,"title":"Parsing is a separate problem","kind":"section","session":1,"hash":"6e5f6ec0","md":"#### [day2#s1] Parsing is a separate problem\n\n*Session 1*\n\n- Score parsed text against reference text with a word error rate\n- Score tables cell by cell\n- Route pages to a parser by page type","notes":"","minutes":null,"lo":["LO3"]},{"id":"parsing-before-retrieval","n":5,"title":"Retrieval can only find what the parser wrote down","kind":"content","session":1,"hash":"c4cc5feb","md":"#### [day2#parsing-before-retrieval] Retrieval can only find what the parser wrote down\n\n*Corpus preparation*\n\n1. **PDF or scan** what the university publishes\n2. **Parser** text and tables, or nothing\n3. **Chunks** what gets indexed\n4. **Search** Day 1's methods\n\n> **What goes wrong.** A parsing failure looks like a retrieval failure: the page \"is never found\". Score the parser on its own, against reference text, before you tune search.","notes":"Day 4 Session 4 makes this a method: attribute each failure to the first component that lost the answer. Today you measure the first component directly.","minutes":null,"lo":["LO3"]},{"id":"two-kinds-of-parser","n":6,"title":"A text-layer parser reads what the PDF stores; a layout-aware one reads the page","kind":"content","session":1,"hash":"298b4c5b","md":"#### [day2#two-kinds-of-parser] A text-layer parser reads what the PDF stores; a layout-aware one reads the page\n\n*Two families of parser*\n\n- **Parser A · text layer.** Fast and cheap. Reads the characters the PDF holds, in the order it holds them. A scan holds no characters; Arabic may come out in presentation forms and reversed order.\n- **Parser B · layout-aware.** Slower. Recognises text from the image and finds table structure. Makes its own errors: similar letters confused.\n\nExamples of the families: pypdf and pdfminer for text layers; Docling, Unstructured, Tesseract and open-weight document vision models for layout and recognition.","notes":"The lab's two parsers are simulated from the reference text with the failure patterns of each family, so every room gets the same scores. Say this plainly: the patterns are real, the outputs are generated. The method of scoring is what transfers to a real parser.","minutes":null,"lo":["LO3"]},{"id":"specialised-or-general-reader","n":7,"title":"A small parsing model or a general vision model: score both on your pages","kind":"content","session":1,"hash":"001eef6b","md":"#### [day2#specialised-or-general-reader] A small parsing model or a general vision model: score both on your pages\n\n*Inside the layout-aware family*\n\n- **Small specialised parsing model.** Trained only to read documents: layout, reading order, table structure, characters. Runs on modest hardware and costs little per page. Weak on layouts it never saw.\n- **General vision model.** Reads the page image and follows an instruction, such as \"return this table as Markdown\". Flexible on odd layouts. Costs more per page and can write fluent text that is not on the page.\n\n> **What goes wrong.** A misread letter looks like a mistake. An invented word looks like text. Only a score against reference pages, by page type, shows which one you have.","notes":"No benchmark numbers on purpose: these models change every few months, and a leaderboard rarely includes scanned Arabic circulars. The method is the lab's: the same 30 pages, word error rate and table cells by page type, then a routing rule. A common result is a cascade: the specialised model for most pages, the general model only for the pages it scores badly on. For Arabic, check right-to-left reading order and digits in tables first.","minutes":null,"lo":["LO3"]},{"id":"one-page-three-ways","n":8,"title":"The same study-plan page, as the text layer gives it","kind":"content","session":1,"hash":"48900c1b","md":"#### [day2#one-page-three-ways] The same study-plan page, as the text layer gives it\n\n*Lab 2.1, step 1*\n\n##### Reference\n\nالخطة الدراسية: بكالوريوس الهندسة الصناعية، السنة الثالثة\n\n`| IND 312 | ... | 3 | IND 212 |`\n\n##### Parser A\n\nﺍﻝﺙﺍﻝﺙة ﺍﻝﺱﻥة ﺍﻝﺹﻥﺍﻉﻱة، ﺍﻝﻩﻥﺩﺱة ﺏﻙﺍﻝﻭﺭﻱﻭﺱ ﺍﻝﺩﺭﺍﺱﻱة: ﺍﻝﺥﻁة\n\n`212 IND 3 ... 312 IND`\n\n- **Presentation forms**: each letter stored in its joined shape, so no word matches\n- **Reversed word order** in Arabic lines, and the table's pipes lost","notes":"This is page 1 of the lab's 30 pages, printed in step 1. Ask an Arabic reader whether the second line looks right: it renders almost normally, but the word order is reversed and every letter is a presentation form. Unicode NFKC folds the forms back; it does not restore the order.","minutes":null,"lo":["LO3"]},{"id":"word-error-rate","n":9,"title":"Word error rate: the edits that turn the output into the reference, per word","kind":"content","session":1,"hash":"dd10ccff","md":"#### [day2#word-error-rate] Word error rate: the edits that turn the output into the reference, per word\n\n*Score the text*\n\n```python\n# file: Lab 2.1 · step 2\ndef words(text):\n    text = unicodedata.normalize(\"NFKC\", text)\n    return re.findall(r\"\\w+\", U.normalise(text))\n\ndef wer(ref, out):\n    r, o = words(ref), words(out)\n    return edit_distance(r, o) / len(r)\n```\n\n- Normalise first, or you score typography, not content\n- Two swapped words cost two edits: a toy of three words scores 0.667\n- An empty output scores 1.0, every word missing","notes":"The toy check in the lab prints 0.667 for a swapped pair in three words. Ask why WER can exceed 1 (insertions); it does not happen here, but a parser that repeats headers can do it.","minutes":null,"lo":["LO3"]},{"id":"table-cell-accuracy","n":10,"title":"A table is right only when each cell is in its row and column","kind":"content","session":1,"hash":"1efc295d","md":"#### [day2#table-cell-accuracy] A table is right only when each cell is in its row and column\n\n*Score the tables*\n\n- Compare the parsed table with the reference **cell by cell**: same row, same column, same text\n- Text can be perfect and the table worthless: \"3\" and \"IND 212\" on one line do not say which course they belong to\n- Study plans are mostly tables: a question like \"how many credit hours is CSC 301\" lives in one cell\n\n> **Takeaway.** Report text and table scores separately. A parser can win one and lose the other.","notes":"Parser A scored 0.000 on cells even on digital pages, because it drops the pipes: the words are there, the structure is gone. Parser B scored 0.998 on digital tables and 0.944 on scanned ones.","minutes":null,"lo":["LO3"]},{"id":"scores-by-page-type","n":11,"title":"The text layer is fine on plain digital pages and useless on scans","kind":"content","session":1,"hash":"8416acf6","md":"#### [day2#scores-by-page-type] The text layer is fine on plain digital pages and useless on scans\n\n*Measured in Lab 2.1*\n\n| Page type (pages) | WER A | WER B | cells A | cells B |\n| --- | --- | --- | --- | --- |\n| Digital, no table (7) | 0.397 | 0.012 | - | - |\n| Digital, table (8) | 0.278 | 0.001 | 0.000 | 0.998 |\n| Scanned, no table (11) | 1.000 | 0.054 | - | - |\n| Scanned, table (4) | 1.000 | 0.073 | 0.000 | 0.944 |\n\n30 pages. Parser A's errors on digital pages are mostly the Arabic ones: reversed word order. Its English digital pages are nearly clean.","notes":"The overall WER of parser A is 0.667 and of B 0.033, but that average is meaningless for a decision: it mixes pages where A is useless with pages where it is acceptable. The stretch repairs the text layer of digital Arabic pages (reversing the word order) and reaches WER 0.0 on them.","minutes":null,"lo":["LO3"]},{"id":"routing-rule","n":12,"title":"Route each page to the cheapest parser that reads it","kind":"content","session":1,"hash":"ef9d354f","md":"#### [day2#routing-rule] Route each page to the cheapest parser that reads it\n\n*The decision the scores support*\n\n1. **No text layer, or presentation forms?** parser B\n2. **Looks like a table?** parser B\n3. **Otherwise** parser A\n\n| 30 pages | WER | cells |\n| --- | --- | --- |\n| Parser A only | 0.667 | 0.000 |\n| Parser B only | 0.033 | 0.980 |\n| Routed (4 pages to A) | 0.032 | 0.980 |","notes":"The routing rule is the LO3 recommendation in miniature: it keeps B's quality and saves its cost on the pages where A is good enough. On this corpus that is only 4 pages of 30; on a corpus of born-digital English it would be most of them. The rule is measured, not assumed.","minutes":null,"lo":["LO3"]},{"id":"check-parser-choice","n":13,"title":"Where should Kawthar look first?","kind":"quiz","session":1,"hash":"02e99354","md":"#### [day2#check-parser-choice] Where should Kawthar look first?\n\n*Checkpoint*\n\n**Question:** Students report that Nibras never finds the 2019 study plans, which the registrar scanned from paper. The plans are in the index. What should Kawthar check first?\n\n- A. The weight of the title column in BM25\n- B. The parsed text of those pages: a scan read by a text-layer parser is empty\n- C. A better embedding model for Arabic\n- D. The chunk size of the study plans","notes":"Answer: B. The order of the options follows the pipeline backwards; point that out after the reveal, and preview Day 4's attribution ladder.","minutes":null,"lo":["LO3"]},{"id":"lab-2-1","n":14,"title":"Two parsers scored on 30 pages","kind":"lab","session":1,"hash":"11416cb3","md":"#### [day2#lab-2-1] Two parsers scored on 30 pages\n\nLab 2.1 · 25 min\n\nScore a text-layer parser and a layout-aware parser on 30 scanned and digital pages with tables against reference text, by page type, and write the routing rule that picks one per page.\n\n[D2_1_score_two_parsers.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D2_1_score_two_parsers.ipynb)\n\n- [ ] One page, three ways (3 min)\n- [ ] Word error rate after normalisation (7 min)\n- [ ] Table-cell accuracy (6 min)\n- [ ] Scores by page type (5 min)\n- [ ] A routing rule, and its score (4 min)\n- [ ] ✱ Stretch: Repair the text layer and score it again","notes":"Walk the room. Usual problems: scoring before NFKC, so presentation forms count as errors twice; dividing by the output length instead of the reference length; treating a missing table as cell accuracy 1.0. Early finishers take the stretch: repair the text layer by reversing Arabic lines and score again.","minutes":null,"lo":[]},{"id":"s2","n":15,"title":"Chunking by structure","kind":"section","session":2,"hash":"dd4dfa7f","md":"#### [day2#s2] Chunking by structure\n\n*Session 2*\n\n- Chunk documents by headings and keep the heading path\n- Compare chunkings by retrieval on table questions\n- Recommend a chunking from the evidence","notes":"","minutes":null,"lo":["LO3"]},{"id":"why-chunk","n":16,"title":"A chunk is the unit the model reads: big enough to answer, small enough to rank","kind":"content","session":2,"hash":"89493d13","md":"#### [day2#why-chunk] A chunk is the unit the model reads: big enough to answer, small enough to rank\n\n*Chunking*\n\n- **Too small.** A row without its header: \"3 | IND 212\" answers nothing.\n- **Right.** One semester's table with the plan and year named.\n- **Too large.** A whole plan: the right row is one of forty, and the score is diluted.","notes":"Ask where they chunk today. Most answers: \"the library's default\". AE-203 compared two chunkings of a policy corpus once; here the documents are tables, and chunking is scored by the questions it can answer. The default is usually a fixed window, which is today's baseline.","minutes":null,"lo":["LO3"]},{"id":"fixed-windows-cut-tables","n":17,"title":"Fixed windows cut tables wherever the word count falls","kind":"content","session":2,"hash":"0ae9f955","md":"#### [day2#fixed-windows-cut-tables] Fixed windows cut tables wherever the word count falls\n\n*The common default*\n\n- window 1: ... | Total | 14 | | ### Year 1 · Semester 2 | Code | Course | Credit hours | Prerequisite | |---|---|---|---| | ACC 101 | Introduction to Financial ...\n- window 2: ... Accounting | 3 | UNI 105 | | ACC 112 | ...\n\n> **What goes wrong.** The window that holds \"ACC 101\" may not hold \"Semester 2\", and neither names the programme. The question \"in which semester of the Accounting plan is ACC 101 taught?\" has no single chunk that answers it.","notes":"The first window of the Accounting plan, printed in Lab 2.2 step 2 (120-word windows, 210 chunks over 30 plans). Overlap between windows helps a little and doubles the index.","minutes":null,"lo":["LO3"]},{"id":"chunk-by-heading","n":18,"title":"Cut at the document's headings and carry the heading path into each chunk","kind":"content","session":2,"hash":"5ddcd374","md":"#### [day2#chunk-by-heading] Cut at the document's headings and carry the heading path into each chunk\n\n*Chunk by structure*\n\n```markdown\n\u003c!-- file: Lab 2.2 · one heading chunk -->\nStudy plan: Bachelor of Accounting > Year 1 > Year 1 · Semester 1\n| Code | Course | Credit hours | Prerequisite |\n|---|---|---|---|\n| ACC 112 | Foundations of Auditing | 3 | None |\n| UNI 101 | Arabic Writing | 2 | None |\n```\n\n- One chunk per semester: **8 per plan**, 240 in all\n- The path names the plan, the year and the semester, so the chunk answers on its own","notes":"Prepending context to a chunk is the idea behind contextual retrieval; here the context is free, because the document's own headings supply it. Sources: Anthropic, Introducing contextual retrieval (see course sources).","minutes":null,"lo":["LO3"]},{"id":"answerable-at-3","n":19,"title":"Answerable at 3: does a top-3 chunk hold everything the answer needs?","kind":"content","session":2,"hash":"f451da40","md":"#### [day2#answerable-at-3] Answerable at 3: does a top-3 chunk hold everything the answer needs?\n\n*Score chunking by the questions it answers*\n\n- Each of the 20 table questions lists the strings the answer needs: \"Semester 6\" and \"MTH 301\"\n- A question is answerable when one of the top 3 chunks contains all of them\n- No model needed, so the score is cheap and repeatable\n\n- **Why not recall?** Chunkings make different units, so there are no shared relevance judgements. Answerability compares them on the same questions.","notes":"This is a stricter cousin of recall: it requires all the needed facts in one chunk, which is what a model reading the top 3 needs. The lab prints one failure: the top fixed window for the MTH 301 question is the plan's introduction.","minutes":null,"lo":["LO3"]},{"id":"chunking-results","n":20,"title":"Heading chunks answer 0.65 of the table questions; 120-word windows 0.25","kind":"content","session":2,"hash":"1c2b824c","md":"#### [day2#chunking-results] Heading chunks answer 0.65 of the table questions; 120-word windows 0.25\n\n*Measured in Lab 2.2*\n\n| Item | Value |\n| --- | --- |\n| windows of 60 words | 0.05 |\n| windows of 120 words | 0.25 |\n| windows of 240 words | 0.50 |\n| by heading, with path | 0.65 |\n\nAnswerable at 3 on 20 table questions over 30 study plans. Window sizes from the stretch.","notes":"Bigger windows help because they keep more of a table together, and they still lose to headings with fewer chunks than 60-word windows. 0.65 is not 1.0: the misses are questions whose words are shared by many semesters. That is a ranking problem, now visible because chunking is no longer hiding it.","minutes":null,"lo":["LO3"]},{"id":"chunking-recommendation","n":21,"title":"A recommendation names the evidence and when to revisit it","kind":"content","session":2,"hash":"aa15644b","md":"#### [day2#chunking-recommendation] A recommendation names the evidence and when to revisit it\n\n*The recommendation, written down*\n\n> **Recommendation.** Chunk study plans by semester heading with the plan title and year carried into each chunk, and never cut inside a table. Revisit if plans gain long prose sections, where windows of a fixed size may retrieve better.\n\n- **Evidence**: answerable at 3, 0.65 against 0.25, on 20 questions\n- **Scope**: study plans; regulations and news may chunk differently\n- **Revisit**: a condition you can check, not \"later\"","notes":"The text is the one the lab's step 5 prints. LO3's evidence is this pair: a parsing score per page type, and a retrieval comparison with a recommendation.","minutes":null,"lo":["LO3"]},{"id":"check-chunking","n":22,"title":"Which change will answer more table questions?","kind":"quiz","session":2,"hash":"0fc9e473","md":"#### [day2#check-chunking] Which change will answer more table questions?\n\n*Checkpoint*\n\n**Question:** Nibras uses 120-word windows on the study plans and answers 0.25 of the table questions in the top 3. Which change does the evidence support most?\n\n- A. Shrink the windows to 60 words for precision\n- B. Add a reranker on top of the windows\n- C. Chunk by semester heading and carry the plan and year into each chunk\n- D. Add a 20-word overlap between windows","notes":"Answer: C. B is attractive after Day 1, but a reranker can only reorder chunks; if no chunk holds the answer, reordering cannot create one.","minutes":null,"lo":["LO3"]},{"id":"lab-2-2","n":23,"title":"Two chunkings of the study plans","kind":"lab","session":2,"hash":"6fcdb270","md":"#### [day2#lab-2-2] Two chunkings of the study plans\n\nLab 2.2 · 25 min\n\nChunk the study plans in fixed windows and by headings with their heading path, and compare how many of 20 table questions each chunking answers in the top 3.\n\n[D2_2_chunk_study_plans.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D2_2_chunk_study_plans.ipynb)\n\n- [ ] One plan, as the parser gave it (3 min)\n- [ ] Fixed windows of 120 words (5 min)\n- [ ] Chunks by heading, with the heading path (8 min)\n- [ ] Retrieve and score on 20 table questions (6 min)\n- [ ] The recommendation (3 min)\n- [ ] ✱ Stretch: Window size against answerability","notes":"Walk the room. Usual problems: splitting on every \"#\", which makes the plan title its own empty chunk; dropping the path when a semester heading repeats across plans; counting a question answerable when the strings are spread over two chunks.","minutes":null,"lo":[]},{"id":"s3","n":24,"title":"Dates, versions and duplicates","kind":"section","session":3,"hash":"13128575","md":"#### [day2#s3] Dates, versions and duplicates\n\n*Session 3*\n\n- Read effective dates and amended articles from circulars\n- Keep a validity interval for every version\n- Remove near-duplicates and write staleness tests","notes":"","minutes":null,"lo":["LO4"]},{"id":"superseded-rules","n":25,"title":"A rule amended by a circular is still in the corpus, and it still ranks","kind":"content","session":3,"hash":"95b5432d","md":"#### [day2#superseded-rules] A rule amended by a circular is still in the corpus, and it still ranks\n\n*Dates and versions*\n\n- The regulation's articles were written once\n- Circulars amend them, each with an **issue date** and an **effective date**\n- Both versions are relevant to the words of a question; only one is the answer today\n\n**3 of 15** changed questions whose top result states the current rule, before this session's fix","notes":"Measured in Lab 2.3 step 1 on 15 questions whose answer changed in a newer circular. The other 12 top results quote a version that no longer holds, which a fluent model would repeat with confidence.","minutes":null,"lo":["LO4"]},{"id":"issued-and-effective","n":26,"title":"The issue date says when a rule was written; the effective date says when it counts","kind":"content","session":3,"hash":"379ee017","md":"#### [day2#issued-and-effective] The issue date says when a rule was written; the effective date says when it counts\n\n*Read both dates*\n\n- question: What is the maximum study load in a regular semester? (asked on 1 November 2026)\n- Article: between 12 and 20 credit hours\n- Circular 2026-140: issued 2026-10-05, effective 2027-01-01: between 12 and 18\n- answer: 12 to 20 today; 18 from 1 January 2027\n\n> **What goes wrong.** \"Newest first\" picks the circular, which is not yet in force.","notes":"This is question V05 of the lab, planted on purpose. Ask the room what \"newest\" would answer, then what the regulation actually says today. The stretch asks a question about the past: what was the attendance rule on 1 March 2024?","minutes":null,"lo":["LO4"]},{"id":"validity-intervals","n":27,"title":"Give every version a validity interval and filter by today's date","kind":"content","session":3,"hash":"7b1c8b9b","md":"#### [day2#validity-intervals] Give every version a validity interval and filter by today's date\n\n*The fix*\n\n| Article 17 version | valid from | valid to |\n| --- | --- | --- |\n| Regulation text | start | 2025 amendment |\n| Circular 2025-118 | its effective date | open |\n\n- Parse the circular for the article it amends and its effective date\n- Close the previous version's interval when the next takes effect\n- At query time keep chunks valid on the question's date\n\nIn the lab: 93 chunks, 33 of them amendments; 63 are valid on 1 November 2026.","notes":"The reading is done with patterns on the circulars' fixed wording, which is enough for a corpus with a house style. A model can extract the same fields from free text; validate what it extracts against the patterns on a sample before trusting it.","minutes":null,"lo":["LO4"]},{"id":"near-duplicates","n":28,"title":"Near-duplicate copies crowd the top results with the same text","kind":"content","session":3,"hash":"206bfca2","md":"#### [day2#near-duplicates] Near-duplicate copies crowd the top results with the same text\n\n*Duplicates*\n\n- Circulars are forwarded, re-posted by colleges, and copied into news\n- Compare chunks as sets of **word shingles** (runs of 3 words) and their Jaccard overlap\n- Copies measured 0.62 to 0.71 overlap; a threshold of 0.5 catches them\n\n**8** near-duplicate copies dropped in Lab 2.3\n\n> **Keep the original.** Drop the copy, keep the official circular's metadata: its dates are the ones that count.","notes":"The first version of this lab set the threshold at 0.7 and dropped one copy of eight: we measured the overlaps and lowered it. Thresholds are measured on your copies, not copied from a blog. At scale, MinHash estimates the same overlap without comparing every pair.","minutes":null,"lo":["LO4"]},{"id":"staleness-tests","n":29,"title":"A staleness test asks a question and fails if the old answer comes first","kind":"content","session":3,"hash":"63a32bf6","md":"#### [day2#staleness-tests] A staleness test asks a question and fails if the old answer comes first\n\n*Make it a test*\n\n```python\n# file: Lab 2.3 · step 5\nfor t in CHANGED:                  # 15 questions, Arabic and English\n    top = search(valid_on(TODAY), [t[\"q\"], t[\"q_ar\"]])[0]\n    assert t[\"expect\"] in top.text, t[\"qid\"]\n    assert t[\"stale\"] not in top.text, t[\"qid\"]\n```\n\n**3 → 15** of 15 tests passing, before and after\n\n- **Run it on every rebuild.** A new circular, a re-parse or a new model can break it again.","notes":"The tests search in both languages, because some amendments exist only in the Arabic circular: an English-only test would miss them. This suite is half of LO4's evidence; the leak suite of Session 4 is the other half.","minutes":null,"lo":["LO4"]},{"id":"check-effective-date","n":30,"title":"What should Nibras answer?","kind":"quiz","session":3,"hash":"3a7f407e","md":"#### [day2#check-effective-date] What should Nibras answer?\n\n*Checkpoint*\n\n**Question:** On 1 November 2026 a student asks for the maximum study load. The article says 20 hours. Circular 2026-140, issued in October, sets 18 hours from 1 January 2027. What is the right answer?\n\n- A. 18 hours, since the circular is newer\n- B. Both numbers, and let the student decide\n- C. Neither, since the rule is changing\n- D. 20 hours, and that 18 hours applies from 1 January 2027","notes":"Answer: D. This is staleness test V05; it fails for anyone who sorts by issue date.","minutes":null,"lo":["LO4"]},{"id":"lab-2-3","n":31,"title":"Effective dates, versions and duplicates","kind":"lab","session":3,"hash":"45a18800","md":"#### [day2#lab-2-3] Effective dates, versions and duplicates\n\nLab 2.3 · 25 min\n\nRead effective dates from the circulars, give every version a validity interval, drop near-duplicate copies, and pass 15 staleness tests whose answer changed in a newer circular.\n\n[D2_3_add_effective_dates.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D2_3_add_effective_dates.ipynb)\n\n- [ ] Fifteen questions, answered from stale text (3 min)\n- [ ] Read effective dates and amended articles (7 min)\n- [ ] A validity interval for every version (5 min)\n- [ ] Near-duplicates by shingles (5 min)\n- [ ] Staleness tests (5 min)\n- [ ] ✱ Stretch: A question about the past","notes":"Walk the room. Usual problems: reading the issue date as the effective date; closing an interval on the issue date of the next version; deduplicating the official circular and keeping the copy. A test that passes in English and fails in Arabic is the planted Arabic-only amendment: search both languages.","minutes":null,"lo":[]},{"id":"s4","n":32,"title":"Permissions in the index","kind":"section","session":4,"hash":"de9b7b03","md":"#### [day2#s4] Permissions in the index\n\n*Session 4*\n\n- Tag every chunk with its document's classification and roles\n- Filter before ranking rather than after\n- Run leak and utility tests from a student account","notes":"","minutes":null,"lo":["LO4"]},{"id":"search-can-leak","n":33,"title":"A search index without labels shows students what only staff may see","kind":"content","session":4,"hash":"c3e97993","md":"#### [day2#search-can-leak] A search index without labels shows students what only staff may see\n\n*Permissions*\n\n**103** Restricted results for 12 student queries, with no filter\n\n- 360 of 2,977 pages are **Restricted**: council minutes, promotion rules, allowance scales, disciplinary case summaries, examination archives\n- A test account, Muath Al-Shathri, searches as a student\n- Every Restricted page he sees is a leak, whatever the model then says","notes":"Measured in Lab 2.4 step 1. The minutes of a college council meeting are the first leak the lab prints. Stress that the leak happens at retrieval: the model never needs to repeat it for the page to have been exposed in its context.","minutes":null,"lo":["LO4"]},{"id":"label-from-document","n":34,"title":"Every chunk inherits its document's classification and allowed roles","kind":"content","session":4,"hash":"10f57b61","md":"#### [day2#label-from-document] Every chunk inherits its document's classification and allowed roles\n\n*Tag at indexing*\n\n1. **Document** classification and roles, set by its owner\n2. **Pages and chunks** inherit the labels\n3. **Unlabelled** Restricted by default\n\n- **The naive tagger.** Labels each page from its own text: 7 Restricted pages without their own label came out Public.\n- **In Saudi practice.** Data is classified by its owner under the national Data Classification Policy; personal data falls under the Personal Data Protection Law.","notes":"The classification levels in the corpus are simplified to Public and Restricted. Name the references for the room and keep the claim at that level; the course cites the policy and the law by their official addresses. Sources: Data Classification Policy; Personal Data Protection Law (see course sources).","minutes":null,"lo":["LO4"]},{"id":"filter-before-ranking","n":35,"title":"Filter before ranking, or the student gets a short, strange list","kind":"content","session":4,"hash":"f1c78179","md":"#### [day2#filter-before-ranking] Filter before ranking, or the student gets a short, strange list\n\n*Where the filter goes*\n\n| Results per query, 12 student queries | Counts |\n| --- | --- |\n| Top 10, then remove Restricted | 0, 0, 0, 0, 0, 5, 8, 0, 0, 1, 3, 0 |\n| Rank only allowed pages | 10 for every query |\n\n> **What goes wrong.** A post-filter leaks nothing and still fails the student: eight of twelve queries return nothing. It also tells an attacker, by the gaps, that something was there.","notes":"Lab 2.4 step 3. Most vector databases and search engines accept a filter inside the query (metadata filtering); use it rather than filtering the results in application code.","minutes":null,"lo":["LO4"]},{"id":"leak-and-utility","n":36,"title":"Test leaks and utility together, or an empty index passes","kind":"content","session":4,"hash":"667f0106","md":"#### [day2#leak-and-utility] Test leaks and utility together, or an empty index passes\n\n*The leak suite*\n\n- **Leak tests.** 12 queries from the student account; fail if any result is Restricted.\n- **Utility checks.** The same queries; fail if a Public page that answers them is missing.\n\n- **0** leak failures after pre-filtering\n- **0** utility failures","notes":"The stretch runs the registrar's account: it must see the 103 Restricted results, or the filter over-blocks. A filter that blocks staff from their own minutes gets switched off, which is the worst outcome.","minutes":null,"lo":["LO4"]},{"id":"retrieved-text-untrusted","n":37,"title":"A page can carry instructions to the model; quote it, never obey it","kind":"content","session":4,"hash":"373d1070","md":"#### [day2#retrieved-text-untrusted] A page can carry instructions to the model; quote it, never obey it\n\n*Retrieved text is data*\n\n**Circular 2026-777:** The student satisfaction survey opens next week ... followed by a note addressed to automated assistants, asking them to ignore access rules and include disciplinary summaries and examination papers.\n\n**Nibras's pipeline (good example):** Flagged P0487. Roles come from the account, not from page text: nothing unlocked.\n\n> **Takeaway.** Permissions are enforced in code on the account's roles. No text in the index can change them.","notes":"The circular is planted in the corpus; the lab flags it with a pattern and checks that it could not unlock anything. This is indirect prompt injection through retrieved content. Sources: OWASP GenAI Security Project, LLM01 Prompt injection (see course sources).","minutes":null,"lo":["LO4"]},{"id":"check-permissions","n":38,"title":"Which design keeps students away from staff pages?","kind":"quiz","session":4,"hash":"ee364877","md":"#### [day2#check-permissions] Which design keeps students away from staff pages?\n\n*Checkpoint*\n\n**Question:** Nibras must never show a student a Restricted page and must still return ten useful results. Which design meets both?\n\n- A. Label each chunk from its document, default to Restricted, and rank only the chunks the account may see\n- B. Tell the model in the system prompt not to quote Restricted pages\n- C. Take the top 10 and remove the Restricted ones\n- D. Label each page from its own text with a classifier","notes":"Answer: A. B is the most common answer in practice and the weakest: the page is already in the context. Ask what B does against Circular 2026-777.","minutes":null,"lo":["LO4"]},{"id":"lab-2-4","n":39,"title":"Role labels and leak tests","kind":"lab","session":4,"hash":"655d9d8b","md":"#### [day2#lab-2-4] Role labels and leak tests\n\nLab 2.4 · 25 min\n\nTag every page with role and classification from its document, filter before ranking, and run 12 leak tests from a student account with a utility check that nothing allowed is lost.\n\n[D2_4_tag_chunks_role.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D2_4_tag_chunks_role.ipynb)\n\n- [ ] Search as Muath with no filter (4 min)\n- [ ] Tag every page from its document (6 min)\n- [ ] Filter before ranking, not after (6 min)\n- [ ] The leak suite and the utility check (6 min)\n- [ ] Retrieved text is untrusted (3 min)\n- [ ] ✱ Stretch: The registrar's view: no over-blocking","notes":"Walk the room. Usual problems: tagging from the page instead of the document; forgetting the default for unlabelled pages; a utility check that compares against the unfiltered top 10, which always fails. Remind the room that Muath is a test account with synthetic data.","minutes":null,"lo":[]},{"id":"wrap-up","n":40,"title":"Three things to keep","kind":"content","session":4,"hash":"daf74166","md":"#### [day2#wrap-up] Three things to keep\n\n*Day 2 · wrap-up*\n\n- **Score the parser alone.** By page type, text and tables apart, then route each page to the parser that reads it.\n- **Chunk by structure.** Headings with their path answered 0.65 of the table questions against 0.25.\n- **Dates and roles in the index.** Validity intervals and pre-filtering, each proved by a test suite that runs on every rebuild.","notes":"Ask which of today's suites they would run before every deployment. The right answer is both: staleness and leaks. They are LO4's evidence and the capstone's \"access and freshness tests\" criterion.","minutes":null,"lo":[]},{"id":"next","n":41,"title":"Day 3: Agentic search and knowledge","kind":"content","session":4,"hash":"98931373","md":"#### [day2#next] Day 3: Agentic search and knowledge\n\n*Next*\n\nTomorrow the search tools go to an agent: it chooses among them, searches again when one search is not enough, keeps large results out of its context, and uses a small graph for questions about links.","notes":"A free OpenRouter key makes Day 3 run against a real model; without one the labs run a scripted stand-in and say so. Ask participants to create a key tonight if they want live runs (labs/README.md, Quick start).","minutes":null,"lo":[]}],"activities":[{"id":"review-day1-q1","slide":"review-day1","type":"single","prompt":"Dense e5 scored nDCG@10 0.375 on Arabic and 0.639 on English; normalised BM25 scored 0.543 and 0.532; their RRF fusion 0.510 and 0.630. Which reading is right?","options":[{"key":"A","text":"Fusion beats both inputs on both languages"},{"key":"B","text":"Dense retrieval cannot serve Arabic"},{"key":"C","text":"The three methods are equal, since their averages are close"},{"key":"D","text":"Fusion helps English a lot and costs a little on Arabic, so Arabic needs its own look"}],"correct":[3],"explanation":"RRF lifted English from 0.532 to 0.630 but sat between its inputs on Arabic. A slice that moves the other way is a finding, not noise to average away.","misconceptions":["Reads the overall gain as a gain on every slice","Takes one model's Arabic score as the verdict on all dense retrieval","Looks at averages only, which is what the slices exist to prevent",""],"lo":["LO2"]},{"id":"check-parser-choice-q1","slide":"check-parser-choice","type":"single","prompt":"Students report that Nibras never finds the 2019 study plans, which the registrar scanned from paper. The plans are in the index. What should Kawthar check first?","options":[{"key":"A","text":"The weight of the title column in BM25"},{"key":"B","text":"The parsed text of those pages: a scan read by a text-layer parser is empty"},{"key":"C","text":"A better embedding model for Arabic"},{"key":"D","text":"The chunk size of the study plans"}],"correct":[1],"explanation":"A scanned page has no text layer, so a text-layer parser returns nothing and no search method can find it. In Lab 2.1 parser A's WER on scans was 1.0.","misconceptions":["Tunes search before checking that the index holds any text for these pages","","Assumes a meaning-based model can find a page that has no text at all","Fixes a later stage first; chunk size does not matter when there are no words"],"lo":["LO3"]},{"id":"check-chunking-q1","slide":"check-chunking","type":"single","prompt":"Nibras uses 120-word windows on the study plans and answers 0.25 of the table questions in the top 3. Which change does the evidence support most?","options":[{"key":"A","text":"Shrink the windows to 60 words for precision"},{"key":"B","text":"Add a reranker on top of the windows"},{"key":"C","text":"Chunk by semester heading and carry the plan and year into each chunk"},{"key":"D","text":"Add a 20-word overlap between windows"}],"correct":[2],"explanation":"The answer needs the code, the semester and the plan in one chunk. Heading chunks guarantee that and answered 0.65 in Lab 2.2.","misconceptions":["Treats smaller as more precise; 60-word windows answered 0.05","Changes ranking when the needed facts are not together in any chunk","","Fixes a different problem: overlap repeats text but does not keep a table whole"],"lo":["LO3"]},{"id":"check-effective-date-q1","slide":"check-effective-date","type":"single","prompt":"On 1 November 2026 a student asks for the maximum study load. The article says 20 hours. Circular 2026-140, issued in October, sets 18 hours from 1 January 2027. What is the right answer?","options":[{"key":"A","text":"18 hours, since the circular is newer"},{"key":"B","text":"Both numbers, and let the student decide"},{"key":"C","text":"Neither, since the rule is changing"},{"key":"D","text":"20 hours, and that 18 hours applies from 1 January 2027"}],"correct":[3],"explanation":"The amendment is not yet in force, so today's interval holds the article's value. Mentioning the coming change is useful, and the validity interval gives the date.","misconceptions":["Confuses the issue date with the effective date","Hands the student a decision the regulation already makes","Treats a scheduled change as uncertainty",""],"lo":["LO4"]},{"id":"check-permissions-q1","slide":"check-permissions","type":"single","prompt":"Nibras must never show a student a Restricted page and must still return ten useful results. Which design meets both?","options":[{"key":"A","text":"Label each chunk from its document, default to Restricted, and rank only the chunks the account may see"},{"key":"B","text":"Tell the model in the system prompt not to quote Restricted pages"},{"key":"C","text":"Take the top 10 and remove the Restricted ones"},{"key":"D","text":"Label each page from its own text with a classifier"}],"correct":[0],"explanation":"Labels from the owner's document, a safe default, and a filter inside the ranking give no leaks and a full top 10, which the leak and utility suites both confirmed.","misconceptions":["","Trusts the model to enforce access it has already been given","Leaks nothing but returns too few results, as the 0 to 8 counts showed","Lets page text decide labels, which missed 7 Restricted pages"],"lo":["LO4"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day2.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

@@ -1,0 +1,1551 @@
+{
+  "format": "classpulse-bank",
+  "version": 1,
+  "course": {
+    "name": "Retrieval and Knowledge Engineering for Language Model Systems",
+    "los": [
+      {
+        "code": "LO1",
+        "description": "Prepare a retrieval test set with graded relevance judgements and compute standard ranking metrics for each language, given 60 Arabic and English queries over the corpus"
+      },
+      {
+        "code": "LO2",
+        "description": "Implement lexical, dense, hybrid and reranked search with Arabic normalisation and compare them on quality and latency, given the corpus and the test set"
+      },
+      {
+        "code": "LO3",
+        "description": "Analyse parsing and chunking choices by scoring two parsers and two chunking schemes, given 30 scanned and digital pages with tables"
+      },
+      {
+        "code": "LO4",
+        "description": "Build retrieval that never returns a document the requester may not see or a superseded rule, given role labels and effective dates on every chunk"
+      },
+      {
+        "code": "LO5",
+        "description": "Design an agentic search component that chooses among search tools and a small knowledge graph within a context budget, given 15 multi-step questions, a graph of linked course rules and a token budget"
+      },
+      {
+        "code": "LO6",
+        "description": "Evaluate free text-to-SQL against a semantic layer with validated SQL and decide which to ship, given 20 statistical questions with reference answers"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "check-graded-judgements-q1",
+      "type": "single",
+      "prompt": "Nibras's search scores nDCG@10 0.47 overall. A colleague proposes a new embedding model that scores 0.49 on the same 60 queries, judged only on pages the old system found. What do you do first?",
+      "options": [
+        "Adopt it: 0.49 is higher than 0.47",
+        "Add the new model's top results to the pool, judge them, then compare by language",
+        "Judge the model's answers instead of its rankings",
+        "Double the test set to 120 queries and rerun"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Unjudged pages count as not relevant, so a system that finds new pages is scored low on them. Pool first, then read the gain by language and type.",
+      "misconceptions": [
+        "Trusts an overall gain of 0.02 on 60 queries as a finding, without slices or a fair pool",
+        "",
+        "Thinks answer quality can replace a retrieval measurement",
+        "Treats more queries as the cure for a biased pool"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 11
+    },
+    {
+      "id": "check-normalisation-q1",
+      "type": "single",
+      "prompt": "Kawthar adds a normaliser to the indexing pipeline and rebuilds the index. Arabic recall at 10 stays at 0.34. English is unchanged too. What is the most likely cause?",
+      "options": [
+        "BM25 cannot rank Arabic text",
+        "The Arabic queries are all in dialect",
+        "Normalisation needs a deep root stemmer to work",
+        "The queries are not passed through the same normaliser"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "An analysed index holds الاولي; a raw query asks for الأولى. The same analyser must run on both sides, or nothing matches.",
+      "misconceptions": [
+        "Blames the ranking function for what is a mismatch between query and index text",
+        "Assumes dialect explains all of Arabic, when dialect is only 10 of the 30 Arabic queries",
+        "Confuses normalising with stemming; the spelling variants alone move recall",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 20
+    },
+    {
+      "id": "check-embedding-choice-q1",
+      "type": "single",
+      "prompt": "On test set v1, normalised BM25 scores nDCG@10 0.543 on Arabic and dense e5 scores 0.375. On English, e5 scores 0.639 and BM25 0.532. What should Kawthar conclude?",
+      "options": [
+        "Each method wins on one language, so a combination is worth measuring",
+        "Dense retrieval does not work for Arabic and should be dropped",
+        "A larger embedding model will beat BM25 on both languages",
+        "The two are equal, since their averages are close"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The two rankings fail on different queries. When errors differ, fusing the rankings often beats either one, which is the next session.",
+      "misconceptions": [
+        "",
+        "Reads one language's result as the whole verdict",
+        "Assumes a bigger model fixes a difference that could come from the corpus or the queries",
+        "Averages away the slices the decision depends on"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 29
+    },
+    {
+      "id": "check-reranker-decision-q1",
+      "type": "single",
+      "prompt": "Retrieval for Nibras must answer within 400 ms at the 95th percentile. Reranking the top 30 raises nDCG@10 from 0.570 to 0.633 and takes 11 s at p95 on the current servers, which have no GPU. What do you recommend?",
+      "options": [
+        "Ship it: quality matters more than speed",
+        "Ship it with a rerank depth of 5",
+        "Ship hybrid RRF now and measure the reranker on a GPU before deciding",
+        "Ship BM25 alone, since reranking is too slow"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "No rerank depth fits 400 ms on this hardware, and RRF already beats each input. The reranker's gain is real, so it deserves a measurement on the hardware that could serve it.",
+      "misconceptions": [
+        "Lets the quality gain override a stated latency budget",
+        "Assumes depth is the only lever, when even depth 5 takes 1.9 s on this hardware",
+        "",
+        "Drops fusion's measured gain over BM25 alone along with the reranker"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 38
+    },
+    {
+      "id": "review-day1-q1",
+      "type": "single",
+      "prompt": "Dense e5 scored nDCG@10 0.375 on Arabic and 0.639 on English; normalised BM25 scored 0.543 and 0.532; their RRF fusion 0.510 and 0.630. Which reading is right?",
+      "options": [
+        "Fusion beats both inputs on both languages",
+        "Dense retrieval cannot serve Arabic",
+        "The three methods are equal, since their averages are close",
+        "Fusion helps English a lot and costs a little on Arabic, so Arabic needs its own look"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "RRF lifted English from 0.532 to 0.630 but sat between its inputs on Arabic. A slice that moves the other way is a finding, not noise to average away.",
+      "misconceptions": [
+        "Reads the overall gain as a gain on every slice",
+        "Takes one model's Arabic score as the verdict on all dense retrieval",
+        "Looks at averages only, which is what the slices exist to prevent",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 3
+    },
+    {
+      "id": "check-parser-choice-q1",
+      "type": "single",
+      "prompt": "Students report that Nibras never finds the 2019 study plans, which the registrar scanned from paper. The plans are in the index. What should Kawthar check first?",
+      "options": [
+        "The weight of the title column in BM25",
+        "The parsed text of those pages: a scan read by a text-layer parser is empty",
+        "A better embedding model for Arabic",
+        "The chunk size of the study plans"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A scanned page has no text layer, so a text-layer parser returns nothing and no search method can find it. In Lab 2.1 parser A's WER on scans was 1.0.",
+      "misconceptions": [
+        "Tunes search before checking that the index holds any text for these pages",
+        "",
+        "Assumes a meaning-based model can find a page that has no text at all",
+        "Fixes a later stage first; chunk size does not matter when there are no words"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 13
+    },
+    {
+      "id": "check-chunking-q1",
+      "type": "single",
+      "prompt": "Nibras uses 120-word windows on the study plans and answers 0.25 of the table questions in the top 3. Which change does the evidence support most?",
+      "options": [
+        "Shrink the windows to 60 words for precision",
+        "Add a reranker on top of the windows",
+        "Chunk by semester heading and carry the plan and year into each chunk",
+        "Add a 20-word overlap between windows"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The answer needs the code, the semester and the plan in one chunk. Heading chunks guarantee that and answered 0.65 in Lab 2.2.",
+      "misconceptions": [
+        "Treats smaller as more precise; 60-word windows answered 0.05",
+        "Changes ranking when the needed facts are not together in any chunk",
+        "",
+        "Fixes a different problem: overlap repeats text but does not keep a table whole"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 22
+    },
+    {
+      "id": "check-effective-date-q1",
+      "type": "single",
+      "prompt": "On 1 November 2026 a student asks for the maximum study load. The article says 20 hours. Circular 2026-140, issued in October, sets 18 hours from 1 January 2027. What is the right answer?",
+      "options": [
+        "18 hours, since the circular is newer",
+        "Both numbers, and let the student decide",
+        "Neither, since the rule is changing",
+        "20 hours, and that 18 hours applies from 1 January 2027"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The amendment is not yet in force, so today's interval holds the article's value. Mentioning the coming change is useful, and the validity interval gives the date.",
+      "misconceptions": [
+        "Confuses the issue date with the effective date",
+        "Hands the student a decision the regulation already makes",
+        "Treats a scheduled change as uncertainty",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 30
+    },
+    {
+      "id": "check-permissions-q1",
+      "type": "single",
+      "prompt": "Nibras must never show a student a Restricted page and must still return ten useful results. Which design meets both?",
+      "options": [
+        "Label each chunk from its document, default to Restricted, and rank only the chunks the account may see",
+        "Tell the model in the system prompt not to quote Restricted pages",
+        "Take the top 10 and remove the Restricted ones",
+        "Label each page from its own text with a classifier"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Labels from the owner's document, a safe default, and a filter inside the ranking give no leaks and a full top 10, which the leak and utility suites both confirmed.",
+      "misconceptions": [
+        "",
+        "Trusts the model to enforce access it has already been given",
+        "Leaks nothing but returns too few results, as the 0 to 8 counts showed",
+        "Lets page text decide labels, which missed 7 Restricted pages"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 38
+    },
+    {
+      "id": "review-day2-q1",
+      "type": "single",
+      "prompt": "After a re-index, a student asks about the attendance rule and Nibras quotes the regulation's original text, which Circular 2025-118 amended. Which test should have caught it before release?",
+      "options": [
+        "The leak suite from the student account",
+        "The staleness suite, which fails when the old answer comes first",
+        "nDCG@10 on test set v1",
+        "Word error rate on the 30 parsing pages"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The text is parsed, allowed and relevant; it is only out of date. Only a test that knows the current answer and the stale one can fail on it.",
+      "misconceptions": [
+        "Checks access, not versions: the original text is Public",
+        "",
+        "Scores ranking on graded judgements, which do not encode which version is current",
+        "Measures the parser, which read both versions correctly"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 3
+    },
+    {
+      "id": "check-tool-choice-q1",
+      "type": "single",
+      "prompt": "A student writes in dialect: \"ابي اعرف وش اسوي اذا مرضت يوم الاختبار\" (what do I do if I am sick on the exam day). Which first call is best?",
+      "options": [
+        "list_files(\"regulations\")",
+        "keyword_search with the question as written",
+        "vector_search with the question as written",
+        "read_file on every article of the examination chapter"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A paraphrase in dialect is what meaning-based search is for. If its top pages miss, the next call can be a keyword search for the term the rule uses.",
+      "misconceptions": [
+        "Lists names when the question needs the content of a rule",
+        "Matches words, and the dialect shares few words with the regulation",
+        "",
+        "Reads whole files without knowing which one holds the rule"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 11
+    },
+    {
+      "id": "check-iterative-q1",
+      "type": "single",
+      "prompt": "Question: \"How many credit hours is the first prerequisite of CHM 423?\" The first search returned the CHM 423 course page, which lists \"Prerequisite: CHM 301\". What is the best next search?",
+      "options": [
+        "The question again, as written",
+        "\"credit hours prerequisite\"",
+        "No search: answer with the hours on the CHM 423 page",
+        "\"CHM 301 course description credit hours\""
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The first hop produced an entity, CHM 301. The next search asks for that entity's page, where its credit hours are.",
+      "misconceptions": [
+        "Repeats a search, which the loop treats as going round in circles",
+        "Searches for the answer's words instead of the entity the next hop needs",
+        "Answers from the first page, which gives CHM 423's hours, not CHM 301's",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 19
+    },
+    {
+      "id": "check-offload-q1",
+      "type": "single",
+      "prompt": "A tool returns 60 course pages (about 8,500 tokens) for \"how many Engineering courses carry 4 credit hours?\". The result budget is 1,500 tokens. What design answers correctly with the smallest context?",
+      "options": [
+        "Cut the result to 1,500 tokens and count",
+        "Raise the budget to 10,000 tokens",
+        "Offload the result to a file, return a stub, and search the file for \"Credit hours: 4\"",
+        "Ask the model to summarise the 60 pages first"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The file keeps every page; one search returns exactly the matching lines and their count, for a few hundred tokens.",
+      "misconceptions": [
+        "Counts in a cut list, which gave 1 instead of 10 in the lab",
+        "Pays for every page on every later call instead of fixing the design",
+        "",
+        "Lets a summary drop the rows a count needs"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 27
+    },
+    {
+      "id": "check-graph-q1",
+      "type": "single",
+      "prompt": "Nibras has search tools and a small graph of courses, plans and prerequisites. Which question gains most from the graph?",
+      "options": [
+        "\"Must I pass MTH 112 before PHY 401?\"",
+        "\"What does the regulation say about appealing a grade?\"",
+        "\"How many circulars were issued in 2024?\"",
+        "\"What is the description of CSC 301?\""
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The answer is a path through prerequisite links of unknown length. One graph query walks it; search needs one call per link and may stop at the budget.",
+      "misconceptions": [
+        "",
+        "Asks for one passage of text, which search finds directly",
+        "Asks for a list of files, which listing answers",
+        "Asks for the content of one page found by its code"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 35
+    },
+    {
+      "id": "review-day3-q1",
+      "type": "single",
+      "prompt": "A student asks: \"How many courses of the College of Health Sciences carry 4 credit hours?\" The tool that lists the college's course pages returns about 8,000 tokens; the result budget is 1,500. What should the agent do?",
+      "options": [
+        "Count in the first 1,500 tokens of the result",
+        "Get a stub for the offloaded file and search it for the pattern",
+        "Run vector search for \"4 credit hour courses\"",
+        "Ask the prerequisite graph for the college's courses"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The full result stays in a file; a search for \"Credit hours: 4\" returns the matching lines and their count, inside the budget.",
+      "misconceptions": [
+        "Counts in a cut result, which undercounts without any warning",
+        "",
+        "Uses meaning search for a count, which returns a top k, not every course",
+        "Reaches for the graph, whose edges hold prerequisites, not credit hours"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 3
+    },
+    {
+      "id": "check-free-sql-q1",
+      "type": "single",
+      "prompt": "\"How many students were enrolled in the second semester of 2025/2026?\" The model's query counts every student with an enrolment row in the term and returns 4,912. The reference returns 4,780. The query runs without error. What went wrong most likely?",
+      "options": [
+        "A syntax error the database ignored",
+        "The model could not read the enrolments table",
+        "A missing filter: withdrawn enrolments were counted as enrolled",
+        "The model is too small for SQL"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The count is higher than the reference by students whose only enrolments were withdrawn: a business rule that lives in the institution, not in the schema.",
+      "misconceptions": [
+        "Expects a wrong query to fail loudly; this one ran",
+        "Blames access when the query read the right table",
+        "",
+        "Assumes a model fault when the rule is simply not in the schema"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 11
+    },
+    {
+      "id": "check-semantic-layer-q1",
+      "type": "single",
+      "prompt": "The validator accepts a request for enrolled_students in term 2025-1 for the College of Business. What does that acceptance prove?",
+      "options": [
+        "That the number answers the user's question",
+        "That the result matches the reference answer",
+        "That the model chose the right metric for the question",
+        "That the query reads allowed views with filter values that exist"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Validation proves the query is allowed and well formed. Whether \"enrolled students\" is what the user meant is the metric definition's job, and the test set's.",
+      "misconceptions": [
+        "Confuses a well-formed query with a correct meaning",
+        "Thinks validation checks the result against a reference, which it cannot",
+        "Assumes acceptance covers the model's choice of metric",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 21
+    },
+    {
+      "id": "check-latency-q1",
+      "type": "single",
+      "prompt": "Nibras's retrieval p95 by stage: lexical 6 ms, dense 4 ms, fusion under 1 ms, query embedding 82 ms, rerank of the top 30 about 10,900 ms. The budget is 400 ms. What do you change first?",
+      "options": [
+        "The reranker: shrink its depth, move it to a GPU, or drop it, and measure the quality cost",
+        "The fusion code",
+        "A faster embedding model",
+        "Lexical search"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The tail is the reranker; every other stage together is under 100 ms. Day 1's rerank-depth table says what each option costs in nDCG.",
+      "misconceptions": [
+        "",
+        "Optimises a stage that is already a fraction of a millisecond",
+        "Saves 82 ms of a total near 11,000 ms",
+        "Removes the cheapest stage and its quality, not the tail"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 29
+    },
+    {
+      "id": "check-attribution-q1",
+      "type": "single",
+      "prompt": "A failure's trace: the needed words are in the parsed text, the answering page is candidate 12 of 50, and the top 5 the model read do not include it. The answer says \"I could not find a rule\". Which component do you attribute it to?",
+      "options": [
+        "Generation",
+        "Retrieval",
+        "Ranking",
+        "Parsing"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The page reached the candidates but not the top 5: the first component that lost it is ranking. A reranker or hybrid fusion is the fix to try.",
+      "misconceptions": [
+        "Stops at the last step, which only reported what it was given",
+        "The page was among the candidates, so retrieval did its part",
+        "",
+        "The words were in the parsed text, so parsing did its part"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000,
+      "slide": 37
+    },
+    {
+      "id": "re-lo1-pool-bias",
+      "type": "single",
+      "prompt": "A new dense model is scored on test set v1, whose judgements were pooled from BM25 only. It finds many pages BM25 never returned. What does its nDCG@10 most likely show?",
+      "options": [
+        "A fair score, since the queries are the same for both systems",
+        "A score that is too low, since its new pages are unjudged and count as not relevant",
+        "A score that is too high, since dense models match more words",
+        "No score at all, since nDCG needs judgements for every page"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Unjudged pages count as grade 0, so a system that finds pages outside the pool is penalised for them until they are judged.",
+      "misconceptions": [
+        "Thinks shared queries make the comparison fair, ignoring which pages were judged",
+        "",
+        "Confuses dense retrieval with word matching",
+        "Believes every page of the corpus must be judged before any metric is computed"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo1-which-metric",
+      "type": "single",
+      "prompt": "Nibras's generator reads only the first page it retrieves. Which metric tells Kawthar most directly how often that page is relevant?",
+      "options": [
+        "Recall at 10",
+        "nDCG at 10",
+        "Reciprocal rank",
+        "The number of judged pairs"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Reciprocal rank depends only on the position of the first relevant page, and it is 1 exactly when that page comes first.",
+      "misconceptions": [
+        "Counts relevant pages anywhere in the top 10, not at the top",
+        "Rewards grades and ranks over ten positions, so a good rank 2 hides a bad rank 1",
+        "",
+        "Confuses the size of the test set with a quality measure"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo1-slices",
+      "type": "single",
+      "prompt": "A change raises nDCG@10 on all 60 queries from 0.473 to 0.480. What should the report show before anyone calls it an improvement?",
+      "options": [
+        "The same metric for Arabic, English and each query type, before and after",
+        "The change in recall at 100",
+        "The latency of the old system",
+        "A screenshot of three good answers"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A small overall gain can hide a loss on one language or on dialect queries, so the slices decide.",
+      "misconceptions": [
+        "",
+        "Moves to another cut-off without looking at who gained and who lost",
+        "Answers a quality question with a speed number",
+        "Takes anecdotes as evidence over a measured test set"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo1-version",
+      "type": "single",
+      "prompt": "Kawthar adds five new dialect queries to the test set after the baseline was scored. How should she record them?",
+      "options": [
+        "Add them to v1 and rescore every earlier run",
+        "Keep them in a notebook cell only",
+        "Replace five old queries so the count stays at 60",
+        "Save them as v1.1 and keep v1 frozen, so earlier numbers stay comparable"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A frozen version keeps every earlier score meaningful; a new version carries the new queries and its own scores.",
+      "misconceptions": [
+        "Changes the ruler under numbers already reported",
+        "Leaves the queries outside the versioned record",
+        "Thinks the count matters more than which queries were scored",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo2-normalise-query",
+      "type": "single",
+      "prompt": "After Arabic normalisation is added to indexing, the query \"الأولى\" still finds nothing that the page spelled \"الاولى\" holds. What is wrong?",
+      "options": [
+        "BM25 does not support Arabic",
+        "The query was not passed through the same normaliser as the pages",
+        "The index needs a deep root stemmer",
+        "The page is too long for BM25"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The index holds analysed words, so a raw query asks for keys that are no longer there; both sides need the same analyser.",
+      "misconceptions": [
+        "Blames the ranking function for a mismatch of text",
+        "",
+        "Thinks spelling variants need morphology rather than normalisation",
+        "Confuses length normalisation with matching"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo2-rrf-why",
+      "type": "single",
+      "prompt": "BM25 scores on the corpus run from 0.3 to 28 and cosine scores from 0.78 to 0.93. Why does reciprocal rank fusion handle this better than adding the scores?",
+      "options": [
+        "It multiplies the two scores, which cancels the scales",
+        "It uses only the dense ranking when the scores disagree",
+        "It uses ranks, so the scale of each score does not matter",
+        "It normalises each score to between 0 and 1 first"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "RRF adds 1/(k + rank) from each list, so only positions count and no weight has to be tuned to the scales.",
+      "misconceptions": [
+        "Invents an operation RRF does not perform",
+        "Thinks fusion picks one list rather than combining both",
+        "",
+        "Describes weighted score fusion, which adds a weight to tune"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo2-rerank-budget",
+      "type": "single",
+      "prompt": "Reranking the top 30 raises nDCG@10 from 0.570 to 0.633 and adds about 11 s at p95 on servers without a GPU. The retrieval budget is 400 ms. What follows?",
+      "options": [
+        "Ship it, since the gain is large",
+        "Rerank the top 5, which keeps most of the gain",
+        "Drop hybrid search and keep BM25",
+        "Ship fusion without the reranker and measure the reranker on a GPU"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "No rerank depth fits 400 ms on that hardware, so the reranker waits for a measurement on hardware that could serve it.",
+      "misconceptions": [
+        "Lets a quality gain override a stated latency budget",
+        "Forgets that even depth 5 took 1.9 s on that hardware",
+        "Throws away fusion's measured gain along with the reranker",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo2-prefix",
+      "type": "tf",
+      "prompt": "Embedding queries and pages with multilingual-e5-small without its \"query:\" and \"passage:\" prefixes raises an error, so the mistake is caught at once.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Nothing fails: the model returns vectors either way, and the mistake only shows as a lower score (0.484 against 0.507 nDCG@10 in Lab 1.3).",
+      "misconceptions": [
+        "Expects a model to reject inputs that break its card's conventions",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo3-scan",
+      "type": "single",
+      "prompt": "A scanned page of the study plan goes through a parser that reads only the PDF text layer. What does the index get?",
+      "options": [
+        "Empty text, so the page can never be retrieved",
+        "The text with a few letters confused",
+        "The table with its columns in the wrong order",
+        "The same text a layout-aware parser would give"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A scan has no text layer, so a text-layer parser returns nothing; in Lab 2.1 its word error rate on scans was 1.0.",
+      "misconceptions": [
+        "",
+        "Describes character recognition errors, which need a recognition step to happen at all",
+        "Describes a table problem of digital pages",
+        "Assumes every parser sees the same content"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo3-route",
+      "type": "single",
+      "prompt": "Parser A is fast and good on digital pages without tables; parser B is slower and good everywhere. What is the best use of the scores by page type?",
+      "options": [
+        "Use parser A everywhere, since it is faster",
+        "Average both outputs for every page",
+        "Route each page by its type: A where it scores as well as B, B elsewhere",
+        "Use parser B everywhere, since it is never worse"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Scores by page type show where the cheap parser is good enough; routing keeps its speed there and B's quality elsewhere.",
+      "misconceptions": [
+        "Ignores the page types where A fails completely",
+        "Thinks mixing two texts repairs either",
+        "",
+        "Pays B's cost on pages where A is as good"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo3-heading-path",
+      "type": "single",
+      "prompt": "Fixed 120-word windows cut a study-plan table in the middle. Which chunking answered the most table questions in Lab 2.2?",
+      "options": [
+        "Fixed windows of 240 words",
+        "Chunks by heading, each carrying its heading path",
+        "One chunk per page",
+        "Fixed windows of 60 words"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Heading chunks keep a semester's table whole and name the programme and year in the chunk: 0.65 answerable in the top 3 against 0.25 for 120-word windows.",
+      "misconceptions": [
+        "Thinks bigger windows fix a cut that is about structure; 240 words reached 0.5",
+        "",
+        "Puts several semesters in one chunk and loses the precision of ranking",
+        "Thinks smaller is more precise, when 60-word windows answered 0.05"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo3-attribute",
+      "type": "single",
+      "prompt": "A student's question failed. The page that answers it is not among the 50 candidates, and its parsed text is empty. Which component do you fix first?",
+      "options": [
+        "Retrieval: the page is not among the candidates",
+        "Ranking: the reranker should have lifted it",
+        "Generation: the model should have said it did not know",
+        "Parsing: retrieval cannot find text that was never extracted"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Attribute to the first component that lost the answer; here parsing lost it before retrieval ever ran.",
+      "misconceptions": [
+        "Stops at the symptom instead of walking the pipeline from its start",
+        "Blames a stage that never saw the page",
+        "Fixes the last stage for a failure that began at the first",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo4-prefilter",
+      "type": "single",
+      "prompt": "Nibras retrieves the top 10 and then removes pages the student may not see. For some queries the student gets 2 results. What fixes it without leaking?",
+      "options": [
+        "Filter by role and classification before ranking, so the top 10 come from allowed pages only",
+        "Retrieve the top 100 and filter after",
+        "Show the Restricted titles without their text",
+        "Ask the model to ignore Restricted pages"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A pre-filter ranks only allowed pages, so the student always gets a full top 10 and never a Restricted one.",
+      "misconceptions": [
+        "",
+        "Shrinks the problem without removing it, and a large top k costs latency",
+        "Thinks a title is not a leak",
+        "Trusts an instruction to the model to enforce access"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo4-validity",
+      "type": "single",
+      "prompt": "Circular 2026-140 lowers the maximum study load from 20 to 18 hours, effective 1 January 2027. Today is 1 November 2026. What should Nibras answer?",
+      "options": [
+        "18 hours, since the circular is the newest text",
+        "Both values, and let the student choose",
+        "20 hours, and that 18 hours takes effect on 1 January 2027",
+        "Nothing, since the rule is changing"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Each version has a validity interval; the amendment is not yet in force, so the current value answers today and the change is worth stating.",
+      "misconceptions": [
+        "Confuses the issue date with the effective date",
+        "Hands the student a decision the regulation already made",
+        "",
+        "Treats a scheduled change as an unknown"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo4-leak-suite",
+      "type": "single",
+      "prompt": "The leak suite passes: no Restricted page reaches the student account in 12 tests. What else must the suite check before the result means anything?",
+      "options": [
+        "That the tests ran in under a second",
+        "That the student still gets the Public pages that answer the same questions",
+        "That the registrar account also gets no Restricted pages",
+        "That the model's answers are polite"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Returning nothing also passes a leak test; a utility check shows the filter blocks only what it should.",
+      "misconceptions": [
+        "Measures speed where the question is correctness",
+        "",
+        "Over-blocks the role that is allowed to see those pages",
+        "Moves to answer style, which the access tests do not cover"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo4-untrusted",
+      "type": "tf",
+      "prompt": "A page retrieved from the university's own corpus can be treated as trusted instructions for the model, since the university wrote it.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Retrieved text is data: a page can carry text written to steer the model, so it is quoted, never obeyed.",
+      "misconceptions": [
+        "Takes the source of a corpus as a guarantee about every line in it",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo5-tool-choice",
+      "type": "single",
+      "prompt": "A student asks Nibras how many circulars the university issued in 2025. Which tool is the cheapest that answers it?",
+      "options": [
+        "Vector search for \"circulars of 2025\"",
+        "Keyword search for \"2025\"",
+        "Reading every circular in full",
+        "Listing the files under circulars/2025"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The question is about what exists, so file names answer it without any page text.",
+      "misconceptions": [
+        "Searches by meaning for a count, which returns a top k, not all of them",
+        "Returns pages that mention the year, not one entry per circular",
+        "Pays for full texts where names suffice",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo5-two-hop",
+      "type": "single",
+      "prompt": "\"What GPA do I need to transfer into the college that teaches CLS 334?\" One search returns the course page but no transfer rule. What does an iterative loop do next?",
+      "options": [
+        "Search for the college named on the course page together with its transfer rules",
+        "Answer from the course page",
+        "Repeat the same search with k = 20",
+        "Stop, since the first search found the course"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The first hop gives the college; the second searches for that college's rule. In Lab 3.2 iterative search answered 0.9 of the ten questions against 0.7 for one search.",
+      "misconceptions": [
+        "",
+        "Answers a two-step question from one step",
+        "Thinks a bigger k replaces a better query",
+        "Takes a found entity for a found answer"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo5-offload",
+      "type": "single",
+      "prompt": "A tool returns all 60 Engineering course pages, about 8,500 tokens, into a 1,500-token budget. What keeps the answer correct and the context small?",
+      "options": [
+        "Cut the result to the first 1,500 tokens",
+        "Write the result to a file, return a short stub, and give the agent a tool to search the file",
+        "Raise the budget to 10,000 tokens",
+        "Summarise the result with the model before the agent reads it"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Offloading keeps every page one tool call away; in Lab 3.3 accuracy rose from 0.5 to 1.0 and tokens fell from about 1,724 to 924.",
+      "misconceptions": [
+        "Counts in a truncated list and gets a wrong number",
+        "",
+        "Pays for every page on every step instead of fixing the design",
+        "Lets a summary drop the rows the count needs"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo5-graph",
+      "type": "single",
+      "prompt": "\"Which courses must I pass, directly or indirectly, before PHY 401?\" Why does a graph answer this better than search?",
+      "options": [
+        "A graph stores longer texts than an index",
+        "A graph is faster to build than an index",
+        "The answer is a chain of prerequisite links, which a graph walks in one query",
+        "Search cannot read course pages"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Following prerequisites with search costs a search per link and stops at the budget; a graph walk returns the whole chain at once.",
+      "misconceptions": [
+        "Confuses a store of relationships with a store of text",
+        "Answers a quality question with build time",
+        "",
+        "Overstates the failure: search finds each page, it just needs many searches"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo6-execution-accuracy",
+      "type": "single",
+      "prompt": "How is a text-to-SQL answer scored by execution accuracy?",
+      "options": [
+        "By comparing the SQL text with the reference SQL",
+        "By asking a model whether the SQL looks right",
+        "By checking that the SQL runs without an error",
+        "By running the SQL and comparing its result with the reference answer"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Two different queries can be right and one query that runs can be wrong, so the result is what counts.",
+      "misconceptions": [
+        "Penalises correct queries written differently",
+        "Replaces a measurement with an opinion",
+        "Counts a query that runs and returns the wrong number as right",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo6-confident-wrong",
+      "type": "single",
+      "prompt": "Free text-to-SQL averaged grade points per course where the reference weights them by credit hours. Which kind of failure is this?",
+      "options": [
+        "A business rule the schema does not state",
+        "A syntax error",
+        "A missing table",
+        "A permission error"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The query runs and returns a plausible number; only the definition of the metric says it is wrong, which is why it is a confident wrong answer.",
+      "misconceptions": [
+        "",
+        "Expects a wrong query to fail loudly",
+        "Thinks the model lacked data rather than a definition",
+        "Mistakes a wrong number for an access problem"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo6-semantic-layer",
+      "type": "single",
+      "prompt": "In the semantic layer of Lab 4.2, what does the model produce?",
+      "options": [
+        "A SQL query over the students table",
+        "A summary of the warehouse",
+        "A request naming a governed metric, its filters and its dimensions, which code compiles and validates",
+        "The final number, from its own knowledge"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The definitions live in reviewed views and a catalog; the model only chooses among them, and code builds the SQL.",
+      "misconceptions": [
+        "Describes free text-to-SQL, the approach the layer replaces",
+        "Thinks the model reads the data rather than the definitions",
+        "",
+        "Lets the model invent the number"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    },
+    {
+      "id": "re-lo6-decision",
+      "type": "single",
+      "prompt": "On 20 questions, free text-to-SQL scored 0.60 with 8 confident wrong numbers; the semantic layer scored 0.95, refused 1 and gave none. What should the memo recommend?",
+      "options": [
+        "Free text-to-SQL, since it answers every question",
+        "Both, and show the student whichever number is larger",
+        "Free text-to-SQL with a larger model",
+        "The semantic layer, and add metrics when users ask what no metric covers"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A refusal can be handled; a confident wrong statistic misleads, and the gap in coverage is closed by adding reviewed metrics.",
+      "misconceptions": [
+        "Counts answering as success whatever the answer",
+        "Hands the student a choice between two numbers",
+        "Assumes a bigger model knows the university's business rules",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794743971000,
+      "updatedAt": 1794743971000
+    }
+  ]
+}

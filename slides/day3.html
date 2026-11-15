@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="ai-engineering">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3 · Agentic search and knowledge · Retrieval and Knowledge Engineering for Language Model Systems</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day3.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Retrieval and Knowledge Engineering for Language Model Systems" data-track="ai-engineering" data-day="Day 3">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Retrieval and Knowledge Engineering for Language Model Systems</div>
+  <h1>Agentic search and knowledge</h1>
+  <p class="lead mt">Day 3</p>
+  <div class="meta"><span class="track">AI Engineering Track</span><span>4 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>AE-304</span></div>
+  <aside class="notes"><p>Open with a question: which of Nibras's questions did yesterday's search answer badly, not because a page was missing, but because one search was not the right shape? Collect two: "how many circulars in 2025" and "what GPA do I need to transfer into the college that teaches CLS 334". Today is about questions like those.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Agentic search and knowledge</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Search as tools for an agent</b><small>Listing, keyword and vector search as tools, described by when to use each, and the agent's choices read in its traces</small></div></div><div class="item"><div><b>Session 2 · Multi-step questions</b><small>Search again from what you read, stop on an answer, a budget or a repeated query, and compare with one search</small></div></div><div class="item"><div><b>Session 3 · Paging and offloading</b><small>Keep large results out of the context: a file, a stub and a tool to search it</small></div></div><div class="item"><div><b>Session 4 · Knowledge graphs for linked facts</b><small>A small graph for facts that are links, queried with tools, measured against search</small></div></div></div>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO4" data-n="3">
+  <div class="kicker">Review of Day 2</div>
+  <h2>Which suite catches the problem?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="review-day2-q1">
+    <p class="lead">After a re-index, a student asks about the attendance rule and Nibras quotes the regulation's original text, which Circular 2025-118 amended. Which test should have caught it before release?</p>
+    <div class="opts">
+      <div class="opt" data-why="Checks access, not versions: the original text is Public" data-k="A">The leak suite from the student account</div>
+      <div class="opt" data-ok data-k="B">The staleness suite, which fails when the old answer comes first</div>
+      <div class="opt" data-why="Scores ranking on graded judgements, which do not encode which version is current" data-k="C">nDCG@10 on test set v1</div>
+      <div class="opt" data-why="Measures the parser, which read both versions correctly" data-k="D">Word error rate on the 30 parsing pages</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The text is parsed, allowed and relevant; it is only out of date. Only a test that knows the current answer and the stale one can fail on it.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. Each Day 2 test measures one thing; this review is about choosing the instrument for the failure.</p></aside>
+</section>
+
+<!-- ======================= SESSION 1 ======================= -->
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Search as tools for an agent</h1>
+  <ul class="bullets outcomes"><li>Write search tools whose descriptions say when to use them</li><li>Trace an agent's tool choices</li><li>Judge a choice by its cost and its answer</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" data-label="Search as tools" id="search-as-tools" data-lo="LO5" data-n="5" data-session="1">
+  <div class="kicker">Agentic search</div>
+  <h2>Give the model search as tools, and it decides what to look for</h2>
+  <div class="cols cols-2">
+    <div class="trace s">
+      <div class="ev user"><b>user</b>How many circulars did the university issue in 2025?</div>
+      <div class="ev call"><b>tool call</b><code>list_files("circulars/2025")</code></div>
+      <div class="ev result"><b>result</b><code>["circulars/2025/2025-031-ar.md", ...]</code></div>
+      <div class="ev final"><b>final</b>The count and the circular numbers</div>
+    </div>
+    <ul class="bullets small">
+      <li>Yesterday the pipeline searched once with the question; today a <b>loop</b> calls tools</li>
+      <li>The model reads each result and chooses the next call or answers</li>
+      <li>Coding agents work this way over files: list, grep, read</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>This trace is question A01 of Lab 3.1. The point of the course's framing: retrieval for agents is the same engineering as yesterday, plus a decision about which tool to call. Sources: Anthropic, Effective context engineering for AI agents (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Three tools" id="three-tools" data-lo="LO5" data-n="6" data-session="1">
+  <div class="kicker">Lab 3.1</div>
+  <h2>Three tools, each cheapest for one kind of question</h2>
+  <table class="t small">
+    <tr><th>Tool</th><th>Returns</th><th>Best for</th></tr>
+    <tr><td><code>list_files(folder)</code></td><td>file names only</td><td>what exists, how many</td></tr>
+    <tr><td><code>keyword_search(query, k)</code></td><td>top pages, BM25 normalised</td><td>codes, circular numbers, names</td></tr>
+    <tr><td><code>vector_search(query, k)</code></td><td>top pages, dense e5</td><td>paraphrases, dialect, the other language</td></tr>
+  </table>
+  <div class="callout note mt-s"><b>All three search Public pages only.</b> The Day 2 filter sits inside the tools, so no tool call can reach a Restricted page.</div>
+  <aside class="notes"><p>Every tool is the Day 1 or Day 2 code behind a function signature. Ask: where should the permission filter live, in the prompt or in the tool? In the tool, for the reasons of Day 2 Session 4.</p></aside>
+</section>
+
+<section class="slide" data-label="Descriptions" id="tool-descriptions" data-lo="LO5" data-n="7" data-session="1">
+  <div class="kicker">The description is the interface</div>
+  <h2>A tool description tells the model when to call it, not only what it does</h2>
+  <pre class="code s" data-file="nibras_tools.py"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">keyword_search</span>(<span class="hljs-params">query: <span class="hljs-built_in">str</span>, k: <span class="hljs-built_in">int</span> = <span class="hljs-number">5</span></span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">dict</span>]:
+    <span class="hljs-string">&quot;&quot;&quot;Keyword search (BM25, Arabic normalised). Best for exact
+    words: course codes such as &quot;CSC 301&quot;, circular numbers such
+    as &quot;2025-118&quot;, article numbers and names. English or Arabic.&quot;&quot;&quot;</span></code></pre>
+  <ul class="bullets small mt-s">
+    <li>The function's docstring becomes the tool's description in the schema the model sees</li>
+    <li>Examples of when to use it beat a list of features</li>
+    <li>The stretch writes a misleading description and watches the choices change</li>
+  </ul>
+  <aside class="notes"><p>The schema is generated from the signature and the docstring by U.tool_schema, so the description cannot drift from the code. With a live model, the stretch is the most instructive five minutes of the day: swap the descriptions of keyword and vector search and rerun.</p></aside>
+</section>
+
+<section class="slide" data-label="The loop" id="tool-loop" data-lo="LO5" data-n="8" data-session="1">
+  <div class="kicker">The loop, in twelve lines</div>
+  <h2>Call the model, run the tool it asks for, append the result, repeat</h2>
+  <pre class="code s" data-file="nuha.py · run_agent, simplified"><code class="language-python">messages = [system, {<span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-string">&quot;content&quot;</span>: question}]
+<span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(max_steps):
+    reply = chat(messages, tools=schemas)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> reply.tool_calls:
+        <span class="hljs-keyword">return</span> reply.content                      <span class="hljs-comment"># the answer</span>
+    <span class="hljs-keyword">for</span> call <span class="hljs-keyword">in</span> reply.tool_calls:
+        result = TOOLS[call.name](**call.args)
+        result = json.dumps(result)[:budget_chars] <span class="hljs-comment"># the context budget</span>
+        messages.append(tool_message(call.<span class="hljs-built_in">id</span>, result))
+<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;step budget spent&quot;</span></code></pre>
+  <aside class="notes"><p>Point at the two budgets: steps and characters per result. Both are stop rules that keep a loop from running up a bill. Session 3 shows what the character budget does to a large result.</p></aside>
+</section>
+
+<section class="slide" data-label="Traces" id="read-the-traces" data-lo="LO5" data-n="9" data-session="1">
+  <div class="kicker">Measured in Lab 3.1, stand-in</div>
+  <h2>The right tool was chosen every time; the vector questions still failed most</h2>
+  <table class="t small">
+    <tr><th>Best tool</th><th class="num">Questions</th><th class="num">Right tool</th><th class="num">Correct</th><th class="num">Tokens</th></tr>
+    <tr><td>list_files</td><td class="num">5</td><td class="num">1.0</td><td class="num">1.0</td><td class="num">1,454</td></tr>
+    <tr><td>keyword_search</td><td class="num">5</td><td class="num">1.0</td><td class="num">0.8</td><td class="num">1,226</td></tr>
+    <tr class="hl"><td>vector_search</td><td class="num">5</td><td class="num">1.0</td><td class="num">0.4</td><td class="num">1,212</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>Read the trace before blaming the agent.</b> The choice was right; e5 returned the wrong pages for short paraphrases. That is a Day 1 problem showing up in Day 3.</div>
+  <aside class="notes"><p>These numbers come from the scripted stand-in, not a model: no working key was available when the course was built. With a key the choices may differ, and the "right tool" column is then the interesting one. Overall accuracy 0.73, one call per question.</p></aside>
+</section>
+
+<section class="slide" data-label="Cost" id="choice-has-a-cost" data-lo="LO5" data-n="10" data-session="1">
+  <div class="kicker">Judge a choice by its cost and its answer</div>
+  <h2>A wrong tool can still answer, at many times the tokens</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Listing for a count</h4><p class="small mb0">File names, one call: the count is exact.</p></div>
+    <div class="card c-coral"><h4>Search for a count</h4><p class="small mb0">A top k of pages: the count is capped at k and every page's text is paid for.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> Log three numbers per question: the tool chosen, the calls and the tokens. Accuracy alone hides an agent that is right and expensive.</div>
+  <aside class="notes"><p>Ask the room how they would count circulars with vector search. They cannot: a top 5 is not a list. This is why "how many" questions went to list_files in the lab.</p></aside>
+</section>
+
+<section class="slide" id="check-tool-choice" data-lo="LO5" data-n="11" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which tool should Nibras call first?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-tool-choice-q1">
+    <p class="lead">A student writes in dialect: "ابي اعرف وش اسوي اذا مرضت يوم الاختبار" (what do I do if I am sick on the exam day). Which first call is best?</p>
+    <div class="opts">
+      <div class="opt" data-why="Lists names when the question needs the content of a rule" data-k="A">list_files("regulations")</div>
+      <div class="opt" data-why="Matches words, and the dialect shares few words with the regulation" data-k="B">keyword_search with the question as written</div>
+      <div class="opt" data-ok data-k="C">vector_search with the question as written</div>
+      <div class="opt" data-why="Reads whole files without knowing which one holds the rule" data-k="D">read_file on every article of the examination chapter</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A paraphrase in dialect is what meaning-based search is for. If its top pages miss, the next call can be a keyword search for the term the rule uses.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. Then ask what the second call should be when vector search misses: a keyword search for "alternative examination" or its Arabic term, which is the agent recovering by itself.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-1" data-auto="lab" data-lab="3.1" data-label="Lab 3.1" data-n="12" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.1 · 25 min</div><h2>Three search tools and a traced agent</h2><p class="lead small">Expose file listing, keyword search and vector search as tools, run 15 questions through a tool-calling loop and read the traces: which tool, how many calls, how many tokens, and whether the answer was right.</p><a class="nb" href="../labs/D3_1_expose_file_listing.ipynb">D3_1_expose_file_listing.ipynb</a></div><ul class="checklist"><li>The file tree, and listing it <span class="min">5 min</span></li><li>Keyword and vector search as tools <span class="min">7 min</span></li><li>Fifteen questions through the loop <span class="min">6 min</span></li><li>Read the traces: choice, calls, answer <span class="min">7 min</span></li><li class="stretch">✱ Stretch: A misleading description</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: a list_files that returns the whole tree for an unknown folder (return the top folders instead); tool results that include Restricted pages because the tool skipped the filter; a free model that answers without calling any tool (check the trace, then sharpen the system prompt). Without a key the stand-in runs and the notebook says so.</p></aside>
+</section>
+
+<!-- ======================= SESSION 2 ======================= -->
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="13">
+  <div class="kicker">Session 2</div>
+  <h1>Multi-step questions</h1>
+  <ul class="bullets outcomes"><li>Write an iterative search loop with stop rules</li><li>Compare single-shot and iterative search on accuracy, searches and tokens</li><li>Set a search budget from the evidence</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" data-label="Two hops" id="two-hop-questions" data-lo="LO5" data-n="14" data-session="2">
+  <div class="kicker">Multi-step questions</div>
+  <h2>Some answers sit two pages apart, linked by a fact on the first</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Question</b>What GPA do I need to transfer into the college that teaches CLS 334?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Hop 1</b>the course page names the College of Health Sciences</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Hop 2</b>that college's handbook: at least 4.00 out of 5.00</div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> One search for the whole question returns the course page and some other college's transfer rule, and the answer quotes the wrong GPA.</div>
+  <aside class="notes"><p>Question M01 of Lab 3.2. The single search for it returned the Sciences handbook (2.75) first; a model reading that top 5 can answer with the wrong college's number.</p></aside>
+</section>
+
+<section class="slide" data-label="Iterate" id="iterative-loop" data-lo="LO5" data-n="15" data-session="2">
+  <div class="kicker">Search again from what you read</div>
+  <h2>The iterative loop: search, read, decide the next search or answer</h2>
+  <pre class="code s" data-file="Lab 3.2 · step 2"><code class="language-python">notes, asked = [], <span class="hljs-built_in">set</span>()
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    d = decide(question, notes)             <span class="hljs-comment"># the model, or the stand-in</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;answer&quot;</span> <span class="hljs-keyword">in</span> d:
+        <span class="hljs-keyword">return</span> d[<span class="hljs-string">&quot;answer&quot;</span>]
+    q = d[<span class="hljs-string">&quot;search&quot;</span>]
+    <span class="hljs-keyword">if</span> q <span class="hljs-keyword">in</span> asked <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(notes) &gt;= max_searches:
+        <span class="hljs-keyword">return</span> decide(question, notes, final=<span class="hljs-literal">True</span>)[<span class="hljs-string">&quot;answer&quot;</span>]
+    asked.add(q)
+    notes.append({<span class="hljs-string">&quot;query&quot;</span>: q, <span class="hljs-string">&quot;top&quot;</span>: hybrid_search(q, <span class="hljs-number">3</span>)})</code></pre>
+  <aside class="notes"><p>Three stop rules: an answer, a search budget, and a repeated query, which means the decider is going round in circles. The final call forces an answer from the notes so far, which may be "I could not find it". That honest answer is better than a guess.</p></aside>
+</section>
+
+<section class="slide" data-label="Trace" id="iterative-trace" data-lo="LO5" data-n="16" data-session="2">
+  <div class="kicker">One question, three searches</div>
+  <h2>The decider finds the college, then searches for its rule</h2>
+  <div class="trace s">
+    <div class="ev call"><b>search 1</b>the question as written</div>
+    <div class="ev result dim"><b>notes</b>no course page in the top 3</div>
+    <div class="ev call"><b>search 2</b><code>CLS 334 course description</code></div>
+    <div class="ev result"><b>notes</b>CLS 334 · offered by the College of Health Sciences</div>
+    <div class="ev call"><b>search 3</b><code>College of Health Sciences handbook admission by transfer</code></div>
+    <div class="ev final"><b>answer</b>At least 4.00 out of 5.00 (College of Health Sciences)</div>
+  </div>
+  <aside class="notes"><p>The trace of M01 in Lab 3.2 with the stand-in decider. The second search is the decomposition: it asks for the fact the first hop needs, not for the answer.</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="single-against-iterative" data-lo="LO5" data-n="17" data-session="2">
+  <div class="kicker">Measured in Lab 3.2, stand-in</div>
+  <h2>Iterative search answers 9 of 10 two-hop questions, at twice the tokens</h2>
+  <table class="t small">
+    <tr><th>Ten two-hop questions</th><th class="num">Accuracy</th><th class="num">Searches</th><th class="num">Tokens read</th></tr>
+    <tr><td>Single-shot, top 5</td><td class="num">0.7</td><td class="num">1.0</td><td class="num">1,114</td></tr>
+    <tr class="hl"><td>Iterative, up to 4 searches</td><td class="num">0.9</td><td class="num">2.1</td><td class="num">2,363</td></tr>
+  </table>
+  <div class="callout note mt-s"><b>Honest reading.</b> Single-shot already answers 7 of 10, because a top 5 with long excerpts often holds both hops. Iteration earns its cost on the rest.</div>
+  <aside class="notes"><p>These are the stand-in's numbers: a scripted decider that follows the decomposition a model is asked to follow. A live model may decompose differently; the comparison table is the evidence LO5 asks for, whatever the decider. The first version of our stand-in scored worse iteratively than single-shot: it searched for bare course codes, which BM25 matches to study plans. Query wording matters as much as the loop.</p></aside>
+</section>
+
+<section class="slide" data-label="Budget" id="search-budget" data-lo="LO5" data-n="18" data-session="2">
+  <div class="kicker">Lab 3.2 stretch</div>
+  <h2>A search budget is a stop rule you set from evidence</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">3 of 5</div><div class="lbl">three-hop questions answered with 2 searches</div></div>
+    <div class="stat"><div class="big">3 of 5</div><div class="lbl">with 4 searches</div></div>
+  </div>
+  <p class="small mt">Doubling the budget bought nothing on these five: the misses fail for another reason. Look at their traces before raising the budget.</p>
+  <aside class="notes"><p>The three-hop questions follow a prerequisite to its own prerequisite. The two misses never find the second course page; that is a retrieval miss, and Session 4's graph answers the same kind of question in one call.</p></aside>
+</section>
+
+<section class="slide" id="check-iterative" data-lo="LO5" data-n="19" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>What should the decider search next?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-iterative-q1">
+    <p class="lead">Question: "How many credit hours is the first prerequisite of CHM 423?" The first search returned the CHM 423 course page, which lists "Prerequisite: CHM 301". What is the best next search?</p>
+    <div class="opts">
+      <div class="opt" data-why="Repeats a search, which the loop treats as going round in circles" data-k="A">The question again, as written</div>
+      <div class="opt" data-why="Searches for the answer's words instead of the entity the next hop needs" data-k="B">"credit hours prerequisite"</div>
+      <div class="opt" data-why="Answers from the first page, which gives CHM 423's hours, not CHM 301's" data-k="C">No search: answer with the hours on the CHM 423 page</div>
+      <div class="opt" data-ok data-k="D">"CHM 301 course description credit hours"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The first hop produced an entity, CHM 301. The next search asks for that entity's page, where its credit hours are.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. C is the most common wrong answer in live runs: the model reports the hours of the course it found.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-2" data-auto="lab" data-lab="3.2" data-label="Lab 3.2" data-n="20" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.2 · 25 min</div><h2>Single-shot against iterative search</h2><p class="lead small">Answer ten two-hop questions with one search and with an iterative loop that searches again from what it read, and compare accuracy, searches and tokens.</p><a class="nb" href="../labs/D3_2_compare_single_shot.ipynb">D3_2_compare_single_shot.ipynb</a></div><ul class="checklist"><li>Single-shot: one search, then answer <span class="min">5 min</span></li><li>The iterative loop and its stop rules <span class="min">9 min</span></li><li>Ten questions both ways <span class="min">6 min</span></li><li>Accuracy, searches and tokens <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Three hops</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: a loop with no repeated-query check, which spins until the budget; counting tokens once instead of on every call (each call resends the notes); comparing on different question sets. Without a key, the stand-in decides and the numbers match the slides.</p></aside>
+</section>
+
+<!-- ======================= SESSION 3 ======================= -->
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="21">
+  <div class="kicker">Session 3</div>
+  <h1>Paging and offloading</h1>
+  <ul class="bullets outcomes"><li>Measure what a large result costs in tokens</li><li>Offload results to a file behind a stub</li><li>Compare accuracy and tokens with and without offloading</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" data-label="Large results" id="large-results" data-lo="LO5" data-n="22" data-session="3">
+  <div class="kicker">Paging and offloading</div>
+  <h2>Some results do not fit: every course page of a college is 8,500 tokens</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">1,594</div><div class="lbl">tokens: the Physics programme's course pages</div></div>
+    <div class="stat"><div class="big">8,479</div><div class="lbl">tokens: the College of Engineering's</div></div>
+    <div class="stat"><div class="big">1,500</div><div class="lbl">tokens: the budget per tool result</div></div>
+  </div>
+  <p class="small mt">Lab 3.3's tool <code>list_courses</code> returns every course page of a programme or a college in full. Token counts are estimates (four characters per token).</p>
+  <aside class="notes"><p>The estimate is deliberately simple and labelled as one. Ask what the loop does with a result over budget: it cuts it. Then ask what a count over a cut list returns.</p></aside>
+</section>
+
+<section class="slide" data-label="Cut" id="truncation-fails" data-lo="LO5" data-n="23" data-session="3">
+  <div class="kicker">What truncation does</div>
+  <h2>Cut a long result to the budget and a count comes out wrong, confidently</h2>
+  <table class="t small">
+    <tr><th>Question</th><th class="num">Expected</th><th class="num">In context, cut</th></tr>
+    <tr><td>College of Engineering courses of 4 credit hours</td><td class="num">10</td><td class="num">1</td></tr>
+    <tr><td>College of Computing laboratory courses of 1 credit hour</td><td class="num">5</td><td class="num">1</td></tr>
+    <tr><td>Statistics programme courses with no prerequisite</td><td class="num">0</td><td class="num">0</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> Nothing signals the cut. The agent counts what it can see and reports it as the answer.</div>
+  <aside class="notes"><p>Rows from Lab 3.3 step 2 with the stand-in: B05, B07 and B01. The four college questions (B05 to B08) failed; the four programme questions fit the budget and were right. The row labels are shortened; the notebook prints the exact questions.</p></aside>
+</section>
+
+<section class="slide" data-label="Offload" id="offload-to-file" data-lo="LO5" data-n="24" data-session="3">
+  <div class="kicker">The fix</div>
+  <h2>Offload: write the result to a file and return a stub</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="Lab 3.3 · step 3"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">offload</span>(<span class="hljs-params">result, limit=<span class="hljs-number">1500</span></span>):
+    <span class="hljs-keyword">if</span> count_tokens(result) &lt;= limit:
+        <span class="hljs-keyword">return</span> result
+    path = OUT / <span class="hljs-string">f&quot;list_courses_<span class="hljs-subst">{n}</span>.txt&quot;</span>
+    path.write_text(result)
+    <span class="hljs-keyword">return</span> json.dumps({<span class="hljs-string">&quot;file&quot;</span>: path.name,
+        <span class="hljs-string">&quot;lines&quot;</span>: n_lines, <span class="hljs-string">&quot;pages&quot;</span>: n_pages,
+        <span class="hljs-string">&quot;preview&quot;</span>: result[:<span class="hljs-number">200</span>],
+        <span class="hljs-string">&quot;hint&quot;</span>: <span class="hljs-string">&quot;search it with grep_file&quot;</span>})</code></pre>
+    <div class="stack">
+      <div class="card c-teal flat"><h4>Nothing is lost</h4><p class="small mb0">The full result is one tool call away.</p></div>
+      <div class="card c-cyan flat"><h4>A tool for the file</h4><p class="small mb0"><code>grep_file(file, pattern)</code> returns the matching lines and their count.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><p>The stub says what is in the file and how to search it. The grep tool only opens files in the offload folder; the lab checks that a path outside it is refused (the notebook tries "../../nuha.py" and gets an error).</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="offload-results" data-lo="LO5" data-n="25" data-session="3">
+  <div class="kicker">Measured in Lab 3.3, stand-in</div>
+  <h2>Offloading doubles accuracy and roughly halves the tokens</h2>
+  <div class="bars">
+    <div class="row"><span>accuracy, in context</span><div class="bar c-coral" style="--w:50%"></div><span class="val">0.5</span></div>
+    <div class="row"><span>accuracy, offloaded</span><div class="bar c-teal" style="--w:100%"></div><span class="val">1.0</span></div>
+    <div class="row"><span>tokens, in context</span><div class="bar c-coral" style="--w:100%"></div><span class="val">1,724</span></div>
+    <div class="row"><span>tokens, offloaded</span><div class="bar c-teal" style="--w:54%"></div><span class="val">924</span></div>
+  </div>
+  <p class="caption">Eight counting questions, mean per question. Offloaded runs take two calls (the list, then the grep) instead of one.</p>
+  <aside class="notes"><p>One more call, fewer tokens and the right answer. The same pattern runs coding agents: long command output goes to a file and the agent greps it.</p></aside>
+</section>
+
+<section class="slide" data-label="Paging" id="paging-instead" data-lo="LO5" data-n="26" data-session="3">
+  <div class="kicker">Lab 3.3 stretch</div>
+  <h2>Paging works, and costs more when the question needs a search</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>Paging</h4><p class="small mb0">Read the 359 lines in pages of 40: 9 calls and about 7,956 tokens to see them all.</p></div>
+    <div class="card c-teal"><h4>Searching the file</h4><p class="small mb0">One grep for the pattern: one call and the count.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> Page when the agent must read everything; search the file when the question names what to look for.</div>
+  <aside class="notes"><p>Numbers printed by the stretch cell. Paging is the right tool for "summarise these" questions; grep is for "count" and "find" questions.</p></aside>
+</section>
+
+<section class="slide" id="check-offload" data-lo="LO5" data-n="27" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>How should the agent handle this result?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-offload-q1">
+    <p class="lead">A tool returns 60 course pages (about 8,500 tokens) for "how many Engineering courses carry 4 credit hours?". The result budget is 1,500 tokens. What design answers correctly with the smallest context?</p>
+    <div class="opts">
+      <div class="opt" data-why="Counts in a cut list, which gave 1 instead of 10 in the lab" data-k="A">Cut the result to 1,500 tokens and count</div>
+      <div class="opt" data-why="Pays for every page on every later call instead of fixing the design" data-k="B">Raise the budget to 10,000 tokens</div>
+      <div class="opt" data-ok data-k="C">Offload the result to a file, return a stub, and search the file for "Credit hours: 4"</div>
+      <div class="opt" data-why="Lets a summary drop the rows a count needs" data-k="D">Ask the model to summarise the 60 pages first</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The file keeps every page; one search returns exactly the matching lines and their count, for a few hundred tokens.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. B works on this question and fails on the next college; budgets exist for the cost of every later step, not only this one.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-3" data-auto="lab" data-lab="3.3" data-label="Lab 3.3" data-n="28" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.3 · 25 min</div><h2>Offloading large results to files</h2><p class="lead small">Answer eight counting questions whose search results exceed the context budget, first in context and then with the results offloaded to a file and a tool to search it, and compare accuracy and tokens.</p><a class="nb" href="../labs/D3_3_offload_large_search.ipynb">D3_3_offload_large_search.ipynb</a></div><ul class="checklist"><li>How large is a large result? <span class="min">4 min</span></li><li>Eight questions inside the budget, no offloading <span class="min">5 min</span></li><li>Offload: a file and a stub <span class="min">7 min</span></li><li>A tool to search the file <span class="min">5 min</span></li><li>Tokens and accuracy, both ways <span class="min">4 min</span></li><li class="stretch">✱ Stretch: Paging instead of searching</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: a grep tool that opens any path (the lab's check tries one outside the folder); a stub without the hint, so a live model never calls grep; offloading every result, even small ones. Without a key, the stand-in runs.</p></aside>
+</section>
+
+<!-- ======================= SESSION 4 ======================= -->
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="29">
+  <div class="kicker">Session 4</div>
+  <h1>Knowledge graphs for linked facts</h1>
+  <ul class="bullets outcomes"><li>Build a graph of courses, prerequisites and rules from extracted facts</li><li>Expose graph queries as tools</li><li>Compare relationship answers with and without the graph</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" data-label="Links" id="facts-that-are-links" data-lo="LO5" data-n="30" data-session="4">
+  <div class="kicker">Knowledge graphs</div>
+  <h2>Some questions are about links between facts, not about any one page</h2>
+  <ul class="bullets">
+    <li>"Which courses must I pass, <b>directly or indirectly</b>, before PHY 401?"</li>
+    <li>"How many courses list CSC 201 as a prerequisite?"</li>
+    <li>"Which study plans include DSC 223?"</li>
+  </ul>
+  <div class="callout note mt"><b>The shape of the answer.</b> A chain or a set gathered from many pages. Search finds pages one at a time; a graph stores the links themselves.</div>
+  <aside class="notes"><p>The three kinds are the question kinds of Lab 3.4 (all prerequisites, dependants, plans that include a course) plus "must I pass X before Y". Ask how many searches the first one needs: one per link in the chain, and you do not know the length in advance.</p></aside>
+</section>
+
+<section class="slide" data-label="The graph" id="small-graph" data-lo="LO5" data-n="31" data-session="4">
+  <div class="kicker">Lab 3.4, step 1</div>
+  <h2>368 courses, 30 programmes and 6 colleges, joined by 1,201 edges</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-teal"><b>course</b>PHY 401</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>requires</b>its direct prerequisites</div>
+      <div class="arrow">↓</div>
+      <div class="step c-purple"><b>requires</b>theirs, on down the chain to UNI 105</div>
+    </div>
+    <ul class="bullets small">
+      <li>Nodes and edges come from the course pages and plans, already extracted (<code>data/graph/</code>)</li>
+      <li>Edge kinds: <code>requires</code> (course to prerequisite), <code>includes</code> (programme to course), <code>in</code> (programme to college)</li>
+      <li>Each college node carries a rule: the GPA its transfer rule requires</li>
+      <li>NetworkX in memory; Neo4j or a SQL table of edges at scale</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Building the graph is the cheap part. Extracting the edges reliably is the expensive part, which is why the lab supplies the extraction. In production, check extracted edges against the source pages as you would any parse.</p></aside>
+</section>
+
+<section class="slide" data-label="Graph tools" id="graph-queries-as-tools" data-lo="LO5" data-n="32" data-session="4">
+  <div class="kicker">Lab 3.4, step 2</div>
+  <h2>Expose graph queries as tools, so the agent asks for a walk, not a page</h2>
+  <pre class="code s" data-file="Lab 3.4 · three tools"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">prerequisites_of</span>(<span class="hljs-params">code: <span class="hljs-built_in">str</span>, transitive: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">True</span></span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>]:
+    <span class="hljs-string">&quot;&quot;&quot;Prerequisites of a course from the course graph: direct ones,
+    or all of them when transitive is true.&quot;&quot;&quot;</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">dependants_of</span>(<span class="hljs-params">code: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>]:
+    <span class="hljs-string">&quot;&quot;&quot;Courses that list this course as a direct prerequisite.&quot;&quot;&quot;</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">programmes_including</span>(<span class="hljs-params">code: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>]:
+    <span class="hljs-string">&quot;&quot;&quot;Programmes whose study plan includes the course.&quot;&quot;&quot;</span></code></pre>
+  <aside class="notes"><p>The same rule as Session 1: the docstring is the description. A tool that runs a fixed query is safer than letting a model write graph queries, for the same reason Day 4 prefers governed metrics to free SQL.</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="graph-results" data-lo="LO5" data-n="33" data-session="4">
+  <div class="kicker">Measured in Lab 3.4, stand-in</div>
+  <h2>With the graph, ten of ten; with search only, three, at fourteen times the tokens</h2>
+  <table class="t small">
+    <tr><th>Question kind</th><th class="num">Search only</th><th class="num">With the graph</th></tr>
+    <tr><td>All prerequisites (3)</td><td class="num">0.0</td><td class="num">1.0</td></tr>
+    <tr><td>Dependants (2)</td><td class="num">0.0</td><td class="num">1.0</td></tr>
+    <tr><td>Must X come before Y (2)</td><td class="num">0.0</td><td class="num">1.0</td></tr>
+    <tr><td>Plans that include a course (3)</td><td class="num">1.0</td><td class="num">1.0</td></tr>
+    <tr class="hl"><td>Mean calls, mean tokens</td><td class="num">2.2, 4,281</td><td class="num">1.0, 307</td></tr>
+  </table>
+  <aside class="notes"><p>The search-only stand-in follows prerequisites page by page within six searches. It came close on PHY 401 (five of six courses, missing UNI 105) and was graded wrong, which is right: a partial list of prerequisites misleads a student. Plans are the one kind search handles, because one keyword search returns the plan pages that hold the code.</p></aside>
+</section>
+
+<section class="slide" data-label="When" id="when-a-graph" data-lo="LO5" data-n="34" data-session="4">
+  <div class="kicker">When a graph earns its place</div>
+  <h2>Build a graph for the relationships users ask about, not for the whole corpus</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Worth it</h4><p class="small mb0">Prerequisite chains, which plan includes what, which circular amends which article: few kinds of link, asked often.</p></div>
+    <div class="card c-coral"><h4>Not worth it</h4><p class="small mb0">"What does the regulation say about appeals?": one passage answers it, and search finds it.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> A graph is a structured index for one family of questions. Keep it small, typed, and checked against its sources.</div>
+  <aside class="notes"><p>The stretch adds a rule edge: transfer requirements per college, which turns Session 2's two-hop question into one graph call. Ask which of Nibras's question logs would tell them a graph is needed: repeated multi-hop questions about the same kinds of link.</p></aside>
+</section>
+
+<section class="slide" id="check-graph" data-lo="LO5" data-n="35" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which question does the graph answer best?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-graph-q1">
+    <p class="lead">Nibras has search tools and a small graph of courses, plans and prerequisites. Which question gains most from the graph?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">"Must I pass MTH 112 before PHY 401?"</div>
+      <div class="opt" data-why="Asks for one passage of text, which search finds directly" data-k="B">"What does the regulation say about appealing a grade?"</div>
+      <div class="opt" data-why="Asks for a list of files, which listing answers" data-k="C">"How many circulars were issued in 2024?"</div>
+      <div class="opt" data-why="Asks for the content of one page found by its code" data-k="D">"What is the description of CSC 301?"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The answer is a path through prerequisite links of unknown length. One graph query walks it; search needs one call per link and may stop at the budget.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. Each wrong option names the tool that answers it best: search, listing, keyword search. That is today's whole lesson on one slide.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-4" data-auto="lab" data-lab="3.4" data-label="Lab 3.4" data-n="36" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.4 · 25 min</div><h2>A graph of courses, prerequisites and rules</h2><p class="lead small">Build a small graph of courses, prerequisites, programmes and each college's transfer rule, expose three graph queries as tools, and answer ten relationship questions with search only and with the graph.</p><a class="nb" href="../labs/D3_4_build_small_graph.ipynb">D3_4_build_small_graph.ipynb</a></div><ul class="checklist"><li>Nodes and edges from the extraction <span class="min">7 min</span></li><li>Three graph queries as tools <span class="min">7 min</span></li><li>Ten questions without the graph <span class="min">4 min</span></li><li>The same ten with the graph <span class="min">4 min</span></li><li>Accuracy, calls and tokens <span class="min">3 min</span></li><li class="stretch">✱ Stretch: A rule edge: transfer requirements</li></ul></div>
+  <aside class="notes"><p>Walk the room. Usual problems: edges in the wrong direction, so "prerequisites" returns dependants; a graph built from both languages' pages with duplicate nodes; grading a partial list of prerequisites as correct. Without a key, the stand-in runs.</p></aside>
+</section>
+
+<!-- ======================= CLOSING ======================= -->
+<section class="slide" id="wrap-up" data-label="Recap" data-n="37" data-session="4">
+  <div class="kicker">Day 3 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Tools need descriptions</h4><p class="small mb0">Say when to call each one; log the choice, the calls and the tokens.</p></div>
+    <div class="card c-coral"><h4>Iterate with stop rules</h4><p class="small mb0">An answer, a budget, a repeated query. Compare with one search on accuracy and tokens.</p></div>
+    <div class="card c-purple"><h4>Keep the context small</h4><p class="small mb0">Offload large results to files; put relationships in a small graph.</p></div>
+  </div>
+  <aside class="notes"><p>Ask for the LO5 evidence in one sentence: traces and a comparison with single-shot search on accuracy, tool calls and tokens. Each lab today produced one row of it.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="38" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Day 4: Structured data and diagnosis</h2>
+  <p class="lead">Tomorrow: statistical questions over the enrolment warehouse, free text-to-SQL against governed metrics, what a question costs and how fast a change becomes searchable, and twenty failures attributed to the component that caused them.</p>
+  <aside class="notes"><p>Nothing to install. Day 4 starts with free text-to-SQL; with a key it runs against a model, without one it reads recorded replies.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T11:59:31Z","version":"2027.1.0","commit":"79ea004"},"course":{"id":"ae-304","code":"AE-304","title":"Retrieval and Knowledge Engineering for Language Model Systems","track":"ai-engineering","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ae-304/","repo":"SDAIAAcademy/ae-304","home":"../index.html"},"deck":{"id":"day3","kind":"day","day":3,"label":"Day 3","title":"Agentic search and knowledge","prev":"day2.html","next":"day4.html","md":"day3.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Search as tools for an agent","slide":"s1","outcomes":["Write search tools whose descriptions say when to use them","Trace an agent's tool choices","Judge a choice by its cost and its answer"],"minutes":50,"lab":{"id":"3.1","title":"Three search tools and a traced agent","minutes":25,"href":"../labs/D3_1_expose_file_listing.ipynb"}},{"n":2,"label":"Session 2","title":"Multi-step questions","slide":"s2","outcomes":["Write an iterative search loop with stop rules","Compare single-shot and iterative search on accuracy, searches and tokens","Set a search budget from the evidence"],"minutes":50,"lab":{"id":"3.2","title":"Single-shot against iterative search","minutes":25,"href":"../labs/D3_2_compare_single_shot.ipynb"}},{"n":3,"label":"Session 3","title":"Paging and offloading","slide":"s3","outcomes":["Measure what a large result costs in tokens","Offload results to a file behind a stub","Compare accuracy and tokens with and without offloading"],"minutes":50,"lab":{"id":"3.3","title":"Offloading large results to files","minutes":25,"href":"../labs/D3_3_offload_large_search.ipynb"}},{"n":4,"label":"Session 4","title":"Knowledge graphs for linked facts","slide":"s4","outcomes":["Build a graph of courses, prerequisites and rules from extracted facts","Expose graph queries as tools","Compare relationship answers with and without the graph"],"minutes":50,"lab":{"id":"3.4","title":"A graph of courses, prerequisites and rules","minutes":25,"href":"../labs/D3_4_build_small_graph.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Agentic search and knowledge","kind":"title","session":0,"hash":"f0b2087d","md":"#### [day3#title] Agentic search and knowledge\n\n*SDAIA Academy · Retrieval and Knowledge Engineering for Language Model Systems*\n\nDay 3\n\nAI Engineering Track · 4 teaching days + capstone day · 4 sessions · 4 labs · AE-304","notes":"Open with a question: which of Nibras's questions did yesterday's search answer badly, not because a page was missing, but because one search was not the right shape? Collect two: \"how many circulars in 2025\" and \"what GPA do I need to transfer into the college that teaches CLS 334\". Today is about questions like those.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Agentic search and knowledge","kind":"content","session":0,"hash":"773c1c6f","md":"#### [day3#agenda] Agentic search and knowledge\n\n*Today*\n\n- **Session 1 · Search as tools for an agent**: Listing, keyword and vector search as tools, described by when to use each, and the agent's choices read in its traces\n- **Session 2 · Multi-step questions**: Search again from what you read, stop on an answer, a budget or a repeated query, and compare with one search\n- **Session 3 · Paging and offloading**: Keep large results out of the context: a file, a stub and a tool to search it\n- **Session 4 · Knowledge graphs for linked facts**: A small graph for facts that are links, queried with tools, measured against search","notes":"","minutes":null,"lo":[]},{"id":"review-day2","n":3,"title":"Which suite catches the problem?","kind":"quiz","session":0,"hash":"5b7789f9","md":"#### [day3#review-day2] Which suite catches the problem?\n\n*Review of Day 2*\n\n**Question:** After a re-index, a student asks about the attendance rule and Nibras quotes the regulation's original text, which Circular 2025-118 amended. Which test should have caught it before release?\n\n- A. The leak suite from the student account\n- B. The staleness suite, which fails when the old answer comes first\n- C. nDCG@10 on test set v1\n- D. Word error rate on the 30 parsing pages","notes":"Answer: B. Each Day 2 test measures one thing; this review is about choosing the instrument for the failure.","minutes":null,"lo":["LO4"]},{"id":"s1","n":4,"title":"Search as tools for an agent","kind":"section","session":1,"hash":"686a9334","md":"#### [day3#s1] Search as tools for an agent\n\n*Session 1*\n\n- Write search tools whose descriptions say when to use them\n- Trace an agent's tool choices\n- Judge a choice by its cost and its answer","notes":"","minutes":null,"lo":["LO5"]},{"id":"search-as-tools","n":5,"title":"Give the model search as tools, and it decides what to look for","kind":"content","session":1,"hash":"35128e39","md":"#### [day3#search-as-tools] Give the model search as tools, and it decides what to look for\n\n*Agentic search*\n\n- user: How many circulars did the university issue in 2025?\n- tool call: `list_files(\"circulars/2025\")`\n- result: `[\"circulars/2025/2025-031-ar.md\", ...]`\n- final: The count and the circular numbers\n\n- Yesterday the pipeline searched once with the question; today a **loop** calls tools\n- The model reads each result and chooses the next call or answers\n- Coding agents work this way over files: list, grep, read","notes":"This trace is question A01 of Lab 3.1. The point of the course's framing: retrieval for agents is the same engineering as yesterday, plus a decision about which tool to call. Sources: Anthropic, Effective context engineering for AI agents (see course sources).","minutes":null,"lo":["LO5"]},{"id":"three-tools","n":6,"title":"Three tools, each cheapest for one kind of question","kind":"content","session":1,"hash":"3b30084b","md":"#### [day3#three-tools] Three tools, each cheapest for one kind of question\n\n*Lab 3.1*\n\n| Tool | Returns | Best for |\n| --- | --- | --- |\n| `list_files(folder)` | file names only | what exists, how many |\n| `keyword_search(query, k)` | top pages, BM25 normalised | codes, circular numbers, names |\n| `vector_search(query, k)` | top pages, dense e5 | paraphrases, dialect, the other language |\n\n> **All three search Public pages only.** The Day 2 filter sits inside the tools, so no tool call can reach a Restricted page.","notes":"Every tool is the Day 1 or Day 2 code behind a function signature. Ask: where should the permission filter live, in the prompt or in the tool? In the tool, for the reasons of Day 2 Session 4.","minutes":null,"lo":["LO5"]},{"id":"tool-descriptions","n":7,"title":"A tool description tells the model when to call it, not only what it does","kind":"content","session":1,"hash":"54b9f48d","md":"#### [day3#tool-descriptions] A tool description tells the model when to call it, not only what it does\n\n*The description is the interface*\n\n```python\n# file: nibras_tools.py\ndef keyword_search(query: str, k: int = 5) -> list[dict]:\n    \"\"\"Keyword search (BM25, Arabic normalised). Best for exact\n    words: course codes such as \"CSC 301\", circular numbers such\n    as \"2025-118\", article numbers and names. English or Arabic.\"\"\"\n```\n\n- The function's docstring becomes the tool's description in the schema the model sees\n- Examples of when to use it beat a list of features\n- The stretch writes a misleading description and watches the choices change","notes":"The schema is generated from the signature and the docstring by U.tool_schema, so the description cannot drift from the code. With a live model, the stretch is the most instructive five minutes of the day: swap the descriptions of keyword and vector search and rerun.","minutes":null,"lo":["LO5"]},{"id":"tool-loop","n":8,"title":"Call the model, run the tool it asks for, append the result, repeat","kind":"content","session":1,"hash":"511ad62e","md":"#### [day3#tool-loop] Call the model, run the tool it asks for, append the result, repeat\n\n*The loop, in twelve lines*\n\n```python\n# file: nuha.py · run_agent, simplified\nmessages = [system, {\"role\": \"user\", \"content\": question}]\nfor step in range(max_steps):\n    reply = chat(messages, tools=schemas)\n    if not reply.tool_calls:\n        return reply.content                      # the answer\n    for call in reply.tool_calls:\n        result = TOOLS[call.name](**call.args)\n        result = json.dumps(result)[:budget_chars] # the context budget\n        messages.append(tool_message(call.id, result))\nreturn \"step budget spent\"\n```","notes":"Point at the two budgets: steps and characters per result. Both are stop rules that keep a loop from running up a bill. Session 3 shows what the character budget does to a large result.","minutes":null,"lo":["LO5"]},{"id":"read-the-traces","n":9,"title":"The right tool was chosen every time; the vector questions still failed most","kind":"content","session":1,"hash":"e12596ad","md":"#### [day3#read-the-traces] The right tool was chosen every time; the vector questions still failed most\n\n*Measured in Lab 3.1, stand-in*\n\n| Best tool | Questions | Right tool | Correct | Tokens |\n| --- | --- | --- | --- | --- |\n| list_files | 5 | 1.0 | 1.0 | 1,454 |\n| keyword_search | 5 | 1.0 | 0.8 | 1,226 |\n| vector_search | 5 | 1.0 | 0.4 | 1,212 |\n\n> **Read the trace before blaming the agent.** The choice was right; e5 returned the wrong pages for short paraphrases. That is a Day 1 problem showing up in Day 3.","notes":"These numbers come from the scripted stand-in, not a model: no working key was available when the course was built. With a key the choices may differ, and the \"right tool\" column is then the interesting one. Overall accuracy 0.73, one call per question.","minutes":null,"lo":["LO5"]},{"id":"choice-has-a-cost","n":10,"title":"A wrong tool can still answer, at many times the tokens","kind":"content","session":1,"hash":"69f21abc","md":"#### [day3#choice-has-a-cost] A wrong tool can still answer, at many times the tokens\n\n*Judge a choice by its cost and its answer*\n\n- **Listing for a count.** File names, one call: the count is exact.\n- **Search for a count.** A top k of pages: the count is capped at k and every page's text is paid for.\n\n> **Takeaway.** Log three numbers per question: the tool chosen, the calls and the tokens. Accuracy alone hides an agent that is right and expensive.","notes":"Ask the room how they would count circulars with vector search. They cannot: a top 5 is not a list. This is why \"how many\" questions went to list_files in the lab.","minutes":null,"lo":["LO5"]},{"id":"check-tool-choice","n":11,"title":"Which tool should Nibras call first?","kind":"quiz","session":1,"hash":"72b25b1d","md":"#### [day3#check-tool-choice] Which tool should Nibras call first?\n\n*Checkpoint*\n\n**Question:** A student writes in dialect: \"ابي اعرف وش اسوي اذا مرضت يوم الاختبار\" (what do I do if I am sick on the exam day). Which first call is best?\n\n- A. list_files(\"regulations\")\n- B. keyword_search with the question as written\n- C. vector_search with the question as written\n- D. read_file on every article of the examination chapter","notes":"Answer: C. Then ask what the second call should be when vector search misses: a keyword search for \"alternative examination\" or its Arabic term, which is the agent recovering by itself.","minutes":null,"lo":["LO5"]},{"id":"lab-3-1","n":12,"title":"Three search tools and a traced agent","kind":"lab","session":1,"hash":"845ea1c7","md":"#### [day3#lab-3-1] Three search tools and a traced agent\n\nLab 3.1 · 25 min\n\nExpose file listing, keyword search and vector search as tools, run 15 questions through a tool-calling loop and read the traces: which tool, how many calls, how many tokens, and whether the answer was right.\n\n[D3_1_expose_file_listing.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D3_1_expose_file_listing.ipynb)\n\n- [ ] The file tree, and listing it (5 min)\n- [ ] Keyword and vector search as tools (7 min)\n- [ ] Fifteen questions through the loop (6 min)\n- [ ] Read the traces: choice, calls, answer (7 min)\n- [ ] ✱ Stretch: A misleading description","notes":"Walk the room. Usual problems: a list_files that returns the whole tree for an unknown folder (return the top folders instead); tool results that include Restricted pages because the tool skipped the filter; a free model that answers without calling any tool (check the trace, then sharpen the system prompt). Without a key the stand-in runs and the notebook says so.","minutes":null,"lo":[]},{"id":"s2","n":13,"title":"Multi-step questions","kind":"section","session":2,"hash":"ceec4e17","md":"#### [day3#s2] Multi-step questions\n\n*Session 2*\n\n- Write an iterative search loop with stop rules\n- Compare single-shot and iterative search on accuracy, searches and tokens\n- Set a search budget from the evidence","notes":"","minutes":null,"lo":["LO5"]},{"id":"two-hop-questions","n":14,"title":"Some answers sit two pages apart, linked by a fact on the first","kind":"content","session":2,"hash":"c7f99b75","md":"#### [day3#two-hop-questions] Some answers sit two pages apart, linked by a fact on the first\n\n*Multi-step questions*\n\n1. **Question** What GPA do I need to transfer into the college that teaches CLS 334?\n2. **Hop 1** the course page names the College of Health Sciences\n3. **Hop 2** that college's handbook: at least 4.00 out of 5.00\n\n> **What goes wrong.** One search for the whole question returns the course page and some other college's transfer rule, and the answer quotes the wrong GPA.","notes":"Question M01 of Lab 3.2. The single search for it returned the Sciences handbook (2.75) first; a model reading that top 5 can answer with the wrong college's number.","minutes":null,"lo":["LO5"]},{"id":"iterative-loop","n":15,"title":"The iterative loop: search, read, decide the next search or answer","kind":"content","session":2,"hash":"3d1ebdc2","md":"#### [day3#iterative-loop] The iterative loop: search, read, decide the next search or answer\n\n*Search again from what you read*\n\n```python\n# file: Lab 3.2 · step 2\nnotes, asked = [], set()\nwhile True:\n    d = decide(question, notes)             # the model, or the stand-in\n    if \"answer\" in d:\n        return d[\"answer\"]\n    q = d[\"search\"]\n    if q in asked or len(notes) >= max_searches:\n        return decide(question, notes, final=True)[\"answer\"]\n    asked.add(q)\n    notes.append({\"query\": q, \"top\": hybrid_search(q, 3)})\n```","notes":"Three stop rules: an answer, a search budget, and a repeated query, which means the decider is going round in circles. The final call forces an answer from the notes so far, which may be \"I could not find it\". That honest answer is better than a guess.","minutes":null,"lo":["LO5"]},{"id":"iterative-trace","n":16,"title":"The decider finds the college, then searches for its rule","kind":"content","session":2,"hash":"c93a9915","md":"#### [day3#iterative-trace] The decider finds the college, then searches for its rule\n\n*One question, three searches*\n\n- search 1: the question as written\n- notes: no course page in the top 3\n- search 2: `CLS 334 course description`\n- notes: CLS 334 · offered by the College of Health Sciences\n- search 3: `College of Health Sciences handbook admission by transfer`\n- answer: At least 4.00 out of 5.00 (College of Health Sciences)","notes":"The trace of M01 in Lab 3.2 with the stand-in decider. The second search is the decomposition: it asks for the fact the first hop needs, not for the answer.","minutes":null,"lo":["LO5"]},{"id":"single-against-iterative","n":17,"title":"Iterative search answers 9 of 10 two-hop questions, at twice the tokens","kind":"content","session":2,"hash":"b5248a9f","md":"#### [day3#single-against-iterative] Iterative search answers 9 of 10 two-hop questions, at twice the tokens\n\n*Measured in Lab 3.2, stand-in*\n\n| Ten two-hop questions | Accuracy | Searches | Tokens read |\n| --- | --- | --- | --- |\n| Single-shot, top 5 | 0.7 | 1.0 | 1,114 |\n| Iterative, up to 4 searches | 0.9 | 2.1 | 2,363 |\n\n> **Honest reading.** Single-shot already answers 7 of 10, because a top 5 with long excerpts often holds both hops. Iteration earns its cost on the rest.","notes":"These are the stand-in's numbers: a scripted decider that follows the decomposition a model is asked to follow. A live model may decompose differently; the comparison table is the evidence LO5 asks for, whatever the decider. The first version of our stand-in scored worse iteratively than single-shot: it searched for bare course codes, which BM25 matches to study plans. Query wording matters as much as the loop.","minutes":null,"lo":["LO5"]},{"id":"search-budget","n":18,"title":"A search budget is a stop rule you set from evidence","kind":"content","session":2,"hash":"bc7ea07a","md":"#### [day3#search-budget] A search budget is a stop rule you set from evidence\n\n*Lab 3.2 stretch*\n\n- **3 of 5** three-hop questions answered with 2 searches\n- **3 of 5** with 4 searches\n\nDoubling the budget bought nothing on these five: the misses fail for another reason. Look at their traces before raising the budget.","notes":"The three-hop questions follow a prerequisite to its own prerequisite. The two misses never find the second course page; that is a retrieval miss, and Session 4's graph answers the same kind of question in one call.","minutes":null,"lo":["LO5"]},{"id":"check-iterative","n":19,"title":"What should the decider search next?","kind":"quiz","session":2,"hash":"007d5488","md":"#### [day3#check-iterative] What should the decider search next?\n\n*Checkpoint*\n\n**Question:** Question: \"How many credit hours is the first prerequisite of CHM 423?\" The first search returned the CHM 423 course page, which lists \"Prerequisite: CHM 301\". What is the best next search?\n\n- A. The question again, as written\n- B. \"credit hours prerequisite\"\n- C. No search: answer with the hours on the CHM 423 page\n- D. \"CHM 301 course description credit hours\"","notes":"Answer: D. C is the most common wrong answer in live runs: the model reports the hours of the course it found.","minutes":null,"lo":["LO5"]},{"id":"lab-3-2","n":20,"title":"Single-shot against iterative search","kind":"lab","session":2,"hash":"3f82afc7","md":"#### [day3#lab-3-2] Single-shot against iterative search\n\nLab 3.2 · 25 min\n\nAnswer ten two-hop questions with one search and with an iterative loop that searches again from what it read, and compare accuracy, searches and tokens.\n\n[D3_2_compare_single_shot.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D3_2_compare_single_shot.ipynb)\n\n- [ ] Single-shot: one search, then answer (5 min)\n- [ ] The iterative loop and its stop rules (9 min)\n- [ ] Ten questions both ways (6 min)\n- [ ] Accuracy, searches and tokens (5 min)\n- [ ] ✱ Stretch: Three hops","notes":"Walk the room. Usual problems: a loop with no repeated-query check, which spins until the budget; counting tokens once instead of on every call (each call resends the notes); comparing on different question sets. Without a key, the stand-in decides and the numbers match the slides.","minutes":null,"lo":[]},{"id":"s3","n":21,"title":"Paging and offloading","kind":"section","session":3,"hash":"ff497504","md":"#### [day3#s3] Paging and offloading\n\n*Session 3*\n\n- Measure what a large result costs in tokens\n- Offload results to a file behind a stub\n- Compare accuracy and tokens with and without offloading","notes":"","minutes":null,"lo":["LO5"]},{"id":"large-results","n":22,"title":"Some results do not fit: every course page of a college is 8,500 tokens","kind":"content","session":3,"hash":"3736bc8b","md":"#### [day3#large-results] Some results do not fit: every course page of a college is 8,500 tokens\n\n*Paging and offloading*\n\n- **1,594** tokens: the Physics programme's course pages\n- **8,479** tokens: the College of Engineering's\n- **1,500** tokens: the budget per tool result\n\nLab 3.3's tool `list_courses` returns every course page of a programme or a college in full. Token counts are estimates (four characters per token).","notes":"The estimate is deliberately simple and labelled as one. Ask what the loop does with a result over budget: it cuts it. Then ask what a count over a cut list returns.","minutes":null,"lo":["LO5"]},{"id":"truncation-fails","n":23,"title":"Cut a long result to the budget and a count comes out wrong, confidently","kind":"content","session":3,"hash":"3e6bcbae","md":"#### [day3#truncation-fails] Cut a long result to the budget and a count comes out wrong, confidently\n\n*What truncation does*\n\n| Question | Expected | In context, cut |\n| --- | --- | --- |\n| College of Engineering courses of 4 credit hours | 10 | 1 |\n| College of Computing laboratory courses of 1 credit hour | 5 | 1 |\n| Statistics programme courses with no prerequisite | 0 | 0 |\n\n> **What goes wrong.** Nothing signals the cut. The agent counts what it can see and reports it as the answer.","notes":"Rows from Lab 3.3 step 2 with the stand-in: B05, B07 and B01. The four college questions (B05 to B08) failed; the four programme questions fit the budget and were right. The row labels are shortened; the notebook prints the exact questions.","minutes":null,"lo":["LO5"]},{"id":"offload-to-file","n":24,"title":"Offload: write the result to a file and return a stub","kind":"content","session":3,"hash":"ea1da6ad","md":"#### [day3#offload-to-file] Offload: write the result to a file and return a stub\n\n*The fix*\n\n```python\n# file: Lab 3.3 · step 3\ndef offload(result, limit=1500):\n    if count_tokens(result) \u003c= limit:\n        return result\n    path = OUT / f\"list_courses_{n}.txt\"\n    path.write_text(result)\n    return json.dumps({\"file\": path.name,\n        \"lines\": n_lines, \"pages\": n_pages,\n        \"preview\": result[:200],\n        \"hint\": \"search it with grep_file\"})\n```\n\n- **Nothing is lost.** The full result is one tool call away.\n- **A tool for the file.** `grep_file(file, pattern)` returns the matching lines and their count.","notes":"The stub says what is in the file and how to search it. The grep tool only opens files in the offload folder; the lab checks that a path outside it is refused (the notebook tries \"../../nuha.py\" and gets an error).","minutes":null,"lo":["LO5"]},{"id":"offload-results","n":25,"title":"Offloading doubles accuracy and roughly halves the tokens","kind":"content","session":3,"hash":"5da98e03","md":"#### [day3#offload-results] Offloading doubles accuracy and roughly halves the tokens\n\n*Measured in Lab 3.3, stand-in*\n\n| Item | Value |\n| --- | --- |\n| accuracy, in context | 0.5 |\n| accuracy, offloaded | 1.0 |\n| tokens, in context | 1,724 |\n| tokens, offloaded | 924 |\n\nEight counting questions, mean per question. Offloaded runs take two calls (the list, then the grep) instead of one.","notes":"One more call, fewer tokens and the right answer. The same pattern runs coding agents: long command output goes to a file and the agent greps it.","minutes":null,"lo":["LO5"]},{"id":"paging-instead","n":26,"title":"Paging works, and costs more when the question needs a search","kind":"content","session":3,"hash":"7d0f51d7","md":"#### [day3#paging-instead] Paging works, and costs more when the question needs a search\n\n*Lab 3.3 stretch*\n\n- **Paging.** Read the 359 lines in pages of 40: 9 calls and about 7,956 tokens to see them all.\n- **Searching the file.** One grep for the pattern: one call and the count.\n\n> **Takeaway.** Page when the agent must read everything; search the file when the question names what to look for.","notes":"Numbers printed by the stretch cell. Paging is the right tool for \"summarise these\" questions; grep is for \"count\" and \"find\" questions.","minutes":null,"lo":["LO5"]},{"id":"check-offload","n":27,"title":"How should the agent handle this result?","kind":"quiz","session":3,"hash":"60bdbb4d","md":"#### [day3#check-offload] How should the agent handle this result?\n\n*Checkpoint*\n\n**Question:** A tool returns 60 course pages (about 8,500 tokens) for \"how many Engineering courses carry 4 credit hours?\". The result budget is 1,500 tokens. What design answers correctly with the smallest context?\n\n- A. Cut the result to 1,500 tokens and count\n- B. Raise the budget to 10,000 tokens\n- C. Offload the result to a file, return a stub, and search the file for \"Credit hours: 4\"\n- D. Ask the model to summarise the 60 pages first","notes":"Answer: C. B works on this question and fails on the next college; budgets exist for the cost of every later step, not only this one.","minutes":null,"lo":["LO5"]},{"id":"lab-3-3","n":28,"title":"Offloading large results to files","kind":"lab","session":3,"hash":"6ae3578e","md":"#### [day3#lab-3-3] Offloading large results to files\n\nLab 3.3 · 25 min\n\nAnswer eight counting questions whose search results exceed the context budget, first in context and then with the results offloaded to a file and a tool to search it, and compare accuracy and tokens.\n\n[D3_3_offload_large_search.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D3_3_offload_large_search.ipynb)\n\n- [ ] How large is a large result? (4 min)\n- [ ] Eight questions inside the budget, no offloading (5 min)\n- [ ] Offload: a file and a stub (7 min)\n- [ ] A tool to search the file (5 min)\n- [ ] Tokens and accuracy, both ways (4 min)\n- [ ] ✱ Stretch: Paging instead of searching","notes":"Walk the room. Usual problems: a grep tool that opens any path (the lab's check tries one outside the folder); a stub without the hint, so a live model never calls grep; offloading every result, even small ones. Without a key, the stand-in runs.","minutes":null,"lo":[]},{"id":"s4","n":29,"title":"Knowledge graphs for linked facts","kind":"section","session":4,"hash":"6a4a310a","md":"#### [day3#s4] Knowledge graphs for linked facts\n\n*Session 4*\n\n- Build a graph of courses, prerequisites and rules from extracted facts\n- Expose graph queries as tools\n- Compare relationship answers with and without the graph","notes":"","minutes":null,"lo":["LO5"]},{"id":"facts-that-are-links","n":30,"title":"Some questions are about links between facts, not about any one page","kind":"content","session":4,"hash":"67b6672e","md":"#### [day3#facts-that-are-links] Some questions are about links between facts, not about any one page\n\n*Knowledge graphs*\n\n- \"Which courses must I pass, **directly or indirectly**, before PHY 401?\"\n- \"How many courses list CSC 201 as a prerequisite?\"\n- \"Which study plans include DSC 223?\"\n\n> **The shape of the answer.** A chain or a set gathered from many pages. Search finds pages one at a time; a graph stores the links themselves.","notes":"The three kinds are the question kinds of Lab 3.4 (all prerequisites, dependants, plans that include a course) plus \"must I pass X before Y\". Ask how many searches the first one needs: one per link in the chain, and you do not know the length in advance.","minutes":null,"lo":["LO5"]},{"id":"small-graph","n":31,"title":"368 courses, 30 programmes and 6 colleges, joined by 1,201 edges","kind":"content","session":4,"hash":"de7c6ed2","md":"#### [day3#small-graph] 368 courses, 30 programmes and 6 colleges, joined by 1,201 edges\n\n*Lab 3.4, step 1*\n\n1. **course** PHY 401\n2. **requires** its direct prerequisites\n3. **requires** theirs, on down the chain to UNI 105\n\n- Nodes and edges come from the course pages and plans, already extracted (`data/graph/`)\n- Edge kinds: `requires` (course to prerequisite), `includes` (programme to course), `in` (programme to college)\n- Each college node carries a rule: the GPA its transfer rule requires\n- NetworkX in memory; Neo4j or a SQL table of edges at scale","notes":"Building the graph is the cheap part. Extracting the edges reliably is the expensive part, which is why the lab supplies the extraction. In production, check extracted edges against the source pages as you would any parse.","minutes":null,"lo":["LO5"]},{"id":"graph-queries-as-tools","n":32,"title":"Expose graph queries as tools, so the agent asks for a walk, not a page","kind":"content","session":4,"hash":"579d8980","md":"#### [day3#graph-queries-as-tools] Expose graph queries as tools, so the agent asks for a walk, not a page\n\n*Lab 3.4, step 2*\n\n```python\n# file: Lab 3.4 · three tools\ndef prerequisites_of(code: str, transitive: bool = True) -> list[str]:\n    \"\"\"Prerequisites of a course from the course graph: direct ones,\n    or all of them when transitive is true.\"\"\"\n\ndef dependants_of(code: str) -> list[str]:\n    \"\"\"Courses that list this course as a direct prerequisite.\"\"\"\n\ndef programmes_including(code: str) -> list[str]:\n    \"\"\"Programmes whose study plan includes the course.\"\"\"\n```","notes":"The same rule as Session 1: the docstring is the description. A tool that runs a fixed query is safer than letting a model write graph queries, for the same reason Day 4 prefers governed metrics to free SQL.","minutes":null,"lo":["LO5"]},{"id":"graph-results","n":33,"title":"With the graph, ten of ten; with search only, three, at fourteen times the tokens","kind":"content","session":4,"hash":"7dbb6040","md":"#### [day3#graph-results] With the graph, ten of ten; with search only, three, at fourteen times the tokens\n\n*Measured in Lab 3.4, stand-in*\n\n| Question kind | Search only | With the graph |\n| --- | --- | --- |\n| All prerequisites (3) | 0.0 | 1.0 |\n| Dependants (2) | 0.0 | 1.0 |\n| Must X come before Y (2) | 0.0 | 1.0 |\n| Plans that include a course (3) | 1.0 | 1.0 |\n| Mean calls, mean tokens | 2.2, 4,281 | 1.0, 307 |","notes":"The search-only stand-in follows prerequisites page by page within six searches. It came close on PHY 401 (five of six courses, missing UNI 105) and was graded wrong, which is right: a partial list of prerequisites misleads a student. Plans are the one kind search handles, because one keyword search returns the plan pages that hold the code.","minutes":null,"lo":["LO5"]},{"id":"when-a-graph","n":34,"title":"Build a graph for the relationships users ask about, not for the whole corpus","kind":"content","session":4,"hash":"c5c3c993","md":"#### [day3#when-a-graph] Build a graph for the relationships users ask about, not for the whole corpus\n\n*When a graph earns its place*\n\n- **Worth it.** Prerequisite chains, which plan includes what, which circular amends which article: few kinds of link, asked often.\n- **Not worth it.** \"What does the regulation say about appeals?\": one passage answers it, and search finds it.\n\n> **Takeaway.** A graph is a structured index for one family of questions. Keep it small, typed, and checked against its sources.","notes":"The stretch adds a rule edge: transfer requirements per college, which turns Session 2's two-hop question into one graph call. Ask which of Nibras's question logs would tell them a graph is needed: repeated multi-hop questions about the same kinds of link.","minutes":null,"lo":["LO5"]},{"id":"check-graph","n":35,"title":"Which question does the graph answer best?","kind":"quiz","session":4,"hash":"e6236e9b","md":"#### [day3#check-graph] Which question does the graph answer best?\n\n*Checkpoint*\n\n**Question:** Nibras has search tools and a small graph of courses, plans and prerequisites. Which question gains most from the graph?\n\n- A. \"Must I pass MTH 112 before PHY 401?\"\n- B. \"What does the regulation say about appealing a grade?\"\n- C. \"How many circulars were issued in 2024?\"\n- D. \"What is the description of CSC 301?\"","notes":"Answer: A. Each wrong option names the tool that answers it best: search, listing, keyword search. That is today's whole lesson on one slide.","minutes":null,"lo":["LO5"]},{"id":"lab-3-4","n":36,"title":"A graph of courses, prerequisites and rules","kind":"lab","session":4,"hash":"b1bb142b","md":"#### [day3#lab-3-4] A graph of courses, prerequisites and rules\n\nLab 3.4 · 25 min\n\nBuild a small graph of courses, prerequisites, programmes and each college's transfer rule, expose three graph queries as tools, and answer ten relationship questions with search only and with the graph.\n\n[D3_4_build_small_graph.ipynb](https://sdaiaacademy.github.io/ae-304/labs/D3_4_build_small_graph.ipynb)\n\n- [ ] Nodes and edges from the extraction (7 min)\n- [ ] Three graph queries as tools (7 min)\n- [ ] Ten questions without the graph (4 min)\n- [ ] The same ten with the graph (4 min)\n- [ ] Accuracy, calls and tokens (3 min)\n- [ ] ✱ Stretch: A rule edge: transfer requirements","notes":"Walk the room. Usual problems: edges in the wrong direction, so \"prerequisites\" returns dependants; a graph built from both languages' pages with duplicate nodes; grading a partial list of prerequisites as correct. Without a key, the stand-in runs.","minutes":null,"lo":[]},{"id":"wrap-up","n":37,"title":"Three things to keep","kind":"content","session":4,"hash":"a2f1faf1","md":"#### [day3#wrap-up] Three things to keep\n\n*Day 3 · wrap-up*\n\n- **Tools need descriptions.** Say when to call each one; log the choice, the calls and the tokens.\n- **Iterate with stop rules.** An answer, a budget, a repeated query. Compare with one search on accuracy and tokens.\n- **Keep the context small.** Offload large results to files; put relationships in a small graph.","notes":"Ask for the LO5 evidence in one sentence: traces and a comparison with single-shot search on accuracy, tool calls and tokens. Each lab today produced one row of it.","minutes":null,"lo":[]},{"id":"next","n":38,"title":"Day 4: Structured data and diagnosis","kind":"content","session":4,"hash":"4815a099","md":"#### [day3#next] Day 4: Structured data and diagnosis\n\n*Next*\n\nTomorrow: statistical questions over the enrolment warehouse, free text-to-SQL against governed metrics, what a question costs and how fast a change becomes searchable, and twenty failures attributed to the component that caused them.","notes":"Nothing to install. Day 4 starts with free text-to-SQL; with a key it runs against a model, without one it reads recorded replies.","minutes":null,"lo":[]}],"activities":[{"id":"review-day2-q1","slide":"review-day2","type":"single","prompt":"After a re-index, a student asks about the attendance rule and Nibras quotes the regulation's original text, which Circular 2025-118 amended. Which test should have caught it before release?","options":[{"key":"A","text":"The leak suite from the student account"},{"key":"B","text":"The staleness suite, which fails when the old answer comes first"},{"key":"C","text":"nDCG@10 on test set v1"},{"key":"D","text":"Word error rate on the 30 parsing pages"}],"correct":[1],"explanation":"The text is parsed, allowed and relevant; it is only out of date. Only a test that knows the current answer and the stale one can fail on it.","misconceptions":["Checks access, not versions: the original text is Public","","Scores ranking on graded judgements, which do not encode which version is current","Measures the parser, which read both versions correctly"],"lo":["LO4"]},{"id":"check-tool-choice-q1","slide":"check-tool-choice","type":"single","prompt":"A student writes in dialect: \"ابي اعرف وش اسوي اذا مرضت يوم الاختبار\" (what do I do if I am sick on the exam day). Which first call is best?","options":[{"key":"A","text":"list_files(\"regulations\")"},{"key":"B","text":"keyword_search with the question as written"},{"key":"C","text":"vector_search with the question as written"},{"key":"D","text":"read_file on every article of the examination chapter"}],"correct":[2],"explanation":"A paraphrase in dialect is what meaning-based search is for. If its top pages miss, the next call can be a keyword search for the term the rule uses.","misconceptions":["Lists names when the question needs the content of a rule","Matches words, and the dialect shares few words with the regulation","","Reads whole files without knowing which one holds the rule"],"lo":["LO5"]},{"id":"check-iterative-q1","slide":"check-iterative","type":"single","prompt":"Question: \"How many credit hours is the first prerequisite of CHM 423?\" The first search returned the CHM 423 course page, which lists \"Prerequisite: CHM 301\". What is the best next search?","options":[{"key":"A","text":"The question again, as written"},{"key":"B","text":"\"credit hours prerequisite\""},{"key":"C","text":"No search: answer with the hours on the CHM 423 page"},{"key":"D","text":"\"CHM 301 course description credit hours\""}],"correct":[3],"explanation":"The first hop produced an entity, CHM 301. The next search asks for that entity's page, where its credit hours are.","misconceptions":["Repeats a search, which the loop treats as going round in circles","Searches for the answer's words instead of the entity the next hop needs","Answers from the first page, which gives CHM 423's hours, not CHM 301's",""],"lo":["LO5"]},{"id":"check-offload-q1","slide":"check-offload","type":"single","prompt":"A tool returns 60 course pages (about 8,500 tokens) for \"how many Engineering courses carry 4 credit hours?\". The result budget is 1,500 tokens. What design answers correctly with the smallest context?","options":[{"key":"A","text":"Cut the result to 1,500 tokens and count"},{"key":"B","text":"Raise the budget to 10,000 tokens"},{"key":"C","text":"Offload the result to a file, return a stub, and search the file for \"Credit hours: 4\""},{"key":"D","text":"Ask the model to summarise the 60 pages first"}],"correct":[2],"explanation":"The file keeps every page; one search returns exactly the matching lines and their count, for a few hundred tokens.","misconceptions":["Counts in a cut list, which gave 1 instead of 10 in the lab","Pays for every page on every later call instead of fixing the design","","Lets a summary drop the rows a count needs"],"lo":["LO5"]},{"id":"check-graph-q1","slide":"check-graph","type":"single","prompt":"Nibras has search tools and a small graph of courses, plans and prerequisites. Which question gains most from the graph?","options":[{"key":"A","text":"\"Must I pass MTH 112 before PHY 401?\""},{"key":"B","text":"\"What does the regulation say about appealing a grade?\""},{"key":"C","text":"\"How many circulars were issued in 2024?\""},{"key":"D","text":"\"What is the description of CSC 301?\""}],"correct":[0],"explanation":"The answer is a path through prerequisite links of unknown length. One graph query walks it; search needs one call per link and may stop at the budget.","misconceptions":["","Asks for one passage of text, which search finds directly","Asks for a list of files, which listing answers","Asks for the content of one page found by its code"],"lo":["LO5"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day3.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

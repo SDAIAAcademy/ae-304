@@ -1,0 +1,20 @@
+{"qid": "T01", "plan": "MTH", "q": "In which semester of the Mathematics plan is MTH 301 taught?", "answer": "Semester 6", "needs": ["Semester 6", "MTH 301"]}
+{"qid": "T02", "plan": "GEO", "q": "How many credit hours are in semester 5 of the Geography plan?", "answer": "15", "needs": ["Semester 5", "| Total | 15 |"]}
+{"qid": "T03", "plan": "ENL", "q": "In which semester of the English Language and Translation plan is ENL 112 taught?", "answer": "Semester 1", "needs": ["Semester 1", "ENL 112"]}
+{"qid": "T04", "plan": "MED", "q": "How many credit hours are in semester 1 of the Media and Communication plan?", "answer": "14", "needs": ["Semester 1", "| Total | 14 |"]}
+{"qid": "T05", "plan": "MGT", "q": "In which semester of the Management plan is MGT 201 taught?", "answer": "Semester 4", "needs": ["Semester 4", "MGT 201"]}
+{"qid": "T06", "plan": "CHE", "q": "How many credit hours are in semester 6 of the Chemical Engineering plan?", "answer": "13", "needs": ["Semester 6", "| Total | 13 |"]}
+{"qid": "T07", "plan": "CHM", "q": "In which semester of the Chemistry plan is CHM 401 taught?", "answer": "Semester 8", "needs": ["Semester 8", "CHM 401"]}
+{"qid": "T08", "plan": "CLS", "q": "How many credit hours are in semester 7 of the Clinical Laboratory Sciences plan?", "answer": "15", "needs": ["Semester 7", "| Total | 15 |"]}
+{"qid": "T09", "plan": "ME", "q": "In which semester of the Mechanical Engineering plan is MEC 201 taught?", "answer": "Semester 4", "needs": ["Semester 4", "MEC 201"]}
+{"qid": "T10", "plan": "ARB", "q": "How many credit hours are in semester 5 of the Arabic Language plan?", "answer": "15", "needs": ["Semester 5", "| Total | 15 |"]}
+{"qid": "T11", "plan": "NUR", "q": "In which semester of the Nursing plan is NUR 212 taught?", "answer": "Semester 3", "needs": ["Semester 3", "NUR 212"]}
+{"qid": "T12", "plan": "PHT", "q": "How many credit hours are in semester 5 of the Physical Therapy plan?", "answer": "15", "needs": ["Semester 5", "| Total | 15 |"]}
+{"qid": "T13", "plan": "CE", "q": "In which semester of the Civil Engineering plan is CVE 312 taught?", "answer": "Semester 5", "needs": ["Semester 5", "CVE 312"]}
+{"qid": "T14", "plan": "AI", "q": "How many credit hours are in semester 1 of the Artificial Intelligence plan?", "answer": "14", "needs": ["Semester 1", "| Total | 14 |"]}
+{"qid": "T15", "plan": "STA", "q": "In which semester of the Statistics plan is STA 223 taught?", "answer": "Semester 4", "needs": ["Semester 4", "STA 223"]}
+{"qid": "T16", "plan": "DS", "q": "How many credit hours are in semester 1 of the Data Science plan?", "answer": "14", "needs": ["Semester 1", "| Total | 14 |"]}
+{"qid": "T17", "plan": "HIS", "q": "In which semester of the History plan is HIS 301 taught?", "answer": "Semester 6", "needs": ["Semester 6", "HIS 301"]}
+{"qid": "T18", "plan": "CS", "q": "How many credit hours are in semester 8 of the Computer Science plan?", "answer": "17", "needs": ["Semester 8", "| Total | 17 |"]}
+{"qid": "T19", "plan": "PH", "q": "In which semester of the Public Health plan is PUH 312 taught?", "answer": "Semester 5", "needs": ["Semester 5", "PUH 312"]}
+{"qid": "T20", "plan": "EE", "q": "How many credit hours are in semester 3 of the Electrical Engineering plan?", "answer": "14", "needs": ["Semester 3", "| Total | 14 |"]}

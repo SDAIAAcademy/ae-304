@@ -1,0 +1,60 @@
+{"query_id": "Q01", "lang": "en", "type": "regulation", "text": "What absence percentage gets a student denied from the final exam?", "target": ["article", "attendance"]}
+{"query_id": "Q02", "lang": "en", "type": "regulation", "text": "deadline to withdraw from a course", "target": ["article", "course_withdrawal"]}
+{"query_id": "Q03", "lang": "en", "type": "regulation", "text": "how many semesters can I postpone my studies in total", "target": ["article", "postponement"]}
+{"query_id": "Q04", "lang": "en", "type": "regulation", "text": "when is a student dismissed after academic probation", "target": ["article", "probation"]}
+{"query_id": "Q05", "lang": "en", "type": "regulation", "text": "maximum credit hours in a regular semester", "target": ["article", "max_load"]}
+{"query_id": "Q06", "lang": "en", "type": "regulation", "text": "minimum weight of the final examination in the course grade", "target": ["article", "final_weight"]}
+{"query_id": "Q07", "lang": "en", "type": "regulation", "text": "how long do I have to appeal a course grade", "target": ["article", "grade_appeal"]}
+{"query_id": "Q08", "lang": "en", "type": "regulation", "text": "three final exams on the same day what can I do", "target": ["article", "exam_conflict"]}
+{"query_id": "Q09", "lang": "en", "type": "regulation", "text": "GPA needed for first class honours", "target": ["article", "honours"]}
+{"query_id": "Q10", "lang": "en", "type": "regulation", "text": "is using ChatGPT allowed in my assignments", "target": ["article", "genai_use"]}
+{"query_id": "Q11", "lang": "en", "type": "regulation", "text": "what happens if I am caught copying someone's work twice", "target": ["article", "plagiarism"]}
+{"query_id": "Q12", "lang": "en", "type": "regulation", "text": "incomplete grade deadline to finish the work", "target": ["article", "incomplete"]}
+{"query_id": "Q13", "lang": "en", "type": "regulation", "text": "can I bring my smart watch into the exam", "target": ["article", "phones"]}
+{"query_id": "Q14", "lang": "en", "type": "regulation", "text": "requirements to register a minor", "target": ["article", "minor"]}
+{"query_id": "Q15", "lang": "en", "type": "course", "text": "What is the prerequisite of BIO 412?", "target": ["course", "BIO 412"]}
+{"query_id": "Q16", "lang": "en", "type": "course", "text": "What is the prerequisite of ECO 223?", "target": ["course", "ECO 223"]}
+{"query_id": "Q17", "lang": "en", "type": "course", "text": "What is the prerequisite of BIO 212?", "target": ["course", "BIO 212"]}
+{"query_id": "Q18", "lang": "en", "type": "course", "text": "How many credit hours is Seminar in Electronics?", "target": ["course", "ELE 412"]}
+{"query_id": "Q19", "lang": "en", "type": "course", "text": "How many credit hours is Geographic Information Systems Laboratory?", "target": ["course", "GEO 323"]}
+{"query_id": "Q20", "lang": "en", "type": "course", "text": "Which department offers Topics in Experimental Design?", "target": ["course", "STA 334"]}
+{"query_id": "Q21", "lang": "en", "type": "table", "text": "Which courses are in semester 3 of the Management plan?", "target": ["plan", "MGT", 2]}
+{"query_id": "Q22", "lang": "en", "type": "table", "text": "Which courses are in semester 3 of the Chemistry plan?", "target": ["plan", "CHM", 2]}
+{"query_id": "Q23", "lang": "en", "type": "table", "text": "Which courses are in semester 3 of the Civil Engineering plan?", "target": ["plan", "CE", 2]}
+{"query_id": "Q24", "lang": "en", "type": "table", "text": "In which semester of the Media and Communication plan is MDC 312 taught?", "target": ["plan", "MED", 3]}
+{"query_id": "Q25", "lang": "en", "type": "table", "text": "In which semester of the Health Informatics plan is HIM 312 taught?", "target": ["plan", "HIM", 3]}
+{"query_id": "Q26", "lang": "en", "type": "service", "text": "how do I get an official transcript and how long does it take", "target": ["service", "transcript"]}
+{"query_id": "Q27", "lang": "en", "type": "service", "text": "who is eligible for university housing", "target": ["service", "housing"]}
+{"query_id": "Q28", "lang": "en", "type": "service", "text": "how many books can I borrow from the library", "target": ["service", "library"]}
+{"query_id": "Q29", "lang": "en", "type": "service", "text": "I lost my university card", "target": ["service", "id_card"]}
+{"query_id": "Q30", "lang": "en", "type": "service", "text": "how many pages can I print each semester", "target": ["service", "printing"]}
+{"query_id": "Q31", "lang": "ar", "type": "regulation", "text": "ما هي نسبة الغياب المسموح بها قبل الحرمان", "target": ["article", "attendance"]}
+{"query_id": "Q32", "lang": "ar", "type": "regulation", "text": "اخر موعد للانسحاب من مقرر", "target": ["article", "course_withdrawal"]}
+{"query_id": "Q33", "lang": "ar", "type": "regulation", "text": "متطلبات التخرج والمعدل المطلوب", "target": ["article", "graduation"]}
+{"query_id": "Q34", "lang": "ar", "type": "regulation", "text": "كيف يحسب المعدل عند اعادة دراسة مقرر", "target": ["article", "repeat_course"]}
+{"query_id": "Q35", "lang": "ar", "type": "regulation", "text": "شروط معادلة المقررات من جامعه اخرى", "target": ["article", "equivalency"]}
+{"query_id": "Q36", "lang": "ar", "type": "regulation", "text": "التحويل من جامعة اخري", "target": ["article", "transfer_external"]}
+{"query_id": "Q37", "lang": "ar", "type": "regulation", "text": "المدة القصوي للدراسة", "target": ["article", "max_duration"]}
+{"query_id": "Q38", "lang": "ar", "type": "regulation", "text": "متي يبدا التدريب التعاوني", "target": ["article", "coop"]}
+{"query_id": "Q39", "lang": "ar", "type": "regulation", "text": "شهادة التفوق للطلاب المتفوقين", "target": ["article", "excellence"]}
+{"query_id": "Q40", "lang": "ar", "type": "regulation", "text": "الاختبار البديل لمن تغيب بعذر", "target": ["article", "makeup_exam"]}
+{"query_id": "Q41", "lang": "ar", "type": "course", "text": "ما المتطلب السابق لمقرر CHM 312", "target": ["course", "CHM 312"]}
+{"query_id": "Q42", "lang": "ar", "type": "course", "text": "ما المتطلب السابق لمقرر MEC 401", "target": ["course", "MEC 401"]}
+{"query_id": "Q43", "lang": "ar", "type": "course", "text": "عدد الساعات المعتمدة لمقرر مشروع في قواعد البيانات", "target": ["course", "DSC 401"]}
+{"query_id": "Q44", "lang": "ar", "type": "table", "text": "مقررات المستوى الخامس في خطة اللغة العربية", "target": ["plan", "ARB", 3]}
+{"query_id": "Q45", "lang": "ar", "type": "table", "text": "مقررات المستوى الخامس في خطة هندسة البرمجيات", "target": ["plan", "SWE", 3]}
+{"query_id": "Q46", "lang": "ar", "type": "table", "text": "في أي مستوى يدرس مقرر BIO 212 في خطة الأحياء", "target": ["plan", "BIO", 2]}
+{"query_id": "Q47", "lang": "ar", "type": "service", "text": "طلب افادة قيد", "target": ["service", "enrolment_letter"]}
+{"query_id": "Q48", "lang": "ar", "type": "service", "text": "مواعيد حافلات الجامعه", "target": ["service", "transport"]}
+{"query_id": "Q49", "lang": "ar", "type": "service", "text": "المكافاه الشهريه متى تتوقف", "target": ["service", "stipend"]}
+{"query_id": "Q50", "lang": "ar", "type": "service", "text": "حجز موعد في مركز الارشاد", "target": ["service", "counselling"]}
+{"query_id": "Q51", "lang": "ar", "type": "dialect", "text": "كم مره اقدر اغيب قبل لا انحرم من الاختبار", "target": ["article", "attendance"]}
+{"query_id": "Q52", "lang": "ar", "type": "dialect", "text": "ابي انسحب من ماده متى اخر يوم", "target": ["article", "course_withdrawal"]}
+{"query_id": "Q53", "lang": "ar", "type": "dialect", "text": "وش المعدل اللي يجيب لي انذار", "target": ["article", "probation"]}
+{"query_id": "Q54", "lang": "ar", "type": "dialect", "text": "ودي احول لكلية ثانيه بالجامعه وش يبون مني", "target": ["article", "transfer_internal"]}
+{"query_id": "Q55", "lang": "ar", "type": "dialect", "text": "كم ساعه اقدر اسجل بالصيفي", "target": ["article", "summer_load"]}
+{"query_id": "Q56", "lang": "ar", "type": "dialect", "text": "اذا عدت ماده وش الدرجه اللي تنحسب", "target": ["article", "repeat_course"]}
+{"query_id": "Q57", "lang": "ar", "type": "dialect", "text": "ابي اوقف دراستي ترم كم مره يسمحون", "target": ["article", "postponement"]}
+{"query_id": "Q58", "lang": "ar", "type": "dialect", "text": "متى اقدر اعترض على درجتي", "target": ["article", "grade_appeal"]}
+{"query_id": "Q59", "lang": "ar", "type": "dialect", "text": "عندي ثلاث اختبارات بيوم واحد وش اسوي", "target": ["article", "exam_conflict"]}
+{"query_id": "Q60", "lang": "ar", "type": "dialect", "text": "ابغى سكن بالجامعه وش الشروط", "target": ["service", "housing"]}

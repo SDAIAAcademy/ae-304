@@ -1,0 +1,8378 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "kind": "college",
+   "name": "College of Computing and Information",
+   "transfer_gpa": 3.75,
+   "id": "CCI"
+  },
+  {
+   "kind": "college",
+   "name": "College of Engineering",
+   "transfer_gpa": 3.5,
+   "id": "ENG"
+  },
+  {
+   "kind": "college",
+   "name": "College of Business",
+   "transfer_gpa": 3.0,
+   "id": "BUS"
+  },
+  {
+   "kind": "college",
+   "name": "College of Health Sciences",
+   "transfer_gpa": 4.0,
+   "id": "HSC"
+  },
+  {
+   "kind": "college",
+   "name": "College of Sciences",
+   "transfer_gpa": 2.75,
+   "id": "SCI"
+  },
+  {
+   "kind": "college",
+   "name": "College of Arts and Humanities",
+   "transfer_gpa": 2.5,
+   "id": "ART"
+  },
+  {
+   "kind": "course",
+   "title": "Arabic Writing",
+   "credits": 2,
+   "id": "UNI 101"
+  },
+  {
+   "kind": "course",
+   "title": "English Language I",
+   "credits": 3,
+   "id": "UNI 102"
+  },
+  {
+   "kind": "course",
+   "title": "English Language II",
+   "credits": 3,
+   "id": "UNI 103"
+  },
+  {
+   "kind": "course",
+   "title": "Islamic Culture",
+   "credits": 2,
+   "id": "UNI 104"
+  },
+  {
+   "kind": "course",
+   "title": "Calculus I",
+   "credits": 3,
+   "id": "UNI 105"
+  },
+  {
+   "kind": "course",
+   "title": "Calculus II",
+   "credits": 3,
+   "id": "UNI 106"
+  },
+  {
+   "kind": "course",
+   "title": "Communication Skills",
+   "credits": 2,
+   "id": "UNI 107"
+  },
+  {
+   "kind": "course",
+   "title": "Digital Literacy",
+   "credits": 2,
+   "id": "UNI 108"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Algorithms",
+   "credits": 3,
+   "id": "CSC 101"
+  },
+  {
+   "kind": "programme",
+   "id": "CS"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Programming",
+   "credits": 3,
+   "id": "CSC 112"
+  },
+  {
+   "kind": "course",
+   "title": "Operating Systems",
+   "credits": 3,
+   "id": "CSC 201"
+  },
+  {
+   "kind": "course",
+   "title": "Compilers",
+   "credits": 3,
+   "id": "CSC 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Computer Networks",
+   "credits": 3,
+   "id": "CSC 223"
+  },
+  {
+   "kind": "course",
+   "title": "Theory of Computation",
+   "credits": 3,
+   "id": "CSC 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Algorithms",
+   "credits": 3,
+   "id": "CSC 312"
+  },
+  {
+   "kind": "course",
+   "title": "Programming Laboratory",
+   "credits": 1,
+   "id": "CSC 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Operating Systems",
+   "credits": 3,
+   "id": "CSC 334"
+  },
+  {
+   "kind": "course",
+   "title": "Compilers Project",
+   "credits": 4,
+   "id": "CSC 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Computer Networks",
+   "credits": 3,
+   "id": "CSC 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Theory of Computation",
+   "credits": 4,
+   "id": "CSC 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Requirements",
+   "credits": 3,
+   "id": "SWE 101"
+  },
+  {
+   "kind": "programme",
+   "id": "SWE"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Software Design",
+   "credits": 3,
+   "id": "SWE 112"
+  },
+  {
+   "kind": "course",
+   "title": "Testing",
+   "credits": 3,
+   "id": "SWE 201"
+  },
+  {
+   "kind": "course",
+   "title": "Software Architecture",
+   "credits": 3,
+   "id": "SWE 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Project Management",
+   "credits": 4,
+   "id": "SWE 223"
+  },
+  {
+   "kind": "course",
+   "title": "Maintenance",
+   "credits": 3,
+   "id": "SWE 301"
+  },
+  {
+   "kind": "course",
+   "title": "Databases",
+   "credits": 3,
+   "id": "DSC 212"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Requirements",
+   "credits": 3,
+   "id": "SWE 312"
+  },
+  {
+   "kind": "course",
+   "title": "Software Design Laboratory",
+   "credits": 1,
+   "id": "SWE 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Testing",
+   "credits": 3,
+   "id": "SWE 334"
+  },
+  {
+   "kind": "course",
+   "title": "Software Architecture Project",
+   "credits": 4,
+   "id": "SWE 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Project Management",
+   "credits": 4,
+   "id": "SWE 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Maintenance",
+   "credits": 4,
+   "id": "SWE 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Statistics",
+   "credits": 3,
+   "id": "DSC 101"
+  },
+  {
+   "kind": "programme",
+   "id": "DS"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Machine Learning",
+   "credits": 3,
+   "id": "DSC 112"
+  },
+  {
+   "kind": "course",
+   "title": "Data Visualisation",
+   "credits": 3,
+   "id": "DSC 201"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Data Ethics",
+   "credits": 3,
+   "id": "DSC 223"
+  },
+  {
+   "kind": "course",
+   "title": "Big Data",
+   "credits": 3,
+   "id": "DSC 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Statistics",
+   "credits": 3,
+   "id": "DSC 312"
+  },
+  {
+   "kind": "course",
+   "title": "Machine Learning Laboratory",
+   "credits": 1,
+   "id": "DSC 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Data Visualisation",
+   "credits": 3,
+   "id": "DSC 334"
+  },
+  {
+   "kind": "course",
+   "title": "Databases Project",
+   "credits": 4,
+   "id": "DSC 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Data Ethics",
+   "credits": 3,
+   "id": "DSC 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Big Data",
+   "credits": 4,
+   "id": "DSC 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Search",
+   "credits": 3,
+   "id": "AIN 101"
+  },
+  {
+   "kind": "programme",
+   "id": "AI"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Knowledge Representation",
+   "credits": 3,
+   "id": "AIN 112"
+  },
+  {
+   "kind": "course",
+   "title": "Neural Networks",
+   "credits": 3,
+   "id": "AIN 201"
+  },
+  {
+   "kind": "course",
+   "title": "Natural Language Processing",
+   "credits": 3,
+   "id": "AIN 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Computer Vision",
+   "credits": 3,
+   "id": "AIN 223"
+  },
+  {
+   "kind": "course",
+   "title": "Robotics",
+   "credits": 3,
+   "id": "AIN 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Search",
+   "credits": 3,
+   "id": "AIN 312"
+  },
+  {
+   "kind": "course",
+   "title": "Knowledge Representation Laboratory",
+   "credits": 1,
+   "id": "AIN 323"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Enterprise Systems",
+   "credits": 3,
+   "id": "INS 101"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Neural Networks",
+   "credits": 3,
+   "id": "AIN 334"
+  },
+  {
+   "kind": "course",
+   "title": "Natural Language Processing Project",
+   "credits": 4,
+   "id": "AIN 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Computer Vision",
+   "credits": 3,
+   "id": "AIN 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Robotics",
+   "credits": 4,
+   "id": "AIN 423"
+  },
+  {
+   "kind": "programme",
+   "id": "IS"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Business Processes",
+   "credits": 3,
+   "id": "INS 112"
+  },
+  {
+   "kind": "course",
+   "title": "Information Security",
+   "credits": 3,
+   "id": "INS 201"
+  },
+  {
+   "kind": "course",
+   "title": "Systems Analysis",
+   "credits": 3,
+   "id": "INS 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied E-government",
+   "credits": 3,
+   "id": "INS 223"
+  },
+  {
+   "kind": "course",
+   "title": "Databases",
+   "credits": 3,
+   "id": "INS 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Enterprise Systems",
+   "credits": 3,
+   "id": "INS 312"
+  },
+  {
+   "kind": "course",
+   "title": "Business Processes Laboratory",
+   "credits": 1,
+   "id": "INS 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Information Security",
+   "credits": 3,
+   "id": "INS 334"
+  },
+  {
+   "kind": "course",
+   "title": "Systems Analysis Project",
+   "credits": 4,
+   "id": "INS 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in E-government",
+   "credits": 3,
+   "id": "INS 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Databases",
+   "credits": 4,
+   "id": "INS 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Structures",
+   "credits": 3,
+   "id": "CVE 101"
+  },
+  {
+   "kind": "programme",
+   "id": "CE"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Concrete",
+   "credits": 3,
+   "id": "CVE 112"
+  },
+  {
+   "kind": "course",
+   "title": "Surveying",
+   "credits": 3,
+   "id": "CVE 201"
+  },
+  {
+   "kind": "course",
+   "title": "Soil Mechanics",
+   "credits": 3,
+   "id": "CVE 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Transportation",
+   "credits": 3,
+   "id": "CVE 223"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Quality",
+   "credits": 3,
+   "id": "IND 112"
+  },
+  {
+   "kind": "course",
+   "title": "Water Resources",
+   "credits": 3,
+   "id": "CVE 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Structures",
+   "credits": 3,
+   "id": "CVE 312"
+  },
+  {
+   "kind": "course",
+   "title": "Concrete Laboratory",
+   "credits": 1,
+   "id": "CVE 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Surveying",
+   "credits": 3,
+   "id": "CVE 334"
+  },
+  {
+   "kind": "course",
+   "title": "Soil Mechanics Project",
+   "credits": 4,
+   "id": "CVE 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Transportation",
+   "credits": 3,
+   "id": "CVE 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Water Resources",
+   "credits": 4,
+   "id": "CVE 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Circuits",
+   "credits": 3,
+   "id": "ELE 101"
+  },
+  {
+   "kind": "programme",
+   "id": "EE"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Power Systems",
+   "credits": 3,
+   "id": "ELE 112"
+  },
+  {
+   "kind": "course",
+   "title": "Signals",
+   "credits": 3,
+   "id": "ELE 201"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Fluid Mechanics",
+   "credits": 3,
+   "id": "MEC 112"
+  },
+  {
+   "kind": "course",
+   "title": "Control",
+   "credits": 3,
+   "id": "ELE 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Electronics",
+   "credits": 3,
+   "id": "ELE 223"
+  },
+  {
+   "kind": "course",
+   "title": "Renewable Energy",
+   "credits": 3,
+   "id": "ELE 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Circuits",
+   "credits": 3,
+   "id": "ELE 312"
+  },
+  {
+   "kind": "course",
+   "title": "Power Systems Laboratory",
+   "credits": 1,
+   "id": "ELE 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Signals",
+   "credits": 3,
+   "id": "ELE 334"
+  },
+  {
+   "kind": "course",
+   "title": "Control Project",
+   "credits": 4,
+   "id": "ELE 401"
+  },
+  {
+   "kind": "course",
+   "title": "Machine Design",
+   "credits": 3,
+   "id": "MEC 201"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Electronics",
+   "credits": 3,
+   "id": "ELE 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Renewable Energy",
+   "credits": 4,
+   "id": "ELE 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Thermodynamics",
+   "credits": 3,
+   "id": "MEC 101"
+  },
+  {
+   "kind": "programme",
+   "id": "ME"
+  },
+  {
+   "kind": "course",
+   "title": "Manufacturing",
+   "credits": 3,
+   "id": "MEC 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Heat Transfer",
+   "credits": 3,
+   "id": "MEC 223"
+  },
+  {
+   "kind": "course",
+   "title": "Dynamics",
+   "credits": 3,
+   "id": "MEC 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Thermodynamics",
+   "credits": 3,
+   "id": "MEC 312"
+  },
+  {
+   "kind": "course",
+   "title": "Fluid Mechanics Laboratory",
+   "credits": 1,
+   "id": "MEC 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Machine Design",
+   "credits": 3,
+   "id": "MEC 334"
+  },
+  {
+   "kind": "course",
+   "title": "Manufacturing Project",
+   "credits": 4,
+   "id": "MEC 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Heat Transfer",
+   "credits": 3,
+   "id": "MEC 412"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Supply Chains",
+   "credits": 3,
+   "id": "IND 334"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Dynamics",
+   "credits": 4,
+   "id": "MEC 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Operations Research",
+   "credits": 3,
+   "id": "IND 101"
+  },
+  {
+   "kind": "programme",
+   "id": "IE"
+  },
+  {
+   "kind": "course",
+   "title": "Supply Chains",
+   "credits": 3,
+   "id": "IND 201"
+  },
+  {
+   "kind": "course",
+   "title": "Ergonomics",
+   "credits": 3,
+   "id": "IND 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Simulation",
+   "credits": 3,
+   "id": "IND 223"
+  },
+  {
+   "kind": "course",
+   "title": "Production Planning",
+   "credits": 3,
+   "id": "IND 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Operations Research",
+   "credits": 3,
+   "id": "IND 312"
+  },
+  {
+   "kind": "course",
+   "title": "Quality Laboratory",
+   "credits": 1,
+   "id": "IND 323"
+  },
+  {
+   "kind": "course",
+   "title": "Ergonomics Project",
+   "credits": 4,
+   "id": "IND 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Simulation",
+   "credits": 3,
+   "id": "IND 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Production Planning",
+   "credits": 4,
+   "id": "IND 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Reaction Engineering",
+   "credits": 3,
+   "id": "CHE 101"
+  },
+  {
+   "kind": "programme",
+   "id": "CHE"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Separation",
+   "credits": 3,
+   "id": "CHE 112"
+  },
+  {
+   "kind": "course",
+   "title": "Process Control",
+   "credits": 3,
+   "id": "CHE 201"
+  },
+  {
+   "kind": "course",
+   "title": "Petrochemicals",
+   "credits": 3,
+   "id": "CHE 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Mass Transfer",
+   "credits": 3,
+   "id": "CHE 223"
+  },
+  {
+   "kind": "course",
+   "title": "Plant Design",
+   "credits": 3,
+   "id": "CHE 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Reaction Engineering",
+   "credits": 3,
+   "id": "CHE 312"
+  },
+  {
+   "kind": "course",
+   "title": "Separation Laboratory",
+   "credits": 1,
+   "id": "CHE 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Process Control",
+   "credits": 3,
+   "id": "CHE 334"
+  },
+  {
+   "kind": "course",
+   "title": "Petrochemicals Project",
+   "credits": 4,
+   "id": "CHE 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Mass Transfer",
+   "credits": 3,
+   "id": "CHE 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Plant Design",
+   "credits": 4,
+   "id": "CHE 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Financial Accounting",
+   "credits": 3,
+   "id": "ACC 101"
+  },
+  {
+   "kind": "programme",
+   "id": "ACC"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Auditing",
+   "credits": 3,
+   "id": "ACC 112"
+  },
+  {
+   "kind": "course",
+   "title": "Cost Accounting",
+   "credits": 3,
+   "id": "ACC 201"
+  },
+  {
+   "kind": "course",
+   "title": "Zakat and Tax",
+   "credits": 3,
+   "id": "ACC 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Accounting Systems",
+   "credits": 3,
+   "id": "ACC 223"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Consumer Behaviour",
+   "credits": 3,
+   "id": "MKT 101"
+  },
+  {
+   "kind": "course",
+   "title": "Reporting Standards",
+   "credits": 3,
+   "id": "ACC 301"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Macroeconomics",
+   "credits": 3,
+   "id": "ECO 112"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Financial Accounting",
+   "credits": 3,
+   "id": "ACC 312"
+  },
+  {
+   "kind": "course",
+   "title": "Auditing Laboratory",
+   "credits": 1,
+   "id": "ACC 323"
+  },
+  {
+   "kind": "course",
+   "title": "Entrepreneurship",
+   "credits": 3,
+   "id": "MGT 212"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Cost Accounting",
+   "credits": 3,
+   "id": "ACC 334"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Corporate Finance",
+   "credits": 3,
+   "id": "FIN 101"
+  },
+  {
+   "kind": "course",
+   "title": "Zakat and Tax Project",
+   "credits": 4,
+   "id": "ACC 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Accounting Systems",
+   "credits": 3,
+   "id": "ACC 412"
+  },
+  {
+   "kind": "course",
+   "title": "Risk Management",
+   "credits": 3,
+   "id": "FIN 212"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Reporting Standards",
+   "credits": 4,
+   "id": "ACC 423"
+  },
+  {
+   "kind": "programme",
+   "id": "FIN"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Investments",
+   "credits": 3,
+   "id": "FIN 112"
+  },
+  {
+   "kind": "course",
+   "title": "Banking",
+   "credits": 3,
+   "id": "FIN 201"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Financial Markets",
+   "credits": 3,
+   "id": "FIN 223"
+  },
+  {
+   "kind": "course",
+   "title": "Islamic Finance",
+   "credits": 3,
+   "id": "FIN 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Corporate Finance",
+   "credits": 3,
+   "id": "FIN 312"
+  },
+  {
+   "kind": "course",
+   "title": "Investments Laboratory",
+   "credits": 1,
+   "id": "FIN 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Banking",
+   "credits": 3,
+   "id": "FIN 334"
+  },
+  {
+   "kind": "course",
+   "title": "Risk Management Project",
+   "credits": 4,
+   "id": "FIN 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Financial Markets",
+   "credits": 3,
+   "id": "FIN 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Islamic Finance",
+   "credits": 4,
+   "id": "FIN 423"
+  },
+  {
+   "kind": "programme",
+   "id": "MKT"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Digital Marketing",
+   "credits": 3,
+   "id": "MKT 112"
+  },
+  {
+   "kind": "course",
+   "title": "Branding",
+   "credits": 3,
+   "id": "MKT 201"
+  },
+  {
+   "kind": "course",
+   "title": "Market Research",
+   "credits": 3,
+   "id": "MKT 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Sales",
+   "credits": 3,
+   "id": "MKT 223"
+  },
+  {
+   "kind": "course",
+   "title": "Services Marketing",
+   "credits": 3,
+   "id": "MKT 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Consumer Behaviour",
+   "credits": 3,
+   "id": "MKT 312"
+  },
+  {
+   "kind": "course",
+   "title": "Digital Marketing Laboratory",
+   "credits": 1,
+   "id": "MKT 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Branding",
+   "credits": 3,
+   "id": "MKT 334"
+  },
+  {
+   "kind": "course",
+   "title": "Market Research Project",
+   "credits": 4,
+   "id": "MKT 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Sales",
+   "credits": 3,
+   "id": "MKT 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Services Marketing",
+   "credits": 4,
+   "id": "MKT 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Organisational Behaviour",
+   "credits": 3,
+   "id": "MGT 101"
+  },
+  {
+   "kind": "programme",
+   "id": "MGT"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Human Resources",
+   "credits": 3,
+   "id": "MGT 112"
+  },
+  {
+   "kind": "course",
+   "title": "Strategy",
+   "credits": 3,
+   "id": "MGT 201"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Leadership",
+   "credits": 3,
+   "id": "MGT 223"
+  },
+  {
+   "kind": "course",
+   "title": "Operations",
+   "credits": 3,
+   "id": "MGT 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Organisational Behaviour",
+   "credits": 3,
+   "id": "MGT 312"
+  },
+  {
+   "kind": "course",
+   "title": "Human Resources Laboratory",
+   "credits": 1,
+   "id": "MGT 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Strategy",
+   "credits": 3,
+   "id": "MGT 334"
+  },
+  {
+   "kind": "course",
+   "title": "Entrepreneurship Project",
+   "credits": 4,
+   "id": "MGT 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Leadership",
+   "credits": 3,
+   "id": "MGT 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Operations",
+   "credits": 4,
+   "id": "MGT 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Microeconomics",
+   "credits": 3,
+   "id": "ECO 101"
+  },
+  {
+   "kind": "programme",
+   "id": "ECO"
+  },
+  {
+   "kind": "course",
+   "title": "Econometrics",
+   "credits": 3,
+   "id": "ECO 201"
+  },
+  {
+   "kind": "course",
+   "title": "Public Finance",
+   "credits": 3,
+   "id": "ECO 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Development",
+   "credits": 3,
+   "id": "ECO 223"
+  },
+  {
+   "kind": "course",
+   "title": "Labour Economics",
+   "credits": 3,
+   "id": "ECO 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Microeconomics",
+   "credits": 3,
+   "id": "ECO 312"
+  },
+  {
+   "kind": "course",
+   "title": "Macroeconomics Laboratory",
+   "credits": 1,
+   "id": "ECO 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Econometrics",
+   "credits": 3,
+   "id": "ECO 334"
+  },
+  {
+   "kind": "course",
+   "title": "Public Finance Project",
+   "credits": 4,
+   "id": "ECO 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Development",
+   "credits": 3,
+   "id": "ECO 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Labour Economics",
+   "credits": 4,
+   "id": "ECO 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Patient Care",
+   "credits": 3,
+   "id": "NUR 101"
+  },
+  {
+   "kind": "programme",
+   "id": "NUR"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Pharmacology",
+   "credits": 3,
+   "id": "NUR 112"
+  },
+  {
+   "kind": "course",
+   "title": "Community Health",
+   "credits": 3,
+   "id": "NUR 201"
+  },
+  {
+   "kind": "course",
+   "title": "Critical Care",
+   "credits": 3,
+   "id": "NUR 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Maternal Health",
+   "credits": 3,
+   "id": "NUR 223"
+  },
+  {
+   "kind": "course",
+   "title": "Nursing Ethics",
+   "credits": 3,
+   "id": "NUR 301"
+  },
+  {
+   "kind": "course",
+   "title": "Sports Injuries",
+   "credits": 3,
+   "id": "PHT 212"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Patient Care",
+   "credits": 3,
+   "id": "NUR 312"
+  },
+  {
+   "kind": "course",
+   "title": "Pharmacology Laboratory",
+   "credits": 1,
+   "id": "NUR 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Community Health",
+   "credits": 3,
+   "id": "NUR 334"
+  },
+  {
+   "kind": "course",
+   "title": "Critical Care Project",
+   "credits": 4,
+   "id": "NUR 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Maternal Health",
+   "credits": 3,
+   "id": "NUR 412"
+  },
+  {
+   "kind": "course",
+   "title": "Health Promotion",
+   "credits": 3,
+   "id": "PUH 301"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Nursing Ethics",
+   "credits": 4,
+   "id": "NUR 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Anatomy",
+   "credits": 3,
+   "id": "PHT 101"
+  },
+  {
+   "kind": "programme",
+   "id": "PHT"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Kinesiology",
+   "credits": 3,
+   "id": "PHT 112"
+  },
+  {
+   "kind": "course",
+   "title": "Rehabilitation",
+   "credits": 3,
+   "id": "PHT 201"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Neurology",
+   "credits": 3,
+   "id": "PHT 223"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Biostatistics",
+   "credits": 3,
+   "id": "PUH 112"
+  },
+  {
+   "kind": "course",
+   "title": "Clinical Practice",
+   "credits": 3,
+   "id": "PHT 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Anatomy",
+   "credits": 3,
+   "id": "PHT 312"
+  },
+  {
+   "kind": "course",
+   "title": "Kinesiology Laboratory",
+   "credits": 1,
+   "id": "PHT 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Rehabilitation",
+   "credits": 3,
+   "id": "PHT 334"
+  },
+  {
+   "kind": "course",
+   "title": "Sports Injuries Project",
+   "credits": 4,
+   "id": "PHT 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Neurology",
+   "credits": 3,
+   "id": "PHT 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Clinical Practice",
+   "credits": 4,
+   "id": "PHT 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Haematology",
+   "credits": 3,
+   "id": "CLS 101"
+  },
+  {
+   "kind": "programme",
+   "id": "CLS"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Microbiology",
+   "credits": 3,
+   "id": "CLS 112"
+  },
+  {
+   "kind": "course",
+   "title": "Clinical Chemistry",
+   "credits": 3,
+   "id": "CLS 201"
+  },
+  {
+   "kind": "course",
+   "title": "Immunology",
+   "credits": 3,
+   "id": "CLS 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Blood Banking",
+   "credits": 3,
+   "id": "CLS 223"
+  },
+  {
+   "kind": "course",
+   "title": "Laboratory Quality",
+   "credits": 1,
+   "id": "CLS 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Haematology",
+   "credits": 3,
+   "id": "CLS 312"
+  },
+  {
+   "kind": "course",
+   "title": "Microbiology Laboratory",
+   "credits": 1,
+   "id": "CLS 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Clinical Chemistry",
+   "credits": 3,
+   "id": "CLS 334"
+  },
+  {
+   "kind": "course",
+   "title": "Immunology Project",
+   "credits": 4,
+   "id": "CLS 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Blood Banking",
+   "credits": 3,
+   "id": "CLS 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Laboratory Quality",
+   "credits": 4,
+   "id": "CLS 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Epidemiology",
+   "credits": 3,
+   "id": "PUH 101"
+  },
+  {
+   "kind": "programme",
+   "id": "PH"
+  },
+  {
+   "kind": "course",
+   "title": "Health Policy",
+   "credits": 3,
+   "id": "PUH 201"
+  },
+  {
+   "kind": "course",
+   "title": "Environmental Health",
+   "credits": 3,
+   "id": "PUH 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Nutrition",
+   "credits": 3,
+   "id": "PUH 223"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Epidemiology",
+   "credits": 3,
+   "id": "PUH 312"
+  },
+  {
+   "kind": "course",
+   "title": "Biostatistics Laboratory",
+   "credits": 1,
+   "id": "PUH 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Health Policy",
+   "credits": 3,
+   "id": "PUH 334"
+  },
+  {
+   "kind": "course",
+   "title": "Environmental Health Project",
+   "credits": 4,
+   "id": "PUH 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Nutrition",
+   "credits": 3,
+   "id": "PUH 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Health Promotion",
+   "credits": 4,
+   "id": "PUH 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Health Records",
+   "credits": 3,
+   "id": "HIM 101"
+  },
+  {
+   "kind": "programme",
+   "id": "HIM"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Clinical Coding",
+   "credits": 3,
+   "id": "HIM 112"
+  },
+  {
+   "kind": "course",
+   "title": "Health Data Standards",
+   "credits": 3,
+   "id": "HIM 201"
+  },
+  {
+   "kind": "course",
+   "title": "Telehealth",
+   "credits": 3,
+   "id": "HIM 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Health Analytics",
+   "credits": 3,
+   "id": "HIM 223"
+  },
+  {
+   "kind": "course",
+   "title": "Privacy",
+   "credits": 3,
+   "id": "HIM 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Health Records",
+   "credits": 3,
+   "id": "HIM 312"
+  },
+  {
+   "kind": "course",
+   "title": "Clinical Coding Laboratory",
+   "credits": 1,
+   "id": "HIM 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Health Data Standards",
+   "credits": 3,
+   "id": "HIM 334"
+  },
+  {
+   "kind": "course",
+   "title": "Telehealth Project",
+   "credits": 4,
+   "id": "HIM 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Health Analytics",
+   "credits": 3,
+   "id": "HIM 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Privacy",
+   "credits": 4,
+   "id": "HIM 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Calculus",
+   "credits": 3,
+   "id": "MTH 101"
+  },
+  {
+   "kind": "programme",
+   "id": "MTH"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Linear Algebra",
+   "credits": 3,
+   "id": "MTH 112"
+  },
+  {
+   "kind": "course",
+   "title": "Differential Equations",
+   "credits": 3,
+   "id": "MTH 201"
+  },
+  {
+   "kind": "course",
+   "title": "Probability",
+   "credits": 3,
+   "id": "MTH 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Numerical Analysis",
+   "credits": 3,
+   "id": "MTH 223"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Regression",
+   "credits": 3,
+   "id": "STA 112"
+  },
+  {
+   "kind": "course",
+   "title": "Abstract Algebra",
+   "credits": 3,
+   "id": "MTH 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Calculus",
+   "credits": 3,
+   "id": "MTH 312"
+  },
+  {
+   "kind": "course",
+   "title": "Linear Algebra Laboratory",
+   "credits": 1,
+   "id": "MTH 323"
+  },
+  {
+   "kind": "course",
+   "title": "Botany",
+   "credits": 3,
+   "id": "BIO 212"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Differential Equations",
+   "credits": 3,
+   "id": "MTH 334"
+  },
+  {
+   "kind": "course",
+   "title": "Probability Project",
+   "credits": 4,
+   "id": "MTH 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Numerical Analysis",
+   "credits": 3,
+   "id": "MTH 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Abstract Algebra",
+   "credits": 4,
+   "id": "MTH 423"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Ecology",
+   "credits": 3,
+   "id": "BIO 334"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Mechanics",
+   "credits": 3,
+   "id": "PHY 101"
+  },
+  {
+   "kind": "programme",
+   "id": "PHY"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Electromagnetism",
+   "credits": 3,
+   "id": "PHY 112"
+  },
+  {
+   "kind": "course",
+   "title": "Quantum Physics",
+   "credits": 3,
+   "id": "PHY 201"
+  },
+  {
+   "kind": "course",
+   "title": "Optics",
+   "credits": 3,
+   "id": "PHY 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Thermal Physics",
+   "credits": 3,
+   "id": "PHY 223"
+  },
+  {
+   "kind": "course",
+   "title": "Solid State",
+   "credits": 3,
+   "id": "PHY 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Mechanics",
+   "credits": 3,
+   "id": "PHY 312"
+  },
+  {
+   "kind": "course",
+   "title": "Electromagnetism Laboratory",
+   "credits": 1,
+   "id": "PHY 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Quantum Physics",
+   "credits": 3,
+   "id": "PHY 334"
+  },
+  {
+   "kind": "course",
+   "title": "Physical Chemistry",
+   "credits": 3,
+   "id": "CHM 201"
+  },
+  {
+   "kind": "course",
+   "title": "Optics Project",
+   "credits": 4,
+   "id": "PHY 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Thermal Physics",
+   "credits": 3,
+   "id": "PHY 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Solid State",
+   "credits": 4,
+   "id": "PHY 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Organic Chemistry",
+   "credits": 3,
+   "id": "CHM 101"
+  },
+  {
+   "kind": "programme",
+   "id": "CHM"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Analytical Chemistry",
+   "credits": 3,
+   "id": "CHM 112"
+  },
+  {
+   "kind": "course",
+   "title": "Inorganic Chemistry",
+   "credits": 3,
+   "id": "CHM 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Biochemistry",
+   "credits": 3,
+   "id": "CHM 223"
+  },
+  {
+   "kind": "course",
+   "title": "Spectroscopy",
+   "credits": 3,
+   "id": "CHM 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Organic Chemistry",
+   "credits": 3,
+   "id": "CHM 312"
+  },
+  {
+   "kind": "course",
+   "title": "Analytical Chemistry Laboratory",
+   "credits": 1,
+   "id": "CHM 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Physical Chemistry",
+   "credits": 3,
+   "id": "CHM 334"
+  },
+  {
+   "kind": "course",
+   "title": "Inorganic Chemistry Project",
+   "credits": 4,
+   "id": "CHM 401"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Experimental Design",
+   "credits": 3,
+   "id": "STA 334"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Biochemistry",
+   "credits": 3,
+   "id": "CHM 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Spectroscopy",
+   "credits": 4,
+   "id": "CHM 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Genetics",
+   "credits": 3,
+   "id": "BIO 101"
+  },
+  {
+   "kind": "programme",
+   "id": "BIO"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Cell Biology",
+   "credits": 3,
+   "id": "BIO 112"
+  },
+  {
+   "kind": "course",
+   "title": "Ecology",
+   "credits": 3,
+   "id": "BIO 201"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Zoology",
+   "credits": 3,
+   "id": "BIO 223"
+  },
+  {
+   "kind": "course",
+   "title": "Molecular Biology",
+   "credits": 3,
+   "id": "BIO 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Genetics",
+   "credits": 3,
+   "id": "BIO 312"
+  },
+  {
+   "kind": "course",
+   "title": "Cell Biology Laboratory",
+   "credits": 1,
+   "id": "BIO 323"
+  },
+  {
+   "kind": "course",
+   "title": "Botany Project",
+   "credits": 4,
+   "id": "BIO 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Zoology",
+   "credits": 3,
+   "id": "BIO 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Molecular Biology",
+   "credits": 4,
+   "id": "BIO 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Sampling",
+   "credits": 3,
+   "id": "STA 101"
+  },
+  {
+   "kind": "programme",
+   "id": "STA"
+  },
+  {
+   "kind": "course",
+   "title": "Experimental Design",
+   "credits": 3,
+   "id": "STA 201"
+  },
+  {
+   "kind": "course",
+   "title": "Time Series",
+   "credits": 3,
+   "id": "STA 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Statistical Computing",
+   "credits": 3,
+   "id": "STA 223"
+  },
+  {
+   "kind": "course",
+   "title": "Inference",
+   "credits": 3,
+   "id": "STA 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Sampling",
+   "credits": 3,
+   "id": "STA 312"
+  },
+  {
+   "kind": "course",
+   "title": "Regression Laboratory",
+   "credits": 1,
+   "id": "STA 323"
+  },
+  {
+   "kind": "course",
+   "title": "Time Series Project",
+   "credits": 4,
+   "id": "STA 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Statistical Computing",
+   "credits": 3,
+   "id": "STA 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Inference",
+   "credits": 4,
+   "id": "STA 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Grammar",
+   "credits": 3,
+   "id": "ARB 101"
+  },
+  {
+   "kind": "programme",
+   "id": "ARB"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Morphology",
+   "credits": 3,
+   "id": "ARB 112"
+  },
+  {
+   "kind": "course",
+   "title": "Rhetoric",
+   "credits": 3,
+   "id": "ARB 201"
+  },
+  {
+   "kind": "course",
+   "title": "Classical Poetry",
+   "credits": 3,
+   "id": "ARB 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Modern Prose",
+   "credits": 3,
+   "id": "ARB 223"
+  },
+  {
+   "kind": "course",
+   "title": "Linguistics",
+   "credits": 3,
+   "id": "ARB 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Grammar",
+   "credits": 3,
+   "id": "ARB 312"
+  },
+  {
+   "kind": "course",
+   "title": "Morphology Laboratory",
+   "credits": 1,
+   "id": "ARB 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Rhetoric",
+   "credits": 3,
+   "id": "ARB 334"
+  },
+  {
+   "kind": "course",
+   "title": "Classical Poetry Project",
+   "credits": 4,
+   "id": "ARB 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Modern Prose",
+   "credits": 3,
+   "id": "ARB 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Linguistics",
+   "credits": 4,
+   "id": "ARB 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Translation",
+   "credits": 3,
+   "id": "ENL 101"
+  },
+  {
+   "kind": "programme",
+   "id": "ENL"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Phonetics",
+   "credits": 3,
+   "id": "ENL 112"
+  },
+  {
+   "kind": "course",
+   "title": "Literature",
+   "credits": 3,
+   "id": "ENL 201"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Cartography",
+   "credits": 3,
+   "id": "GEO 101"
+  },
+  {
+   "kind": "course",
+   "title": "Academic Writing",
+   "credits": 3,
+   "id": "ENL 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Interpreting",
+   "credits": 3,
+   "id": "ENL 223"
+  },
+  {
+   "kind": "course",
+   "title": "Discourse Analysis",
+   "credits": 3,
+   "id": "ENL 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Translation",
+   "credits": 3,
+   "id": "ENL 312"
+  },
+  {
+   "kind": "course",
+   "title": "Phonetics Laboratory",
+   "credits": 1,
+   "id": "ENL 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Literature",
+   "credits": 3,
+   "id": "ENL 334"
+  },
+  {
+   "kind": "course",
+   "title": "Academic Writing Project",
+   "credits": 4,
+   "id": "ENL 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Interpreting",
+   "credits": 3,
+   "id": "ENL 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Discourse Analysis",
+   "credits": 4,
+   "id": "ENL 423"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to History of the Arabian Peninsula",
+   "credits": 3,
+   "id": "HIS 101"
+  },
+  {
+   "kind": "programme",
+   "id": "HIS"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Archaeology",
+   "credits": 3,
+   "id": "HIS 112"
+  },
+  {
+   "kind": "course",
+   "title": "Historiography",
+   "credits": 3,
+   "id": "HIS 201"
+  },
+  {
+   "kind": "course",
+   "title": "Modern History",
+   "credits": 3,
+   "id": "HIS 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Manuscripts",
+   "credits": 3,
+   "id": "HIS 223"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Public Relations",
+   "credits": 3,
+   "id": "MDC 112"
+  },
+  {
+   "kind": "course",
+   "title": "Heritage",
+   "credits": 3,
+   "id": "HIS 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced History of the Arabian Peninsula",
+   "credits": 3,
+   "id": "HIS 312"
+  },
+  {
+   "kind": "course",
+   "title": "Archaeology Laboratory",
+   "credits": 1,
+   "id": "HIS 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Historiography",
+   "credits": 3,
+   "id": "HIS 334"
+  },
+  {
+   "kind": "course",
+   "title": "Introduction to Journalism",
+   "credits": 3,
+   "id": "MDC 101"
+  },
+  {
+   "kind": "course",
+   "title": "Modern History Project",
+   "credits": 4,
+   "id": "HIS 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Manuscripts",
+   "credits": 3,
+   "id": "HIS 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Heritage",
+   "credits": 4,
+   "id": "HIS 423"
+  },
+  {
+   "kind": "programme",
+   "id": "GEO"
+  },
+  {
+   "kind": "course",
+   "title": "Foundations of Geographic Information Systems",
+   "credits": 3,
+   "id": "GEO 112"
+  },
+  {
+   "kind": "course",
+   "title": "Climatology",
+   "credits": 3,
+   "id": "GEO 201"
+  },
+  {
+   "kind": "course",
+   "title": "Urban Geography",
+   "credits": 3,
+   "id": "GEO 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Population",
+   "credits": 3,
+   "id": "GEO 223"
+  },
+  {
+   "kind": "course",
+   "title": "Remote Sensing",
+   "credits": 3,
+   "id": "GEO 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Cartography",
+   "credits": 3,
+   "id": "GEO 312"
+  },
+  {
+   "kind": "course",
+   "title": "Geographic Information Systems Laboratory",
+   "credits": 1,
+   "id": "GEO 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Climatology",
+   "credits": 3,
+   "id": "GEO 334"
+  },
+  {
+   "kind": "course",
+   "title": "Urban Geography Project",
+   "credits": 4,
+   "id": "GEO 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Population",
+   "credits": 3,
+   "id": "GEO 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Remote Sensing",
+   "credits": 4,
+   "id": "GEO 423"
+  },
+  {
+   "kind": "programme",
+   "id": "MED"
+  },
+  {
+   "kind": "course",
+   "title": "Digital Media",
+   "credits": 3,
+   "id": "MDC 201"
+  },
+  {
+   "kind": "course",
+   "title": "Media Law",
+   "credits": 3,
+   "id": "MDC 212"
+  },
+  {
+   "kind": "course",
+   "title": "Applied Broadcasting",
+   "credits": 3,
+   "id": "MDC 223"
+  },
+  {
+   "kind": "course",
+   "title": "Communication Theory",
+   "credits": 3,
+   "id": "MDC 301"
+  },
+  {
+   "kind": "course",
+   "title": "Advanced Journalism",
+   "credits": 3,
+   "id": "MDC 312"
+  },
+  {
+   "kind": "course",
+   "title": "Public Relations Laboratory",
+   "credits": 1,
+   "id": "MDC 323"
+  },
+  {
+   "kind": "course",
+   "title": "Topics in Digital Media",
+   "credits": 3,
+   "id": "MDC 334"
+  },
+  {
+   "kind": "course",
+   "title": "Media Law Project",
+   "credits": 4,
+   "id": "MDC 401"
+  },
+  {
+   "kind": "course",
+   "title": "Seminar in Broadcasting",
+   "credits": 3,
+   "id": "MDC 412"
+  },
+  {
+   "kind": "course",
+   "title": "Capstone in Communication Theory",
+   "credits": 4,
+   "id": "MDC 423"
+  }
+ ],
+ "links": [
+  {
+   "rel": "requires",
+   "source": "UNI 103",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "requires",
+   "source": "UNI 106",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "CS",
+   "target": "CCI"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "SWE 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "DSC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 312"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 334"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "AIN 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 301"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 323"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "DSC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 412"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 401"
+  },
+  {
+   "rel": "includes",
+   "source": "CS",
+   "target": "CSC 423"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 201",
+   "target": "CSC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 212",
+   "target": "CSC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 223",
+   "target": "CSC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 301",
+   "target": "CSC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 301",
+   "target": "CSC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 312",
+   "target": "CSC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 323",
+   "target": "CSC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 334",
+   "target": "CSC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 334",
+   "target": "CSC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 401",
+   "target": "CSC 334"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 412",
+   "target": "CSC 301"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 423",
+   "target": "CSC 312"
+  },
+  {
+   "rel": "requires",
+   "source": "CSC 423",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "in",
+   "source": "SWE",
+   "target": "CCI"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 112"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 212"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "DSC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 201"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "CSC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 312"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 334"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "CSC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 301"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 323"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "AIN 112"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 412"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 401"
+  },
+  {
+   "rel": "includes",
+   "source": "SWE",
+   "target": "SWE 423"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 201",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 212",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 223",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 301",
+   "target": "SWE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 301",
+   "target": "SWE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 301",
+   "target": "DSC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 212",
+   "target": "DSC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 312",
+   "target": "SWE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 312",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 323",
+   "target": "SWE 212"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 323",
+   "target": "SWE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 334",
+   "target": "SWE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 401",
+   "target": "SWE 312"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 401",
+   "target": "SWE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 412",
+   "target": "SWE 334"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 423",
+   "target": "SWE 301"
+  },
+  {
+   "rel": "requires",
+   "source": "SWE 423",
+   "target": "SWE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "DS",
+   "target": "CCI"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "AIN 101"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "AIN 223"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 312"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 334"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "INS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 301"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 323"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "CSC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 412"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 401"
+  },
+  {
+   "rel": "includes",
+   "source": "DS",
+   "target": "DSC 423"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 201",
+   "target": "DSC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 201",
+   "target": "DSC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 223",
+   "target": "DSC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 301",
+   "target": "DSC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 312",
+   "target": "DSC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 312",
+   "target": "DSC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 323",
+   "target": "DSC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 334",
+   "target": "DSC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 334",
+   "target": "DSC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 401",
+   "target": "DSC 301"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 412",
+   "target": "DSC 334"
+  },
+  {
+   "rel": "requires",
+   "source": "DSC 423",
+   "target": "DSC 334"
+  },
+  {
+   "rel": "in",
+   "source": "AI",
+   "target": "CCI"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 112"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 101"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 212"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "CSC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 201"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 223"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "INS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 312"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 334"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "CSC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 301"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 323"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "INS 112"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 412"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 401"
+  },
+  {
+   "rel": "includes",
+   "source": "AI",
+   "target": "AIN 423"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 201",
+   "target": "AIN 101"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 201",
+   "target": "DSC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 212",
+   "target": "AIN 112"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 223",
+   "target": "AIN 101"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 301",
+   "target": "AIN 201"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 301",
+   "target": "AIN 212"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 312",
+   "target": "AIN 201"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 312",
+   "target": "AIN 212"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 312",
+   "target": "CSC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 323",
+   "target": "AIN 223"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 323",
+   "target": "INS 101"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 334",
+   "target": "AIN 223"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 401",
+   "target": "AIN 301"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 401",
+   "target": "AIN 201"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 412",
+   "target": "AIN 323"
+  },
+  {
+   "rel": "requires",
+   "source": "AIN 423",
+   "target": "AIN 334"
+  },
+  {
+   "rel": "in",
+   "source": "IS",
+   "target": "CCI"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 112"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 101"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "AIN 212"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 201"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 223"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "DSC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 312"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 334"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "AIN 201"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 301"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 323"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "CSC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 412"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 401"
+  },
+  {
+   "rel": "includes",
+   "source": "IS",
+   "target": "INS 423"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 201",
+   "target": "INS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 212",
+   "target": "INS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 223",
+   "target": "INS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 223",
+   "target": "INS 101"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 301",
+   "target": "INS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 301",
+   "target": "INS 201"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 312",
+   "target": "INS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 312",
+   "target": "INS 101"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 323",
+   "target": "INS 212"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 323",
+   "target": "SWE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 334",
+   "target": "INS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 401",
+   "target": "INS 301"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 412",
+   "target": "INS 334"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 412",
+   "target": "SWE 323"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 423",
+   "target": "INS 312"
+  },
+  {
+   "rel": "requires",
+   "source": "INS 423",
+   "target": "SWE 334"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "CE",
+   "target": "ENG"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "IND 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 201"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "MEC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 312"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 334"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "MEC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 301"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 323"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "ELE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 412"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 401"
+  },
+  {
+   "rel": "includes",
+   "source": "CE",
+   "target": "CVE 423"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 201",
+   "target": "CVE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 212",
+   "target": "CVE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 223",
+   "target": "CVE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 223",
+   "target": "IND 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 301",
+   "target": "CVE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 312",
+   "target": "CVE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 323",
+   "target": "CVE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 334",
+   "target": "CVE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 401",
+   "target": "CVE 301"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 412",
+   "target": "CVE 323"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 423",
+   "target": "CVE 323"
+  },
+  {
+   "rel": "requires",
+   "source": "CVE 423",
+   "target": "CVE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "EE",
+   "target": "ENG"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 112"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 101"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 212"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "CHE 101"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 201"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "MEC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 312"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 334"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 301"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 323"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "MEC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 412"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 401"
+  },
+  {
+   "rel": "includes",
+   "source": "EE",
+   "target": "ELE 423"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 201",
+   "target": "ELE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 201",
+   "target": "MEC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 212",
+   "target": "ELE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 223",
+   "target": "ELE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 301",
+   "target": "ELE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 312",
+   "target": "ELE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 312",
+   "target": "ELE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 323",
+   "target": "ELE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 334",
+   "target": "ELE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 334",
+   "target": "ELE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 401",
+   "target": "ELE 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 401",
+   "target": "ELE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 401",
+   "target": "MEC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 201",
+   "target": "MEC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 201",
+   "target": "MEC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 412",
+   "target": "ELE 301"
+  },
+  {
+   "rel": "requires",
+   "source": "ELE 423",
+   "target": "ELE 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "ME",
+   "target": "ENG"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "CHE 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "IND 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 312"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 334"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "IND 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 301"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 323"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "ELE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 412"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 401"
+  },
+  {
+   "rel": "includes",
+   "source": "ME",
+   "target": "MEC 423"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 212",
+   "target": "MEC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 223",
+   "target": "MEC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 301",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 312",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 323",
+   "target": "MEC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 334",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 334",
+   "target": "CVE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 401",
+   "target": "MEC 323"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 412",
+   "target": "MEC 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 412",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 412",
+   "target": "IND 334"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 334",
+   "target": "IND 201"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 334",
+   "target": "CVE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MEC 423",
+   "target": "MEC 301"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "IE",
+   "target": "ENG"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 112"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 101"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 212"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "ELE 201"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 201"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 223"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "CHE 112"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 312"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 334"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "CVE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 301"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 323"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "CHE 212"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 412"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 401"
+  },
+  {
+   "rel": "includes",
+   "source": "IE",
+   "target": "IND 423"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 201",
+   "target": "IND 101"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 212",
+   "target": "IND 112"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 223",
+   "target": "IND 112"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 223",
+   "target": "ELE 101"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 301",
+   "target": "IND 223"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 312",
+   "target": "IND 212"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 323",
+   "target": "IND 201"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 323",
+   "target": "IND 112"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 401",
+   "target": "IND 301"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 412",
+   "target": "IND 323"
+  },
+  {
+   "rel": "requires",
+   "source": "IND 423",
+   "target": "IND 301"
+  },
+  {
+   "rel": "in",
+   "source": "CHE",
+   "target": "ENG"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "MEC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 201"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "ELE 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 312"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 334"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "IND 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 301"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 323"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CVE 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 412"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 401"
+  },
+  {
+   "rel": "includes",
+   "source": "CHE",
+   "target": "CHE 423"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 201",
+   "target": "CHE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 201",
+   "target": "MEC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 212",
+   "target": "CHE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 223",
+   "target": "CHE 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 301",
+   "target": "CHE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 312",
+   "target": "CHE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 323",
+   "target": "CHE 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 334",
+   "target": "CHE 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 401",
+   "target": "CHE 323"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 412",
+   "target": "CHE 301"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 412",
+   "target": "MEC 334"
+  },
+  {
+   "rel": "requires",
+   "source": "CHE 423",
+   "target": "CHE 301"
+  },
+  {
+   "rel": "in",
+   "source": "ACC",
+   "target": "BUS"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ECO 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "MGT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 312"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 334"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ECO 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 301"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 323"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "MGT 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 412"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 401"
+  },
+  {
+   "rel": "includes",
+   "source": "ACC",
+   "target": "ACC 423"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 201",
+   "target": "ACC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 212",
+   "target": "ACC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 223",
+   "target": "ACC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 223",
+   "target": "MKT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 301",
+   "target": "ACC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 301",
+   "target": "ECO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 312",
+   "target": "ACC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 312",
+   "target": "ACC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 323",
+   "target": "ACC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 323",
+   "target": "ACC 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 323",
+   "target": "MGT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 212",
+   "target": "MGT 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 334",
+   "target": "ACC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 334",
+   "target": "ACC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 334",
+   "target": "FIN 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 401",
+   "target": "ACC 301"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 412",
+   "target": "ACC 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 412",
+   "target": "ACC 312"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 412",
+   "target": "FIN 212"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 212",
+   "target": "FIN 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ACC 423",
+   "target": "ACC 323"
+  },
+  {
+   "rel": "in",
+   "source": "FIN",
+   "target": "BUS"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 112"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 101"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 212"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "MKT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 201"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 223"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "ECO 201"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 312"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 334"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "ECO 101"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 301"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 323"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "ACC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 412"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 401"
+  },
+  {
+   "rel": "includes",
+   "source": "FIN",
+   "target": "FIN 423"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 201",
+   "target": "FIN 101"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 223",
+   "target": "FIN 112"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 301",
+   "target": "FIN 223"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 312",
+   "target": "FIN 201"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 312",
+   "target": "FIN 212"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 323",
+   "target": "FIN 223"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 334",
+   "target": "FIN 223"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 401",
+   "target": "FIN 323"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 412",
+   "target": "FIN 301"
+  },
+  {
+   "rel": "requires",
+   "source": "FIN 423",
+   "target": "FIN 323"
+  },
+  {
+   "rel": "in",
+   "source": "MKT",
+   "target": "BUS"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "ACC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 223"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "FIN 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 312"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 334"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "ACC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 301"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 323"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "ECO 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 412"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 401"
+  },
+  {
+   "rel": "includes",
+   "source": "MKT",
+   "target": "MKT 423"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 201",
+   "target": "MKT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 212",
+   "target": "MKT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 212",
+   "target": "MKT 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 212",
+   "target": "ACC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 223",
+   "target": "MKT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 301",
+   "target": "MKT 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 312",
+   "target": "MKT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 323",
+   "target": "MKT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 334",
+   "target": "MKT 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 401",
+   "target": "MKT 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 412",
+   "target": "MKT 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 423",
+   "target": "MKT 323"
+  },
+  {
+   "rel": "requires",
+   "source": "MKT 423",
+   "target": "MKT 301"
+  },
+  {
+   "rel": "in",
+   "source": "MGT",
+   "target": "BUS"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "ACC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 223"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MKT 223"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 312"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 334"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MKT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 301"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 323"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MKT 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 412"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 401"
+  },
+  {
+   "rel": "includes",
+   "source": "MGT",
+   "target": "MGT 423"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 201",
+   "target": "MGT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 223",
+   "target": "MGT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 223",
+   "target": "FIN 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 301",
+   "target": "MGT 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 312",
+   "target": "MGT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 323",
+   "target": "MGT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 323",
+   "target": "MKT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 334",
+   "target": "MGT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 401",
+   "target": "MGT 334"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 401",
+   "target": "MGT 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 412",
+   "target": "MGT 301"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 412",
+   "target": "MGT 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 412",
+   "target": "ACC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MGT 423",
+   "target": "MGT 312"
+  },
+  {
+   "rel": "in",
+   "source": "ECO",
+   "target": "BUS"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "MGT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ACC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 312"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 334"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "MGT 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 301"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 323"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "MGT 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 412"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 401"
+  },
+  {
+   "rel": "includes",
+   "source": "ECO",
+   "target": "ECO 423"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 201",
+   "target": "ECO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 212",
+   "target": "ECO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 212",
+   "target": "FIN 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 223",
+   "target": "ECO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 301",
+   "target": "ECO 201"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 312",
+   "target": "ECO 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 323",
+   "target": "ECO 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 334",
+   "target": "ECO 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 401",
+   "target": "ECO 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 401",
+   "target": "ECO 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 412",
+   "target": "ECO 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 412",
+   "target": "FIN 312"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 423",
+   "target": "ECO 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ECO 423",
+   "target": "FIN 212"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "NUR",
+   "target": "HSC"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 101"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 212"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "PHT 101"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 201"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 223"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "HIM 223"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 312"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 334"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "CLS 101"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 301"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 323"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 412"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 401"
+  },
+  {
+   "rel": "includes",
+   "source": "NUR",
+   "target": "NUR 423"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 201",
+   "target": "NUR 101"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 212",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 223",
+   "target": "NUR 101"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 223",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 301",
+   "target": "NUR 201"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 301",
+   "target": "PHT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 212",
+   "target": "PHT 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 212",
+   "target": "PHT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 312",
+   "target": "NUR 201"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 323",
+   "target": "NUR 201"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 334",
+   "target": "NUR 201"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 334",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 401",
+   "target": "NUR 334"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 412",
+   "target": "NUR 323"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 412",
+   "target": "NUR 312"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 412",
+   "target": "PUH 301"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 301",
+   "target": "PUH 223"
+  },
+  {
+   "rel": "requires",
+   "source": "NUR 423",
+   "target": "NUR 323"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "PHT",
+   "target": "HSC"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 112"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 212"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "CLS 223"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 201"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 223"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "NUR 223"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 312"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 334"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "HIM 112"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 301"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 323"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "CLS 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 412"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 401"
+  },
+  {
+   "rel": "includes",
+   "source": "PHT",
+   "target": "PHT 423"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 201",
+   "target": "PHT 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 201",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 223",
+   "target": "PHT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 223",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 301",
+   "target": "PHT 201"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 312",
+   "target": "PHT 201"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 323",
+   "target": "PHT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 323",
+   "target": "NUR 212"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 334",
+   "target": "PHT 212"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 334",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 401",
+   "target": "PHT 334"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 401",
+   "target": "PHT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 412",
+   "target": "PHT 323"
+  },
+  {
+   "rel": "requires",
+   "source": "PHT 423",
+   "target": "PHT 334"
+  },
+  {
+   "rel": "in",
+   "source": "CLS",
+   "target": "HSC"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 201"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "NUR 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 312"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 334"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "PUH 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 301"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 323"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 412"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 401"
+  },
+  {
+   "rel": "includes",
+   "source": "CLS",
+   "target": "CLS 423"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 201",
+   "target": "CLS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 212",
+   "target": "CLS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 212",
+   "target": "PHT 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 223",
+   "target": "CLS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 301",
+   "target": "CLS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 301",
+   "target": "CLS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 312",
+   "target": "CLS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 323",
+   "target": "CLS 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 334",
+   "target": "CLS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 401",
+   "target": "CLS 334"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 401",
+   "target": "CLS 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 412",
+   "target": "CLS 301"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 423",
+   "target": "CLS 312"
+  },
+  {
+   "rel": "requires",
+   "source": "CLS 423",
+   "target": "CLS 101"
+  },
+  {
+   "rel": "in",
+   "source": "PH",
+   "target": "HSC"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 212"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "NUR 112"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 201"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 223"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PHT 212"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 312"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 334"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "CLS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 301"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 323"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "HIM 212"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 412"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 401"
+  },
+  {
+   "rel": "includes",
+   "source": "PH",
+   "target": "PUH 423"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 201",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 212",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 223",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 312",
+   "target": "PUH 201"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 323",
+   "target": "PUH 223"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 334",
+   "target": "PUH 201"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 401",
+   "target": "PUH 334"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 412",
+   "target": "PUH 301"
+  },
+  {
+   "rel": "requires",
+   "source": "PUH 423",
+   "target": "PUH 301"
+  },
+  {
+   "rel": "in",
+   "source": "HIM",
+   "target": "HSC"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 112"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 101"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 212"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "CLS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 201"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 223"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "PHT 223"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 312"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 334"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "PUH 212"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 301"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 323"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "PUH 201"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 412"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 401"
+  },
+  {
+   "rel": "includes",
+   "source": "HIM",
+   "target": "HIM 423"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 201",
+   "target": "HIM 101"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 201",
+   "target": "HIM 112"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 212",
+   "target": "HIM 112"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 212",
+   "target": "PUH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 223",
+   "target": "HIM 101"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 301",
+   "target": "HIM 201"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 301",
+   "target": "HIM 223"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 312",
+   "target": "HIM 223"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 323",
+   "target": "HIM 212"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 323",
+   "target": "NUR 201"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 334",
+   "target": "HIM 201"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 401",
+   "target": "HIM 301"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 401",
+   "target": "NUR 212"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 412",
+   "target": "HIM 312"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 412",
+   "target": "HIM 212"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 423",
+   "target": "HIM 301"
+  },
+  {
+   "rel": "requires",
+   "source": "HIM 423",
+   "target": "HIM 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "MTH",
+   "target": "SCI"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "CHM 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 223"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "PHY 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 312"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 334"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "STA 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 301"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 323"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "CHM 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 412"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 401"
+  },
+  {
+   "rel": "includes",
+   "source": "MTH",
+   "target": "MTH 423"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 201",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 212",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 223",
+   "target": "MTH 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 223",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 223",
+   "target": "STA 112"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 301",
+   "target": "MTH 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 312",
+   "target": "MTH 223"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 323",
+   "target": "MTH 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 323",
+   "target": "BIO 212"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 212",
+   "target": "BIO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 334",
+   "target": "MTH 223"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 401",
+   "target": "MTH 323"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 401",
+   "target": "MTH 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 412",
+   "target": "MTH 323"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 423",
+   "target": "MTH 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MTH 423",
+   "target": "BIO 334"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 334",
+   "target": "BIO 223"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 334",
+   "target": "BIO 112"
+  },
+  {
+   "rel": "in",
+   "source": "PHY",
+   "target": "SCI"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 112"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 212"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "STA 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 201"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 223"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "MTH 201"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 312"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 334"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "CHM 101"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 301"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 323"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "CHM 112"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 412"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 401"
+  },
+  {
+   "rel": "includes",
+   "source": "PHY",
+   "target": "PHY 423"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 201",
+   "target": "PHY 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 212",
+   "target": "PHY 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 223",
+   "target": "PHY 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 301",
+   "target": "PHY 223"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 312",
+   "target": "PHY 201"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 323",
+   "target": "PHY 223"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 323",
+   "target": "PHY 212"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 334",
+   "target": "PHY 212"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 334",
+   "target": "CHM 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 201",
+   "target": "CHM 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 401",
+   "target": "PHY 323"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 401",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 412",
+   "target": "PHY 334"
+  },
+  {
+   "rel": "requires",
+   "source": "PHY 423",
+   "target": "PHY 323"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "CHM",
+   "target": "SCI"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "MTH 212"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 201"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 223"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 312"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 334"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "STA 112"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 301"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 323"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "BIO 101"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 412"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 401"
+  },
+  {
+   "rel": "includes",
+   "source": "CHM",
+   "target": "CHM 423"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 212",
+   "target": "CHM 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 223",
+   "target": "CHM 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 301",
+   "target": "CHM 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 301",
+   "target": "CHM 101"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 312",
+   "target": "CHM 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 323",
+   "target": "CHM 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 323",
+   "target": "CHM 223"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 334",
+   "target": "CHM 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 334",
+   "target": "CHM 201"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 401",
+   "target": "CHM 334"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 401",
+   "target": "STA 334"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 334",
+   "target": "STA 212"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 412",
+   "target": "CHM 334"
+  },
+  {
+   "rel": "requires",
+   "source": "CHM 423",
+   "target": "CHM 301"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "BIO",
+   "target": "SCI"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 112"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 101"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 212"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "CHM 101"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 201"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 223"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "PHY 101"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 312"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 334"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "STA 223"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 301"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 323"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "MTH 212"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 412"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 401"
+  },
+  {
+   "rel": "includes",
+   "source": "BIO",
+   "target": "BIO 423"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 112",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 201",
+   "target": "BIO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 223",
+   "target": "BIO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 223",
+   "target": "BIO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 301",
+   "target": "BIO 201"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 312",
+   "target": "BIO 223"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 323",
+   "target": "BIO 201"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 401",
+   "target": "BIO 301"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 412",
+   "target": "BIO 301"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 423",
+   "target": "BIO 301"
+  },
+  {
+   "rel": "requires",
+   "source": "BIO 423",
+   "target": "BIO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 101",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "in",
+   "source": "STA",
+   "target": "SCI"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 112"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 101"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 212"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "PHY 112"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 201"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 223"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "PHY 212"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 312"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 334"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "MTH 112"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 301"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 323"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "MTH 223"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 412"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 401"
+  },
+  {
+   "rel": "includes",
+   "source": "STA",
+   "target": "STA 423"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 201",
+   "target": "STA 101"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 201",
+   "target": "STA 112"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 212",
+   "target": "STA 101"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 223",
+   "target": "STA 112"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 301",
+   "target": "STA 212"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 312",
+   "target": "STA 201"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 323",
+   "target": "STA 201"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 401",
+   "target": "STA 301"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 401",
+   "target": "STA 334"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 412",
+   "target": "STA 301"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 412",
+   "target": "STA 323"
+  },
+  {
+   "rel": "requires",
+   "source": "STA 423",
+   "target": "STA 301"
+  },
+  {
+   "rel": "in",
+   "source": "ARB",
+   "target": "ART"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "HIS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "GEO 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 312"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 334"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ENL 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 301"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 323"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ENL 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 412"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 401"
+  },
+  {
+   "rel": "includes",
+   "source": "ARB",
+   "target": "ARB 423"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 201",
+   "target": "ARB 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 212",
+   "target": "ARB 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 212",
+   "target": "ARB 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 223",
+   "target": "ARB 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 301",
+   "target": "ARB 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 312",
+   "target": "ARB 201"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 312",
+   "target": "ARB 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 323",
+   "target": "ARB 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 334",
+   "target": "ARB 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 401",
+   "target": "ARB 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 401",
+   "target": "ARB 323"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 412",
+   "target": "ARB 312"
+  },
+  {
+   "rel": "requires",
+   "source": "ARB 423",
+   "target": "ARB 334"
+  },
+  {
+   "rel": "in",
+   "source": "ENL",
+   "target": "ART"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 101"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 212"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "GEO 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "MDC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 312"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 334"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ARB 201"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 301"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 323"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ARB 112"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 412"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 401"
+  },
+  {
+   "rel": "includes",
+   "source": "ENL",
+   "target": "ENL 423"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 201",
+   "target": "ENL 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 201",
+   "target": "GEO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 212",
+   "target": "ENL 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 223",
+   "target": "ENL 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 301",
+   "target": "ENL 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 301",
+   "target": "ENL 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 312",
+   "target": "ENL 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 323",
+   "target": "ENL 223"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 334",
+   "target": "ENL 212"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 334",
+   "target": "ENL 112"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 401",
+   "target": "ENL 301"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 401",
+   "target": "ENL 323"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 412",
+   "target": "ENL 334"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 412",
+   "target": "ENL 323"
+  },
+  {
+   "rel": "requires",
+   "source": "ENL 423",
+   "target": "ENL 312"
+  },
+  {
+   "rel": "in",
+   "source": "HIS",
+   "target": "ART"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 112"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 101"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 212"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "ENL 112"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 201"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 223"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "ARB 201"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 312"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 334"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "ARB 112"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 301"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 323"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "GEO 201"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 412"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 401"
+  },
+  {
+   "rel": "includes",
+   "source": "HIS",
+   "target": "HIS 423"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 201",
+   "target": "HIS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 212",
+   "target": "HIS 101"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 223",
+   "target": "HIS 101"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 223",
+   "target": "MDC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 301",
+   "target": "HIS 212"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 301",
+   "target": "ARB 212"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 312",
+   "target": "HIS 223"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 323",
+   "target": "HIS 201"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 334",
+   "target": "HIS 212"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 334",
+   "target": "HIS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 334",
+   "target": "MDC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 401",
+   "target": "HIS 334"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 412",
+   "target": "HIS 312"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 423",
+   "target": "HIS 334"
+  },
+  {
+   "rel": "requires",
+   "source": "HIS 423",
+   "target": "GEO 101"
+  },
+  {
+   "rel": "in",
+   "source": "GEO",
+   "target": "ART"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 112"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 101"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 212"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "HIS 201"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 201"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 223"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "ENL 212"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 312"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 334"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "ARB 101"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 301"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 323"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "HIS 112"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 412"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 401"
+  },
+  {
+   "rel": "includes",
+   "source": "GEO",
+   "target": "GEO 423"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 201",
+   "target": "GEO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 212",
+   "target": "GEO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 212",
+   "target": "GEO 101"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 212",
+   "target": "HIS 112"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 223",
+   "target": "GEO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 301",
+   "target": "GEO 212"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 312",
+   "target": "GEO 201"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 323",
+   "target": "GEO 223"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 323",
+   "target": "HIS 101"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 334",
+   "target": "GEO 201"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 401",
+   "target": "GEO 334"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 401",
+   "target": "GEO 112"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 412",
+   "target": "GEO 323"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 412",
+   "target": "GEO 334"
+  },
+  {
+   "rel": "requires",
+   "source": "GEO 423",
+   "target": "GEO 334"
+  },
+  {
+   "rel": "in",
+   "source": "MED",
+   "target": "ART"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 102"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 101"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 103"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 104"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 212"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 105"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 106"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 107"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "HIS 223"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 223"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "UNI 108"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "GEO 112"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 312"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 334"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "ARB 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 301"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 323"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "HIS 201"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 412"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 401"
+  },
+  {
+   "rel": "includes",
+   "source": "MED",
+   "target": "MDC 423"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 201",
+   "target": "MDC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 212",
+   "target": "MDC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 223",
+   "target": "MDC 101"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 301",
+   "target": "MDC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 301",
+   "target": "MDC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 312",
+   "target": "MDC 201"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 323",
+   "target": "MDC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 334",
+   "target": "MDC 212"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 334",
+   "target": "MDC 112"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 401",
+   "target": "MDC 312"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 412",
+   "target": "MDC 301"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 412",
+   "target": "ARB 334"
+  },
+  {
+   "rel": "requires",
+   "source": "MDC 423",
+   "target": "MDC 334"
+  }
+ ]
+}

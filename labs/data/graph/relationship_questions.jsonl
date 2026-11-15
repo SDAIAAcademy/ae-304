@@ -1,0 +1,10 @@
+{"qid": "G01", "kind": "all_prereqs", "q": "Which courses must a student pass, directly or indirectly, before PHY 401?", "expect": ["MTH 112", "PHY 112", "PHY 212", "PHY 223", "PHY 323", "UNI 105"]}
+{"qid": "G02", "kind": "all_prereqs", "q": "Which courses must a student pass, directly or indirectly, before INS 401?", "expect": ["INS 101", "INS 112", "INS 201", "INS 223", "INS 301"]}
+{"qid": "G03", "kind": "all_prereqs", "q": "Which courses must a student pass, directly or indirectly, before IND 401?", "expect": ["ELE 101", "IND 112", "IND 223", "IND 301", "UNI 105"]}
+{"qid": "G04", "kind": "plans_with", "q": "Which programmes include PHY 112 in their study plan?", "expect": ["PHY", "STA"]}
+{"qid": "G05", "kind": "plans_with", "q": "Which programmes include CLS 212 in their study plan?", "expect": ["CLS", "HIM", "PH"]}
+{"qid": "G06", "kind": "plans_with", "q": "Which programmes include AIN 212 in their study plan?", "expect": ["AI", "CS", "IS"]}
+{"qid": "G07", "kind": "dependants", "q": "How many courses list SWE 101 as a direct prerequisite?", "expect": ["6"]}
+{"qid": "G08", "kind": "dependants", "q": "How many courses list PUH 112 as a direct prerequisite?", "expect": ["6"]}
+{"qid": "G09", "kind": "is_prereq", "q": "Must a student pass ACC 101 before taking MKT 423, directly or indirectly?", "expect": ["yes"]}
+{"qid": "G10", "kind": "is_prereq", "q": "Must a student pass BIO 112 before taking MTH 412, directly or indirectly?", "expect": ["yes"]}

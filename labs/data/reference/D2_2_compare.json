@@ -1,0 +1,12 @@
+[
+ {
+  "chunking": "fixed 120 words",
+  "chunks": 210,
+  "answerable@3": 0.25
+ },
+ {
+  "chunking": "by heading + path",
+  "chunks": 240,
+  "answerable@3": 0.65
+ }
+]

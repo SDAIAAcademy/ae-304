@@ -1,0 +1,152 @@
+[
+ {
+  "qid": "A01",
+  "best": "list_files",
+  "first": "list_files",
+  "calls": 1,
+  "tokens": 1600,
+  "correct": true,
+  "model": "standin",
+  "trace": "list_files({\"folder\": \"circulars/2024\"})"
+ },
+ {
+  "qid": "A02",
+  "best": "list_files",
+  "first": "list_files",
+  "calls": 1,
+  "tokens": 1315,
+  "correct": true,
+  "model": "standin",
+  "trace": "list_files({\"folder\": \"circulars/2025\"})"
+ },
+ {
+  "qid": "A03",
+  "best": "list_files",
+  "first": "list_files",
+  "calls": 1,
+  "tokens": 1657,
+  "correct": true,
+  "model": "standin",
+  "trace": "list_files({\"folder\": \"circulars/2026\"})"
+ },
+ {
+  "qid": "A04",
+  "best": "list_files",
+  "first": "list_files",
+  "calls": 1,
+  "tokens": 1110,
+  "correct": true,
+  "model": "standin",
+  "trace": "list_files({\"folder\": \"study-plans/eng\"})"
+ },
+ {
+  "qid": "A05",
+  "best": "list_files",
+  "first": "list_files",
+  "calls": 1,
+  "tokens": 1590,
+  "correct": true,
+  "model": "standin",
+  "trace": "list_files({\"folder\": \"guide/ar\"})"
+ },
+ {
+  "qid": "A06",
+  "best": "keyword_search",
+  "first": "keyword_search",
+  "calls": 1,
+  "tokens": 1137,
+  "correct": true,
+  "model": "standin",
+  "trace": "keyword_search({\"query\": \"What does circular 2025-118 c)"
+ },
+ {
+  "qid": "A07",
+  "best": "keyword_search",
+  "first": "keyword_search",
+  "calls": 1,
+  "tokens": 1137,
+  "correct": true,
+  "model": "standin",
+  "trace": "keyword_search({\"query\": \"What does circular 2026-031 c)"
+ },
+ {
+  "qid": "A08",
+  "best": "keyword_search",
+  "first": "keyword_search",
+  "calls": 1,
+  "tokens": 1286,
+  "correct": true,
+  "model": "standin",
+  "trace": "keyword_search({\"query\": \"What is the prerequisite of S)"
+ },
+ {
+  "qid": "A09",
+  "best": "keyword_search",
+  "first": "keyword_search",
+  "calls": 1,
+  "tokens": 1313,
+  "correct": false,
+  "model": "standin",
+  "trace": "keyword_search({\"query\": \"What is the prerequisite of S)"
+ },
+ {
+  "qid": "A10",
+  "best": "keyword_search",
+  "first": "keyword_search",
+  "calls": 1,
+  "tokens": 1258,
+  "correct": true,
+  "model": "standin",
+  "trace": "keyword_search({\"query\": \"What is the prerequisite of P)"
+ },
+ {
+  "qid": "A11",
+  "best": "vector_search",
+  "first": "vector_search",
+  "calls": 1,
+  "tokens": 1268,
+  "correct": false,
+  "model": "standin",
+  "trace": "vector_search({\"query\": \"Can I use a chatbot to help w)"
+ },
+ {
+  "qid": "A12",
+  "best": "vector_search",
+  "first": "vector_search",
+  "calls": 1,
+  "tokens": 1132,
+  "correct": false,
+  "model": "standin",
+  "trace": "vector_search({\"query\": \"What if I am sick on the day )"
+ },
+ {
+  "qid": "A13",
+  "best": "vector_search",
+  "first": "vector_search",
+  "calls": 1,
+  "tokens": 1121,
+  "correct": true,
+  "model": "standin",
+  "trace": "vector_search({\"query\": \"Is there extra time in exams )"
+ },
+ {
+  "qid": "A14",
+  "best": "vector_search",
+  "first": "vector_search",
+  "calls": 1,
+  "tokens": 1241,
+  "correct": true,
+  "model": "standin",
+  "trace": "vector_search({\"query\": \"Can I improve a low passing g)"
+ },
+ {
+  "qid": "A15",
+  "best": "vector_search",
+  "first": "vector_search",
+  "calls": 1,
+  "tokens": 1300,
+  "correct": false,
+  "model": "standin",
+  "trace": "vector_search({\"query\": \"What do I need to finish my d)"
+ }
+]

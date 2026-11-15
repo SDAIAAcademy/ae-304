@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="page" data-track="ai-engineering">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retrieval and Knowledge Engineering for Language Model Systems · SDAIA Academy</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<meta name="description" content="Build and measure the retrieval layer of a language model system: search, corpus preparation, access, agents and structured data">
+<link rel="icon" href="_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="index.md">
+<link rel="describedby" href="llms.txt">
+<link rel="stylesheet" href="_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo" id="logo"></div><nav><a href="slides/day1.html">Slides</a><a href="practice.html">Practice</a><a href="index.md" type="text/markdown">Markdown</a></nav></div>
+<div class="kicker">AI Engineering Track · SDAIA Academy · AE-304</div>
+<h1>Retrieval and Knowledge Engineering for Language Model Systems<span class="sub ar" lang="ar" dir="rtl">هندسة الاسترجاع والمعرفة لأنظمة النماذج اللغوية</span></h1>
+<p>Build and measure the retrieval layer of a language model system: search, corpus preparation, access, agents and structured data</p>
+<div class="meta"><span class="track">AI Engineering Track</span><span>4 teaching days + capstone day</span><span>26 hours</span><span>Level 300</span><span>AI Engineering · Associate badge</span></div>
+</div>
+</header>
+<main class="wrap">
+<h2>About the course</h2>
+<p>Participants build and measure the retrieval layer of a language model system for a fictional university: bilingual regulations, study plans with tables, scanned Arabic circulars and an enrolment statistics warehouse. Starting from a graded test set, they build lexical, dense, hybrid and reranked search with Arabic normalisation, parse and chunk documents by structure, filter by date and role, give an agent search tools and a small knowledge graph, and answer statistical questions through a semantic layer instead of free text-to-SQL.</p>
+<p><b>Who it is for:</b> Practitioners. Engineers who have completed the level 200 set or can show equivalent work: a deployed model or language model application they built and can explain.</p>
+<p><b>Format:</b> Intensive: 4 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task</p>
+<h2>The case study</h2>
+<div class="note info"><b>Al-Nuha University.</b> Al-Nuha University is a fictional public university with six colleges whose regulations assistant, Nibras, answers students and staff from bilingual regulations, study plans with tables, scanned Arabic circulars, staff-only records and an enrolment statistics warehouse. Participants build and measure Nibras's retrieval layer on about 3,000 synthetic pages and a synthetic warehouse, generated with a fixed seed, with planted problems: dialect queries, broken parses, superseded rules, near-duplicate circulars, mislabelled staff pages and warehouse traps.</div>
+<h2>The course</h2>
+<div class="day">
+<div class="day-head c-teal"><div><div class="t">Day 1 · 4 sessions · 4 labs</div><h3>Measure and search</h3></div><a class="btn" href="slides/day1.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Retrieval is measured on its own</b><br>Judge relevance in grades, pool candidates, and score the retrieval layer apart from the answers, by language<ul><li>Judge graded relevance against a written guideline</li><li>Compute recall at 10, reciprocal rank and nDCG at 10</li><li>Report retrieval quality by language and query type</li></ul></td><td><a href="labs/D1_1_judge_graded_relevance.ipynb">Lab 1.1 · Graded judgements and a baseline score</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D1_1_judge_graded_relevance.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Lexical search and Arabic text</b><br>Inverted indexes and BM25 in SQLite, and what Arabic spelling and dialect do to word matching<ul><li>Explain how BM25 weighs rare and repeated words</li><li>Normalise Arabic text and apply light stemming on both sides</li><li>Measure the gain on Arabic and dialect queries</li></ul></td><td><a href="labs/D1_2_run_bm25_without.ipynb">Lab 1.2 · BM25 with and without Arabic normalisation</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D1_2_run_bm25_without.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Dense retrieval and embedding choice</b><br>Multilingual embeddings, their conventions, exact and approximate indexes, and what each costs<ul><li>Embed pages and queries with an open multilingual model</li><li>Follow a model card's input conventions and show why they matter</li><li>Compare exact and approximate indexes on quality, size and latency</li></ul></td><td><a href="labs/D1_3_embed_300_page.ipynb">Lab 1.3 · Two embedding models: quality, size and latency</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D1_3_embed_300_page.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Hybrid search and reranking</b><br>Fuse lexical and dense rankings, rerank the top with a cross-encoder, and weigh the gain against the latency<ul><li>Fuse two rankings with reciprocal rank fusion</li><li>Rerank candidates with a cross-encoder</li><li>Decide on a reranker from its gain and its 95th-percentile latency</li></ul></td><td><a href="labs/D1_4_fuse_lexical_dense.ipynb">Lab 1.4 · Fusion, a reranker and its latency</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D1_4_fuse_lexical_dense.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-cyan"><div><div class="t">Day 2 · 4 sessions · 4 labs</div><h3>Prepare the corpus</h3></div><a class="btn" href="slides/day2.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Parsing is a separate problem</b><br>Score parsers apart from retrieval: word error rate and table cells by page type, and a rule that routes each page to the parser that reads it<ul><li>Score parsed text against reference text with a word error rate</li><li>Score tables cell by cell</li><li>Route pages to a parser by page type</li></ul></td><td><a href="labs/D2_1_score_two_parsers.ipynb">Lab 2.1 · Two parsers scored on 30 pages</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D2_1_score_two_parsers.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Chunking by structure</b><br>Chunk by the document's own structure, carry the heading path into each chunk, and test chunking by the questions it can answer<ul><li>Chunk documents by headings and keep the heading path</li><li>Compare chunkings by retrieval on table questions</li><li>Recommend a chunking from the evidence</li></ul></td><td><a href="labs/D2_2_chunk_study_plans.ipynb">Lab 2.2 · Two chunkings of the study plans</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D2_2_chunk_study_plans.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Dates, versions and duplicates</b><br>Give every version a validity interval, drop near-duplicates, and test that the current rule comes first<ul><li>Read effective dates and amended articles from circulars</li><li>Keep a validity interval for every version</li><li>Remove near-duplicates and write staleness tests</li></ul></td><td><a href="labs/D2_3_add_effective_dates.ipynb">Lab 2.3 · Effective dates, versions and duplicates</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D2_3_add_effective_dates.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Permissions in the index</b><br>Carry role and classification on every chunk, filter before ranking, and test leaks from a student account as a suite<ul><li>Tag every chunk with its document's classification and roles</li><li>Filter before ranking rather than after</li><li>Run leak and utility tests from a student account</li></ul></td><td><a href="labs/D2_4_tag_chunks_role.ipynb">Lab 2.4 · Role labels and leak tests</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D2_4_tag_chunks_role.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-coral"><div><div class="t">Day 3 · 4 sessions · 4 labs</div><h3>Agentic search and knowledge</h3></div><a class="btn" href="slides/day3.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Search as tools for an agent</b><br>Listing, keyword and vector search as tools, described by when to use each, and the agent's choices read in its traces<ul><li>Write search tools whose descriptions say when to use them</li><li>Trace an agent's tool choices</li><li>Judge a choice by its cost and its answer</li></ul></td><td><a href="labs/D3_1_expose_file_listing.ipynb">Lab 3.1 · Three search tools and a traced agent</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D3_1_expose_file_listing.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Multi-step questions</b><br>Search again from what you read, stop on an answer, a budget or a repeated query, and compare with one search<ul><li>Write an iterative search loop with stop rules</li><li>Compare single-shot and iterative search on accuracy, searches and tokens</li><li>Set a search budget from the evidence</li></ul></td><td><a href="labs/D3_2_compare_single_shot.ipynb">Lab 3.2 · Single-shot against iterative search</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D3_2_compare_single_shot.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Paging and offloading</b><br>Keep large results out of the context: a file, a stub and a tool to search it<ul><li>Measure what a large result costs in tokens</li><li>Offload results to a file behind a stub</li><li>Compare accuracy and tokens with and without offloading</li></ul></td><td><a href="labs/D3_3_offload_large_search.ipynb">Lab 3.3 · Offloading large results to files</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D3_3_offload_large_search.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Knowledge graphs for linked facts</b><br>A small graph for facts that are links, queried with tools, measured against search<ul><li>Build a graph of courses, prerequisites and rules from extracted facts</li><li>Expose graph queries as tools</li><li>Compare relationship answers with and without the graph</li></ul></td><td><a href="labs/D3_4_build_small_graph.ipynb">Lab 3.4 · A graph of courses, prerequisites and rules</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D3_4_build_small_graph.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-purple"><div><div class="t">Day 4 · 4 sessions · 4 labs</div><h3>Structured data and diagnosis</h3></div><a class="btn" href="slides/day4.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Questions over a warehouse</b><br>Let a model write SQL over the warehouse, score it by execution against reference answers, and read the failures by kind<ul><li>Give a model a schema and ask it for SQL</li><li>Measure execution accuracy against reference answers</li><li>Classify text-to-SQL failures and what the model could read</li></ul></td><td><a href="labs/D4_1_run_free_text.ipynb">Lab 4.1 · Free text-to-SQL on 20 statistical questions</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D4_1_run_free_text.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Semantic layers and validated SQL</b><br>Answer through governed metrics: the model picks a metric and filters, code compiles and validates the SQL, and small cells are suppressed<ul><li>Define metrics as version-controlled views and a catalog</li><li>Compile and validate metric requests before running them</li><li>Write the decision memo from the comparison</li></ul></td><td><a href="labs/D4_2_answer_same_questions.ipynb">Lab 4.2 · Governed metrics and validated SQL</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D4_2_answer_same_questions.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Cost, latency and freshness</b><br>Cost per question, the 95th-percentile latency of each stage, and how fast a changed circular becomes searchable<ul><li>Compute tokens and cost per question for a pipeline</li><li>Measure latency by stage and report its tail</li><li>Re-index a changed document incrementally and mark its stale vector</li></ul></td><td><a href="labs/D4_3_measure_cost_per.ipynb">Lab 4.3 · Cost per question, tail latency and re-index time</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D4_3_measure_cost_per.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Diagnosing failures by component</b><br>Attribute each wrong answer to the first component that lost it, fix the weakest component, and attribute again<ul><li>Attribute a failure to parsing, retrieval, ranking or generation</li><li>Fix the weakest component and measure again</li><li>Explain why failures move down the ladder</li></ul></td><td><a href="labs/D4_4_attribute_20_failures.ipynb">Lab 4.4 · Twenty failures, attributed by component</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ae-304/blob/main/labs/D4_4_attribute_20_failures.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-amber"><div><div class="t">Capstone</div><h3>Capstone project presentations</h3></div><a class="btn" href="slides/capstone.html">Open the slides</a></div>
+<div class="scroll"><table><tr><td>A measured retrieval layer for the university's assistant, or for a synthetic or public corpus the participant brings, submitted as a public repository whose README reports metrics by language, leak and staleness tests, latency and cost per question, then an eight-minute defence and four minutes of questions</td></tr></table></div>
+</div>
+<h2>Capstone</h2>
+<div class="two">
+<div><p>A measured retrieval layer for the university's assistant, or for a synthetic or public corpus the participant brings, submitted as a public repository whose README reports metrics by language, leak and staleness tests, latency and cost per question, then an eight-minute defence and four minutes of questions</p><p><b>What you submit:</b> A public repository whose README reports, for the participant's retrieval layer, the ranking metrics by language and query type on a versioned test set, the leak and staleness test results, the 95th-percentile latency by stage and the cost per question, with the code, the test set and the run files committed. Then an eight-minute defence that runs one query live and explains one failure by component, and four minutes of questions.</p><p><b>Format:</b> 8 min talk and demo · 4 min Q&amp;A</p></div>
+<div><h3>Rubric</h3><div class="bar c-teal"><span>Retrieval quality and test set<i style="--w:100%"></i></span><b>25%</b></div><div class="bar c-cyan"><span>Corpus preparation<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-coral"><span>Access and freshness tests<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-purple"><span>Agentic or structured-data component<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-amber"><span>Reproducibility<i style="--w:60%"></i></span><b>15%</b></div></div>
+</div>
+<h2>Outcomes</h2>
+<p>By the end of the course, participants can:</p>
+<div class="day"><div class="scroll"><table>
+<tr><th></th><th>Outcomes</th><th>Level</th><th>Evidence</th></tr>
+<tr><td><b>LO1</b></td><td>Prepare a retrieval test set with graded relevance judgements and compute standard ranking metrics for each language, given 60 Arabic and English queries over the corpus</td><td>Applied</td><td>a versioned test set and a report of recall at 10, reciprocal rank and discounted cumulative gain by language</td></tr>
+<tr><td><b>LO2</b></td><td>Implement lexical, dense, hybrid and reranked search with Arabic normalisation and compare them on quality and latency, given the corpus and the test set</td><td>Applied</td><td>a results table with ranking metrics and 95th-percentile latency per method</td></tr>
+<tr><td><b>LO3</b></td><td>Analyse parsing and chunking choices by scoring two parsers and two chunking schemes, given 30 scanned and digital pages with tables</td><td>Applied</td><td>a parsing score per page type and a retrieval comparison with a recommendation</td></tr>
+<tr><td><b>LO4</b></td><td>Build retrieval that never returns a document the requester may not see or a superseded rule, given role labels and effective dates on every chunk</td><td>Performance</td><td>a passing suite of leak and staleness tests</td></tr>
+<tr><td><b>LO5</b></td><td>Design an agentic search component that chooses among search tools and a small knowledge graph within a context budget, given 15 multi-step questions, a graph of linked course rules and a token budget</td><td>Performance</td><td>traces and a comparison with single-shot search on accuracy, tool calls and tokens</td></tr>
+<tr><td><b>LO6</b></td><td>Evaluate free text-to-SQL against a semantic layer with validated SQL and decide which to ship, given 20 statistical questions with reference answers</td><td>Performance</td><td>execution accuracy for both and a one-page decision memo</td></tr>
+</table></div></div>
+<h2>Tools</h2>
+<div class="grid">
+<div class="card c-teal"><h3>Lexical search</h3><p>SQLite full-text search · OpenSearch · PostgreSQL full-text search</p></div>
+<div class="card c-cyan"><h3>Vector index</h3><p>pgvector · Qdrant · LanceDB · FAISS</p></div>
+<div class="card c-coral"><h3>Embedding and reranking models</h3><p>open-weight multilingual models through Sentence Transformers · any embedding API</p></div>
+<div class="card c-purple"><h3>Document parsing and character recognition</h3><p>Docling · Unstructured · Tesseract · an open-weight document vision model</p></div>
+<div class="card c-green"><h3>Arabic text processing</h3><p>CAMeL Tools · PyArabic</p></div>
+<div class="card c-teal"><h3>Analytical engine and semantic layer</h3><p>DuckDB · PostgreSQL · Cube Core · metric definitions kept as version-controlled SQL views</p></div>
+<div class="card c-cyan"><h3>Graph store</h3><p>NetworkX · Neo4j</p></div>
+<div class="card c-coral"><h3>Retrieval metrics</h3><p>ranx · pytrec_eval</p></div>
+</div>
+<h2>Before you start</h2>
+<h3>Prerequisites</h3>
+<ul><li>AE-202 Deep Learning and Generative AI Fundamentals</li><li>AE-203 Building Applications on Language Models</li><li>Writes SQL joins and aggregations</li><li>Computes precision and recall</li><li>Has built a small grounded application with citations</li></ul>
+<div class="note tip">The labs are notebooks. Open each one in Google Colab from the table above, or clone the repository and run them locally.</div>
+<h2>Sources</h2>
+<h3>Measuring retrieval</h3>
+<ul><li><a href="https://trec.nist.gov/pubs/trec8/papers/overview_8.pdf">Voorhees and Harman: Overview of the Eighth Text REtrieval Conference (TREC-8), pooling</a></li><li><a href="https://project-miracl.github.io/">MIRACL: a multilingual retrieval benchmark, reported per language</a></li></ul>
+<h3>Lexical, dense and hybrid search</h3>
+<ul><li><a href="https://www.sqlite.org/fts5.html">SQLite FTS5 extension</a></li><li><a href="https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf">Robertson and Zaragoza: The Probabilistic Relevance Framework: BM25 and Beyond</a></li><li><a href="https://huggingface.co/intfloat/multilingual-e5-small">Model card: intfloat/multilingual-e5-small</a></li><li><a href="https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2">Model card: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2</a></li><li><a href="https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1">Model card: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1</a></li><li><a href="https://arxiv.org/abs/1603.09320">Malkov and Yashunin: Efficient and robust approximate nearest neighbor search using HNSW graphs</a></li><li><a href="https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf">Cormack, Clarke and Buettcher: Reciprocal rank fusion outperforms Condorcet and individual rank learning methods</a></li></ul>
+<h3>Corpus preparation, agents and context</h3>
+<ul><li><a href="https://www.anthropic.com/news/contextual-retrieval">Anthropic: Introducing contextual retrieval</a></li><li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic: Effective context engineering for AI agents</a></li><li><a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">OWASP GenAI Security Project: LLM01 Prompt injection</a></li></ul>
+<h3>Structured data</h3>
+<ul><li><a href="https://bird-bench.github.io/">BIRD: a big bench for large-scale database grounded text-to-SQL evaluation</a></li><li><a href="https://cube.dev/docs/product/data-modeling/overview">Cube documentation: data modeling overview</a></li><li><a href="https://github.com/tobymao/sqlglot">sqlglot: SQL parser, transpiler and optimizer</a></li></ul>
+<h3>National references</h3>
+<ul><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf">Personal Data Protection Law</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf">Implementing Regulation of the Personal Data Protection Law</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf">Data Classification Policy (National Data Management Office)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/DataManagementPersonalDataProtectionStandards.pdf">Data Management and Personal Data Protection Standards (National Data Management Office)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf">Generative AI Guideline for Government</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Files/GenerativeAIPublicEN.pdf">Generative AI Guideline for Public</a></li></ul>
+<h2>Files and links</h2>
+<div class="files">
+<a href="practice.html"><b>practice.html</b><span>Practice questions with feedback</span></a>
+<a href="index.md"><b>index.md</b><span>This page as Markdown, for an AI assistant</span></a>
+<a href="llms.txt"><b>llms.txt</b><span>The course for AI assistants (llms.txt)</span></a>
+<a href="https://github.com/SDAIAAcademy/ae-304"><b>SDAIAAcademy/ae-304</b><span>The course repository</span></a>
+</div>
+</main>
+<footer><div class="wrap">SDAIA Academy · AI Engineering Track · Retrieval and Knowledge Engineering for Language Model Systems<br><span class="muted">Course version 2027.1.0 · engine 1.0.0 · built 2026-11-15 · commit 79ea004</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T11:59:31Z","version":"2027.1.0","commit":"79ea004"},"course":{"id":"ae-304","code":"AE-304","title":"Retrieval and Knowledge Engineering for Language Model Systems","track":"ai-engineering","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ae-304/","repo":"SDAIAAcademy/ae-304","home":"index.html"},"ai":{"context":{"course":"context/course.md","courseJs":"context/course.js","day":null,"llms":"llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="_engine/academy.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Colab already ships numpy, pandas, networkx, duckdb and sentence-transformers.
+faiss-cpu>=1.9
+duckdb>=1.2
+sqlglot>=26.0
+openai>=1.60
+python-dotenv>=1.0

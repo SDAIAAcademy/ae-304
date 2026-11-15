@@ -1,0 +1,82 @@
+[
+ {
+  "qid": "G01",
+  "kind": "all_prereqs",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 327
+ },
+ {
+  "qid": "G02",
+  "kind": "all_prereqs",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 320
+ },
+ {
+  "qid": "G03",
+  "kind": "all_prereqs",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 320
+ },
+ {
+  "qid": "G04",
+  "kind": "plans_with",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 273
+ },
+ {
+  "qid": "G05",
+  "kind": "plans_with",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 279
+ },
+ {
+  "qid": "G06",
+  "kind": "plans_with",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 279
+ },
+ {
+  "qid": "G07",
+  "kind": "dependants",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 307
+ },
+ {
+  "qid": "G08",
+  "kind": "dependants",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 307
+ },
+ {
+  "qid": "G09",
+  "kind": "is_prereq",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 334
+ },
+ {
+  "qid": "G10",
+  "kind": "is_prereq",
+  "mode": "with graph",
+  "correct": true,
+  "calls": 1,
+  "tokens": 327
+ }
+]

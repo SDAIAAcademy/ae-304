@@ -1,0 +1,17 @@
+Study plan: Bachelor of Media and Communication, Year 2
+Year 2 · Semester 3
+Code Course Credit hours Prerequisite
+MDC 212 Media Law 3 MDC 101
+UNI 105 Calculus I 3 None
+UNI 106 Calculus II 3 UNI 105
+UNI 107 Communication Skills 2 None
+HIS 223 Applied Manuscripts 3 HIS 101, MDC 112
+Total 14
+Year 2 · Semester 4
+Code Course Credit hours Prerequisite
+MDC 201 Digital Media 3 MDC 101
+MDC 223 Applied Broadcasting 3 MDC 101
+UNI 108 Digital Literacy 2 None
+GEO 112 Foundations of Geographic Information Systems 3 None
+Free elective 3
+Total 14

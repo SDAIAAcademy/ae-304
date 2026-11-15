@@ -1,0 +1,467 @@
+{
+ "P0033": {
+  "article": 17,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0034": {
+  "article": 17,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0193": {
+  "article": 17,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0194": {
+  "article": 17,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0195": {
+  "article": 17,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0049": {
+  "article": 25,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0050": {
+  "article": 25,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0196": {
+  "article": 25,
+  "effective_from": "2026-02-15",
+  "kind": "amendment"
+ },
+ "P0197": {
+  "article": 25,
+  "effective_from": "2026-02-15",
+  "kind": "amendment"
+ },
+ "P0198": {
+  "article": 25,
+  "effective_from": "2026-02-15",
+  "kind": "amendment"
+ },
+ "P0051": {
+  "article": 26,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0052": {
+  "article": 26,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0199": {
+  "article": 26,
+  "effective_from": "2025-01-12",
+  "kind": "amendment"
+ },
+ "P0097": {
+  "article": 49,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0098": {
+  "article": 49,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0200": {
+  "article": 49,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0201": {
+  "article": 49,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0035": {
+  "article": 18,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0036": {
+  "article": 18,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0202": {
+  "article": 18,
+  "effective_from": "2027-01-01",
+  "kind": "amendment"
+ },
+ "P0203": {
+  "article": 18,
+  "effective_from": "2027-01-01",
+  "kind": "amendment"
+ },
+ "P0065": {
+  "article": 33,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0066": {
+  "article": 33,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0204": {
+  "article": 33,
+  "effective_from": "2024-09-01",
+  "kind": "amendment"
+ },
+ "P0205": {
+  "article": 33,
+  "effective_from": "2024-09-01",
+  "kind": "amendment"
+ },
+ "P0206": {
+  "article": 33,
+  "effective_from": "2024-09-01",
+  "kind": "amendment"
+ },
+ "P0177": {
+  "article": 89,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0178": {
+  "article": 89,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0207": {
+  "article": 89,
+  "effective_from": "2026-01-04",
+  "kind": "amendment"
+ },
+ "P0208": {
+  "article": 89,
+  "effective_from": "2026-01-04",
+  "kind": "amendment"
+ },
+ "P0067": {
+  "article": 34,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0068": {
+  "article": 34,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0209": {
+  "article": 34,
+  "effective_from": "2026-01-18",
+  "kind": "amendment"
+ },
+ "P0210": {
+  "article": 34,
+  "effective_from": "2026-01-18",
+  "kind": "amendment"
+ },
+ "P0113": {
+  "article": 57,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0114": {
+  "article": 57,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0211": {
+  "article": 57,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0212": {
+  "article": 57,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0213": {
+  "article": 57,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0129": {
+  "article": 65,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0130": {
+  "article": 65,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0214": {
+  "article": 65,
+  "effective_from": "2024-02-11",
+  "kind": "amendment"
+ },
+ "P0215": {
+  "article": 65,
+  "effective_from": "2024-02-11",
+  "kind": "amendment"
+ },
+ "P0037": {
+  "article": 19,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0038": {
+  "article": 19,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0216": {
+  "article": 19,
+  "effective_from": "2026-05-31",
+  "kind": "amendment"
+ },
+ "P0217": {
+  "article": 19,
+  "effective_from": "2026-05-31",
+  "kind": "amendment"
+ },
+ "P0069": {
+  "article": 35,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0070": {
+  "article": 35,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0218": {
+  "article": 35,
+  "effective_from": "2025-03-09",
+  "kind": "amendment"
+ },
+ "P0219": {
+  "article": 35,
+  "effective_from": "2025-03-09",
+  "kind": "amendment"
+ },
+ "P0179": {
+  "article": 90,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0180": {
+  "article": 90,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0220": {
+  "article": 90,
+  "effective_from": "2025-01-12",
+  "kind": "amendment"
+ },
+ "P0145": {
+  "article": 73,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0146": {
+  "article": 73,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0221": {
+  "article": 73,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0222": {
+  "article": 73,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0223": {
+  "article": 73,
+  "effective_from": "2025-09-01",
+  "kind": "amendment"
+ },
+ "P0071": {
+  "article": 36,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0072": {
+  "article": 36,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0224": {
+  "article": 36,
+  "effective_from": "2026-08-30",
+  "kind": "amendment"
+ },
+ "P0225": {
+  "article": 36,
+  "effective_from": "2026-08-30",
+  "kind": "amendment"
+ },
+ "P0081": {
+  "article": 41,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0082": {
+  "article": 41,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0083": {
+  "article": 42,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0084": {
+  "article": 42,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0085": {
+  "article": 43,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0086": {
+  "article": 43,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0099": {
+  "article": 50,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0100": {
+  "article": 50,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0115": {
+  "article": 58,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0116": {
+  "article": 58,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0131": {
+  "article": 66,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0132": {
+  "article": 66,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0147": {
+  "article": 74,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0148": {
+  "article": 74,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0149": {
+  "article": 75,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0150": {
+  "article": 75,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0161": {
+  "article": 81,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0162": {
+  "article": 81,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0163": {
+  "article": 82,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0164": {
+  "article": 82,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0017": {
+  "article": 9,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0018": {
+  "article": 9,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0019": {
+  "article": 10,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0020": {
+  "article": 10,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0181": {
+  "article": 91,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0182": {
+  "article": 91,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0073": {
+  "article": 37,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0074": {
+  "article": 37,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0183": {
+  "article": 92,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ },
+ "P0184": {
+  "article": 92,
+  "effective_from": "2022-09-01",
+  "kind": "regulation"
+ }
+}

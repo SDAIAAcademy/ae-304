@@ -1,0 +1,15 @@
+{"qid": "M01", "hops": 2, "q": "What minimum GPA does a student need to transfer into the college that teaches CLS 334?", "expect": ["4.00"], "path": ["CLS 334", "HSC"]}
+{"qid": "M02", "hops": 2, "q": "What minimum GPA does a student need to transfer into the college that teaches ENL 334?", "expect": ["2.50"], "path": ["ENL 334", "ART"]}
+{"qid": "M03", "hops": 2, "q": "What minimum GPA does a student need to transfer into the college that teaches MKT 401?", "expect": ["3.00"], "path": ["MKT 401", "BUS"]}
+{"qid": "M04", "hops": 2, "q": "What minimum GPA does a student need to transfer into the college that teaches CSC 412?", "expect": ["3.75"], "path": ["CSC 412", "CCI"]}
+{"qid": "M05", "hops": 2, "q": "How many credit hours is the first prerequisite of CLS 412?", "expect": ["1 credit"], "path": ["CLS 412", "CLS 301"]}
+{"qid": "M06", "hops": 2, "q": "How many credit hours is the first prerequisite of CHM 423?", "expect": ["3 credit"], "path": ["CHM 423", "CHM 301"]}
+{"qid": "M07", "hops": 2, "q": "How many credit hours is the first prerequisite of DSC 323?", "expect": ["3 credit"], "path": ["DSC 323", "DSC 223"]}
+{"qid": "M08", "hops": 2, "q": "In which semester of its own programme's plan is the first prerequisite of INS 301 taught?", "expect": ["Semester 4"], "path": ["INS 301", "INS 223", "IS"]}
+{"qid": "M09", "hops": 2, "q": "In which semester of its own programme's plan is the first prerequisite of GEO 401 taught?", "expect": ["Semester 5"], "path": ["GEO 401", "GEO 334", "GEO"]}
+{"qid": "M10", "hops": 2, "q": "In which semester of its own programme's plan is the first prerequisite of CHE 423 taught?", "expect": ["Semester 6"], "path": ["CHE 423", "CHE 301", "CHE"]}
+{"qid": "M11", "hops": 3, "q": "What is the prerequisite of the first prerequisite of PHT 401?", "expect": ["PHT 212"], "path": ["PHT 401", "PHT 334", "PHT 212"]}
+{"qid": "M12", "hops": 3, "q": "What is the prerequisite of the first prerequisite of FIN 334?", "expect": ["FIN 112"], "path": ["FIN 334", "FIN 223", "FIN 112"]}
+{"qid": "M13", "hops": 3, "q": "What is the prerequisite of the first prerequisite of CVE 334?", "expect": ["CVE 112"], "path": ["CVE 334", "CVE 201", "CVE 112"]}
+{"qid": "M14", "hops": 3, "q": "What is the prerequisite of the first prerequisite of FIN 412?", "expect": ["FIN 223"], "path": ["FIN 412", "FIN 301", "FIN 223"]}
+{"qid": "M15", "hops": 3, "q": "What is the prerequisite of the first prerequisite of MEC 312?", "expect": ["MEC 101"], "path": ["MEC 312", "MEC 212", "MEC 101"]}

@@ -1,0 +1,302 @@
+[
+ {
+  "lexical": 4.967,
+  "dense": 17.086,
+  "fusion": 0.105
+ },
+ {
+  "lexical": 3.431,
+  "dense": 1.291,
+  "fusion": 0.089
+ },
+ {
+  "lexical": 3.969,
+  "dense": 1.298,
+  "fusion": 0.086
+ },
+ {
+  "lexical": 3.523,
+  "dense": 1.392,
+  "fusion": 0.075
+ },
+ {
+  "lexical": 3.757,
+  "dense": 1.318,
+  "fusion": 0.076
+ },
+ {
+  "lexical": 4.858,
+  "dense": 1.085,
+  "fusion": 0.078
+ },
+ {
+  "lexical": 3.396,
+  "dense": 1.086,
+  "fusion": 0.073
+ },
+ {
+  "lexical": 3.847,
+  "dense": 1.256,
+  "fusion": 0.083
+ },
+ {
+  "lexical": 1.656,
+  "dense": 1.361,
+  "fusion": 0.085
+ },
+ {
+  "lexical": 3.019,
+  "dense": 1.111,
+  "fusion": 0.087
+ },
+ {
+  "lexical": 2.071,
+  "dense": 1.346,
+  "fusion": 0.081
+ },
+ {
+  "lexical": 3.435,
+  "dense": 1.09,
+  "fusion": 0.078
+ },
+ {
+  "lexical": 4.27,
+  "dense": 1.336,
+  "fusion": 0.089
+ },
+ {
+  "lexical": 3.034,
+  "dense": 1.276,
+  "fusion": 0.087
+ },
+ {
+  "lexical": 4.074,
+  "dense": 1.205,
+  "fusion": 0.081
+ },
+ {
+  "lexical": 4.297,
+  "dense": 1.249,
+  "fusion": 0.078
+ },
+ {
+  "lexical": 4.096,
+  "dense": 1.314,
+  "fusion": 0.077
+ },
+ {
+  "lexical": 3.477,
+  "dense": 1.39,
+  "fusion": 0.077
+ },
+ {
+  "lexical": 2.865,
+  "dense": 1.242,
+  "fusion": 0.077
+ },
+ {
+  "lexical": 3.29,
+  "dense": 1.122,
+  "fusion": 0.067
+ },
+ {
+  "lexical": 6.112,
+  "dense": 1.553,
+  "fusion": 0.086
+ },
+ {
+  "lexical": 6.415,
+  "dense": 2.557,
+  "fusion": 0.092
+ },
+ {
+  "lexical": 6.538,
+  "dense": 1.412,
+  "fusion": 0.087
+ },
+ {
+  "lexical": 6.446,
+  "dense": 1.663,
+  "fusion": 0.08
+ },
+ {
+  "lexical": 6.041,
+  "dense": 1.278,
+  "fusion": 0.073
+ },
+ {
+  "lexical": 3.282,
+  "dense": 2.984,
+  "fusion": 0.081
+ },
+ {
+  "lexical": 2.692,
+  "dense": 1.346,
+  "fusion": 0.075
+ },
+ {
+  "lexical": 4.624,
+  "dense": 1.413,
+  "fusion": 0.08
+ },
+ {
+  "lexical": 2.359,
+  "dense": 1.133,
+  "fusion": 0.077
+ },
+ {
+  "lexical": 2.791,
+  "dense": 1.091,
+  "fusion": 0.075
+ },
+ {
+  "lexical": 0.852,
+  "dense": 1.052,
+  "fusion": 0.069
+ },
+ {
+  "lexical": 2.212,
+  "dense": 1.043,
+  "fusion": 0.077
+ },
+ {
+  "lexical": 1.131,
+  "dense": 1.103,
+  "fusion": 0.066
+ },
+ {
+  "lexical": 3.019,
+  "dense": 1.142,
+  "fusion": 0.074
+ },
+ {
+  "lexical": 2.872,
+  "dense": 1.039,
+  "fusion": 0.072
+ },
+ {
+  "lexical": 2.283,
+  "dense": 1.244,
+  "fusion": 0.075
+ },
+ {
+  "lexical": 2.386,
+  "dense": 1.669,
+  "fusion": 0.078
+ },
+ {
+  "lexical": 0.652,
+  "dense": 1.055,
+  "fusion": 0.066
+ },
+ {
+  "lexical": 2.631,
+  "dense": 1.116,
+  "fusion": 0.07
+ },
+ {
+  "lexical": 1.727,
+  "dense": 2.734,
+  "fusion": 0.074
+ },
+ {
+  "lexical": 2.586,
+  "dense": 1.091,
+  "fusion": 0.074
+ },
+ {
+  "lexical": 2.241,
+  "dense": 1.17,
+  "fusion": 0.074
+ },
+ {
+  "lexical": 3.903,
+  "dense": 1.177,
+  "fusion": 0.076
+ },
+ {
+  "lexical": 3.349,
+  "dense": 9.304,
+  "fusion": 0.086
+ },
+ {
+  "lexical": 3.895,
+  "dense": 1.22,
+  "fusion": 0.079
+ },
+ {
+  "lexical": 4.531,
+  "dense": 4.819,
+  "fusion": 0.088
+ },
+ {
+  "lexical": 0.825,
+  "dense": 2.97,
+  "fusion": 0.083
+ },
+ {
+  "lexical": 2.585,
+  "dense": 2.341,
+  "fusion": 0.077
+ },
+ {
+  "lexical": 0.545,
+  "dense": 1.92,
+  "fusion": 0.057
+ },
+ {
+  "lexical": 2.837,
+  "dense": 1.275,
+  "fusion": 0.082
+ },
+ {
+  "lexical": 2.4,
+  "dense": 3.845,
+  "fusion": 0.089
+ },
+ {
+  "lexical": 1.737,
+  "dense": 1.638,
+  "fusion": 0.09
+ },
+ {
+  "lexical": 0.741,
+  "dense": 4.328,
+  "fusion": 0.083
+ },
+ {
+  "lexical": 3.189,
+  "dense": 1.638,
+  "fusion": 0.081
+ },
+ {
+  "lexical": 1.685,
+  "dense": 1.082,
+  "fusion": 0.073
+ },
+ {
+  "lexical": 0.924,
+  "dense": 1.11,
+  "fusion": 0.074
+ },
+ {
+  "lexical": 0.471,
+  "dense": 1.012,
+  "fusion": 0.05
+ },
+ {
+  "lexical": 1.556,
+  "dense": 0.98,
+  "fusion": 0.072
+ },
+ {
+  "lexical": 2.334,
+  "dense": 1.196,
+  "fusion": 0.081
+ },
+ {
+  "lexical": 2.348,
+  "dense": 1.281,
+  "fusion": 0.072
+ }
+]
