@@ -1,158 +1,428 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Open with a question: which of Nibras's questions did yesterday's search answer badly, not because a page was missing, but because one search was not the right shape? Collect two: "how many circulars in 2025" and "what GPA do I need to transfer into the college that teaches CLS 334". Today is about questions like those.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-auto="agenda"></section>
 
-<!-- Session 1 -->
-
-<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
-
-<section class="slide" id="s1-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="review-day2" data-lo="LO4">
+  <div class="kicker">Review of Day 2</div>
+  <h2>Which suite catches the problem?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4">
+    <p class="lead">After a re-index, a student asks about the attendance rule and Nibras quotes the regulation's original text, which Circular 2025-118 amended. Which test should have caught it before release?</p>
+    <div class="opts">
+      <div class="opt" data-why="Checks access, not versions: the original text is Public">The leak suite from the student account</div>
+      <div class="opt" data-ok>The staleness suite, which fails when the old answer comes first</div>
+      <div class="opt" data-why="Scores ranking on graded judgements, which do not encode which version is current">nDCG@10 on test set v1</div>
+      <div class="opt" data-why="Measures the parser, which read both versions correctly">Word error rate on the 30 parsing pages</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The text is parsed, allowed and relevant; it is only out of date. Only a test that knows the current answer and the stale one can fail on it.</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Answer: B. Each Day 2 test measures one thing; this review is about choosing the instrument for the failure.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<!-- ======================= SESSION 1 ======================= -->
+<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
+
+<section class="slide" data-label="Search as tools" id="search-as-tools" data-lo="LO5">
+  <div class="kicker">Agentic search</div>
+  <h2>Give the model search as tools, and it decides what to look for</h2>
+  <div class="cols cols-2">
+    <div class="trace s">
+      <div class="ev user"><b>user</b>How many circulars did the university issue in 2025?</div>
+      <div class="ev call"><b>tool call</b><code>list_files("circulars/2025")</code></div>
+      <div class="ev result"><b>result</b><code>["circulars/2025/2025-031-ar.md", ...]</code></div>
+      <div class="ev final"><b>final</b>The count and the circular numbers</div>
+    </div>
+    <ul class="bullets small">
+      <li>Yesterday the pipeline searched once with the question; today a <b>loop</b> calls tools</li>
+      <li>The model reads each result and chooses the next call or answers</li>
+      <li>Coding agents work this way over files: list, grep, read</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>This trace is question A01 of Lab 3.1. The point of the course's framing: retrieval for agents is the same engineering as yesterday, plus a decision about which tool to call. Sources: Anthropic, Effective context engineering for AI agents (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Three tools" id="three-tools" data-lo="LO5">
+  <div class="kicker">Lab 3.1</div>
+  <h2>Three tools, each cheapest for one kind of question</h2>
+  <table class="t small">
+    <tr><th>Tool</th><th>Returns</th><th>Best for</th></tr>
+    <tr><td><code>list_files(folder)</code></td><td>file names only</td><td>what exists, how many</td></tr>
+    <tr><td><code>keyword_search(query, k)</code></td><td>top pages, BM25 normalised</td><td>codes, circular numbers, names</td></tr>
+    <tr><td><code>vector_search(query, k)</code></td><td>top pages, dense e5</td><td>paraphrases, dialect, the other language</td></tr>
+  </table>
+  <div class="callout note mt-s"><b>All three search Public pages only.</b> The Day 2 filter sits inside the tools, so no tool call can reach a Restricted page.</div>
+  <aside class="notes"><p>Every tool is the Day 1 or Day 2 code behind a function signature. Ask: where should the permission filter live, in the prompt or in the tool? In the tool, for the reasons of Day 2 Session 4.</p></aside>
+</section>
+
+<section class="slide" data-label="Descriptions" id="tool-descriptions" data-lo="LO5">
+  <div class="kicker">The description is the interface</div>
+  <h2>A tool description tells the model when to call it, not only what it does</h2>
+  <pre class="code s" data-file="nibras_tools.py"><code class="language-python">def keyword_search(query: str, k: int = 5) -&gt; list[dict]:
+    """Keyword search (BM25, Arabic normalised). Best for exact
+    words: course codes such as "CSC 301", circular numbers such
+    as "2025-118", article numbers and names. English or Arabic."""</code></pre>
+  <ul class="bullets small mt-s">
+    <li>The function's docstring becomes the tool's description in the schema the model sees</li>
+    <li>Examples of when to use it beat a list of features</li>
+    <li>The stretch writes a misleading description and watches the choices change</li>
+  </ul>
+  <aside class="notes"><p>The schema is generated from the signature and the docstring by U.tool_schema, so the description cannot drift from the code. With a live model, the stretch is the most instructive five minutes of the day: swap the descriptions of keyword and vector search and rerun.</p></aside>
+</section>
+
+<section class="slide" data-label="The loop" id="tool-loop" data-lo="LO5">
+  <div class="kicker">The loop, in twelve lines</div>
+  <h2>Call the model, run the tool it asks for, append the result, repeat</h2>
+  <pre class="code s" data-file="nuha.py · run_agent, simplified"><code class="language-python">messages = [system, {"role": "user", "content": question}]
+for step in range(max_steps):
+    reply = chat(messages, tools=schemas)
+    if not reply.tool_calls:
+        return reply.content                      # the answer
+    for call in reply.tool_calls:
+        result = TOOLS[call.name](**call.args)
+        result = json.dumps(result)[:budget_chars] # the context budget
+        messages.append(tool_message(call.id, result))
+return "step budget spent"</code></pre>
+  <aside class="notes"><p>Point at the two budgets: steps and characters per result. Both are stop rules that keep a loop from running up a bill. Session 3 shows what the character budget does to a large result.</p></aside>
+</section>
+
+<section class="slide" data-label="Traces" id="read-the-traces" data-lo="LO5">
+  <div class="kicker">Measured in Lab 3.1, stand-in</div>
+  <h2>The right tool was chosen every time; the vector questions still failed most</h2>
+  <table class="t small">
+    <tr><th>Best tool</th><th class="num">Questions</th><th class="num">Right tool</th><th class="num">Correct</th><th class="num">Tokens</th></tr>
+    <tr><td>list_files</td><td class="num">5</td><td class="num">1.0</td><td class="num">1.0</td><td class="num">1,454</td></tr>
+    <tr><td>keyword_search</td><td class="num">5</td><td class="num">1.0</td><td class="num">0.8</td><td class="num">1,226</td></tr>
+    <tr class="hl"><td>vector_search</td><td class="num">5</td><td class="num">1.0</td><td class="num">0.4</td><td class="num">1,212</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>Read the trace before blaming the agent.</b> The choice was right; e5 returned the wrong pages for short paraphrases. That is a Day 1 problem showing up in Day 3.</div>
+  <aside class="notes"><p>These numbers come from the scripted stand-in, not a model: no working key was available when the course was built. With a key the choices may differ, and the "right tool" column is then the interesting one. Overall accuracy 0.73, one call per question.</p></aside>
+</section>
+
+<section class="slide" data-label="Cost" id="choice-has-a-cost" data-lo="LO5">
+  <div class="kicker">Judge a choice by its cost and its answer</div>
+  <h2>A wrong tool can still answer, at many times the tokens</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Listing for a count</h4><p class="small mb0">File names, one call: the count is exact.</p></div>
+    <div class="card c-coral"><h4>Search for a count</h4><p class="small mb0">A top k of pages: the count is capped at k and every page's text is paid for.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> Log three numbers per question: the tool chosen, the calls and the tokens. Accuracy alone hides an agent that is right and expensive.</div>
+  <aside class="notes"><p>Ask the room how they would count circulars with vector search. They cannot: a top 5 is not a list. This is why "how many" questions went to list_files in the lab.</p></aside>
+</section>
+
+<section class="slide" id="check-tool-choice" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which tool should Nibras call first?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">A student writes in dialect: "ابي اعرف وش اسوي اذا مرضت يوم الاختبار" (what do I do if I am sick on the exam day). Which first call is best?</p>
+    <div class="opts">
+      <div class="opt" data-why="Lists names when the question needs the content of a rule">list_files("regulations")</div>
+      <div class="opt" data-why="Matches words, and the dialect shares few words with the regulation">keyword_search with the question as written</div>
+      <div class="opt" data-ok>vector_search with the question as written</div>
+      <div class="opt" data-why="Reads whole files without knowing which one holds the rule">read_file on every article of the examination chapter</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A paraphrase in dialect is what meaning-based search is for. If its top pages miss, the next call can be a keyword search for the term the rule uses.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. Then ask what the second call should be when vector search misses: a keyword search for "alternative examination" or its Arabic term, which is the agent recovering by itself.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-1" data-auto="lab" data-lab="3.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: a list_files that returns the whole tree for an unknown folder (return the top folders instead); tool results that include Restricted pages because the tool skipped the filter; a free model that answers without calling any tool (check the trace, then sharpen the system prompt). Without a key the stand-in runs and the notebook says so.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" data-label="Two hops" id="two-hop-questions" data-lo="LO5">
+  <div class="kicker">Multi-step questions</div>
+  <h2>Some answers sit two pages apart, linked by a fact on the first</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Question</b>What GPA do I need to transfer into the college that teaches CLS 334?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Hop 1</b>the course page names the College of Health Sciences</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Hop 2</b>that college's handbook: at least 4.00 out of 5.00</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> One search for the whole question returns the course page and some other college's transfer rule, and the answer quotes the wrong GPA.</div>
+  <aside class="notes"><p>Question M01 of Lab 3.2. The single search for it returned the Sciences handbook (2.75) first; a model reading that top 5 can answer with the wrong college's number.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Iterate" id="iterative-loop" data-lo="LO5">
+  <div class="kicker">Search again from what you read</div>
+  <h2>The iterative loop: search, read, decide the next search or answer</h2>
+  <pre class="code s" data-file="Lab 3.2 · step 2"><code class="language-python">notes, asked = [], set()
+while True:
+    d = decide(question, notes)             # the model, or the stand-in
+    if "answer" in d:
+        return d["answer"]
+    q = d["search"]
+    if q in asked or len(notes) &gt;= max_searches:
+        return decide(question, notes, final=True)["answer"]
+    asked.add(q)
+    notes.append({"query": q, "top": hybrid_search(q, 3)})</code></pre>
+  <aside class="notes"><p>Three stop rules: an answer, a search budget, and a repeated query, which means the decider is going round in circles. The final call forces an answer from the notes so far, which may be "I could not find it". That honest answer is better than a guess.</p></aside>
+</section>
+
+<section class="slide" data-label="Trace" id="iterative-trace" data-lo="LO5">
+  <div class="kicker">One question, three searches</div>
+  <h2>The decider finds the college, then searches for its rule</h2>
+  <div class="trace s">
+    <div class="ev call"><b>search 1</b>the question as written</div>
+    <div class="ev result dim"><b>notes</b>no course page in the top 3</div>
+    <div class="ev call"><b>search 2</b><code>CLS 334 course description</code></div>
+    <div class="ev result"><b>notes</b>CLS 334 · offered by the College of Health Sciences</div>
+    <div class="ev call"><b>search 3</b><code>College of Health Sciences handbook admission by transfer</code></div>
+    <div class="ev final"><b>answer</b>At least 4.00 out of 5.00 (College of Health Sciences)</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The trace of M01 in Lab 3.2 with the stand-in decider. The second search is the decomposition: it asks for the fact the first hop needs, not for the answer.</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="single-against-iterative" data-lo="LO5">
+  <div class="kicker">Measured in Lab 3.2, stand-in</div>
+  <h2>Iterative search answers 9 of 10 two-hop questions, at twice the tokens</h2>
+  <table class="t small">
+    <tr><th>Ten two-hop questions</th><th class="num">Accuracy</th><th class="num">Searches</th><th class="num">Tokens read</th></tr>
+    <tr><td>Single-shot, top 5</td><td class="num">0.7</td><td class="num">1.0</td><td class="num">1,114</td></tr>
+    <tr class="hl"><td>Iterative, up to 4 searches</td><td class="num">0.9</td><td class="num">2.1</td><td class="num">2,363</td></tr>
+  </table>
+  <div class="callout note mt-s"><b>Honest reading.</b> Single-shot already answers 7 of 10, because a top 5 with long excerpts often holds both hops. Iteration earns its cost on the rest.</div>
+  <aside class="notes"><p>These are the stand-in's numbers: a scripted decider that follows the decomposition a model is asked to follow. A live model may decompose differently; the comparison table is the evidence LO5 asks for, whatever the decider. The first version of our stand-in scored worse iteratively than single-shot: it searched for bare course codes, which BM25 matches to study plans. Query wording matters as much as the loop.</p></aside>
+</section>
+
+<section class="slide" data-label="Budget" id="search-budget" data-lo="LO5">
+  <div class="kicker">Lab 3.2 stretch</div>
+  <h2>A search budget is a stop rule you set from evidence</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">3 of 5</div><div class="lbl">three-hop questions answered with 2 searches</div></div>
+    <div class="stat"><div class="big">3 of 5</div><div class="lbl">with 4 searches</div></div>
+  </div>
+  <p class="small mt">Doubling the budget bought nothing on these five: the misses fail for another reason. Look at their traces before raising the budget.</p>
+  <aside class="notes"><p>The three-hop questions follow a prerequisite to its own prerequisite. The two misses never find the second course page; that is a retrieval miss, and tomorrow's graph session answers the same kind of question in one call.</p></aside>
+</section>
+
+<section class="slide" id="check-iterative" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>What should the decider search next?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">Question: "How many credit hours is the first prerequisite of CHM 423?" The first search returned the CHM 423 course page, which lists "Prerequisite: CHM 301". What is the best next search?</p>
+    <div class="opts">
+      <div class="opt" data-why="Repeats a search, which the loop treats as going round in circles">The question again, as written</div>
+      <div class="opt" data-why="Searches for the answer's words instead of the entity the next hop needs">"credit hours prerequisite"</div>
+      <div class="opt" data-why="Answers from the first page, which gives CHM 423's hours, not CHM 301's">No search: answer with the hours on the CHM 423 page</div>
+      <div class="opt" data-ok>"CHM 301 course description credit hours"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The first hop produced an entity, CHM 301. The next search asks for that entity's page, where its credit hours are.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. C is the most common wrong answer in live runs: the model reports the hours of the course it found.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-2" data-auto="lab" data-lab="3.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: a loop with no repeated-query check, which spins until the budget; counting tokens once instead of on every call (each call resends the notes); comparing on different question sets. Without a key, the stand-in decides and the numbers match the slides.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" data-label="Large results" id="large-results" data-lo="LO5">
+  <div class="kicker">Paging and offloading</div>
+  <h2>Some results do not fit: every course page of a college is 8,500 tokens</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">1,594</div><div class="lbl">tokens: the Physics programme's course pages</div></div>
+    <div class="stat"><div class="big">8,479</div><div class="lbl">tokens: the College of Engineering's</div></div>
+    <div class="stat"><div class="big">1,500</div><div class="lbl">tokens: the budget per tool result</div></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <p class="small mt">Lab 3.3's tool <code>list_courses</code> returns every course page of a programme or a college in full. Token counts are estimates (four characters per token).</p>
+  <aside class="notes"><p>The estimate is deliberately simple and labelled as one. Ask what the loop does with a result over budget: it cuts it. Then ask what a count over a cut list returns.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Cut" id="truncation-fails" data-lo="LO5">
+  <div class="kicker">What truncation does</div>
+  <h2>Cut a long result to the budget and a count comes out wrong, confidently</h2>
+  <table class="t small">
+    <tr><th>Question</th><th class="num">Expected</th><th class="num">In context, cut</th></tr>
+    <tr><td>College of Engineering courses of 4 credit hours</td><td class="num">10</td><td class="num">1</td></tr>
+    <tr><td>College of Computing laboratory courses of 1 credit hour</td><td class="num">5</td><td class="num">1</td></tr>
+    <tr><td>Statistics programme courses with no prerequisite</td><td class="num">0</td><td class="num">0</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> Nothing signals the cut. The agent counts what it can see and reports it as the answer.</div>
+  <aside class="notes"><p>Rows from Lab 3.3 step 2 with the stand-in: B05, B07 and B01. The four college questions (B05 to B08) failed; the four programme questions fit the budget and were right. The row labels are shortened; the notebook prints the exact questions.</p></aside>
+</section>
+
+<section class="slide" data-label="Offload" id="offload-to-file" data-lo="LO5">
+  <div class="kicker">The fix</div>
+  <h2>Offload: write the result to a file and return a stub</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="Lab 3.3 · step 3"><code class="language-python">def offload(result, limit=1500):
+    if count_tokens(result) &lt;= limit:
+        return result
+    path = OUT / f"list_courses_{n}.txt"
+    path.write_text(result)
+    return json.dumps({"file": path.name,
+        "lines": n_lines, "pages": n_pages,
+        "preview": result[:200],
+        "hint": "search it with grep_file"})</code></pre>
+    <div class="stack">
+      <div class="card c-teal flat"><h4>Nothing is lost</h4><p class="small mb0">The full result is one tool call away.</p></div>
+      <div class="card c-cyan flat"><h4>A tool for the file</h4><p class="small mb0"><code>grep_file(file, pattern)</code> returns the matching lines and their count.</p></div>
+    </div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The stub says what is in the file and how to search it. The grep tool only opens files in the offload folder; the lab checks that a path outside it is refused (the notebook tries "../../nuha.py" and gets an error).</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="offload-results" data-lo="LO5">
+  <div class="kicker">Measured in Lab 3.3, stand-in</div>
+  <h2>Offloading doubles accuracy and roughly halves the tokens</h2>
+  <div class="bars">
+    <div class="row"><span>accuracy, in context</span><div class="bar c-coral" style="--w:50%"></div><span class="val">0.5</span></div>
+    <div class="row"><span>accuracy, offloaded</span><div class="bar c-teal" style="--w:100%"></div><span class="val">1.0</span></div>
+    <div class="row"><span>tokens, in context</span><div class="bar c-coral" style="--w:100%"></div><span class="val">1,724</span></div>
+    <div class="row"><span>tokens, offloaded</span><div class="bar c-teal" style="--w:54%"></div><span class="val">924</span></div>
+  </div>
+  <p class="caption">Eight counting questions, mean per question. Offloaded runs take two calls (the list, then the grep) instead of one.</p>
+  <aside class="notes"><p>One more call, fewer tokens and the right answer. The same pattern runs coding agents: long command output goes to a file and the agent greps it.</p></aside>
+</section>
+
+<section class="slide" data-label="Paging" id="paging-instead" data-lo="LO5">
+  <div class="kicker">Lab 3.3 stretch</div>
+  <h2>Paging works, and costs more when the question needs a search</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>Paging</h4><p class="small mb0">Read the 359 lines in pages of 40: 9 calls and about 7,956 tokens to see them all.</p></div>
+    <div class="card c-teal"><h4>Searching the file</h4><p class="small mb0">One grep for the pattern: one call and the count.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> Page when the agent must read everything; search the file when the question names what to look for.</div>
+  <aside class="notes"><p>Numbers printed by the stretch cell. Paging is the right tool for "summarise these" questions; grep is for "count" and "find" questions.</p></aside>
+</section>
+
+<section class="slide" id="check-offload" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>How should the agent handle this result?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">A tool returns 60 course pages (about 8,500 tokens) for "how many Engineering courses carry 4 credit hours?". The result budget is 1,500 tokens. What design answers correctly with the smallest context?</p>
+    <div class="opts">
+      <div class="opt" data-why="Counts in a cut list, which gave 1 instead of 10 in the lab">Cut the result to 1,500 tokens and count</div>
+      <div class="opt" data-why="Pays for every page on every later call instead of fixing the design">Raise the budget to 10,000 tokens</div>
+      <div class="opt" data-ok>Offload the result to a file, return a stub, and search the file for "Credit hours: 4"</div>
+      <div class="opt" data-why="Lets a summary drop the rows a count needs">Ask the model to summarise the 60 pages first</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The file keeps every page; one search returns exactly the matching lines and their count, for a few hundred tokens.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. B works on this question and fails on the next college; budgets exist for the cost of every later step, not only this one.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-3" data-auto="lab" data-lab="3.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: a grep tool that opens any path (the lab's check tries one outside the folder); a stub without the hint, so a live model never calls grep; offloading every result, even small ones. Without a key, the stand-in runs.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide" data-label="Links" id="facts-that-are-links" data-lo="LO5">
+  <div class="kicker">Knowledge graphs</div>
+  <h2>Some questions are about links between facts, not about any one page</h2>
+  <ul class="bullets">
+    <li>"Which courses must I pass, <b>directly or indirectly</b>, before PHY 401?"</li>
+    <li>"How many courses list CSC 201 as a prerequisite?"</li>
+    <li>"Which study plans include DSC 223?"</li>
+  </ul>
+  <div class="callout note mt"><b>The shape of the answer.</b> A chain or a set gathered from many pages. Search finds pages one at a time; a graph stores the links themselves.</div>
+  <aside class="notes"><p>The three kinds are the question kinds of Lab 3.4 (all prerequisites, dependants, plans that include a course) plus "must I pass X before Y". Ask how many searches the first one needs: one per link in the chain, and you do not know the length in advance.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="The graph" id="small-graph" data-lo="LO5">
+  <div class="kicker">Lab 3.4, step 1</div>
+  <h2>368 courses, 30 programmes and 6 colleges, joined by 1,201 edges</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-teal"><b>course</b>PHY 401</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>requires</b>its direct prerequisites</div>
+      <div class="arrow">↓</div>
+      <div class="step c-purple"><b>requires</b>theirs, on down the chain to UNI 105</div>
+    </div>
+    <ul class="bullets small">
+      <li>Nodes and edges come from the course pages and plans, already extracted (<code>data/graph/</code>)</li>
+      <li>Edge kinds: <code>requires</code> (course to prerequisite), <code>includes</code> (programme to course), <code>in</code> (programme to college)</li>
+      <li>NetworkX in memory; Neo4j or a SQL table of edges at scale</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>Building the graph is the cheap part. Extracting the edges reliably is the expensive part, which is why the lab supplies the extraction. In production, check extracted edges against the source pages as you would any parse.</p></aside>
+</section>
+
+<section class="slide" data-label="Graph tools" id="graph-queries-as-tools" data-lo="LO5">
+  <div class="kicker">Lab 3.4, step 2</div>
+  <h2>Expose graph queries as tools, so the agent asks for a walk, not a page</h2>
+  <pre class="code s" data-file="Lab 3.4 · three tools"><code class="language-python">def prerequisites_of(code: str, transitive: bool = True) -&gt; list[str]:
+    """Prerequisites of a course from the course graph: direct ones,
+    or all of them when transitive is true."""
+
+def dependants_of(code: str) -&gt; list[str]:
+    """Courses that list this course as a direct prerequisite."""
+
+def programmes_including(code: str) -&gt; list[str]:
+    """Programmes whose study plan includes the course."""</code></pre>
+  <aside class="notes"><p>The same rule as Session 1: the docstring is the description. A tool that runs a fixed query is safer than letting a model write graph queries, for the same reason Day 4 prefers governed metrics to free SQL.</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="graph-results" data-lo="LO5">
+  <div class="kicker">Measured in Lab 3.4, stand-in</div>
+  <h2>With the graph, ten of ten; with search only, three, at fourteen times the tokens</h2>
+  <table class="t small">
+    <tr><th>Question kind</th><th class="num">Search only</th><th class="num">With the graph</th></tr>
+    <tr><td>All prerequisites (3)</td><td class="num">0.0</td><td class="num">1.0</td></tr>
+    <tr><td>Dependants (2)</td><td class="num">0.0</td><td class="num">1.0</td></tr>
+    <tr><td>Must X come before Y (2)</td><td class="num">0.0</td><td class="num">1.0</td></tr>
+    <tr><td>Plans that include a course (3)</td><td class="num">1.0</td><td class="num">1.0</td></tr>
+    <tr class="hl"><td>Mean calls, mean tokens</td><td class="num">2.2, 4,281</td><td class="num">1.0, 307</td></tr>
+  </table>
+  <aside class="notes"><p>The search-only stand-in follows prerequisites page by page within six searches. It came close on PHY 401 (five of six courses, missing UNI 105) and was graded wrong, which is right: a partial list of prerequisites misleads a student. Plans are the one kind search handles, because one keyword search returns the plan pages that hold the code.</p></aside>
+</section>
+
+<section class="slide" data-label="When" id="when-a-graph" data-lo="LO5">
+  <div class="kicker">When a graph earns its place</div>
+  <h2>Build a graph for the relationships users ask about, not for the whole corpus</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Worth it</h4><p class="small mb0">Prerequisite chains, which plan includes what, which circular amends which article: few kinds of link, asked often.</p></div>
+    <div class="card c-coral"><h4>Not worth it</h4><p class="small mb0">"What does the regulation say about appeals?": one passage answers it, and search finds it.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Takeaway.</b> A graph is a structured index for one family of questions. Keep it small, typed, and checked against its sources.</div>
+  <aside class="notes"><p>The stretch adds a rule edge: transfer requirements per college, which turns yesterday's two-hop question into one graph call. Ask which of Nibras's question logs would tell them a graph is needed: repeated multi-hop questions about the same kinds of link.</p></aside>
+</section>
+
+<section class="slide" id="check-graph" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which question does the graph answer best?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">Nibras has search tools and a small graph of courses, plans and prerequisites. Which question gains most from the graph?</p>
+    <div class="opts">
+      <div class="opt" data-ok>"Must I pass MTH 112 before PHY 401?"</div>
+      <div class="opt" data-why="Asks for one passage of text, which search finds directly">"What does the regulation say about appealing a grade?"</div>
+      <div class="opt" data-why="Asks for a list of files, which listing answers">"How many circulars were issued in 2024?"</div>
+      <div class="opt" data-why="Asks for the content of one page found by its code">"What is the description of CSC 301?"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The answer is a path through prerequisite links of unknown length. One graph query walks it; search needs one call per link and may stop at the budget.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. Each wrong option names the tool that answers it best: search, listing, keyword search. That is today's whole lesson on one slide.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-4" data-auto="lab" data-lab="3.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: edges in the wrong direction, so "prerequisites" returns dependants; a graph built from both languages' pages with duplicate nodes; grading a partial list of prerequisites as correct. Without a key, the stand-in runs.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
+<!-- ======================= CLOSING ======================= -->
+<section class="slide" id="wrap-up" data-label="Recap">
   <div class="kicker">Day 3 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Tools need descriptions</h4><p class="small mb0">Say when to call each one; log the choice, the calls and the tokens.</p></div>
+    <div class="card c-coral"><h4>Iterate with stop rules</h4><p class="small mb0">An answer, a budget, a repeated query. Compare with one search on accuracy and tokens.</p></div>
+    <div class="card c-purple"><h4>Keep the context small</h4><p class="small mb0">Offload large results to files; put relationships in a small graph.</p></div>
   </div>
+  <aside class="notes"><p>Ask for the LO5 evidence in one sentence: traces and a comparison with single-shot search on accuracy, tool calls and tokens. Each lab today produced one row of it.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
   <h2>Day 4: Structured data and diagnosis</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <p class="lead">Tomorrow: statistical questions over the enrolment warehouse, free text-to-SQL against governed metrics, what a question costs and how fast a change becomes searchable, and twenty failures attributed to the component that caused them.</p>
+  <aside class="notes"><p>Nothing to install. Day 4 starts with free text-to-SQL; with a key it runs against a model, without one it reads recorded replies.</p></aside>
 </section>
