@@ -1,158 +1,449 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Open with a question from the registrar's office: "how many students were enrolled last semester?" Ask the room who would trust a model's SQL for that number in a report to the university council. Today measures that trust, then the cost, the latency and the freshness of everything built this week, and ends with a diagnosis method for the capstone.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-auto="agenda"></section>
 
-<!-- Session 1 -->
-
-<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
-
-<section class="slide" id="s1-idea" data-lo="LO6">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="review-day3" data-lo="LO5">
+  <div class="kicker">Review of Day 3</div>
+  <h2>Which design fits the question?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">A student asks: "How many courses of the College of Health Sciences carry 4 credit hours?" The tool that lists the college's course pages returns about 8,000 tokens; the result budget is 1,500. What should the agent do?</p>
+    <div class="opts">
+      <div class="opt" data-why="Counts in a cut result, which undercounts without any warning">Count in the first 1,500 tokens of the result</div>
+      <div class="opt" data-ok>Get a stub for the offloaded file and search it for the pattern</div>
+      <div class="opt" data-why="Uses meaning search for a count, which returns a top k, not every course">Run vector search for "4 credit hour courses"</div>
+      <div class="opt" data-why="Reaches for the graph, whose edges hold prerequisites, not credit hours">Ask the prerequisite graph for the college's courses</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The full result stays in a file; a search for "Credit hours: 4" returns the matching lines and their count, inside the budget.</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Answer: B. This is question B06 of Lab 3.3, whose answer is 10. D is a good distractor for people who liked the graph: the graph in Lab 3.4 stores links, and the course nodes carry credits, but a count over a college is a file search, not a walk.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO6">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<!-- ======================= SESSION 1 ======================= -->
+<section class="slide section" id="s1" data-auto="section" data-session="1"></section>
+
+<section class="slide" data-label="Not a page" id="statistics-are-not-pages" data-lo="LO6">
+  <div class="kicker">Questions over a warehouse</div>
+  <h2>No page holds "how many students enrolled last semester"</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The answer is computed from rows: a query over the enrolment warehouse</li>
+      <li>Retrieval of documents cannot find it, however good</li>
+      <li>The tempting shortcut: let the model write the SQL</li>
+    </ul>
+    <div class="card c-teal"><h4>Al-Nuha's warehouse</h4><p class="small mb0">Five tables: colleges, programmes, students, terms, enrolments. 6,967 students and 162,600 enrolments, synthetic. Owned by Abdulrahman Al-Duwaish, institutional research.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The warehouse is DuckDB over CSV files in labs/data/warehouse. The students table is Restricted: it holds gender, nationality and status per student. Keep that in mind for the last step of the lab.</p></aside>
+</section>
+
+<section class="slide" data-label="The prompt" id="schema-prompt" data-lo="LO6">
+  <div class="kicker">Lab 4.1, step 1</div>
+  <h2>The model sees the schema and two example rows per table: 518 tokens</h2>
+  <pre class="code s" data-file="Lab 4.1 · the schema prompt"><code class="language-sql">TABLE enrolments (student_id BIGINT, term_id VARCHAR, course_code VARCHAR,
+  credit_hours BIGINT, status VARCHAR, letter VARCHAR, grade_points DOUBLE)
+  e.g. (4400007, '2022-2', 'CSC 101', 3, 'completed', 'C', 3.0)
+TABLE terms (term_id VARCHAR, academic_year VARCHAR, semester BIGINT,
+  hijri VARCHAR, name_en VARCHAR, name_ar VARCHAR)
+  e.g. ('2022-1', '2022/2023', 1, '1444-1', 'First semester 2022/2023', ...)</code></pre>
+  <div class="callout warn mt-s"><b>What the schema does not say.</b> That a withdrawn enrolment does not make a student enrolled, that term ids are Gregorian, or that MIS was merged into IS.</div>
+  <aside class="notes"><p>The schema is the honest version of what most text-to-SQL demos send. Every business rule that is not in it is a planted trap: they are the warehouse's real-world equivalents, and the lab names them in step 4.</p></aside>
+</section>
+
+<section class="slide" data-label="Execution" id="execution-accuracy" data-lo="LO6">
+  <div class="kicker">How to score SQL</div>
+  <h2>Execution accuracy: run the query and compare the result with the reference</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>Not the text</h4><p class="small mb0">Two different queries can both be right.</p></div>
+    <div class="card c-coral"><h4>Not "it ran"</h4><p class="small mb0">A query that runs can return a wrong number.</p></div>
+    <div class="card c-teal"><h4>The result</h4><p class="small mb0">Equal to the reference answer, within rounding for rates.</p></div>
+  </div>
+  <p class="small mt">Benchmarks such as BIRD report execution accuracy for the same reason.</p>
+  <aside class="notes"><p>Each of the 20 questions has a reference SQL written by the institutional research lead and its answer. Sources: BIRD benchmark (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="free-sql-results" data-lo="LO6">
+  <div class="kicker">Measured in Lab 4.1, recorded replies</div>
+  <h2>Free text-to-SQL got 12 of 20 right, and every wrong one looked right</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">0.60</div><div class="lbl">execution accuracy on 20 questions</div></div>
+    <div class="bars">
+      <div class="row"><span>filter missing</span><div class="bar c-coral" style="--w:60%"></div><span class="val">3</span></div>
+      <div class="row"><span>renamed programme</span><div class="bar c-coral" style="--w:40%"></div><span class="val">2</span></div>
+      <div class="row"><span>calendar</span><div class="bar c-amber" style="--w:20%"></div><span class="val">1</span></div>
+      <div class="row"><span>denominator</span><div class="bar c-amber" style="--w:20%"></div><span class="val">1</span></div>
+      <div class="row"><span>weighting</span><div class="bar c-amber" style="--w:20%"></div><span class="val">1</span></div>
+    </div>
+  </div>
+  <div class="callout warn mt-s"><b>No query failed to run.</b> All eight wrong answers are numbers a reader would believe.</div>
+  <aside class="notes"><p>No working model key was available when the course was built, so these are recorded replies written to show typical model mistakes (data/reference/standin_sql.json); with a key the notebook asks the model and the numbers will move. The kinds of failure are the stable lesson.</p></aside>
+</section>
+
+<section class="slide" data-label="Failures" id="failure-examples" data-lo="LO6">
+  <div class="kicker">Read the failures by kind</div>
+  <h2>Each wrong query breaks a rule the schema never stated</h2>
+  <table class="t small">
+    <tr><th>Question</th><th>Model's query did</th><th class="num">Got</th><th class="num">Right</th></tr>
+    <tr><td>S01 enrolled students, a term</td><td>used the Hijri name as the term id</td><td class="num">0</td><td class="num">5,210</td></tr>
+    <tr><td>S06 GPA of CSC courses</td><td>averaged grade points, not credit-weighted</td><td class="num">3.58</td><td class="num">3.66</td></tr>
+    <tr><td>S09 credit hours, Engineering</td><td>counted withdrawn enrolments</td><td class="num">13,092</td><td class="num">12,270</td></tr>
+    <tr><td>S15 students in IS</td><td>missed the merged MIS programme</td><td class="num">70</td><td class="num">145</td></tr>
+  </table>
+  <aside class="notes"><p>Rows from Lab 4.1 step 4. Ask which of these a reviewer would catch by reading the SQL. S01 maybe, because 0 is suspicious; the others return plausible numbers. That is what "wrong and confident" means.</p></aside>
+</section>
+
+<section class="slide" data-label="Access" id="what-sql-reads" data-lo="LO6">
+  <div class="kicker">Lab 4.1, step 5</div>
+  <h2>12 of 20 free queries read the Restricted students table</h2>
+  <ul class="bullets">
+    <li>To filter by college or programme, the queries join <b>students</b>, which holds gender, nationality and status per person</li>
+    <li>The answer is an aggregate; the query still reads every student's row</li>
+    <li>A model that may write any SQL may also write one that returns rows, not counts</li>
+  </ul>
+  <div class="callout note mt"><b>In Saudi practice.</b> Student records are personal data under the Personal Data Protection Law; the lab treats the table as Restricted, in line with the national Data Classification Policy.</div>
+  <aside class="notes"><p>Keep the claim at the level of the slide: the references are cited by name and address in the course sources. The point for engineers is architectural: limit what the generated query may read, not only what the answer shows. Sources: Personal Data Protection Law; Data Classification Policy (see course sources).</p></aside>
+</section>
+
+<section class="slide" id="check-free-sql" data-lo="LO6">
+  <div class="kicker">Checkpoint</div>
+  <h2>What kind of failure is this?</h2>
+  <div class="quiz" data-type="single" data-lo="LO6">
+    <p class="lead">"How many students were enrolled in the second semester of 2025/2026?" The model's query counts every student with an enrolment row in the term and returns 4,912. The reference returns 4,780. The query runs without error. What went wrong most likely?</p>
+    <div class="opts">
+      <div class="opt" data-why="Expects a wrong query to fail loudly; this one ran">A syntax error the database ignored</div>
+      <div class="opt" data-why="Blames access when the query read the right table">The model could not read the enrolments table</div>
+      <div class="opt" data-ok>A missing filter: withdrawn enrolments were counted as enrolled</div>
+      <div class="opt" data-why="Assumes a model fault when the rule is simply not in the schema">The model is too small for SQL</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The count is higher than the reference by students whose only enrolments were withdrawn: a business rule that lives in the institution, not in the schema.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. The numbers here are illustrative, not from the lab. The lab's "filter" failures are the most common kind: 3 of 8.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-1" data-auto="lab" data-lab="4.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: comparing rates without rounding; a model reply with prose around the SQL (extract the code block); an empty result counted as correct when the reference is 0. Without a key the notebook reads recorded replies and says so; with a key, the stretch puts the business rules into the prompt and measures again.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO6">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" data-label="Governed" id="governed-metrics" data-lo="LO6">
+  <div class="kicker">Semantic layers</div>
+  <h2>Define each metric once, as reviewed code, and let the model only choose</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Views</b>enrolment_facts and student_facts: the rules applied once</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Catalog</b>12 metrics, their dimensions, a small-cell rule</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Model</b>a request: metric, filters, group by</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Code</b>compiles, validates, runs</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <p class="small mt">Tools that work this way: Cube, dbt's semantic layer, or plain SQL views and a metric file in version control, as in the lab.</p>
+  <aside class="notes"><p>The model never writes SQL here. It produces a small JSON request that names a metric from the catalog. Sources: Cube documentation, data modeling (see course sources).</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO6">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Catalog" id="metric-catalog" data-lo="LO6">
+  <div class="kicker">Lab 4.2, step 1</div>
+  <h2>A metric's definition carries the rule the free query missed</h2>
+  <table class="t small">
+    <tr><th>Metric</th><th>Definition in the catalog</th></tr>
+    <tr class="hl"><td><code>enrolled_students</code></td><td>Students with at least one enrolment that was not withdrawn in the term</td></tr>
+    <tr><td><code>credit_hours</code></td><td>Credit hours registered, withdrawn courses excluded</td></tr>
+    <tr><td><code>weighted_gpa</code></td><td>Grade point average weighted by credit hours, completed courses only</td></tr>
+    <tr><td><code>pass_rate</code></td><td>Passed among graded enrolments; a denial counts as graded and failed</td></tr>
+    <tr><td><code>graduates</code></td><td>Students who graduated; term is the graduation term</td></tr>
+  </table>
+  <p class="caption">Five of the 12 metrics in data/semantic/metrics.json. The views also map the merged programme and both calendars.</p>
+  <aside class="notes"><p>Each line answers one of Lab 4.1's failures: withdrawn enrolments, weighting, the denominator. Ask who should own this file: the institutional research unit, with changes reviewed like code.</p></aside>
+</section>
+
+<section class="slide" data-label="Compile" id="compile-a-request" data-lo="LO6">
+  <div class="kicker">Lab 4.2, step 2</div>
+  <h2>Code turns the request into SQL over the governed views only</h2>
+  <div class="cols cols-2">
+    <pre class="code s" data-file="the model's request"><code class="language-json">{"metric": "credit_hours",
+ "filters": {"term": "2025-1",
+             "college": "ENG"}}</code></pre>
+    <pre class="code s" data-file="compiled"><code class="language-sql">SELECT SUM(credit_hours)
+  FILTER (WHERE status &lt;&gt; 'withdrawn')
+  AS value
+FROM enrolment_facts
+WHERE term IN ('2025-1')
+  AND college IN ('ENG')</code></pre>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The compiled query from the lab's step 2, the same question as S09, which free SQL got wrong (13,092 instead of 12,270). The rule is in the metric definition, so the model cannot forget it.</p></aside>
+</section>
+
+<section class="slide" data-label="Validate" id="validate-before-running" data-lo="LO6">
+  <div class="kicker">Lab 4.2, step 3</div>
+  <h2>Validate before running: known metric, known values, allowed tables</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>Parse the SQL (sqlglot) and list every table it reads</li>
+      <li>Refuse any table outside the semantic views</li>
+      <li>Check each filter value exists: a term, a programme, a college</li>
+      <li>Refuse with a reason the model or the user can act on</li>
+    </ul>
+    <div class="trace s">
+      <div class="ev guard"><b>refused</b>term = 1447-2 does not exist (a Hijri name: use hijri_term)</div>
+      <div class="ev guard"><b>refused</b>reads tables outside the semantic layer: ['students']</div>
+    </div>
+  </div>
+  <aside class="notes"><p>Both refusals are printed by the lab's validator tests. The first message is specific enough for a model to retry with the right field, which a live run can do; the stand-in does not retry. Sources: sqlglot (see course sources).</p></aside>
+</section>
+
+<section class="slide" data-label="Measured" id="semantic-results" data-lo="LO6">
+  <div class="kicker">Measured in Lab 4.2, recorded replies</div>
+  <h2>The semantic layer answered 19 of 20, refused one, and gave no wrong number</h2>
+  <table class="t small">
+    <tr><th>20 questions</th><th class="num">Execution accuracy</th><th class="num">Refused</th><th class="num">Wrong and confident</th></tr>
+    <tr><td>Free text-to-SQL</td><td class="num">0.60</td><td class="num">0</td><td class="num">8</td></tr>
+    <tr class="hl"><td>Semantic layer, validated</td><td class="num">0.95</td><td class="num">1</td><td class="num">0</td></tr>
+  </table>
+  <div class="callout note mt-s"><b>The refusal.</b> S17 asked about a term by its Hijri name; the request used it as a term id and the validator refused, with the reason. A refusal can be retried; a wrong number goes into a report.</div>
+  <aside class="notes"><p>Recorded replies, as in Lab 4.1: the comparison is between two designs answering the same 20 questions, not between models. With a key, both labs ask the same free model. This table and the memo are LO6's evidence.</p></aside>
+</section>
+
+<section class="slide" data-label="Small cells" id="small-cell-suppression" data-lo="LO6">
+  <div class="kicker">Lab 4.2 stretch</div>
+  <h2>A cell of fewer than five students can identify them: suppress it</h2>
+  <table class="t small">
+    <tr><th>Programme</th><th>Gender</th><th>Nationality</th><th class="num">Value</th><th>Shown</th></tr>
+    <tr><td>ARB</td><td>F</td><td>Non-Saudi</td><td class="num">2</td><td>fewer than 5</td></tr>
+    <tr><td>GEO</td><td>M</td><td>Non-Saudi</td><td class="num">4</td><td>fewer than 5</td></tr>
+    <tr><td>MED</td><td>F</td><td>Non-Saudi</td><td class="num">5</td><td>5</td></tr>
+  </table>
+  <p class="small mt-s">Enrolled students in the Arts college, first term of 2025/2026, by programme, gender and nationality. The threshold of 5 is set in the catalog.</p>
+  <aside class="notes"><p>Rows printed by the stretch. The rule lives in the layer, so no model and no dashboard can bypass it. The threshold is a policy choice; 5 is common practice, and the institution's data protection officer, Nahla Al-Muqrin in the case, sets it.</p></aside>
+</section>
+
+<section class="slide" data-label="Memo" id="decision-memo" data-lo="LO6">
+  <div class="kicker">Lab 4.2, step 5</div>
+  <h2>The decision memo: one page, the evidence, the cost, when to revisit</h2>
+  <div class="callout note"><b>Decision.</b> Nibras answers statistical questions only through the governed metrics, with validated SQL. Free text-to-SQL is not shipped.</div>
+  <ul class="bullets small mt">
+    <li><b>Evidence</b>: 0.60 with 8 confident wrong numbers, against 0.95 with 1 refusal and none wrong</li>
+    <li><b>Cost</b>: institutional research maintains the views and the catalog; a new metric is a reviewed change</li>
+    <li><b>Data protection</b>: the model never reads student rows</li>
+    <li><b>Revisit</b> when users ask many questions no metric covers: measure them, then add metrics</li>
+  </ul>
+  <aside class="notes"><p>The text the lab writes to artifacts/D4_2/decision_memo.md. Dr. Lubna Al-Harithi is the reader: she decides, so the memo leads with the decision and the evidence, not the method.</p></aside>
+</section>
+
+<section class="slide" id="check-semantic-layer" data-lo="LO6">
+  <div class="kicker">Checkpoint</div>
+  <h2>Does a valid request mean a right answer?</h2>
+  <div class="quiz" data-type="single" data-lo="LO6">
+    <p class="lead">The validator accepts a request for <code>enrolled_students</code> in term 2025-1 for the College of Business. What does that acceptance prove?</p>
+    <div class="opts">
+      <div class="opt" data-why="Confuses a well-formed query with a correct meaning">That the number answers the user's question</div>
+      <div class="opt" data-why="Thinks validation checks the result against a reference, which it cannot">That the result matches the reference answer</div>
+      <div class="opt" data-why="Assumes acceptance covers the model's choice of metric">That the model chose the right metric for the question</div>
+      <div class="opt" data-ok>That the query reads allowed views with filter values that exist</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Validation proves the query is allowed and well formed. Whether "enrolled students" is what the user meant is the metric definition's job, and the test set's.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. This is why the lab still measures execution accuracy after validation: a validated request for the wrong metric is still wrong.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-2" data-auto="lab" data-lab="4.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: compiling filters by string concatenation (use the catalog's dimension names and quote values); a validator that only checks the first table of a join; a KeyError on an unknown dimension instead of a refusal with a reason. Without a key the notebook reads recorded requests.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" data-label="Three numbers" id="three-operating-numbers" data-lo="LO2 LO4 LO6">
+  <div class="kicker">Cost, latency and freshness</div>
+  <h2>Three numbers decide whether Nibras can serve a whole university</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Cost per question</h4><p class="small mb0">Tokens in and out, times the price. The design sets the tokens.</p></div>
+    <div class="card c-cyan"><h4>Tail latency</h4><p class="small mb0">The 95th percentile, by stage: one student in twenty waits that long.</p></div>
+    <div class="card c-purple"><h4>Freshness</h4><p class="small mb0">How long after a circular changes it becomes searchable.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>These are the numbers the capstone README reports next to the quality metrics. Ask which one the vice-rector will ask about first. Usually cost; the students will notice latency; the registrar will notice freshness.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" data-label="Tokens" id="tokens-per-question" data-lo="LO6">
+  <div class="kicker">Measured in Lab 4.3</div>
+  <h2>The pages dominate a regulations question; the catalog dominates a statistics one</h2>
+  <table class="t small">
+    <tr><th>Pipeline</th><th class="num">Input tokens, mean</th><th class="num">Input, p95</th><th class="num">Output</th></tr>
+    <tr><td>Regulations question, top 5 pages</td><td class="num">832</td><td class="num">1,329</td><td class="num">150</td></tr>
+    <tr><td>Free text-to-SQL, schema prompt</td><td class="num">185</td><td class="num">192</td><td class="num">80</td></tr>
+    <tr><td>Semantic layer, metric catalog</td><td class="num">1,080</td><td class="num">1,087</td><td class="num">60</td></tr>
+  </table>
+  <p class="small mt-s">Cost per question is these counts times your provider's prices (set in the lab); on a free model it is zero, and the counts are what a paid model would charge for.</p>
+  <aside class="notes"><p>Token counts are estimates (four characters per token) and the schema prompt here is the bare schema, without the example rows of Lab 4.1. The semantic layer costs more input than free SQL: governance is paid in prompt tokens, and it is cheap next to a wrong number. Halving k on the regulations prompt halves most of its cost; Day 1's recall at 5 says what it costs in quality.</p></aside>
+</section>
+
+<section class="slide" data-label="Tail" id="latency-by-stage" data-lo="LO2">
+  <div class="kicker">Measured in Lab 4.3</div>
+  <h2>The reranker is 99% of the retrieval tail on a laptop processor</h2>
+  <div class="bars">
+    <div class="row"><span>fusion</span><div class="bar c-teal" style="--w:1%"></div><span class="val">0.09 ms</span></div>
+    <div class="row"><span>dense search</span><div class="bar c-teal" style="--w:1%"></div><span class="val">4.4 ms</span></div>
+    <div class="row"><span>lexical search</span><div class="bar c-teal" style="--w:1%"></div><span class="val">6.1 ms</span></div>
+    <div class="row"><span>query embedding</span><div class="bar c-cyan" style="--w:2%"></div><span class="val">82 ms</span></div>
+    <div class="row"><span>rerank 30</span><div class="bar c-coral" style="--w:100%"></div><span class="val">10,880 ms</span></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <p class="caption">95th percentile per stage. Embedding and reranking were measured once when the supplied vectors were made, on a shared laptop without a GPU; the searches are measured in the lab.</p>
+  <aside class="notes"><p>Optimising the fusion code is pointless when the reranker is the tail. Against Nibras's 400 ms budget, everything but the reranker fits with room to spare (under 100 ms). The stretch states it: over budget, shrink the rerank depth first, or move it to a GPU.</p></aside>
+</section>
+
+<section class="slide" data-label="Change" id="one-circular-changes" data-lo="LO4">
+  <div class="kicker">Freshness</div>
+  <h2>A corrected circular: re-index everything, or only what changed</h2>
+  <table class="t small">
+    <tr><th>Circular 2026-060 corrected (summer load 10 to 12 hours)</th><th class="num">Lexical</th><th class="num">Embedding, estimated</th></tr>
+    <tr><td>Full rebuild</td><td class="num">0.82 s</td><td class="num">385 s</td></tr>
+    <tr class="hl"><td>Incremental: delete and insert one page</td><td class="num">0.003 s</td><td class="num">0.15 s</td></tr>
+  </table>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> The text is updated and its old vector stays. Dense search then ranks the page by what it used to say. Mark the vector stale and skip it until it is re-embedded.</div>
+  <aside class="notes"><p>Lab 4.3 steps 3 and 4. The embedding time is estimated from the measured 300-page time; the lexical times are measured. After the incremental update, a search for the new rule finds the page at once, and dense search skips that one page until its vector is rebuilt. The capstone's staleness tests should include a changed document.</p></aside>
+</section>
+
+<section class="slide" data-label="Review" id="operations-review" data-lo="LO2 LO4 LO6">
+  <div class="kicker">One table for the operations review</div>
+  <h2>Report quality, cost, latency and freshness in the same document</h2>
+  <ul class="bullets">
+    <li><b>Quality</b>: nDCG@10 by language (Day 1), staleness and leak suites (Day 2)</li>
+    <li><b>Cost</b>: input and output tokens per question by pipeline, and the price you assume</li>
+    <li><b>Latency</b>: p95 by stage, and the sum as an upper bound</li>
+    <li><b>Freshness</b>: time from a changed document to a searchable one</li>
+  </ul>
+  <div class="callout tip mt"><b>Takeaway.</b> A gain on one number is a decision only when the others are on the same page.</div>
+  <aside class="notes"><p>The lab writes artifacts/D4_3/operations.json in this shape. It is the second half of the capstone README.</p></aside>
+</section>
+
+<section class="slide" id="check-latency" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Where do you cut first?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Nibras's retrieval p95 by stage: lexical 6 ms, dense 4 ms, fusion under 1 ms, query embedding 82 ms, rerank of the top 30 about 10,900 ms. The budget is 400 ms. What do you change first?</p>
+    <div class="opts">
+      <div class="opt" data-ok>The reranker: shrink its depth, move it to a GPU, or drop it, and measure the quality cost</div>
+      <div class="opt" data-why="Optimises a stage that is already a fraction of a millisecond">The fusion code</div>
+      <div class="opt" data-why="Saves 82 ms of a total near 11,000 ms">A faster embedding model</div>
+      <div class="opt" data-why="Removes the cheapest stage and its quality, not the tail">Lexical search</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The tail is the reranker; every other stage together is under 100 ms. Day 1's rerank-depth table says what each option costs in nDCG.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. Link back to the Day 1 checkpoint on the same decision: the numbers are the same, now seen as an operations budget.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-3" data-auto="lab" data-lab="4.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: timing the first query, which includes loading; reporting the mean; forgetting to commit the incremental FTS change before searching. Prices: participants may set a paid model's prices in .env to see a real cost; free models cost zero.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" data-label="Not a diagnosis" id="model-is-bad" data-lo="LO3">
+  <div class="kicker">Diagnosing failures</div>
+  <h2>"The model is bad" is not a diagnosis</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>Students reported <b>20 wrong answers</b> from Nibras</li>
+      <li>Each has a trace: the parsed text, the 50 candidates, the top 5 the model read, the answer</li>
+      <li>The question for each: which component lost the answer first?</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-coral"><h4>Why it matters</h4><p class="small mb0">A new model does not fix an empty parse. A new parser does not fix a prompt. Fix the component that failed, then measure again.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>The traces are synthetic, written by prepare_data.py so that each failure is built to fail in a known component; the re-parse and the search in the lab are real. Ask the room how they diagnose failures today: usually by reading the answer, which is the last step of the pipeline.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
+<section class="slide" data-label="Ladder" id="attribution-ladder" data-lo="LO3">
+  <div class="kicker">The attribution ladder</div>
+  <h2>Walk down the pipeline and stop at the first component that lost the answer</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+    <div class="step c-coral"><b>1 · Parsing</b>are the needed words in the parsed text?</div>
+    <div class="arrow">→</div>
+    <div class="step c-amber"><b>2 · Retrieval</b>is the page among the 50 candidates?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>3 · Ranking</b>is it in the top 5 the model read?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>4 · Generation</b>does the answer contain the needed words?</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout tip mt"><b>Order matters.</b> A page that was never parsed cannot be retrieved; blaming retrieval would send you to the wrong fix.</div>
+  <aside class="notes"><p>Compare the text after NFKC and normalisation, or presentation forms hide a match and every Arabic failure looks like parsing. That is the first bug the lab's step 2 catches.</p></aside>
+</section>
+
+<section class="slide" data-label="Counts" id="failures-by-component" data-lo="LO3">
+  <div class="kicker">Measured in Lab 4.4</div>
+  <h2>Parsing lost the most answers: 7 of 20</h2>
+  <div class="bars">
+    <div class="row"><span>parsing</span><div class="bar c-coral" style="--w:35%"></div><span class="val">7</span></div>
+    <div class="row"><span>retrieval</span><div class="bar c-amber" style="--w:25%"></div><span class="val">5</span></div>
+    <div class="row"><span>ranking</span><div class="bar c-cyan" style="--w:25%"></div><span class="val">5</span></div>
+    <div class="row"><span>generation</span><div class="bar c-purple" style="--w:15%"></div><span class="val">3</span></div>
+  </div>
+  <p class="caption">Attribution of the 20 reported failures; it matches the component each failure was built to fail in.</p>
+  <aside class="notes"><p>Only 3 of 20 are the model's fault. Ask the room what they would have changed first without the ladder. Most would have changed the model, which fixes at most 3.</p></aside>
+</section>
+
+<section class="slide" data-label="Fix" id="fix-and-reattribute" data-lo="LO3 LO2">
+  <div class="kicker">Fix the weakest component, then attribute again</div>
+  <h2>After the re-parse no failure is in parsing, and most moved down the ladder</h2>
+  <table class="t small">
+    <tr><th>Component</th><th class="num">Before</th><th class="num">After the re-parse</th></tr>
+    <tr><td>parsing</td><td class="num">7</td><td class="num">0</td></tr>
+    <tr><td>retrieval</td><td class="num">5</td><td class="num">6</td></tr>
+    <tr><td>ranking</td><td class="num">5</td><td class="num">5</td></tr>
+    <tr class="hl"><td>generation</td><td class="num">3</td><td class="num">9</td></tr>
+  </table>
+  <div class="callout note mt-s"><b>Progress, not passes.</b> Six fixed failures now reach the model with the right page; their recorded answers are still wrong because no model was re-run. One now fails at retrieval.</div>
+  <aside class="notes"><p>The re-parse uses the Day 2 routing rule: scans and reversed Arabic go to the layout-aware parser. The answers are not regenerated in the lab, which is why the six land in generation; with a live model, re-ask and attribute a third time. The stretch runs the ranking failures through Day 1's hybrid search: four of five reach the top 3.</p></aside>
+</section>
+
+<section class="slide" data-label="Capstone" id="diagnosis-in-the-capstone" data-lo="LO3 LO2">
+  <div class="kicker">Into the capstone</div>
+  <h2>The defence asks you to explain one failure by component</h2>
+  <ul class="bullets">
+    <li>Pick a failure from your own test set or your traces</li>
+    <li>Show where it stopped on the ladder, with the evidence for each step</li>
+    <li>Say what you changed, and the before and after counts</li>
+  </ul>
+  <div class="callout tip mt"><b>Takeaway.</b> The method is cheap: four checks per failure, no model needed. Run it every time the error count moves.</div>
+  <aside class="notes"><p>The lab writes artifacts/D4_4/attribution.json. Point to the capstone rubric: "Agentic or structured-data component" and "Reproducibility" both reward a diagnosis that someone else can rerun.</p></aside>
+</section>
+
+<section class="slide" id="check-attribution" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which component lost this answer?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">A failure's trace: the needed words are in the parsed text, the answering page is candidate 12 of 50, and the top 5 the model read do not include it. The answer says "I could not find a rule". Which component do you attribute it to?</p>
+    <div class="opts">
+      <div class="opt" data-why="Stops at the last step, which only reported what it was given">Generation</div>
+      <div class="opt" data-why="The page was among the candidates, so retrieval did its part">Retrieval</div>
+      <div class="opt" data-ok>Ranking</div>
+      <div class="opt" data-why="The words were in the parsed text, so parsing did its part">Parsing</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The page reached the candidates but not the top 5: the first component that lost it is ranking. A reranker or hybrid fusion is the fix to try.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. Note that the model's answer was honest: it said it could not find the rule. Generation did its job with the pages it had.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-4-4" data-auto="lab" data-lab="4.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Walk the room. Usual problems: comparing without NFKC, so every Arabic failure looks like parsing; checking the top 5 before the candidates; forgetting to attribute again after the fix. The traces are synthetic; the re-parse and the search are real.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
+<!-- ======================= CLOSING ======================= -->
+<section class="slide" id="wrap-up" data-label="Recap">
   <div class="kicker">Day 4 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Govern the numbers</h4><p class="small mb0">Metrics as reviewed code, validated SQL: 0.95 and no confident wrong number, against 0.60 and eight.</p></div>
+    <div class="card c-coral"><h4>Operate on three numbers</h4><p class="small mb0">Cost per question, p95 by stage, and the time from a change to a searchable page.</p></div>
+    <div class="card c-purple"><h4>Diagnose by component</h4><p class="small mb0">The first component that lost the answer; fix it, attribute again.</p></div>
   </div>
+  <aside class="notes"><p>Ask each table to name the one result from this week they would show the vice-rector. Then hand over to the capstone: the brief is in the capstone deck and the README.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
-  <h2>Capstone: Capstone project presentations</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <h2>Capstone: a measured retrieval layer</h2>
+  <p class="lead">Build a retrieval layer for Nibras, or for a synthetic or public corpus you bring, and publish it as a public repository whose README reports metrics by language, leak and staleness tests, latency and cost per question. Then an eight-minute defence and four minutes of questions.</p>
+  <aside class="notes"><p>Remind participants that the labs already produced the pieces of the README: the results table (artifacts/D1_4), the staleness tests (Lab 2.3) and the access tests (artifacts/D2_4), the comparison (Lab 3.2), the memo (Lab 4.2), the operations table (Lab 4.3) and the attribution (Lab 4.4).</p></aside>
 </section>
