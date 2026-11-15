@@ -9,7 +9,7 @@
     "en": "Retrieval and Knowledge Engineering for Language Model Systems",
     "ar": "هندسة الاسترجاع والمعرفة لأنظمة النماذج اللغوية"
   },
-  "tagline": "REPLACE: one line under the title: what participants can do after the course",
+  "tagline": "Build and measure the retrieval layer of a language model system: search, corpus preparation, access, agents and structured data",
   "description": "Participants build and measure the retrieval layer of a language model system for a fictional university: bilingual regulations, study plans with tables, scanned Arabic circulars and an enrolment statistics warehouse. Starting from a graded test set, they build lexical, dense, hybrid and reranked search with Arabic normalisation, parse and chunk documents by structure, filter by date and role, give an agent search tools and a small knowledge graph, and answer statistical questions through a semantic layer instead of free text-to-SQL.",
   "track": "ai-engineering",
   "level": 300,
@@ -68,8 +68,8 @@
     }
   ],
   "case_study": {
-    "name": "REPLACE: the name of the fictional organisation every lab works on",
-    "summary": "REPLACE: two sentences on the case study and its synthetic data"
+    "name": "Al-Nuha University",
+    "summary": "Al-Nuha University is a fictional public university with six colleges whose regulations assistant, Nibras, answers students and staff from bilingual regulations, study plans with tables, scanned Arabic circulars, staff-only records and an enrolment statistics warehouse. Participants build and measure Nibras's retrieval layer on about 3,000 synthetic pages and a synthetic warehouse, generated with a fixed seed, with planted problems: dialect queries, broken parses, superseded rules, near-duplicate circulars, mislabelled staff pages and warehouse traps."
   },
   "format": "intensive",
   "format_note": "Intensive: 4 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task",
