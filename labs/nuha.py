@@ -61,6 +61,20 @@ def check(ok: bool, what: str) -> None:
         raise AssertionError(what)
 
 
+def reference_wer(ref_words: list[str], hyp_words: list[str]) -> float:
+    """The reference word error rate of Lab 2.1: word edit distance over the number of reference words.
+    The lab's safety net when the exercise is not done yet."""
+    if not hyp_words:
+        return 1.0
+    prev = list(range(len(hyp_words) + 1))
+    for i, rw in enumerate(ref_words, 1):
+        cur = [i] + [0] * len(hyp_words)
+        for j, hw in enumerate(hyp_words, 1):
+            cur[j] = min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (rw != hw))
+        prev = cur
+    return min(1.0, prev[-1] / max(1, len(ref_words)))
+
+
 def reference(name: str):
     """A supplied reference result: keeps a notebook running when an exercise is not done yet."""
     return json.loads((REF / f"{name}.json").read_text(encoding="utf-8"))

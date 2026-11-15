@@ -108,9 +108,7 @@ try:
     toy = wer("the final examination", "the examination final")
 except NotImplementedError:
     def wer(reference, hypothesis):
-        import difflib
-        r, h = words(reference), words(hypothesis)
-        return 1.0 if not h else 1 - difflib.SequenceMatcher(a=r, b=h, autojunk=False).ratio()
+        return U.reference_wer(words(reference), words(hypothesis))
     toy = wer("the final examination", "the examination final")
 print("toy WER:", round(toy, 3))
 U.check(abs(toy - 2 / 3) < 1e-9, "a swapped word pair costs two edits out of three words")
