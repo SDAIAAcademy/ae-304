@@ -558,7 +558,7 @@
           "title": "Knowledge graphs for linked facts",
           "summary": "A small graph for facts that are links, queried with tools, measured against search",
           "outcomes": [
-            "Build a graph of courses, programmes and prerequisites from extracted facts",
+            "Build a graph of courses, prerequisites and rules from extracted facts",
             "Expose graph queries as tools",
             "Compare relationship answers with and without the graph"
           ],
@@ -569,7 +569,7 @@
             "id": "3.4",
             "title": "A graph of courses, prerequisites and rules",
             "minutes": 25,
-            "summary": "Build a small graph of courses, programmes and prerequisites, expose three graph queries as tools, and answer ten relationship questions with search only and with the graph.",
+            "summary": "Build a small graph of courses, prerequisites, programmes and each college's transfer rule, expose three graph queries as tools, and answer ten relationship questions with search only and with the graph.",
             "href": "D3_4_build_small_graph.ipynb",
             "steps": [
               {

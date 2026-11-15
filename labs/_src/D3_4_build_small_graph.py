@@ -135,7 +135,9 @@ def dependants_of(code: str) -> list[str]:
 
 
 try:
-    print(QS[0]["q"], "->", prerequisites_of(QS[0]["q"].split()[-1].strip("?")))
+    first = prerequisites_of(re.findall(r"[A-Z]{3} \d{3}", QS[0]["q"])[-1])
+    print(QS[0]["q"], "->", first)
+    U.check(first == sorted(QS[0]["expect"]), "the whole prerequisite chain in one call")
     GRAPH_TOOLS = [prerequisites_of, programmes_including, dependants_of]
 except NotImplementedError:
     GRAPH_TOOLS = None

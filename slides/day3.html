@@ -197,7 +197,7 @@ while True:
     <div class="stat"><div class="big">3 of 5</div><div class="lbl">with 4 searches</div></div>
   </div>
   <p class="small mt">Doubling the budget bought nothing on these five: the misses fail for another reason. Look at their traces before raising the budget.</p>
-  <aside class="notes"><p>The three-hop questions follow a prerequisite to its own prerequisite. The two misses never find the second course page; that is a retrieval miss, and tomorrow's graph session answers the same kind of question in one call.</p></aside>
+  <aside class="notes"><p>The three-hop questions follow a prerequisite to its own prerequisite. The two misses never find the second course page; that is a retrieval miss, and Session 4's graph answers the same kind of question in one call.</p></aside>
 </section>
 
 <section class="slide" id="check-iterative" data-lo="LO5">
@@ -342,6 +342,7 @@ while True:
     <ul class="bullets small">
       <li>Nodes and edges come from the course pages and plans, already extracted (<code>data/graph/</code>)</li>
       <li>Edge kinds: <code>requires</code> (course to prerequisite), <code>includes</code> (programme to course), <code>in</code> (programme to college)</li>
+      <li>Each college node carries a rule: the GPA its transfer rule requires</li>
       <li>NetworkX in memory; Neo4j or a SQL table of edges at scale</li>
     </ul>
   </div>
@@ -385,7 +386,7 @@ def programmes_including(code: str) -&gt; list[str]:
     <div class="card c-coral"><h4>Not worth it</h4><p class="small mb0">"What does the regulation say about appeals?": one passage answers it, and search finds it.</p></div>
   </div>
   <div class="callout tip mt"><b>Takeaway.</b> A graph is a structured index for one family of questions. Keep it small, typed, and checked against its sources.</div>
-  <aside class="notes"><p>The stretch adds a rule edge: transfer requirements per college, which turns yesterday's two-hop question into one graph call. Ask which of Nibras's question logs would tell them a graph is needed: repeated multi-hop questions about the same kinds of link.</p></aside>
+  <aside class="notes"><p>The stretch adds a rule edge: transfer requirements per college, which turns Session 2's two-hop question into one graph call. Ask which of Nibras's question logs would tell them a graph is needed: repeated multi-hop questions about the same kinds of link.</p></aside>
 </section>
 
 <section class="slide" id="check-graph" data-lo="LO5">

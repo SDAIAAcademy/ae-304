@@ -50,6 +50,17 @@
   <aside class="notes"><p>The lab's two parsers are simulated from the reference text with the failure patterns of each family, so every room gets the same scores. Say this plainly: the patterns are real, the outputs are generated. The method of scoring is what transfers to a real parser.</p></aside>
 </section>
 
+<section class="slide" data-label="Which reader" id="specialised-or-general-reader" data-lo="LO3">
+  <div class="kicker">Inside the layout-aware family</div>
+  <h2>A small parsing model or a general vision model: score both on your pages</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Small specialised parsing model</h4><p class="small mb0">Trained only to read documents: layout, reading order, table structure, characters. Runs on modest hardware and costs little per page. Weak on layouts it never saw.</p></div>
+    <div class="card c-purple"><h4>General vision model</h4><p class="small mb0">Reads the page image and follows an instruction, such as "return this table as Markdown". Flexible on odd layouts. Costs more per page and can write fluent text that is not on the page.</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A misread letter looks like a mistake. An invented word looks like text. Only a score against reference pages, by page type, shows which one you have.</div>
+  <aside class="notes"><p>No benchmark numbers on purpose: these models change every few months, and a leaderboard rarely includes scanned Arabic circulars. The method is the lab's: the same 30 pages, word error rate and table cells by page type, then a routing rule. A common result is a cascade: the specialised model for most pages, the general model only for the pages it scores badly on. For Arabic, check right-to-left reading order and digits in tables first.</p></aside>
+</section>
+
 <section class="slide" data-label="One page" id="one-page-three-ways" data-lo="LO3">
   <div class="kicker">Lab 2.1, step 1</div>
   <h2>The same study-plan page, as the text layer gives it</h2>

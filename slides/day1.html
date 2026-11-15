@@ -142,7 +142,7 @@ ndcg = dcg / ideal_dcg   # the same sum over the best possible order</code></pre
 </section>
 
 <section class="slide lab" id="lab-1-1" data-auto="lab" data-lab="1.1">
-  <aside class="notes"><p>Walk the room. Usual problems: grading the page by its title without reading it; giving the Arabic and English copies of one page different grades; computing nDCG with the rank starting at 0 (log2(1) is 0, a division by zero). Pairs that disagree by more than one grade should talk it through against the guideline: that is the exercise.</p></aside>
+  <aside class="notes"><p>This lab is done without AI assistance: the judgements are the participants' own, and the test set is only as good as they are. Walk the room. Usual problems: grading the page by its title without reading it; giving the Arabic and English copies of one page different grades; computing nDCG with the rank starting at 0 (log2(1) is 0, a division by zero). Pairs that disagree by more than one grade should talk it through against the guideline: that is the exercise.</p></aside>
 </section>
 
 <!-- ======================= SESSION 2 ======================= -->
@@ -188,7 +188,7 @@ SELECT id, bm25(idx) FROM idx
   <table class="t small">
     <tr><th>Variation</th><th>Written</th><th>Also written</th></tr>
     <tr><td>Hamza on alif</td><td class="ar">الأولى</td><td class="ar">الاولى</td></tr>
-    <tr><td>Final ya and alif maqsura</td><td class="ar">النهائي</td><td class="ar">النهايي</td></tr>
+    <tr><td>Final ya and alif maqsura</td><td class="ar">المستوى</td><td class="ar">المستوي</td></tr>
     <tr><td>Ta marbuta and ha</td><td class="ar">الجامعة</td><td class="ar">الجامعه</td></tr>
     <tr><td>Diacritics and tatweel</td><td class="ar">الدِّراسة</td><td class="ar">الدراسة</td></tr>
     <tr><td>Clitics</td><td class="ar">والطلاب</td><td class="ar">الطلاب</td></tr>
@@ -401,7 +401,7 @@ model.encode("passage: " + page_text)</code></pre>
     <table class="t small">
       <tr><th>Weighted score fusion</th><th class="num">nDCG@10</th></tr>
       <tr><td>alpha 0.3</td><td class="num">0.570</td></tr>
-      <tr><td>alpha 0.5</td><td class="num">0.564</td></tr>
+      <tr><td>alpha 0.5</td><td class="num">0.566</td></tr>
       <tr><td>alpha 0.7</td><td class="num">0.556</td></tr>
     </table>
   </div>

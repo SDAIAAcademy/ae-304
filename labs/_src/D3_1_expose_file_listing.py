@@ -178,6 +178,8 @@ try:
         return vector_search(query, k)
 
 
+    vector_search_misleading.__name__ = "vector_search"  # the model sees the same name, another description
+
     para = [q for q in QS if q["best"] == "vector_search"]
     for q in para:
         r = U.run_agent(q["q"], [list_files, keyword_search, vector_search_misleading], T.standin_pick, system=SYSTEM, max_steps=4)
