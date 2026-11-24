@@ -232,13 +232,54 @@ SELECT id, bm25(idx) FROM idx
   <div class="kicker">Read the failures, not only the score</div>
   <h2>Dialect fails on vocabulary, which no spelling rule repairs</h2>
   <div class="chat">
-    <div class="msg user"><span class="who">Student</span><span class="ar">ابي انسحب من ماده متى اخر يوم</span></div>
-    <div class="msg ai bad"><span class="who">Top result</span>Circular 2026-012, on another subject</div>
     <div class="msg user"><span class="who">Student</span><span class="ar">ابي اوقف دراستي ترم كم مره يسمحون</span></div>
     <div class="msg ai bad"><span class="who">Top result</span>Article 36, lateness to an exam</div>
   </div>
-  <div class="callout tip mt-s"><b>Takeaway.</b> <span class="ar">اوقف دراستي</span> means "postpone my study", but the regulation says <span class="ar">تأجيل الدراسة</span>. Matching words cannot bridge that; matching meaning might.</div>
-  <aside class="notes"><p>These are real top results from Lab 1.2 step 5 (queries Q52 and Q57). Translate both for non-Arabic speakers: "I want to withdraw from a course, when is the last day" and "I want to stop my studies for a term, how many times is it allowed". Bridge to Session 3.</p></aside>
+  <div class="callout tip mt-s"><b>Takeaway.</b> <span class="ar">اوقف دراستي</span> means "postpone my study", but the regulation says <span class="ar">تأجيل الدراسة</span>. No spelling rule bridges that; other words can: the corpus's own, or a model of meaning.</div>
+  <aside class="notes"><p>A real top result from Lab 1.2 step 5 (query Q57). Translate for non-Arabic speakers: "I want to stop my studies for a term, how many times is it allowed". The next two slides bridge the gap with the corpus's words; Session 3 tries meaning.</p></aside>
+</section>
+
+<section class="slide" data-label="Vocabulary gap" id="vocabulary-gap" data-lo="LO2">
+  <div class="kicker">Read the index's vocabulary</div>
+  <h2>A word the index never saw matches nothing, however it is spelled</h2>
+  <div class="cols cols-2">
+    <div>
+      <p class="small mb0">A student asks: <span class="ar">ماده ما كملتها وش يكتبون بالسجل</span> ("a course I did not finish, what goes on my record?")</p>
+      <table class="t small mt-s">
+        <tr><th>Query word, analysed</th><th class="num">Public pages that hold it</th></tr>
+        <tr><td class="ar">ماد</td><td class="num">119</td></tr>
+        <tr><td class="ar">سجل</td><td class="num">43</td></tr>
+        <tr><td class="ar">ما</td><td class="num">7</td></tr>
+        <tr class="hl"><td class="ar">كملت · يكتب · وش</td><td class="num">0</td></tr>
+      </table>
+    </div>
+    <div class="stack">
+      <div class="card c-coral flat"><h4>What BM25 returns</h4><p class="small mb0">Circular 2024-090 first. Article 43, on the incomplete grade, is not in the top 10.</p></div>
+      <div class="card c-teal flat"><h4>How to read it</h4><p class="small mb0">The words that carry the question have a count of 0: the student and the regulation use different words.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Ask the room which words carry the meaning: <span class="ar">كملتها</span> ("finished it"). The regulation calls it <span class="ar">تقدير غير مكتمل</span>. The counts are document frequencies in the normalised index of Lab 1.2: the same analyser, the same 2,617 Public pages. This query is not in test set v1. Figures: labs/_tools/rewrite_and_migration.py.</p></aside>
+</section>
+
+<section class="slide" data-label="Rewrite" id="rewrite-from-corpus" data-lo="LO2">
+  <div class="kicker">Query rewriting</div>
+  <h2>Rewrite into the corpus's own words, and keep only rewrites the index holds</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>Words added to the query</th><th class="num">Pages per added word</th><th>Article 43</th></tr>
+      <tr><td class="ar">ناقص</td><td class="num">0</td><td>not in top 10</td></tr>
+      <tr><td class="ar">معلق</td><td class="num">0</td><td>not in top 10</td></tr>
+      <tr class="hl"><td class="ar">تقدير غير مكتمل</td><td class="num">16 · 10 · 1</td><td>first</td></tr>
+    </table>
+    <ul class="bullets small">
+      <li><b>Take the target from the corpus</b>: a title or a heading, run through the same analyser</li>
+      <li><b>Check it</b>: every added word occurs in the index, or the rewrite does nothing</li>
+      <li><b>Add, do not replace</b>: keep the student's words</li>
+      <li><b>Measure it</b> on the dialect slice and on the rest</li>
+    </ul>
+  </div>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> A rewrite that sounds right but uses words the corpus never uses fails silently: the ranking does not move.</div>
+  <aside class="notes"><p>Same query as the previous slide; each row adds words to it and searches the normalised index again. Where rewrites come from: search logs, a person who reads the failures, or a model that proposes them. Whoever proposes them, the index's vocabulary decides which to keep. Lab 1.2 has an optional cell that does this for the test set's dialect failures; keep its result for the debrief. Figures: labs/_tools/rewrite_and_migration.py.</p></aside>
 </section>
 
 <section class="slide" id="check-normalisation" data-lo="LO2">
@@ -258,7 +299,7 @@ SELECT id, bm25(idx) FROM idx
 </section>
 
 <section class="slide lab" id="lab-1-2" data-auto="lab" data-lab="1.2">
-  <aside class="notes"><p>Walk the room. Usual problems: removing all alifs instead of unifying them; a stemmer that strips <span class="ar">ال</span> from words that begin with those letters (keep a minimum stem length); comparing runs on different query subsets. Early finishers: the stretch, a weighted title column, reached nDCG@10 0.578 in our run.</p></aside>
+  <aside class="notes"><p>Walk the room. Usual problems: removing all alifs instead of unifying them; a stemmer that strips <span class="ar">ال</span> from words that begin with those letters (keep a minimum stem length); comparing runs on different query subsets. Early finishers: the stretch, a weighted title column, reached nDCG@10 0.578 in our run; the optional rewrite cell in step 5 raised dialect recall@10 from 0.25 to 0.60 with seven rewrites, every one checked against the index.</p></aside>
 </section>
 
 <!-- ======================= SESSION 3 ======================= -->
@@ -324,6 +365,43 @@ model.encode("passage: " + page_text)</code></pre>
   <aside class="notes"><p>Sources: the timings are in data/reference/timings.json, written by labs/_tools/make_vectors.py. MiniLM was faster to index here but slower per query on this machine; timings on a shared laptop are noisy, which is why the lab reports the 95th percentile and not one run.</p></aside>
 </section>
 
+<section class="slide" data-label="One space" id="one-model-per-index" data-lo="LO2">
+  <div class="kicker">Changing the embedding model</div>
+  <h2>Half-way through a model change, search sees only the pages already re-embedded</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>MiniLM index, pages moved to e5</th><th class="num">nDCG@10</th><th class="num">top 10 from moved pages</th></tr>
+      <tr><td>25%</td><td class="num">0.138</td><td class="num">100%</td></tr>
+      <tr><td>50%</td><td class="num">0.288</td><td class="num">100%</td></tr>
+      <tr><td>75%</td><td class="num">0.399</td><td class="num">100%</td></tr>
+      <tr class="hl"><td>100%</td><td class="num">0.507</td><td class="num">100%</td></tr>
+    </table>
+    <div class="stack">
+      <div class="stat"><div class="big">0.70 to 0.89</div><div class="lbl">cosine of one e5 query with e5 pages</div></div>
+      <div class="stat"><div class="big">−0.15 to 0.09</div><div class="lbl">the same query with MiniLM pages</div></div>
+    </div>
+  </div>
+  <div class="callout warn mt-s"><b>What goes wrong.</b> Both models give 384 numbers, so a mixed index raises no error. The old pages simply never compete.</div>
+  <aside class="notes"><p>The queries are already embedded with e5; a random share of the pages (seed 304) has been re-embedded, the rest keep their MiniLM vectors. Every page in every top 10 is a moved page: a vector from another model is not a worse match, it is no match, so the score rises only with the share moved. Ask: what would users report during this migration? "Some answers vanished", with nothing in the logs. Figures: labs/_tools/rewrite_and_migration.py on the supplied vectors.</p></aside>
+</section>
+
+<section class="slide" data-label="Migrate" id="migrate-by-reembedding" data-lo="LO2">
+  <div class="kicker">The procedure</div>
+  <h2>A new model means a new index: re-embed everything, then switch queries and pages together</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Build beside</b>embed the whole corpus with the new model into a second index</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Measure</b>the test set by language on the new index</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Switch together</b>query model and index in one step; keep the old one to roll back</div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-teal flat"><h4>Record the model</h4><p class="small mb0">Store the model's name with the index and refuse a query vector from any other.</p></div>
+    <div class="card c-coral flat"><h4>Plan the time</h4><p class="small mb0">The full re-embedding is the cost of the change: 7.3 minutes here, much longer at a million pages.</p></div>
+  </div>
+  <aside class="notes"><p>The same holds for any change that moves the vectors: another model version, other prefixes, another maximum length. Incremental updates (Day 4 Session 3) are right only inside one model. Lab 1.3 has an optional cell that queries one model's index with the other's query vectors; keep its result for the debrief.</p></aside>
+</section>
+
 <section class="slide" data-label="Exact or HNSW" id="exact-or-approximate" data-lo="LO2">
   <div class="kicker">Indexes for vectors</div>
   <h2>Exact search compares with every page; HNSW walks a graph of neighbours</h2>
@@ -342,18 +420,7 @@ model.encode("passage: " + page_text)</code></pre>
       <tr><td>Exact p95</td><td class="num">1.15 ms</td><td class="num">1.29 ms</td></tr>
     </table>
   </div>
-  <aside class="notes"><p>At 3,000 pages exact search is already fast; the point is what you give up at a million. With efSearch 32 e5's overlap was 0.897; at 64 it is 0.922. That knob trades recall for time. Tools: FAISS in the lab; pgvector, Qdrant and LanceDB offer the same index types.</p></aside>
-</section>
-
-<section class="slide" data-label="Eight bits" id="quantised-vectors" data-lo="LO2">
-  <div class="kicker">Stretch result</div>
-  <h2>Eight-bit vectors take a quarter of the space and keep 99% of the top 10</h2>
-  <div class="cols cols-2">
-    <div class="stat"><div class="big">4.02 → 1.01 MB</div><div class="lbl">e5 index, 32-bit floats to 8-bit codes</div></div>
-    <div class="stat"><div class="big">0.987</div><div class="lbl">overlap with the exact top 10</div></div>
-  </div>
-  <div class="callout tip mt"><b>Takeaway.</b> Memory is usually the first limit of a vector index on modest hardware; scalar quantisation is the first lever, and its cost is measurable.</div>
-  <aside class="notes"><p>From the Lab 1.3 stretch (faiss.IndexScalarQuantizer, QT_8bit). Most vector databases offer the same option under names like scalar or binary quantisation.</p></aside>
+  <aside class="notes"><p>At 3,000 pages exact search is already fast; the point is what you give up at a million. With efSearch 32 e5's overlap was 0.897; at 64 it is 0.922. That knob trades recall for time. Tools: FAISS in the lab; pgvector, Qdrant and LanceDB offer the same index types. Memory is usually the first limit on modest hardware: the lab's stretch stores the vectors in eight bits (scalar quantisation), an option most vector databases offer.</p></aside>
 </section>
 
 <section class="slide" id="check-embedding-choice" data-lo="LO2">
@@ -373,7 +440,7 @@ model.encode("passage: " + page_text)</code></pre>
 </section>
 
 <section class="slide lab" id="lab-1-3" data-auto="lab" data-lab="1.3">
-  <aside class="notes"><p>Walk the room. Usual problems: forgetting the Public mask, so Restricted pages appear in results (Day 2 Session 4 explains why that matters); mixing e5 and MiniLM vectors; timing the first query, which includes loading. In Colab, the first cell downloads both models once; if the runtime is slow, set the sample to 100 pages.</p></aside>
+  <aside class="notes"><p>Walk the room. Usual problems: forgetting the Public mask, so Restricted pages appear in results (Day 2 Session 4 explains why that matters); mixing e5 and MiniLM vectors; timing the first query, which includes loading. In Colab, the first cell downloads both models once; if the runtime is slow, set the sample to 100 pages. Debrief for early finishers: the eight-bit stretch took the e5 index from 4.02 to 1.01 MB and kept 0.987 of the exact top 10; the optional cell in step 3 (MiniLM queries on the e5 index) scored nDCG@10 0.011, with no error raised.</p></aside>
 </section>
 
 <!-- ======================= SESSION 4 ======================= -->
@@ -500,7 +567,7 @@ model.encode("passage: " + page_text)</code></pre>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
     <div class="card c-teal"><h4>Measure retrieval alone</h4><p class="small mb0">A versioned test set with graded judgements, reported by language and query type.</p></div>
-    <div class="card c-coral"><h4>Arabic needs analysis</h4><p class="small mb0">Normalise both sides. It lifted Arabic recall from 0.34 to 0.44; dialect needs meaning, not spelling.</p></div>
+    <div class="card c-coral"><h4>Arabic needs analysis</h4><p class="small mb0">Normalise both sides. It lifted Arabic recall from 0.34 to 0.44; dialect needs other words, not other spellings.</p></div>
     <div class="card c-purple"><h4>Gain and latency in one row</h4><p class="small mb0">Fusion is nearly free; reranking gains most and may not fit the budget.</p></div>
   </div>
   <aside class="notes"><p>Ask each table for the one number from today they would put on Nibras's dashboard. Good answers: nDCG@10 on Arabic queries, dialect recall, p95 latency of the first stage.</p></aside>

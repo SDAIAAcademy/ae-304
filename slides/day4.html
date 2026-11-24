@@ -301,7 +301,7 @@ WHERE term IN ('2025-1')
     <tr class="hl"><td>Incremental: delete and insert one page</td><td class="num">0.003 s</td><td class="num">0.15 s</td></tr>
   </table>
   <div class="callout warn mt-s"><b>What goes wrong.</b> The text is updated and its old vector stays. Dense search then ranks the page by what it used to say. Mark the vector stale and skip it until it is re-embedded.</div>
-  <aside class="notes"><p>Lab 4.3 steps 3 and 4. The embedding time is estimated from the measured 300-page time; the lexical times are measured. After the incremental update, a search for the new rule finds the page at once, and dense search skips that one page until its vector is rebuilt. The capstone's staleness tests should include a changed document.</p></aside>
+  <aside class="notes"><p>Lab 4.3 steps 3 and 4. The embedding time is estimated from the measured 300-page time; the lexical times are measured. After the incremental update, a search for the new rule finds the page at once, and dense search skips that one page until its vector is rebuilt. The capstone's staleness tests should include a changed document. Incremental re-embedding holds only while the model stays the same: a new embedding model means re-embedding the whole corpus, as Day 1 Session 3 showed.</p></aside>
 </section>
 
 <section class="slide" data-label="Review" id="operations-review" data-lo="LO2 LO4 LO6">

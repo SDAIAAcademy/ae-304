@@ -156,6 +156,46 @@
       "lo": ["LO2"], "day": "day1", "session": 3, "level": "understand", "pool": "practice", "weight": 1
     },
     {
+      "id": "re-lo2-rewrite-vocabulary",
+      "type": "single",
+      "prompt": "Students ask Nibras \"متى ينزل الراتب\" about their monthly allowance, and normalised BM25 returns no page at all. The service guide calls the allowance \"المكافأة الشهرية\". Which change should Kawthar make?",
+      "options": [
+        "Replace \"الراتب\" with \"المكافأة\" in every query that contains it",
+        "Add a rewrite proposed by a language model, without looking at the index",
+        "Add the guide's own word \"المكافأة\" once the index is shown to hold it",
+        "Stem more deeply, so that \"الراتب\" and \"المكافأة\" share a root"
+      ],
+      "correct": [2],
+      "explanation": "The query's key word occurs in no page, so it can match nothing. Adding the corpus's own term, checked against the index and kept beside the student's words, finds the guide page; a rewrite into words the index lacks changes nothing.",
+      "misconceptions": [
+        "Drops the student's words, which other pages may use, instead of adding to them",
+        "Trusts a plausible rewrite without checking that the index holds its words",
+        "",
+        "Expects a stemmer to join two different words, which only rewriting or a model of meaning can"
+      ],
+      "lo": ["LO2"], "day": "day1", "session": 2, "level": "apply", "pool": "practice", "weight": 1
+    },
+    {
+      "id": "re-lo2-model-change",
+      "type": "single",
+      "prompt": "Nibras's page vectors come from embedding model A. Kawthar's colleague proposes switching the queries to model B today and re-embedding the pages with B at 10% a night, since both models give 768 numbers. What will search do during those ten nights?",
+      "options": [
+        "Return almost only the pages that are already re-embedded with B",
+        "Rank every page a little worse until the move is complete",
+        "Raise an error on each query, since the two spaces do not match",
+        "Work as before, since any two vectors of one length can be compared"
+      ],
+      "correct": [0],
+      "explanation": "A query vector from B is close only to page vectors from B; pages still in A's space never compete, and nothing reports an error. Re-embed the whole corpus into a new index and switch queries and pages together.",
+      "misconceptions": [
+        "",
+        "Thinks vectors from two models are a weaker match rather than no match",
+        "Expects a mismatch of models to fail loudly when the lengths agree",
+        "Takes the same number of dimensions for the same space"
+      ],
+      "lo": ["LO2"], "day": "day1", "session": 3, "level": "analyze", "pool": "practice", "weight": 1
+    },
+    {
       "id": "re-lo3-scan",
       "type": "single",
       "prompt": "A scanned page of the study plan goes through a parser that reads only the PDF text layer. What does the index get?",

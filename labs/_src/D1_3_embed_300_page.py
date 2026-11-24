@@ -151,6 +151,29 @@ U.check(max(DIALECT.values()) > 0.25, "one of the two models finds more dialect 
 # query type. Look at the dialect and course rows before you pick one from a leaderboard.
 
 # %% [markdown]
+# **If you finish early · One index, one model.** Both models give 384 numbers, so nothing stops a
+# MiniLM query vector from being compared with e5 page vectors: no error, no warning.
+#
+# ✏️ **Exercise** · Embed the 60 queries with MiniLM, search the e5 page vectors with them
+# (`evaluate_matrix`), and compare with e5 queries on the same index.
+
+# %%
+try:
+    # BEGIN SOLUTION
+    crossed = evaluate_matrix(U.page_vectors("e5"), np.stack([U.embed_query(q["text"], "minilm") for q in QUERIES]))
+    # END SOLUTION
+    print(pd.DataFrame({"e5 queries": with_prefix["nDCG@10"], "MiniLM queries": crossed["nDCG@10"]}))
+    U.check(U.page_vectors("e5").shape[1] == U.embed_query(QUERIES[0]["text"], "minilm").shape[0], "the shapes agree, so nothing raised an error")
+    U.check(crossed.loc["all", "nDCG@10"] < 0.1, "queries from another model find almost nothing")
+except NotImplementedError:
+    print("(not attempted yet: the reference solution is in solutions/)")
+
+# %% [markdown]
+# 🔍 A vector means something only next to vectors from the same model. What must happen to the 2,977
+# page vectors on the day Nibras changes its query model, and what should the index store so that a
+# mismatch is caught before a query runs?
+
+# %% [markdown]
 # ## 4 · An HNSW index: recall against exact, size, latency (6')
 #
 # Exact search compares the query with every page. An approximate index (HNSW: a graph of neighbours you
@@ -247,5 +270,7 @@ except NotImplementedError:
 #    <details><summary>Answer</summary>Overlap depends on the graph settings and the corpus; measure it again at the real size.</details>
 # 3. Which part of the latency does an approximate index not touch?
 #    <details><summary>Answer</summary>The query embedding, which is most of it here.</details>
+# 4. Nibras moves to a new embedding model. Can the old page vectors stay while new pages get new ones?
+#    <details><summary>Answer</summary>No: queries and pages must come from one model. Re-embed the whole corpus into a new index, record the model's name with it, and switch the queries over only when it is complete.</details>
 #
 # **Carry forward.** `artifacts/D1_3/results.json`: two more rows of the results table.

@@ -182,6 +182,52 @@ for q in [q for q in QUERIES if q["type"] == "dialect"]:
 # whether a vector search, which compares meanings, finds these.
 
 # %% [markdown]
+# **If you finish early · Rewrite with the corpus's words.** A query word that occurs in no Public page
+# can match nothing, however well it is spelled. Count, for every analysed word, how many Public pages
+# hold it (`DF`). The dialect words with a count of 0 are the gap.
+#
+# ✏️ **Exercise** · Fill `REWRITES`: for each unseen dialect word of the failing queries, the words the
+# answering article itself uses (read its title with `U.page`). Keep a rewrite only if every word it adds
+# occurs in the index. `expand` keeps the student's words and adds the rewrite; nothing is replaced.
+
+# %%
+from collections import Counter
+
+DF = Counter()
+for p in PAGES:
+    DF.update(set(analyse(p["text"])))
+DIALECT_Q = [q for q in QUERIES if q["type"] == "dialect"]
+for q in DIALECT_Q:
+    print(q["query_id"], "unseen:", [w for w in analyse(q["text"]) if DF[w] == 0])
+
+try:
+    # BEGIN SOLUTION
+    REWRITES = {"اغيب": "الغياب المواظبة", "انحرم": "الحرمان", "انسحب": "الانسحاب", "احول": "التحويل",
+                "عدت": "إعادة دراسة", "اوقف": "تأجيل", "اعترض": "التظلم"}
+    # END SOLUTION
+except NotImplementedError:
+    REWRITES = {}
+
+
+def expand(text: str) -> str:
+    return " ".join([text] + [REWRITES[w] for w in text.split() if w in REWRITES])
+
+
+if REWRITES:
+    U.check(all(DF[w] > 0 for r in REWRITES.values() for w in analyse(r)), "every rewrite adds only words the index holds")
+    before = [U.recall_at(run_norm[q["query_id"]], QRELS[q["query_id"]]) for q in DIALECT_Q]
+    after = [U.recall_at(search(NORM, analyse, expand(q["text"]), 20), QRELS[q["query_id"]]) for q in DIALECT_Q]
+    print(f"dialect recall@10: {sum(before) / len(before):.3f} as typed, {sum(after) / len(after):.3f} with the rewrites")
+    U.check(sum(after) > sum(before), "rewriting into the corpus's words raises dialect recall")
+else:
+    print("(not attempted yet: the reference solution is in solutions/)")
+
+# %% [markdown]
+# 🔍 A rewrite into a word the index never saw changes nothing, and it fails silently. Where would the
+# rewrites come from in production: search logs, a model that proposes them, a person? Whoever proposes
+# them, the index's own vocabulary decides which to keep.
+
+# %% [markdown]
 # ## ✱ Stretch · Give the title its own column and weight
 #
 # FTS5's `bm25()` takes one weight per column. Index the title and the body as two columns and weight
@@ -213,6 +259,6 @@ except NotImplementedError:
 # 2. Why does normalisation leave English results unchanged here?
 #    <details><summary>Answer</summary>English is already lower-cased by the tokeniser and has no letter variants; only the plural "s" is stripped.</details>
 # 3. Which dialect query still fails, and why will no normaliser fix it?
-#    <details><summary>Answer</summary>Queries such as "ابي انسحب من ماده" use other words for the same meaning; that needs a model of meaning, not of spelling.</details>
+#    <details><summary>Answer</summary>Queries such as "ابي انسحب من ماده" use other words for the same meaning; that needs other words, not other spellings: a rewrite into the words the corpus uses, or a model of meaning.</details>
 #
 # **Carry forward.** `artifacts/D1_2/results.json`: two rows of the results table.
