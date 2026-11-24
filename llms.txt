@@ -1,18 +1,18 @@
 # Retrieval and Knowledge Engineering for Language Model Systems
 
-> Build and measure the retrieval layer of a language model system: search, corpus preparation, access, agents and structured data. SDAIA Academy course AE-304, version 2027.1.0, in English.
+> Build and measure the retrieval layer of a language model system: search, corpus preparation, access, agents and structured data. SDAIA Academy course AE-304, version 2027.2.0, in English.
 
 Each slide is a heading such as "#### [day1#slide-id] Title": cite slides by that id, and each citation is a link (slides/day1.html#slide-id). These files are what a trainee sees: no speaker notes and no answer keys.
 
 ## Course
 
 - [Course page](https://sdaiaacademy.github.io/ae-304/index.md): overview, outcomes, schedule and labs; the page itself is https://sdaiaacademy.github.io/ae-304/index.html
-- [The whole course](https://sdaiaacademy.github.io/ae-304/llms-full.txt): every unit, session and slide in one file, about 20,821 tokens
+- [The whole course](https://sdaiaacademy.github.io/ae-304/llms-full.txt): every unit, session and slide in one file, about 21,338 tokens
 - [Practice questions](https://sdaiaacademy.github.io/ae-304/practice.html): questions to check yourself, with feedback after each answer
 
 ## Slides
 
-- [Day 1: Measure and search](https://sdaiaacademy.github.io/ae-304/slides/day1.md): sessions: Retrieval is measured on its own, Lexical search and Arabic text, Dense retrieval and embedding choice, Hybrid search and reranking; page: https://sdaiaacademy.github.io/ae-304/slides/day1.html; about 5,307 tokens
+- [Day 1: Measure and search](https://sdaiaacademy.github.io/ae-304/slides/day1.md): sessions: Retrieval is measured on its own, Lexical search and Arabic text, Dense retrieval and embedding choice, Hybrid search and reranking; page: https://sdaiaacademy.github.io/ae-304/slides/day1.html; about 5,824 tokens
 - [Day 2: Prepare the corpus](https://sdaiaacademy.github.io/ae-304/slides/day2.md): sessions: Parsing is a separate problem, Chunking by structure, Dates, versions and duplicates, Permissions in the index; page: https://sdaiaacademy.github.io/ae-304/slides/day2.html; about 5,038 tokens
 - [Day 3: Agentic search and knowledge](https://sdaiaacademy.github.io/ae-304/slides/day3.md): sessions: Search as tools for an agent, Multi-step questions, Paging and offloading, Knowledge graphs for linked facts; page: https://sdaiaacademy.github.io/ae-304/slides/day3.html; about 4,535 tokens
 - [Day 4: Structured data and diagnosis](https://sdaiaacademy.github.io/ae-304/slides/day4.md): sessions: Questions over a warehouse, Semantic layers and validated SQL, Cost, latency and freshness, Diagnosing failures by component; page: https://sdaiaacademy.github.io/ae-304/slides/day4.html; about 4,873 tokens
@@ -39,8 +39,8 @@ Each slide is a heading such as "#### [day1#slide-id] Title": cite slides by tha
 
 ## Context files
 
-- [context/course.md](https://sdaiaacademy.github.io/ae-304/context/course.md): the whole course, for an assistant that takes a file, about 20,821 tokens
-- [context/day1.md](https://sdaiaacademy.github.io/ae-304/context/day1.md): Day 1, about 5,307 tokens
+- [context/course.md](https://sdaiaacademy.github.io/ae-304/context/course.md): the whole course, for an assistant that takes a file, about 21,338 tokens
+- [context/day1.md](https://sdaiaacademy.github.io/ae-304/context/day1.md): Day 1, about 5,824 tokens
 - [context/day2.md](https://sdaiaacademy.github.io/ae-304/context/day2.md): Day 2, about 5,038 tokens
 - [context/day3.md](https://sdaiaacademy.github.io/ae-304/context/day3.md): Day 3, about 4,535 tokens
 - [context/day4.md](https://sdaiaacademy.github.io/ae-304/context/day4.md): Day 4, about 4,873 tokens

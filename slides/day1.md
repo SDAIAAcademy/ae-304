@@ -1,7 +1,7 @@
 ---
 course: "Retrieval and Knowledge Engineering for Language Model Systems"
 code: "AE-304"
-version: "2027.1.0"
+version: "2027.2.0"
 deck: "day1"
 day: 1
 language: "en"
@@ -244,15 +244,44 @@ Recall at 10 on test set v1. nDCG@10 overall: 0.473 raw, 0.538 normalised. Query
 
 *Read the failures, not only the score*
 
-**Student:** ابي انسحب من ماده متى اخر يوم
-
-**Top result (weak example):** Circular 2026-012, on another subject
-
 **Student:** ابي اوقف دراستي ترم كم مره يسمحون
 
 **Top result (weak example):** Article 36, lateness to an exam
 
-> **Takeaway.** اوقف دراستي means "postpone my study", but the regulation says تأجيل الدراسة. Matching words cannot bridge that; matching meaning might.
+> **Takeaway.** اوقف دراستي means "postpone my study", but the regulation says تأجيل الدراسة. No spelling rule bridges that; other words can: the corpus's own, or a model of meaning.
+
+#### [day1#vocabulary-gap] A word the index never saw matches nothing, however it is spelled
+
+*Read the index's vocabulary*
+
+A student asks: ماده ما كملتها وش يكتبون بالسجل ("a course I did not finish, what goes on my record?")
+
+| Query word, analysed | Public pages that hold it |
+| --- | --- |
+| ماد | 119 |
+| سجل | 43 |
+| ما | 7 |
+| كملت · يكتب · وش | 0 |
+
+- **What BM25 returns.** Circular 2024-090 first. Article 43, on the incomplete grade, is not in the top 10.
+- **How to read it.** The words that carry the question have a count of 0: the student and the regulation use different words.
+
+#### [day1#rewrite-from-corpus] Rewrite into the corpus's own words, and keep only rewrites the index holds
+
+*Query rewriting*
+
+| Words added to the query | Pages per added word | Article 43 |
+| --- | --- | --- |
+| ناقص | 0 | not in top 10 |
+| معلق | 0 | not in top 10 |
+| تقدير غير مكتمل | 16 · 10 · 1 | first |
+
+- **Take the target from the corpus**: a title or a heading, run through the same analyser
+- **Check it**: every added word occurs in the index, or the rewrite does nothing
+- **Add, do not replace**: keep the student's words
+- **Measure it** on the dialect slice and on the rest
+
+> **What goes wrong.** A rewrite that sounds right but uses words the corpus never uses fails silently: the ranking does not move.
 
 #### [day1#check-normalisation] Why did Arabic recall not move?
 
@@ -342,6 +371,33 @@ model.encode("passage: " + page_text)
 
 Measured once when the supplied vectors were made: 300 pages in 44.1 s (e5) and 27.4 s (MiniLM), on a shared laptop. Your Colab numbers will differ; the ratio between indexing and querying will not.
 
+#### [day1#one-model-per-index] Half-way through a model change, search sees only the pages already re-embedded
+
+*Changing the embedding model*
+
+| MiniLM index, pages moved to e5 | nDCG@10 | top 10 from moved pages |
+| --- | --- | --- |
+| 25% | 0.138 | 100% |
+| 50% | 0.288 | 100% |
+| 75% | 0.399 | 100% |
+| 100% | 0.507 | 100% |
+
+- **0.70 to 0.89** cosine of one e5 query with e5 pages
+- **−0.15 to 0.09** the same query with MiniLM pages
+
+> **What goes wrong.** Both models give 384 numbers, so a mixed index raises no error. The old pages simply never compete.
+
+#### [day1#migrate-by-reembedding] A new model means a new index: re-embed everything, then switch queries and pages together
+
+*The procedure*
+
+1. **1 · Build beside** embed the whole corpus with the new model into a second index
+2. **2 · Measure** the test set by language on the new index
+3. **3 · Switch together** query model and index in one step; keep the old one to roll back
+
+- **Record the model.** Store the model's name with the index and refuse a query vector from any other.
+- **Plan the time.** The full re-embedding is the cost of the change: 7.3 minutes here, much longer at a million pages.
+
 #### [day1#exact-or-approximate] Exact search compares with every page; HNSW walks a graph of neighbours
 
 *Indexes for vectors*
@@ -356,15 +412,6 @@ Measured once when the supplied vectors were made: 300 pages in 44.1 s (e5) and 
 | Flat index size | 4.02 MB | 4.02 MB |
 | HNSW p95 | 0.53 ms | 0.52 ms |
 | Exact p95 | 1.15 ms | 1.29 ms |
-
-#### [day1#quantised-vectors] Eight-bit vectors take a quarter of the space and keep 99% of the top 10
-
-*Stretch result*
-
-- **4.02 → 1.01 MB** e5 index, 32-bit floats to 8-bit codes
-- **0.987** overlap with the exact top 10
-
-> **Takeaway.** Memory is usually the first limit of a vector index on modest hardware; scalar quantisation is the first lever, and its cost is measurable.
 
 #### [day1#check-embedding-choice] Which conclusion does the evidence support?
 
@@ -517,7 +564,7 @@ Fuse lexical and dense rankings, add a reranker on the fused top 30 and report t
 *Day 1 · wrap-up*
 
 - **Measure retrieval alone.** A versioned test set with graded judgements, reported by language and query type.
-- **Arabic needs analysis.** Normalise both sides. It lifted Arabic recall from 0.34 to 0.44; dialect needs meaning, not spelling.
+- **Arabic needs analysis.** Normalise both sides. It lifted Arabic recall from 0.34 to 0.44; dialect needs other words, not other spellings.
 - **Gain and latency in one row.** Fusion is nearly free; reranking gains most and may not fit the budget.
 
 #### [day1#next] Day 2: Prepare the corpus

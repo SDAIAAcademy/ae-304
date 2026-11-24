@@ -1,7 +1,7 @@
 ---
 course: "Retrieval and Knowledge Engineering for Language Model Systems"
 code: "AE-304"
-version: "2027.1.0"
+version: "2027.2.0"
 deck: "day4"
 day: 4
 language: "en"

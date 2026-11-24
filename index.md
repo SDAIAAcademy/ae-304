@@ -1,7 +1,7 @@
 ---
 course: "Retrieval and Knowledge Engineering for Language Model Systems"
 code: "AE-304"
-version: "2027.1.0"
+version: "2027.2.0"
 language: "en"
 view: "trainee"
 source: "https://sdaiaacademy.github.io/ae-304/index.html"
@@ -215,4 +215,4 @@ A measured retrieval layer for the university's assistant, or for a synthetic or
 
 SDAIA Academy · AI Engineering Track · Retrieval and Knowledge Engineering for Language Model Systems
 
-Course version 2027.1.0 · engine 1.0.0 · built 2026-11-15 · commit 79ea004
+Course version 2027.2.0 · engine 1.0.0 · built 2026-11-24 · commit 6b34e2c

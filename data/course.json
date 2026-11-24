@@ -2,9 +2,9 @@
   "v": 1,
   "engine": "1.0.0",
   "build": {
-    "at": "2026-11-15T11:59:31Z",
-    "version": "2027.1.0",
-    "commit": "79ea004"
+    "at": "2026-11-24T16:23:53Z",
+    "version": "2027.2.0",
+    "commit": "6b34e2c"
   },
   "lang": "en",
   "dir": "ltr",
@@ -15,7 +15,7 @@
   "course": {
     "id": "ae-304",
     "code": "AE-304",
-    "version": "2027.1.0",
+    "version": "2027.2.0",
     "title": "Retrieval and Knowledge Engineering for Language Model Systems",
     "tagline": "Build and measure the retrieval layer of a language model system: search, corpus preparation, access, agents and structured data",
     "description": "Participants build and measure the retrieval layer of a language model system for a fictional university: bilingual regulations, study plans with tables, scanned Arabic circulars and an enrolment statistics warehouse. Starting from a graded test set, they build lexical, dense, hybrid and reranked search with Arabic normalisation, parse and chunk documents by structure, filter by date and role, give an agent search tools and a small knowledge graph, and answer statistical questions through a semantic layer instead of free text-to-SQL.",
